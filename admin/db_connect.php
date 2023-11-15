@@ -5,7 +5,7 @@ $db_name = "db_bgmarrberryy";
 $password = "";
 
 // Create connection
-$conn = new mysqli($servername, $username, $db_name, $password);
+$conn = new mysqli($servername, $username, $password, $db_name);
 
 // Check connection
 if ($conn->connect_error) {
