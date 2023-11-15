@@ -1,5 +1,74 @@
 <?php
     include_once 'db_connect.php';
+
+    if (isset($_POST['login'])) {
+
+        $sql = "SELECT * FROM `tbladmin` WHERE `username` = ? AND `password` = ?";
+        $uname = $_POST['username'];
+        $password = md5($_POST['password']);
+      
+        $stmt = $conn->prepare($sql);
+        $stmt->bind_param('ss', $uname, $password);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        if ($row > 0) {
+          $_SESSION['id'] = $row['id'];
+          $_SESSION['fullname'] = $row['fullname'];
+          $_SESSION['username'] = $row['username'];
+          session_write_close();
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { swal.fire({
+                  title: "สำเร็จ!",
+                  text: "เข้าสู่หน้าแก้ไขรหัสผ่าน",
+                  type: "success",
+                  icon: "success"
+              });';
+          echo '}, 500 );</script>';
+      
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { 
+                  window.location.href = "pass_update.php";';
+          echo '}, 3000 );</script>';
+        } else if ($row > 0 && $row['pass_update'] == '1') {
+          $_SESSION['id'] = $row['id'];
+          $_SESSION['fullname'] = $row['fullname'];
+          $_SESSION['username'] = $row['username'];
+          $_SESSION['faculty'] = $row['faculty'];
+          $_SESSION['position'] = $row['position'];
+          $_SESSION['faculty_id'] = $row['faculty_id'];
+          session_write_close();
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { swal.fire({
+                  title: "สำเร็จ!",
+                  text: "เข้าสู่ระบบเรียบร้อย!",
+                  type: "success",
+                  icon: "success"
+              });';
+          echo '}, 500 );</script>';
+      
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { 
+                  window.location.href = "index.php";';
+          echo '}, 3000 );</script>';
+        } else {
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { swal.fire({
+                  title: "ผิดพลาด!",
+                  text: "กรุณาลองใหม่!",
+                  type: "warning",
+                  icon: "error"
+              });';
+          echo '}, 500);</script>';
+      
+          echo '<script type="text/javascript">';
+          echo 'setTimeout(function () { 
+              window.location.href = "login.php";';
+          echo '}, 3000 );</script>';
+        }
+      }
+      ?>
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,12 +115,12 @@
                                     </div>
                                     <form class="user">
                                         <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                            <input type="email" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                            <input type="password" name="password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
                                         <div class="form-group">
