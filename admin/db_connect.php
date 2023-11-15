@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $db_name = "db_bgmarrberryy";
-$password = " ";
+$password = "";
 
 // Create connection
 $conn = new mysqli($servername, $username, $db_name, $password);
