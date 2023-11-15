@@ -42,7 +42,7 @@
       
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { 
-              window.location.href = "XXX.php";';
+              window.location.href = "login.php";';
           echo '}, 3000 );</script>';
         }
       }
@@ -70,6 +70,11 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- sweetalert2 -->
+        <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+        <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
 
 </head>
 
