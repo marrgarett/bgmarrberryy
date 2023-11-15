@@ -28,27 +28,6 @@
       
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { 
-                  window.location.href = "pass_update.php";';
-          echo '}, 3000 );</script>';
-        } else if ($row > 0 && $row['pass_update'] == '1') {
-          $_SESSION['id'] = $row['id'];
-          $_SESSION['fullname'] = $row['fullname'];
-          $_SESSION['username'] = $row['username'];
-          $_SESSION['faculty'] = $row['faculty'];
-          $_SESSION['position'] = $row['position'];
-          $_SESSION['faculty_id'] = $row['faculty_id'];
-          session_write_close();
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { swal.fire({
-                  title: "สำเร็จ!",
-                  text: "เข้าสู่ระบบเรียบร้อย!",
-                  type: "success",
-                  icon: "success"
-              });';
-          echo '}, 500 );</script>';
-      
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { 
                   window.location.href = "index.php";';
           echo '}, 3000 );</script>';
         } else {
@@ -63,7 +42,7 @@
       
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { 
-              window.location.href = "login.php";';
+              window.location.href = "XXX.php";';
           echo '}, 3000 );</script>';
         }
       }
@@ -113,9 +92,9 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                                     </div>
-                                    <form class="user" form name="myForm" method="post">
+                                    <form class="user" name="myForm" method="post">
                                         <div class="form-group">
-                                            <input type="email" name="username" class="form-control form-control-user"
+                                            <input type="text" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="Enter Email Address...">
                                         </div>
