@@ -13,9 +13,7 @@
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -34,36 +32,31 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                                <h1 class="h4 text-gray-900 mb-4">สมัครสมาชิก</h1>
                             </div>
-                            <form class="user">
+                            <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" class="form-control form-control-user" id="exampleFirstName"
-                                            placeholder="First Name">
+                                        <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" class="form-control form-control-user" id="exampleLastName"
-                                            placeholder="Last Name">
+                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="form-control form-control-user" id="exampleInputEmail"
-                                        placeholder="Email Address">
+                                    <input type="email" name="useremail" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleInputPassword" placeholder="Password">
+                                        <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="รหัสผ่าน" required minlength="3" maxlength="20">
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="password" class="form-control form-control-user"
-                                            id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">
                                     </div>
                                 </div>
-                                <a href="login.php" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a>
+                                <input type="submit" name="save" value="ยืนยัน" class="btn btn-primary btn-block">
+
+
                                 <hr>
                                 <a href="index.php" class="btn btn-google btn-user btn-block">
                                     <i class="fab fa-google fa-fw"></i> Register with Google
