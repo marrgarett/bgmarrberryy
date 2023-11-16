@@ -38,12 +38,12 @@ if (isset($_POST['save'])) {
         $uploadOk = 0;
     }
 
-    if (file_exitsts($traget_file)) {
+    if (file_exists($traget_file)) {
         echo "Sorry, file already exitsts.";
         $uploadOk = 0;
     }
 
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
+    if ($_FILES["fileToUpload"]["size"] > 15000000) {
         echo '<script language="javascript">';
         echo 'alert("Sorry, your file is too large."); location.href="products.php"';
         echo '</script>';
@@ -64,7 +64,7 @@ if (isset($_POST['save'])) {
             mysqli_query($conn, $sql);
             echo '<script language="javascript">';
             echo 'alert("บันทึกข้อมูลเรียบร้อยแล้ว"); location.href="products.php"';
-            echo '</script>'
+            echo '</script>';
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
