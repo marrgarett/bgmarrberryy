@@ -23,6 +23,7 @@ if (isset($_POST['save'])) {
         echo '<script language="javascript">';
         echo 'alert("อีเมลซ้ำ"); location.href="javascript:history.go(-1)"';
         echo '</script>';
+    
     }else{
         $sql = "INSERT INTO `tblclient` (`id`, `fullname`, `lastname`, `useremail`, `password`, `regdate`, `img`)
             VALUES (NULL, '$fullname', '$lastname', '$useremail', '$password1', current_timestamp(), '');";
