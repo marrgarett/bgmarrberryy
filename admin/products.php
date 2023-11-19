@@ -414,6 +414,7 @@
       <th scope="col">Username</th>
       <th scope="col">Password</th>
       <th scope="col">Price/HR</th>
+      <th scope="col">ชื่อรูปภาพ</th>
       <th scope="col">รูปภาพ</th>
       <th scope="col">สถานะ</th>
     </tr>
@@ -422,31 +423,34 @@
     <tr>
       <th scope="row">BGM001</th>
       <td>BGMARR001</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+      <td>Lorem ipsum dolor sit amet, consectetur</td>
       <td>u53rn4me</td>
       <td>p@ssw0rd</td>
       <td>10</td>
       <td>img.jpg</td>
+      <td><img src="img/id1.png" width="60px" height="40px"></td>
       <td>(Active/Inactive)</td>
     </tr>
     <tr>
       <th scope="row">BGM002</th>
       <td>BGMARR002</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+      <td>Lorem ipsum dolor sit amet, consectetur</td>
       <td>u53rn4me</td>
       <td>p@ssw0rd</td>
       <td>10</td>
       <td>img.jpg</td>
+      <td><img src="img/id1.png" width="60px" height="40px"></td>
       <td>(Active/Inactive)</td>
     </tr>
     <tr>
       <th scope="row">BGM003</th>
       <td>BGMARR003</td>
-      <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit</td>
+      <td>Lorem ipsum dolor sit amet, consectetur</td>
       <td>u53rn4me</td>
       <td>p@ssw0rd</td>
       <td>10</td>
       <td>img.jpg</td>
+      <td><img src="img/id1.png" width="60px" height="40px"></td>
       <td>(Active/Inactive)</td>
     </tr>
   </tbody>
