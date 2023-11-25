@@ -429,7 +429,7 @@
                                   <td><?php echo $row["useremail"] ?></td>
                                   <td><?php echo $row["pass_word"] ?></td>
                                   <td><?php echo $row["regdate"] ?></td>
-                                  <td><?php echo '<img src="img/$row["img"]">'?></td>
+                                  <td><img src="img/<?php echo $row["img"] ?>" width="60px" height="40px"></td>
                                   <td>
                                     <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                     <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 

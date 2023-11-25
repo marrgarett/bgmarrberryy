@@ -351,14 +351,19 @@
                                     <label for="inputEmail4" hidden>รหัสไอดี</label>
                                     <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" placeholder="ไอดี" hidden>
                                 </div>
-                                <div class="form-group col-md-2">
+                                <div class="form-group col-md-4">
                                     <label for="inputPassword4">ชื่อไอดี</label>
                                     <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
                                 </div>
-                                <div class="form-group col-md-4">
+                                <div class="form-group col-md-7">
                                     <label for="inputAddress">คำอธิบาย</label>
                                     <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
                                 </div>
+                                
+                                
+                            </div>
+
+                            <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputEmail4">ชื่อผู้ใช้</label>
                                     <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
@@ -367,10 +372,6 @@
                                     <label for="inputPassword4">รหัสผ่าน</label>
                                     <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
                                 </div>
-                                
-                            </div>
-
-                            <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
                                     <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
