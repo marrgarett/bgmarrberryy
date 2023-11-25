@@ -351,14 +351,10 @@
                                     <label for="inputPassword4">ชื่อไอดี</label>
                                     <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี">
                                 </div>
-                                <div class="form-group col-md-10">
+                                <div class="form-group col-md-4">
                                     <label for="inputAddress">คำอธิบาย</label>
                                     <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
                                 </div>
-                                
-                            </div>
-
-                            <div class="form-row">
                                 <div class="form-group col-md-3">
                                     <label for="inputEmail4">ชื่อผู้ใช้</label>
                                     <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
@@ -367,27 +363,25 @@
                                     <label for="inputPassword4">รหัสผ่าน</label>
                                     <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input">จำนวน</label>
-                                    <input type="text" name="bgmarr_num" class="form-control" id="bgmarr_price" placeholder="จำนวน">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input">ราคา</label>
-                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
-                                </div>  
+                                
                             </div>
 
                             <div class="form-row">
-                            <div class="form-group col-md-3">
-                                    <label for="input">ชื่อรูปภาพ</label>
-                                    <input type="text" name="bgmarr_img_name" class="form-control" id="bgmarr_price" placeholder="ชื่อรูปภาพ">
+                                
+                                <div class="form-group col-md-2">
+                                    <label for="input">จำนวน</label>
+                                    <input type="number" name="bgmarr_num" class="form-control" id="bgmarr_price" placeholder="จำนวน">
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <label for="input">ราคา</label>
+                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
                                     <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
                                 </div>
-                                
                             </div>
+
                             <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
                             
                         </form>
@@ -403,10 +397,10 @@
                                             <th scope="col">ไอดี</th>
                                             <th scope="col">ชื่อไอดี</th>
                                             <th scope="col">คำอธิบาย</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Password</th>
-                                            <th scope="col">Price/HR</th>
-                                            <th scope="col">ชื่อรูปภาพ</th>
+                                            <th scope="col">ชื่อผู้ใช้</th>
+                                            <th scope="col">รหัสผ่าน</th>
+                                            <th scope="col">ราคา/ชม.</th>
+                                            
                                             <th scope="col">รูปภาพ</th>
                                             <th scope="col">สถานะ</th>
                                         </tr>
@@ -419,7 +413,7 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
+                                            
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
@@ -430,7 +424,7 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
+                                            
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
@@ -441,7 +435,6 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
