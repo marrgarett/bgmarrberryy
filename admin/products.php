@@ -1,3 +1,7 @@
+<?php 
+    include_once('db_connect.php'); 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -349,7 +353,7 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี">
+                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputAddress">คำอธิบาย</label>
@@ -379,6 +383,10 @@
                                     <label for="input">รูปภาพ</label>
                                     <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
                                 </div>
+                                <div class="form-group col-md-2" hidden>
+                                    <label for="input" hidden>สถานะ</label>
+                                    <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
+                                </div>
                             </div>
 
                             <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
@@ -390,7 +398,7 @@
                         <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
                         <div class="card">
                             <div class="card-body">
-                                <table class="table">
+                                <table class="table table-borderless">
                                     <thead>
                                         <tr>
                                             <th>ไอดี</th>
@@ -401,39 +409,38 @@
                                             <th>ราคา/ชม.</th>
                                             <th>รูปภาพ</th>
                                             <th>สถานะ</th>
+                                            <th>แก้ไข/ลบ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                            $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY `bgmarr_tbl`.`bgmarr_id` DESC";
+                                            $result = mysqli_query($conn, $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                // output data of each row
+                                                while($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                        
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>BGMARR001</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur</td>
-                                            <td>u53rn4me</td>
-                                            <td>p@ssw0rd</td>
-                                            <td>10</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
-                                            <td>(Active/Inactive)</td>
+                                            <th><?php echo $row["bgmarr_id"] ?></th>
+                                            <td><?php echo $row["bgmarr_name"] ?></td>
+                                            <td><?php echo $row["bgmarr_desc"] ?></td>
+                                            <td><?php echo $row["bgmarr_us"] ?></td>
+                                            <td>p@<?php echo $row["bgmarr_pw"] ?></td>
+                                            <td><?php echo $row["bgmarr_price"] ?></td>
+                                            <td><img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px"></td>
+                                            <td><?php echo $row["bgmarr_status"] ?></td>
+                                            <td>
+                                                <a href="productEdit.php?id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
+                                                {window.location='productDel.php?id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
+                                            </td>
                                         </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>BGMARR002</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur</td>
-                                            <td>u53rn4me</td>
-                                            <td>p@ssw0rd</td>
-                                            <td>10</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
-                                            <td>(Active/Inactive)</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>BGMARR003</td>
-                                            <td>Lorem ipsum dolor sit amet, consectetur</td>
-                                            <td>u53rn4me</td>
-                                            <td>p@ssw0rd</td>
-                                            <td>10</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
-                                            <td>(Active/Inactive)</td>
-                                        </tr>
+                                        <?php
+                                                }
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
