@@ -372,10 +372,6 @@
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
-                                    <label for="input">จำนวน</label>
-                                    <input type="number" name="bgmarr_num" class="form-control" id="bgmarr_price" placeholder="จำนวน">
-                                </div>
-                                <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
                                     <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
                                 </div>
