@@ -393,26 +393,14 @@
                                 <table class="table">
                                     <thead>
                                         <tr>
-<<<<<<< HEAD
-                                            <th scope="col">ไอดี</th>
-                                            <th scope="col">ชื่อไอดี</th>
-                                            <th scope="col">คำอธิบาย</th>
-                                            <th scope="col">ชื่อผู้ใช้</th>
-                                            <th scope="col">รหัสผ่าน</th>
-                                            <th scope="col">ราคา/ชม.</th>
-                                            
-                                            <th scope="col">รูปภาพ</th>
-                                            <th scope="col">สถานะ</th>
-=======
                                             <th>ไอดี</th>
                                             <th>ชื่อไอดี</th>
                                             <th>คำอธิบาย</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
-                                            <th>Price/HR</th>
+                                            <th>ชื่อผู้ใช้</th>
+                                            <th>รหัสผ่าน</th>
+                                            <th>ราคา/ชม.</th>
                                             <th>รูปภาพ</th>
                                             <th>สถานะ</th>
->>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -423,12 +411,7 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-<<<<<<< HEAD
-                                            
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
-=======
-                                            <td><img src="img/id1.png" width="10%"></td>
->>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
@@ -438,12 +421,7 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-<<<<<<< HEAD
-                                            
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
-=======
-                                            <td><img src="img/id1.png" width="10%"></td>
->>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
@@ -453,11 +431,7 @@
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-<<<<<<< HEAD
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
-=======
-                                            <td><img src="img/id1.png" width="10%"></td>
->>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                     </tbody>
