@@ -8,8 +8,6 @@ $useremail = $_POST["useremail"];
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
 
-
-
 if (isset($_POST['save'])) {
 
     $check_email = mysqli_query($conn, 'SELECT * FROM tblclient WHERE useremail = "' . $_POST['useremail'] . '"');

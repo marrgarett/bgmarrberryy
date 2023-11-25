@@ -113,7 +113,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">Blank Page</a>
+                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลไอดี</a>
                     </div>
                 </div>
             </li>
@@ -367,7 +367,6 @@
                             </div>
 
                             <div class="form-row">
-                                
                                 <div class="form-group col-md-2">
                                     <label for="input">จำนวน</label>
                                     <input type="number" name="bgmarr_num" class="form-control" id="bgmarr_price" placeholder="จำนวน">
@@ -391,9 +390,10 @@
                         <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
                         <div class="card">
                             <div class="card-body">
-                                <table class="table table-borderless">
+                                <table class="table">
                                     <thead>
                                         <tr>
+<<<<<<< HEAD
                                             <th scope="col">ไอดี</th>
                                             <th scope="col">ชื่อไอดี</th>
                                             <th scope="col">คำอธิบาย</th>
@@ -403,39 +403,61 @@
                                             
                                             <th scope="col">รูปภาพ</th>
                                             <th scope="col">สถานะ</th>
+=======
+                                            <th>ไอดี</th>
+                                            <th>ชื่อไอดี</th>
+                                            <th>คำอธิบาย</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Price/HR</th>
+                                            <th>รูปภาพ</th>
+                                            <th>สถานะ</th>
+>>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">BGM001</th>
+                                            <th scope="row">1</th>
                                             <td>BGMARR001</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
+<<<<<<< HEAD
                                             
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
+=======
+                                            <td><img src="img/id1.png" width="10%"></td>
+>>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">BGM002</th>
+                                            <th scope="row">2</th>
                                             <td>BGMARR002</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
+<<<<<<< HEAD
                                             
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
+=======
+                                            <td><img src="img/id1.png" width="10%"></td>
+>>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">BGM003</th>
+                                            <th scope="row">3</th>
                                             <td>BGMARR003</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
+<<<<<<< HEAD
                                             <td><img src="img/id1.png" width="60px" height="40px"></td>
+=======
+                                            <td><img src="img/id1.png" width="10%"></td>
+>>>>>>> 31710afe6a69d7f35b02d87308fc7a5eb6dd049f
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                     </tbody>
