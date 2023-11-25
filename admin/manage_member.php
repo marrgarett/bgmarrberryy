@@ -1,3 +1,4 @@
+<?php include_once('db_connect.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,7 +119,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">Blank Page</a>
+                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลสมาชิก</a>
                     </div>
                 </div>
             </li>
@@ -364,36 +365,48 @@
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลสมาชิก</h1>
 
+                    <?php
+                        $sql = "SELECT * FROM `tblclient` ORDER BY `tblclient`.`id` DESC";
+                        $result = mysqli_query($conn, $sql);
+                    ?>
+
                     <div class="card">
                         <div class="card-body">
                         <table class="table table-borderless">
   <thead>
     <tr>
-      <th scope="col">ลำดับ</th>
-      <th scope="col">ชื่อ-นามสกุล</th>
-      <th scope="col">Username</th>
-      <th scope="col">Password</th>
+      <th>ลำดับ</th>
+      <th>ชื่อ-นามสกุล</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>วันที่สมัคร</th>
+      <th>รูปภาพ</th>
+      <th>แก้ไข/ลบ</th>
     </tr>
   </thead>
   <tbody>
+        <?php
+            if (mysqli_num_rows($result) > 0) {
+                // output data of each row
+                while($row = mysqli_fetch_assoc($result)) {
+        ?>
     <tr>
       <th scope="row">1</th>
-      <td>firstname lastname</td>
-      <td>marrgarett</td>
-      <td>p@ssw0rd</td>
+      <td><?php echo $row["fullname"] ?></td>
+      <td><?php echo $row["useremail"] ?></td>
+      <td><?php echo $row["pass_word"] ?></td>
+      <td><?php echo $row["regdate"] ?></td>
+      <td><?php echo '<img src="img/$row["img"]">'?></td>
+      <td>
+        <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
+        {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
+        <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+      </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>firstname lastname</td>
-      <td>nnnoeeeyyy</td>
-      <td>p@ssw0rd</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>firstname lastname</td>
-      <td>miguelrita</td>
-      <td>p@ssw0rd</td>
-    </tr>
+    <?php
+        }
+    }
+    ?>
   </tbody>
 </table>
                         </div>

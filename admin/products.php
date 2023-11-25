@@ -113,7 +113,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">Blank Page</a>
+                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลไอดี</a>
                     </div>
                 </div>
             </li>
@@ -378,10 +378,6 @@
                             </div>
 
                             <div class="form-row">
-                            <div class="form-group col-md-3">
-                                    <label for="input">ชื่อรูปภาพ</label>
-                                    <input type="text" name="bgmarr_img_name" class="form-control" id="bgmarr_price" placeholder="ชื่อรูปภาพ">
-                                </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
                                     <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
@@ -397,52 +393,48 @@
                         <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
                         <div class="card">
                             <div class="card-body">
-                                <table class="table table-borderless">
+                                <table class="table">
                                     <thead>
                                         <tr>
-                                            <th scope="col">ไอดี</th>
-                                            <th scope="col">ชื่อไอดี</th>
-                                            <th scope="col">คำอธิบาย</th>
-                                            <th scope="col">Username</th>
-                                            <th scope="col">Password</th>
-                                            <th scope="col">Price/HR</th>
-                                            <th scope="col">ชื่อรูปภาพ</th>
-                                            <th scope="col">รูปภาพ</th>
-                                            <th scope="col">สถานะ</th>
+                                            <th>ไอดี</th>
+                                            <th>ชื่อไอดี</th>
+                                            <th>คำอธิบาย</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Price/HR</th>
+                                            <th>รูปภาพ</th>
+                                            <th>สถานะ</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">BGM001</th>
+                                            <th scope="row">1</th>
                                             <td>BGMARR001</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
+                                            <td><img src="img/id1.png" width="10%"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">BGM002</th>
+                                            <th scope="row">2</th>
                                             <td>BGMARR002</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
+                                            <td><img src="img/id1.png" width="10%"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">BGM003</th>
+                                            <th scope="row">3</th>
                                             <td>BGMARR003</td>
                                             <td>Lorem ipsum dolor sit amet, consectetur</td>
                                             <td>u53rn4me</td>
                                             <td>p@ssw0rd</td>
                                             <td>10</td>
-                                            <td>img.jpg</td>
-                                            <td><img src="img/id1.png" width="60px" height="40px"></td>
+                                            <td><img src="img/id1.png" width="10%"></td>
                                             <td>(Active/Inactive)</td>
                                         </tr>
                                     </tbody>
