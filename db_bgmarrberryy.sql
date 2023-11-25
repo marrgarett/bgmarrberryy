@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 24, 2023 at 06:30 AM
+-- Generation Time: Nov 25, 2023 at 07:36 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -33,18 +33,18 @@ CREATE TABLE `bgmarr_tbl` (
   `bgmarr_desc` mediumtext NOT NULL,
   `bgmarr_us` varchar(100) NOT NULL,
   `bgmarr_pw` varchar(100) NOT NULL,
-  `bgmarr_num` int(10) NOT NULL,
   `bgmarr_price` varchar(255) NOT NULL,
   `bgmarr_img` varchar(255) NOT NULL,
-  `bgmarr_status` varchar(1) NOT NULL
+  `bgmarr_status` varchar(3) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bgmarr_tbl`
 --
 
-INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_num`, `bgmarr_price`, `bgmarr_img`, `bgmarr_status`) VALUES
-(1, 'BGMARR001', 'ของแทร่', 'u53rn4me', 'p@ssw0rd', 1, '10', 'img01.jpg', '1');
+INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price`, `bgmarr_img`, `bgmarr_status`) VALUES
+(1, 'BGMARR001', 'ของแทร่', 'u53rn4me', 'p@ssw0rd', '10', 'id1.png', 'on'),
+(2, 'BGMARR002', 'yyuuu', 'lok111', '123456', '15', 'pop.pmg', 'off');
 
 -- --------------------------------------------------------
 
@@ -107,7 +107,8 @@ CREATE TABLE `tblclient` (
 --
 
 INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`, `img`) VALUES
-(2, 'client number0', 'clienttest@gmail.com', 'client', '2023-11-15 05:03:41', 'pic.jpeg');
+(2, 'client number0', 'clienttest@gmail.com', 'client', '2023-11-15 05:03:41', 'pic.jpeg'),
+(44, 'qwe', 'qq@gmail.com', '123', '2023-11-25 13:13:35', '');
 
 --
 -- Indexes for dumped tables
@@ -118,7 +119,8 @@ INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`, 
 --
 ALTER TABLE `bgmarr_tbl`
   ADD PRIMARY KEY (`bgmarr_id`),
-  ADD KEY `bgmarr_img` (`bgmarr_img`);
+  ADD KEY `bgmarr_img` (`bgmarr_img`),
+  ADD KEY `bgmarr_name` (`bgmarr_name`);
 
 --
 -- Indexes for table `history_tbl`
@@ -148,7 +150,7 @@ ALTER TABLE `tblclient`
 -- AUTO_INCREMENT for table `bgmarr_tbl`
 --
 ALTER TABLE `bgmarr_tbl`
-  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `tbladmin`
@@ -160,7 +162,7 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `tblclient`
 --
 ALTER TABLE `tblclient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
