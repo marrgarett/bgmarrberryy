@@ -377,11 +377,16 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
-                                    <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
+                                    <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
                                 </div>
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="input" hidden>สถานะ</label>
+                                <div class="form-group col-md-2">
+                                    <label for="input">สถานะ</label><br>
                                     <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
+                                    <select class="" name="bgmarr_status" id="bgmarr_status">
+                                        <option value="on">on</option>
+                                        <option value="off">off</option>
+                                        
+                                    </select>
                                 </div>
                             </div>
 
@@ -410,6 +415,7 @@
                                     </thead>
                                     <tbody>
                                         <?php
+                                            $i = 1;
                                             $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY `bgmarr_tbl`.`bgmarr_id` DESC";
                                             $result = mysqli_query($conn, $sql);
 
@@ -419,14 +425,15 @@
                                         ?>
                                         
                                         <tr>
-                                            <th><?php echo $row["bgmarr_id"] ?></th>
+                                            <th><?php echo $i++ ?></th>
                                             <td><?php echo $row["bgmarr_name"] ?></td>
                                             <td><?php echo $row["bgmarr_desc"] ?></td>
                                             <td><?php echo $row["bgmarr_us"] ?></td>
-                                            <td>p@<?php echo $row["bgmarr_pw"] ?></td>
+                                            <td><?php echo $row["bgmarr_pw"] ?></td>
                                             <td><?php echo $row["bgmarr_price"] ?></td>
                                             <td><img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px"></td>
                                             <td><?php echo $row["bgmarr_status"] ?></td>
+                                            </td>
                                             <td>
                                                 <a href="productEdit.php?id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                 <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
