@@ -347,10 +347,7 @@
                         <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
                         <form action="productsSave.php" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="inputEmail4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" placeholder="ไอดี" hidden>
-                                </div>
+                                
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
                                     <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
