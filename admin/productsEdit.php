@@ -1,5 +1,72 @@
 <?php 
+    session_start();
     include_once('db_connect.php'); 
+
+    if (!empty($_GET['update_pd'])) {
+        $sql = 'SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_id` = "' . $_GET['update_pd'] . '"';
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+
+        $check_name = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_name = "' . $_POST['bgmarr_name'] . '"');
+        $check_us = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_us = "'  . $_POST['bgmarr_us'] . '"');
+
+        if (($check_name) >= 1) {
+            echo '<script language="javascript">';
+            echo 'alert("ชื่อสินค้าซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
+            echo '</script>';
+        
+        }else if (($check_us) >= 1) {
+            echo '<script language="javascript">';
+            echo 'alert("ชื่อผู้ใช้ซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
+            echo '</script>';
+        
+        }else if(isset($_FILES['bgmarr_img']) && $_FILES['bgmarr_img']['error'] == 0) {
+            $name = $_FILES['bgmarr_img']['name'];
+        
+            $image_file = $_FILES['bgmarr_img']['name'];
+            $type = $_FILES['bgmarr_img']['type'];
+            $size = $_FILES['bgmarr_img']['size'];
+            $temp = $_FILES['bgmarr_img']['tmp_name'];
+        
+            $path = 'img/' . $image_file; // set upload folder path
+            $directory = 'img/';
+        
+            if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
+                if (!file_exists($path)) { // check file not exist in your upload folder path
+                    if ($size < 5000000) { // check file size 5MB
+                        unlink($directory . $row['bgmarr_img']);
+                        move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                        $stmt = $db->prepare('UPDATE `bgmarr_tbl` SET `bgmarr_name` ="' . $_POST['bgmarr_name'] . '",
+                                                `bgmarr_desc` ="' . $_POST['bgmarr_desc'] . '",
+                                                `bgmarr_us` ="' . $_POST['bgmarr_us'] . '",
+                                                `bgmarr_pw` ="' . $_POST['bgmarr_pw'] . '",
+                                                `bgmarr_price` ="' . $_POST['bgmarr_price'] . '", 
+                                                 bgmarr_id = :img_name ,
+                                                `bgmarr_status` ="' . $_POST['bgmarr_status'] . '"
+                                            WHERE `bgmarr_id` ="' . $_GET['update_pd'] . '"');
+                        $stmt->bindParam(':img_name', $name);
+                        if ($stmt->execute()){
+                            echo '<script language="JavaScript">';
+                            echo 'alert("แก้ไขสำเร็จ"); location.href = "products.php"';
+                            echo '</script>';
+                        }
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB");';
+                        echo '</script>';
+                        // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB"; // error message file size larger than 5MB
+                    }
+                } else {
+                    echo '<script language="javascript">';
+                    echo 'alert("มีไฟล์อยู่แล้ว... ตรวจสอบการอัปโหลด");location.href="javascript:history.go(-1)"';
+                    echo '</script>';
+                    // $errorMsg = "มีไฟล์อยู่แล้ว... ตรวจสอบตัวกรองการอัปโหลด"; // error message file not exists your upload folder path
+                }
+            }
+            
+            // insert the image data into the database
+        }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -344,25 +411,28 @@
                 <div class="container-fluid">
 
                     <div>
-                        <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
-                        <form action="productsSave.php" method="post" enctype="multipart/form-data">
+                        <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                
+                                <div class="form-group col-md-2" hidden>
+                                    <label for="inputPassword4" hidden>รหัสไอดี</label>
+                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" value="<?php echo $_GET['update_pd']; ?>" placeholder="รหัสไอดี" required hidden>
+                                </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
+                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี" required>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputAddress">คำอธิบาย</label>
-                                    <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
+                                    <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" value="<?php echo $row['bgmarr_desc']; ?>" placeholder="คำอธิบาย">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
+                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" value="<?php echo $row['bgmarr_us']; ?>" placeholder="ชื่อผู้ใช้">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
+                                    <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
                                 </div>
                                 
                             </div>
@@ -371,7 +441,7 @@
                                 
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
-                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
+                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
@@ -379,72 +449,23 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
-                                    <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
-                                    <select class="" name="bgmarr_status" id="bgmarr_status">
+                                    <select class="" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                        <option hidden><?php echo $row['bgmarr_status']; ?></option>
                                         <option value="on">on</option>
                                         <option value="off">off</option>
                                     </select>
                                 </div>
+                                <img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px">
+                                
                             </div>
 
-                            <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
+                            <input type="submit" value="Submit" class="btn btn-success float-left"><br><br>
                             
                         </form>
 
                         <!-- Page Heading -->
-                        <br>
-                        <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-borderless">
-                                    <thead>
-                                        <tr>
-                                            <th>ไอดี</th>
-                                            <th>ชื่อไอดี</th>
-                                            <th>คำอธิบาย</th>
-                                            <th>ชื่อผู้ใช้</th>
-                                            <th>รหัสผ่าน</th>
-                                            <th>ราคา/ชม.</th>
-                                            <th>รูปภาพ</th>
-                                            <th>สถานะ</th>
-                                            <th>แก้ไข/ลบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                            $i = 1;
-                                            $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY `bgmarr_tbl`.`bgmarr_id` DESC";
-                                            $result = mysqli_query($conn, $sql);
-
-                                            if (mysqli_num_rows($result) > 0) {
-                                                // output data of each row
-                                                while($row = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                        
-                                        <tr>
-                                            <th><?php echo $i++ ?></th>
-                                            <td><?php echo $row["bgmarr_name"] ?></td>
-                                            <td><?php echo $row["bgmarr_desc"] ?></td>
-                                            <td><?php echo $row["bgmarr_us"] ?></td>
-                                            <td><?php echo $row["bgmarr_pw"] ?></td>
-                                            <td><?php echo $row["bgmarr_price"] ?></td>
-                                            <td><img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px"></td>
-                                            <td><?php echo $row["bgmarr_status"] ?></td>
-                                            </td>
-                                            <td>
-                                                <a href="productsEdit.php?update_pd=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
-                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
-                                            </td>
-                                        </tr>
-                                        <?php
-                                                }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                        
+                        
 
                     </div>
                     <!-- /.container-fluid -->

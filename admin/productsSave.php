@@ -9,7 +9,6 @@ $bgmarr_us = $_POST["bgmarr_us"];
 $bgmarr_pw = $_POST["bgmarr_pw"];
 $bgmarr_price = $_POST["bgmarr_price"];
 $bgmarr_status = $_POST["bgmarr_status"];
-$bgmarr_img = $_POST["bgmarr_img"];
 
 if (isset($_POST['save'])) {
 
