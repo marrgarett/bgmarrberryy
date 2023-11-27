@@ -365,12 +365,15 @@ include_once('db_connect.php');
                                     </thead>
                                     <tbody>
                                         <?php
+
+                                            $i = 1;
+
                                         if (mysqli_num_rows($result) > 0) {
                                             // output data of each row
                                             while ($row = mysqli_fetch_assoc($result)) {
                                         ?>
                                                 <tr>
-                                                    <th scope="row">1</th>
+                                                    <th><?php echo $i++ ?></th>
                                                     <td><?php echo $row["fullname"] ?></td>
                                                     <td><?php echo $row["useremail"] ?></td>
                                                     <td><?php echo $row["pass_word"] ?></td>
