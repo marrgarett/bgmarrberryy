@@ -67,8 +67,15 @@ if (isset($_POST['save'])) {
     
     
     
+} elseif (isset($_POST['update'])){
+    $bgmarr_id = $_GET['bgmarr_id'];
+    $bgmarr_desc = $_POST['bgmarr_desc'];
+    $bgmarr_pw = $_POST['bgmarr_pw'];
+    $bgmarr_status = $_POST["bgmarr_status"];
+    $sql = "UPDATE `bgmarr_tbl` SET  `bgmarr_desc` = '$bgmarr_desc', `bgmarr_pw` = '$bgmarr_pw', `bgmarr_status` = '$bgmarr_status' WHERE `bgmarr_tbl`.`bgmarr_id` = '$bgmarr_id' ";
+    $result = mysqli_query($conn, $sql);
+        echo '<script language="javascript">';
+        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="products.php"';
+        echo '</script>';
 }
-
-
-
 ?>

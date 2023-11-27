@@ -6,11 +6,11 @@ $fullname = $_POST["fullname"];
 $lastname = $_POST["lastname"];
 $name = $fullname. ' ' . $lastname;
 $useremail = $_POST["useremail"];
-$password1 = $_POST["password1"];
-$password2 = $_POST["password2"];
+
 
 if (isset($_POST['save'])) {
-
+    $password1 = $_POST["password1"];
+    $password2 = $_POST["password2"];
     $check_email = mysqli_query($conn, 'SELECT * FROM tblclient WHERE useremail = "' . $_POST['useremail'] . '"');
     
     if (trim($_POST['password1']) != trim($_POST['password2'])){
@@ -31,4 +31,18 @@ if (isset($_POST['save'])) {
         echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
         echo '</script>';
     }
+} elseif (isset($_POST['update'])){
+    $id = $_GET['id'];
+    $fullname = $_POST["fullname"];
+    $lastname = $_POST["lastname"];
+    $name = $fullname. ' ' . $lastname;
+    $useremail = $_POST["useremail"];
+    $sql = "UPDATE `tblclient` SET `fullname` = '$name', `useremail` = '$useremail'
+    WHERE `tblclient`.`id` = '$id' ";
+    $result = mysqli_query($conn, $sql);
+        echo '<script language="javascript">';
+        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="manage_member.php"';
+        echo '</script>';
+
 }
+
