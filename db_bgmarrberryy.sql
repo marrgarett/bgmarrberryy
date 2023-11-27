@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 25, 2023 at 07:36 PM
+-- Generation Time: Nov 26, 2023 at 06:20 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -44,7 +44,8 @@ CREATE TABLE `bgmarr_tbl` (
 
 INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price`, `bgmarr_img`, `bgmarr_status`) VALUES
 (1, 'BGMARR001', 'ของแทร่', 'u53rn4me', 'p@ssw0rd', '10', 'id1.png', 'on'),
-(2, 'BGMARR002', 'yyuuu', 'lok111', '123456', '15', 'pop.pmg', 'off');
+(2, 'BGMARR002', 'yyuuu', 'loke111', '123456', '15', 'pop.pmg', 'off'),
+(61, 'bg93', 'n4', 'ty124', '12345', '12', '', 'on');
 
 -- --------------------------------------------------------
 
@@ -150,7 +151,7 @@ ALTER TABLE `tblclient`
 -- AUTO_INCREMENT for table `bgmarr_tbl`
 --
 ALTER TABLE `bgmarr_tbl`
-  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
 
 --
 -- AUTO_INCREMENT for table `tbladmin`
