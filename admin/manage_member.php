@@ -298,23 +298,24 @@
       <th>Username</th>
       <th>Password</th>
       <th>วันที่สมัคร</th>
-      <th>รูปภาพ</th>
+      <!-- <th>รูปภาพ</th> -->
       <th>แก้ไข/ลบ</th>
     </tr>
   </thead>
   <tbody>
         <?php
+        $i = 1;
             if (mysqli_num_rows($result) > 0) {
                 // output data of each row
                 while($row = mysqli_fetch_assoc($result)) {
         ?>
     <tr>
-      <th scope="row">1</th>
+        <th scope><?php echo $i++ ?></th>
       <td><?php echo $row["fullname"] ?></td>
       <td><?php echo $row["useremail"] ?></td>
       <td><?php echo $row["pass_word"] ?></td>
       <td><?php echo $row["regdate"] ?></td>
-      <td><?php echo '<img src="uploaded_imgs\$row["img"]">'?></td>
+      <!-- <td><?php echo '<img src="uploaded_imgs\$row["img"]">'?></td> -->
       <td>
         <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
         {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
