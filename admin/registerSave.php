@@ -40,7 +40,7 @@ if (isset($_POST['save'])) {
     $sql = "UPDATE `tblclient` SET `fullname` = '$name', `useremail` = '$useremail'
     WHERE `tblclient`.`id` = '$id' ";
     $result = mysqli_query($conn, $sql);
-    echo '<script language="javascript">';
+        echo '<script language="javascript">';
         echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="manage_member.php"';
         echo '</script>';
 
