@@ -381,8 +381,8 @@
                                     <label for="input">สถานะ</label><br>
                                     <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
                                     <select class="" name="bgmarr_status" id="bgmarr_status">
-                                        <option value="on">on</option>
-                                        <option value="off">off</option>
+                                        <option value="on">ว่าง</option>
+                                        <option value="off">ไม่ว่าง</option>
                                     </select>
                                 </div>
                             </div>
