@@ -7,6 +7,7 @@
         $result = mysqli_query($conn, $sql);
         $row = mysqli_fetch_array($result);
 
+        /*
         $check_name = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_name = "' . $_POST['bgmarr_name'] . '"');
         $check_us = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_us = "'  . $_POST['bgmarr_us'] . '"');
 
@@ -20,7 +21,10 @@
             echo 'alert("ชื่อผู้ใช้ซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
             echo '</script>';
         
-        }else if(isset($_FILES['bgmarr_img']) && $_FILES['bgmarr_img']['error'] == 0) {
+        }else
+        */
+        
+        if(isset($_FILES['bgmarr_img']) && $_FILES['bgmarr_img']['error'] == 0) {
             $name = $_FILES['bgmarr_img']['name'];
         
             $image_file = $_FILES['bgmarr_img']['name'];
@@ -28,14 +32,14 @@
             $size = $_FILES['bgmarr_img']['size'];
             $temp = $_FILES['bgmarr_img']['tmp_name'];
         
-            $path = 'img/' . $image_file; // set upload folder path
-            $directory = 'img/';
+            $path = 'uploaded_imgs/' . $image_file; // set upload folder path
+            $directory = 'uploaded_imgs/';
         
             if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
                 if (!file_exists($path)) { // check file not exist in your upload folder path
-                    if ($size < 5000000) { // check file size 5MB
+                    if ($size < 15000000) { // check file size 5MB
                         unlink($directory . $row['bgmarr_img']);
-                        move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                        move_uploaded_file($temp, 'uploaded_imgs/' . $image_file); // move upload file temperory directory to your upload folder
                         $stmt = $db->prepare('UPDATE `bgmarr_tbl` SET `bgmarr_name` ="' . $_POST['bgmarr_name'] . '",
                                                 `bgmarr_desc` ="' . $_POST['bgmarr_desc'] . '",
                                                 `bgmarr_us` ="' . $_POST['bgmarr_us'] . '",
@@ -52,9 +56,9 @@
                         }
                     } else {
                         echo '<script language="javascript">';
-                        echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB");';
+                        echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB");';
                         echo '</script>';
-                        // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB"; // error message file size larger than 5MB
+                        // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB"; // error message file size larger than 15MB
                     }
                 } else {
                     echo '<script language="javascript">';
@@ -416,11 +420,11 @@
                             <div class="form-row">
                                 <div class="form-group col-md-2" hidden>
                                     <label for="inputPassword4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" value="<?php echo $_GET['update_pd']; ?>" placeholder="รหัสไอดี" required hidden>
+                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" value="<?php echo $_GET['update_pd']; ?>" placeholder="รหัสไอดี" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี" required>
+                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี"  readonly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputAddress">คำอธิบาย</label>
@@ -428,7 +432,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" value="<?php echo $row['bgmarr_us']; ?>" placeholder="ชื่อผู้ใช้">
+                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" value="<?php echo $row['bgmarr_us']; ?>" placeholder="ชื่อผู้ใช้" readonly>
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">รหัสผ่าน</label>
@@ -441,21 +445,27 @@
                                 
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
-                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input">รูปภาพ</label>
-                                    <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
+                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
                                     <select class="" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
-                                        <option hidden><?php echo $row['bgmarr_status']; ?></option>
-                                        <option value="on">on</option>
-                                        <option value="off">off</option>
+                                        <option hidden >
+                                        <!-- <?php echo $row['bgmarr_status']; ?> -->
+                                        <?php
+                                            if ($row["bgmarr_status"] == '1'){
+                                                echo "ว่าง";
+                                            } else {
+                                                echo "ไม่ว่าง";
+                                            }
+                                        ?>
+                                        </option>
+                                        <option value="1">ว่าง</option>
+                                        <option value="0">ไม่ว่าง</option>
                                     </select>
+                                    // test commit
                                 </div>
-                                <img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px">
+                                <!-- <img src="img/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"> -->
                                 
                             </div>
 
