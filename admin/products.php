@@ -63,11 +63,11 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการข้อมูลต่างๆ</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">จัดการข้อมูลต่างๆ:</h6>
                         <a class="collapse-item" href="manage_member.php">จัดการข้อมูลสมาชิก</a>
-                        <a class="collapse-item" href="products.php">จัดการข้อมูลไอดี</a>
+                        <a class="collapse-item active" href="products.php">จัดการข้อมูลไอดี</a>
                         <a class="collapse-item" href="history_log.php">จัดการข้อมูลการเช่า</a>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.php">Login</a>
@@ -117,7 +117,6 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลไอดี</a>
                     </div>
                 </div>
             </li>
