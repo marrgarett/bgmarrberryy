@@ -36,8 +36,11 @@
                             </div>
                             <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
-                                    <div class="col-sm-12 mb-3 mb-sm-0">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
