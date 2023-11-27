@@ -1,6 +1,74 @@
 <?php 
+    session_start();
     include_once('db_connect.php'); 
+
+    if (!empty($_GET['update_pd'])) {
+        $sql = 'SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_id` = "' . $_GET['update_pd'] . '"';
+        $result = mysqli_query($conn, $sql);
+        $row = mysqli_fetch_array($result);
+
+        $check_name = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_name = "' . $_POST['bgmarr_name'] . '"');
+        $check_us = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_us = "'  . $_POST['bgmarr_us'] . '"');
+
+        if (($check_name) >= 1) {
+            echo '<script language="javascript">';
+            echo 'alert("ชื่อสินค้าซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
+            echo '</script>';
+        
+        }else if (($check_us) >= 1) {
+            echo '<script language="javascript">';
+            echo 'alert("ชื่อผู้ใช้ซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
+            echo '</script>';
+        
+        }else if(isset($_FILES['bgmarr_img']) && $_FILES['bgmarr_img']['error'] == 0) {
+            $name = $_FILES['bgmarr_img']['name'];
+        
+            $image_file = $_FILES['bgmarr_img']['name'];
+            $type = $_FILES['bgmarr_img']['type'];
+            $size = $_FILES['bgmarr_img']['size'];
+            $temp = $_FILES['bgmarr_img']['tmp_name'];
+        
+            $path = 'img/' . $image_file; // set upload folder path
+            $directory = 'img/';
+        
+            if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
+                if (!file_exists($path)) { // check file not exist in your upload folder path
+                    if ($size < 5000000) { // check file size 5MB
+                        unlink($directory . $row['bgmarr_img']);
+                        move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                        $stmt = $db->prepare('UPDATE `bgmarr_tbl` SET `bgmarr_name` ="' . $_POST['bgmarr_name'] . '",
+                                                `bgmarr_desc` ="' . $_POST['bgmarr_desc'] . '",
+                                                `bgmarr_us` ="' . $_POST['bgmarr_us'] . '",
+                                                `bgmarr_pw` ="' . $_POST['bgmarr_pw'] . '",
+                                                `bgmarr_price` ="' . $_POST['bgmarr_price'] . '", 
+                                                 bgmarr_id = :img_name ,
+                                                `bgmarr_status` ="' . $_POST['bgmarr_status'] . '"
+                                            WHERE `bgmarr_id` ="' . $_GET['update_pd'] . '"');
+                        $stmt->bindParam(':img_name', $name);
+                        if ($stmt->execute()){
+                            echo '<script language="JavaScript">';
+                            echo 'alert("แก้ไขสำเร็จ"); location.href = "products.php"';
+                            echo '</script>';
+                        }
+                    } else {
+                        echo '<script language="javascript">';
+                        echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB");';
+                        echo '</script>';
+                        // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB"; // error message file size larger than 5MB
+                    }
+                } else {
+                    echo '<script language="javascript">';
+                    echo 'alert("มีไฟล์อยู่แล้ว... ตรวจสอบการอัปโหลด");location.href="javascript:history.go(-1)"';
+                    echo '</script>';
+                    // $errorMsg = "มีไฟล์อยู่แล้ว... ตรวจสอบตัวกรองการอัปโหลด"; // error message file not exists your upload folder path
+                }
+            }
+            
+            // insert the image data into the database
+        }
+    }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,13 +80,11 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลสมาชิก</title>
+    <title>BGMarrBerryy - จัดการข้อมูลไอดี</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -60,8 +126,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>จัดการข้อมูลต่างๆ</span>
                 </a>
@@ -106,13 +171,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
-                    aria-controls="collapsePages">
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Pages</span>
                 </a>
-                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages"
-                    data-parent="#accordionSidebar">
+                <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Login Screens:</h6>
                         <a class="collapse-item" href="login.php">Login</a>
@@ -121,7 +184,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลสมาชิก</a>
+                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลไอดี</a>
                     </div>
                 </div>
             </li>
@@ -166,11 +229,9 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -184,18 +245,14 @@
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -208,15 +265,13 @@
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -259,22 +314,19 @@
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -285,8 +337,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -297,8 +348,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -309,8 +359,7 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -327,15 +376,12 @@
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -363,184 +409,119 @@
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                <div>
-                        <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลสมาชิก</h1>
-                        <form action="productsSave.php" method="post" enctype="multipart/form-data">
+
+                    <div>
+                        <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
+                        <form action="" method="post" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="form-group col-md-2" hidden>
-                                    <label for="inputEmail4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="id" class="form-control" id="id" placeholder="ไอดี" hidden>
+                                    <label for="inputPassword4" hidden>รหัสไอดี</label>
+                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" value="<?php echo $_GET['update_pd']; ?>" placeholder="รหัสไอดี" required hidden>
                                 </div>
                                 <div class="form-group col-md-2">
-                                    <label for="inputPassword4">ชื่อสมาชิก</label>
-                                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="ชื่อสมาชิก">
+                                    <label for="inputPassword4">ชื่อไอดี</label>
+                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี" required>
                                 </div>
-                                
+                                <div class="form-group col-md-4">
+                                    <label for="inputAddress">คำอธิบาย</label>
+                                    <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" value="<?php echo $row['bgmarr_desc']; ?>" placeholder="คำอธิบาย">
+                                </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="useremail" class="form-control" id="useremail" placeholder="ชื่อผู้ใช้">
+                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" value="<?php echo $row['bgmarr_us']; ?>" placeholder="ชื่อผู้ใช้">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="pass_word" class="form-control" id="pass_word" placeholder="รหัสผ่าน">
+                                    <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-row">
+                                
+                                <div class="form-group col-md-2">
+                                    <label for="input">ราคา</label>
+                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
-                                    <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
+                                    <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
                                 </div>
+                                <div class="form-group col-md-2">
+                                    <label for="input">สถานะ</label><br>
+                                    <select class="" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                        <option hidden><?php echo $row['bgmarr_status']; ?></option>
+                                        <option value="on">on</option>
+                                        <option value="off">off</option>
+                                    </select>
+                                </div>
+                                <img src="img/<?php echo $row["bgmarr_img"] ?>" width="60px" height="40px">
+                                
                             </div>
 
-
-                            <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
+                            <input type="submit" value="Submit" class="btn btn-success float-left"><br><br>
                             
                         </form>
-                        <br>
-                    <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">ข้อมูลสมาชิก</h1>
 
-                    <?php
-                        $sql = "SELECT * FROM `tblclient` ORDER BY `tblclient`.`id` DESC";
-                        $result = mysqli_query($conn, $sql);
-                    ?>
+                        <!-- Page Heading -->
+                        
+                        
 
-                    <div class="card">
-                        <div class="card-body">
-                        <table class="table table-borderless">
-<<<<<<< HEAD
-  <thead>
-    <tr>
-      <th>ลำดับ</th>
-      <th>ชื่อ-นามสกุล</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>วันที่สมัคร</th>
-      <th>รูปภาพ</th>
-      <th>แก้ไข/ลบ</th>
-    </tr>
-  </thead>
-  <tbody>
-        <?php
-            if (mysqli_num_rows($result) > 0) {
-                // output data of each row
-                while($row = mysqli_fetch_assoc($result)) {
-        ?>
-    <tr>
-      <th scope="row">1</th>
-      <td><?php echo $row["fullname"] ?></td>
-      <td><?php echo $row["useremail"] ?></td>
-      <td><?php echo $row["pass_word"] ?></td>
-      <td><?php echo $row["regdate"] ?></td>
-      <td><?php echo '<img src="uploaded_imgs\$row["img"]">'?></td>
-      <td>
-        <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
-        {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-        <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
-      </td>
-    </tr>
-    <?php
-        }
-    }
-    ?>
-  </tbody>
-</table>
-=======
-                            <thead>
-                              <tr>
-                                <th>ลำดับ</th>
-                                <th>ชื่อ-นามสกุล</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>วันที่สมัคร</th>
-                                <th>รูปภาพ</th>
-                                <th>แก้ไข/ลบ</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                  <?php
-                                      if (mysqli_num_rows($result) > 0) {
-                                          // output data of each row
-                                          while($row = mysqli_fetch_assoc($result)) {
-                                  ?>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td><?php echo $row["fullname"] ?></td>
-                                  <td><?php echo $row["useremail"] ?></td>
-                                  <td><?php echo $row["pass_word"] ?></td>
-                                  <td><?php echo $row["regdate"] ?></td>
-                                  <td><img src="img/<?php echo $row["img"] ?>" width="60px" height="40px"></td>
-                                  <td>
-                                    <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                    <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
-                                    {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-                                    
-                                  </td>
-                                </tr>
-                                <?php
-                                    }
-                                }
-                                ?>
-                              </tbody>
-                            </table>
->>>>>>> 03f7a4e2496502082247cb39ec876573c532efdb
+                    </div>
+                    <!-- /.container-fluid -->
+
+                </div>
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; BGMarrBerryy 2023</span>
                         </div>
                     </div>
-
-                </div>
-                <!-- /.container-fluid -->
+                </footer>
+                <!-- End of Footer -->
 
             </div>
-            <!-- End of Main Content -->
+            <!-- End of Content Wrapper -->
 
-            <!-- Footer -->
-            <footer class="sticky-footer bg-white">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; BGMarrBerryy 2023</span>
+        </div>
+        <!-- End of Page Wrapper -->
+
+        <!-- Scroll to Top Button-->
+        <a class="scroll-to-top rounded" href="#page-top">
+            <i class="fas fa-angle-up"></i>
+        </a>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.php">Logout</a>
                     </div>
                 </div>
-            </footer>
-            <!-- End of Footer -->
-
-        </div>
-        <!-- End of Content Wrapper -->
-
-    </div>
-    <!-- End of Page Wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-        <i class="fas fa-angle-up"></i>
-    </a>
-
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.php">Logout</a>
-                </div>
             </div>
         </div>
-    </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <!-- Bootstrap core JavaScript-->
+        <script src="vendor/jquery/jquery.min.js"></script>
+        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+        <!-- Core plugin JavaScript-->
+        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin-2.min.js"></script>
+        <!-- Custom scripts for all pages-->
+        <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
