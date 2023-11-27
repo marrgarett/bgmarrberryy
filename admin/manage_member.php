@@ -383,10 +383,12 @@
                                     <label for="inputPassword4">รหัสผ่าน</label>
                                     <input type="text" name="pass_word" class="form-control" id="pass_word" placeholder="รหัสผ่าน">
                                 </div>
+                                <!--
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
                                     <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
                                 </div>
+                                -->
                             </div>
 
 
