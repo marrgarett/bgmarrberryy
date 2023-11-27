@@ -363,39 +363,6 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                 <div>
-                        <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลสมาชิก</h1>
-                        <form action="productsSave.php" method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="inputEmail4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="id" class="form-control" id="id" placeholder="ไอดี" hidden>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="inputPassword4">ชื่อสมาชิก</label>
-                                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="ชื่อสมาชิก">
-                                </div>
-                                
-                                <div class="form-group col-md-3">
-                                    <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="useremail" class="form-control" id="useremail" placeholder="ชื่อผู้ใช้">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="pass_word" class="form-control" id="pass_word" placeholder="รหัสผ่าน">
-                                </div>
-                                <!--
-                                <div class="form-group col-md-3">
-                                    <label for="input">รูปภาพ</label>
-                                    <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
-                                </div>
-                                -->
-                            </div>
-
-
-                            <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
-                            
-                        </form>
-                        <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลสมาชิก</h1>
 
@@ -414,7 +381,7 @@
       <th>Username</th>
       <th>Password</th>
       <th>วันที่สมัคร</th>
-      <th>รูปภาพ</th>
+      
       <th>แก้ไข/ลบ</th>
     </tr>
   </thead>
@@ -430,11 +397,11 @@
       <td><?php echo $row["useremail"] ?></td>
       <td><?php echo $row["pass_word"] ?></td>
       <td><?php echo $row["regdate"] ?></td>
-      <td><?php echo '<img src="uploaded_imgs\$row["img"]">'?></td>
+      
       <td>
         <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
         {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-        <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+        <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
       </td>
     </tr>
     <?php
