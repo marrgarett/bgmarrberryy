@@ -463,7 +463,6 @@
                                         <option value="1">ว่าง</option>
                                         <option value="0">ไม่ว่าง</option>
                                     </select>
-                                    // test commit
                                 </div>
                                 <!-- <img src="img/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"> -->
                                 
