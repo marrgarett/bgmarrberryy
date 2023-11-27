@@ -2,75 +2,7 @@
     session_start();
     include_once('db_connect.php'); 
 
-    if (!empty($_GET['update_pd'])) {
-        $sql = 'SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_id` = "' . $_GET['update_pd'] . '"';
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_array($result);
-
-        /*
-        $check_name = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_name = "' . $_POST['bgmarr_name'] . '"');
-        $check_us = $db->prepare ('SELECT * FROM bgmarr_tbl WHERE bgmarr_us = "'  . $_POST['bgmarr_us'] . '"');
-
-        if (($check_name) >= 1) {
-            echo '<script language="javascript">';
-            echo 'alert("ชื่อสินค้าซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
-            echo '</script>';
-        
-        }else if (($check_us) >= 1) {
-            echo '<script language="javascript">';
-            echo 'alert("ชื่อผู้ใช้ซ้ำ กรุณาตรวจสอบ"); location.href="javascript:history.go(-1)"';
-            echo '</script>';
-        
-        }else
-        */
-        
-        if(isset($_FILES['bgmarr_img']) && $_FILES['bgmarr_img']['error'] == 0) {
-            $name = $_FILES['bgmarr_img']['name'];
-        
-            $image_file = $_FILES['bgmarr_img']['name'];
-            $type = $_FILES['bgmarr_img']['type'];
-            $size = $_FILES['bgmarr_img']['size'];
-            $temp = $_FILES['bgmarr_img']['tmp_name'];
-        
-            $path = 'uploaded_imgs/' . $image_file; // set upload folder path
-            $directory = 'uploaded_imgs/';
-        
-            if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
-                if (!file_exists($path)) { // check file not exist in your upload folder path
-                    if ($size < 15000000) { // check file size 5MB
-                        unlink($directory . $row['bgmarr_img']);
-                        move_uploaded_file($temp, 'uploaded_imgs/' . $image_file); // move upload file temperory directory to your upload folder
-                        $stmt = $db->prepare('UPDATE `bgmarr_tbl` SET `bgmarr_name` ="' . $_POST['bgmarr_name'] . '",
-                                                `bgmarr_desc` ="' . $_POST['bgmarr_desc'] . '",
-                                                `bgmarr_us` ="' . $_POST['bgmarr_us'] . '",
-                                                `bgmarr_pw` ="' . $_POST['bgmarr_pw'] . '",
-                                                `bgmarr_price` ="' . $_POST['bgmarr_price'] . '", 
-                                                 bgmarr_id = :img_name ,
-                                                `bgmarr_status` ="' . $_POST['bgmarr_status'] . '"
-                                            WHERE `bgmarr_id` ="' . $_GET['update_pd'] . '"');
-                        $stmt->bindParam(':img_name', $name);
-                        if ($stmt->execute()){
-                            echo '<script language="JavaScript">';
-                            echo 'alert("แก้ไขสำเร็จ"); location.href = "products.php"';
-                            echo '</script>';
-                        }
-                    } else {
-                        echo '<script language="javascript">';
-                        echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB");';
-                        echo '</script>';
-                        // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB"; // error message file size larger than 15MB
-                    }
-                } else {
-                    echo '<script language="javascript">';
-                    echo 'alert("มีไฟล์อยู่แล้ว... ตรวจสอบการอัปโหลด");location.href="javascript:history.go(-1)"';
-                    echo '</script>';
-                    // $errorMsg = "มีไฟล์อยู่แล้ว... ตรวจสอบตัวกรองการอัปโหลด"; // error message file not exists your upload folder path
-                }
-            }
-            
-            // insert the image data into the database
-        }
-    }
+    $bgmarr_id = $_GET["bgmarr_id"];
 ?>
 
 <!DOCTYPE html>
@@ -416,12 +348,14 @@
 
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
-                        <form action="" method="post" enctype="multipart/form-data">
+                        <?php
+                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
+                            $result = mysqli_query($conn, $sql);
+
+                            $row = mysqli_fetch_assoc($result);
+                        ?>
+                        <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="inputPassword4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="bgmarr_id" class="form-control" id="bgmarr_id" value="<?php echo $_GET['update_pd']; ?>" placeholder="รหัสไอดี" readonly>
-                                </div>
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
                                     <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี"  readonly>
@@ -468,7 +402,7 @@
                                 
                             </div>
 
-                            <input type="submit" value="Submit" class="btn btn-success float-left"><br><br>
+                            <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
                             
                         </form>
 

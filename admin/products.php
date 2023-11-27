@@ -324,7 +324,7 @@
                                             </td>
                                             </td>
                                             <td>
-                                                <a href="productsEdit.php?update_pd=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                 <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
                                                 {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
                                             </td>
