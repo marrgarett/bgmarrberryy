@@ -40,7 +40,7 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">สมัครสมาชิก</h1>
+                                <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลสมาชิก</h1>
                             </div>
                             <?php 
                                 $sql = "SELECT * FROM `tblclient` WHERE id = '$id';";
@@ -48,7 +48,7 @@
 
                                 $row = mysqli_fetch_assoc($result)
                             ?>
-                            <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
+                            <form class="user" action="registerSave.php?id=<?php echo $row["id"]; ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
                                         <input type="text" name="fullname" value="<?php echo $row["fullname"]; ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
@@ -61,7 +61,7 @@
                                     <input type="email" name="useremail" value="<?php echo $row["useremail"]; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" readonly>
                                 </div>
                                
-                                <input type="submit" name="save" value="ปรับปรุงข้อมูล" class="btn btn-primary btn-block">
+                                <input type="submit" name="update" value="อัเดตข้อมูล" class="btn btn-primary btn-block">
 
 
                                 <hr>
