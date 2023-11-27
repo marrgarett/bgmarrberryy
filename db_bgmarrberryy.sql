@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 04:12 PM
+-- Generation Time: Nov 27, 2023 at 04:58 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -117,17 +117,13 @@ INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`, 
 -- Indexes for table `bgmarr_tbl`
 --
 ALTER TABLE `bgmarr_tbl`
-  ADD PRIMARY KEY (`bgmarr_id`),
-  ADD KEY `bgmarr_img` (`bgmarr_img`),
-  ADD KEY `bgmarr_name` (`bgmarr_name`);
+  ADD PRIMARY KEY (`bgmarr_id`);
 
 --
 -- Indexes for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
-  ADD PRIMARY KEY (`his_id`),
-  ADD KEY `cli_id` (`cli_id`),
-  ADD KEY `bgmarr_id` (`bgmarr_id`);
+  ADD PRIMARY KEY (`his_id`);
 
 --
 -- Indexes for table `tbladmin`
