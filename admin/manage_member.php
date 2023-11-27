@@ -406,7 +406,6 @@
                     <div class="card">
                         <div class="card-body">
                         <table class="table table-borderless">
-<<<<<<< HEAD
   <thead>
     <tr>
       <th>ลำดับ</th>
@@ -443,45 +442,6 @@
     ?>
   </tbody>
 </table>
-=======
-                            <thead>
-                              <tr>
-                                <th>ลำดับ</th>
-                                <th>ชื่อ-นามสกุล</th>
-                                <th>Username</th>
-                                <th>Password</th>
-                                <th>วันที่สมัคร</th>
-                                <th>รูปภาพ</th>
-                                <th>แก้ไข/ลบ</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                                  <?php
-                                      if (mysqli_num_rows($result) > 0) {
-                                          // output data of each row
-                                          while($row = mysqli_fetch_assoc($result)) {
-                                  ?>
-                                <tr>
-                                  <th scope="row">1</th>
-                                  <td><?php echo $row["fullname"] ?></td>
-                                  <td><?php echo $row["useremail"] ?></td>
-                                  <td><?php echo $row["pass_word"] ?></td>
-                                  <td><?php echo $row["regdate"] ?></td>
-                                  <td><img src="img/<?php echo $row["img"] ?>" width="60px" height="40px"></td>
-                                  <td>
-                                    <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                    <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
-                                    {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-                                    
-                                  </td>
-                                </tr>
-                                <?php
-                                    }
-                                }
-                                ?>
-                              </tbody>
-                            </table>
->>>>>>> 03f7a4e2496502082247cb39ec876573c532efdb
                         </div>
                     </div>
 
