@@ -318,7 +318,7 @@
       <td>
         <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
         {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
-        <a href="memberEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+        <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
       </td>
     </tr>
     <?php
