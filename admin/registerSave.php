@@ -23,8 +23,8 @@ if (isset($_POST['save'])) {
         echo '</script>';
     
     }else{
-        $sql = "INSERT INTO `tblclient` (`id`, `fullname`, `lastname`, `useremail`, `password`, `regdate`, `img`)
-            VALUES (NULL, '$fullname', '$lastname', '$useremail', '$password1', current_timestamp(), '');";
+        $sql = "INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `password`, `regdate`, `img`)
+            VALUES (NULL, '$fullname', '$useremail', '$password1', current_timestamp(), '');";
         mysqli_query($conn, $sql);
         echo '<script language="javascript">';
         echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
