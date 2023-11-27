@@ -45,7 +45,6 @@
                             <?php 
                                 $sql = "SELECT * FROM `tblclient` WHERE id = '$id';";
                                 $result = mysqli_query($conn, $sql);
-
                                 $row = mysqli_fetch_assoc($result);
                                                                
                                 $fullname = $row["fullname"];           // ข้อมูลที่รวมชื่อและนามสกุล
