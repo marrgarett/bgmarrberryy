@@ -396,7 +396,7 @@
       <td><?php echo $row["useremail"] ?></td>
       <td><?php echo $row["pass_word"] ?></td>
       <td><?php echo $row["regdate"] ?></td>
-      <td><?php echo '<img src="img/$row["img"]">'?></td>
+      <td><?php echo '<img src="uploaded_imgs\$row["img"]">'?></td>
       <td>
         <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
         {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a>
