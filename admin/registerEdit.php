@@ -1,5 +1,9 @@
 <?php
  include_once('db_connect.php');
+
+ $id = $_GET["id"];
+
+
 ?>
 
 <!DOCTYPE html>
@@ -38,27 +42,26 @@
                             <div class="text-center">
                                 <h1 class="h4 text-gray-900 mb-4">สมัครสมาชิก</h1>
                             </div>
+                            <?php 
+                                $sql = "SELECT * FROM `tblclient` WHERE id = '$id';";
+                                $result = mysqli_query($conn, $sql);
+
+                                $row = mysqli_fetch_assoc($result)
+                            ?>
                             <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
+                                        <input type="text" name="fullname" value="<?php echo $row["fullname"]; ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
+                                        <input type="text" name="lastname" value="<?php echo $row["fullname"]; ?>" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="useremail" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" required>
+                                    <input type="email" name="useremail" value="<?php echo $row["useremail"]; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" readonly>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="รหัสผ่าน" required minlength="3" maxlength="20">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">
-                                    </div>
-                                </div>
-                                <input type="submit" name="save" value="ยืนยัน" class="btn btn-primary btn-block">
+                               
+                                <input type="submit" name="save" value="ปรับปรุงข้อมูล" class="btn btn-primary btn-block">
 
 
                                 <hr>
