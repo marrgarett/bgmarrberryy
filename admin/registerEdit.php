@@ -84,7 +84,7 @@
                             <div class="text-center">
                                 <a class="small" href="login.php">Already have an account? Login!</a>
                             </div>
-                        </div>
+                        </div> <br>
                     </div>
                 </div>
             </div>
