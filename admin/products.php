@@ -338,7 +338,7 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div><br>
                 </div>
                     
                 <!-- /.container-fluid -->
