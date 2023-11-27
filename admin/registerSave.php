@@ -37,11 +37,11 @@ if (isset($_POST['save'])) {
     $lastname = $_POST["lastname"];
     $name = $fullname. ' ' . $lastname;
     $useremail = $_POST["useremail"];
-    $sql = "UPDATE `tblclient` SET `fullname` = '$fullname', `useremail` = '$useremail'
+    $sql = "UPDATE `tblclient` SET `fullname` = '$name', `useremail` = '$useremail'
     WHERE `tblclient`.`id` = '$id' ";
     $result = mysqli_query($conn, $sql);
     echo '<script language="javascript">';
-        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
+        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="manage_member.php"';
         echo '</script>';
 
 }

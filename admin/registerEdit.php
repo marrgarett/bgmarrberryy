@@ -46,15 +46,22 @@
                                 $sql = "SELECT * FROM `tblclient` WHERE id = '$id';";
                                 $result = mysqli_query($conn, $sql);
 
-                                $row = mysqli_fetch_assoc($result)
+                                $row = mysqli_fetch_assoc($result);
+                                
+                                $fullname = $row["fullname"];
+                                
+                                $nameParts = explode(" ", $fullname);
+                                $firstName = $nameParts[0];
+                                $lastName = isset($nameParts[1]) ? $nameParts[1] : '';
+                                
                             ?>
                             <form class="user" action="registerSave.php?id=<?php echo $row["id"]; ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="fullname" value="<?php echo $row["fullname"]; ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
+                                        <input type="text" name="fullname" value="<?php echo $firstName ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="lastname" value="<?php echo $row["fullname"]; ?>" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
+                                        <input type="text" name="lastname" value="<?php echo $lastName ?>" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
