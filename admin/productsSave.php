@@ -33,12 +33,12 @@ if (isset($_POST['save'])) {
         $size = $_FILES['bgmarr_img']['size'];
         $temp = $_FILES['bgmarr_img']['tmp_name'];
     
-        $path = 'img/' . $image_file; // set upload folder path
+        $path = 'uploaded_imgs/' . $image_file; // set upload folder path
     
         if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
             if (!file_exists($path)) { // check file not exist in your upload folder path
-                if ($size < 5000000) { // check file size 5MB
-                    move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                if ($size < 15000000) { // check file size 15MB
+                    move_uploaded_file($temp, 'uploaded_imgs/' . $image_file); // move upload file temperory directory to your upload folder
                     $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
                         VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
                     $stmt->bindParam(':img_name', $name);
@@ -49,9 +49,9 @@ if (isset($_POST['save'])) {
                     }
                 } else {
                     echo '<script language="javascript">';
-                    echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB");';
+                    echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB");';
                     echo '</script>';
-                    // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 5MB"; // error message file size larger than 5MB
+                    // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB"; // error message file size larger than 15MB
                 }
             } else {
                 echo '<script language="javascript">';
