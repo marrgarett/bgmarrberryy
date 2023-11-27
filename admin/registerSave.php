@@ -3,7 +3,6 @@ session_start();
 include_once('db_connect.php');
 
 $fullname = $_POST["fullname"];
-$lastname = $_POST["lastname"];
 $useremail = $_POST["useremail"];
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
