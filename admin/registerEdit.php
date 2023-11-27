@@ -47,12 +47,11 @@
                                 $result = mysqli_query($conn, $sql);
 
                                 $row = mysqli_fetch_assoc($result);
-                                
-                                $fullname = $row["fullname"];
-                                
-                                $nameParts = explode(" ", $fullname);
-                                $firstName = $nameParts[0];
-                                $lastName = isset($nameParts[1]) ? $nameParts[1] : '';
+                                                               
+                                $fullname = $row["fullname"];           // ข้อมูลที่รวมชื่อและนามสกุล
+                                $nameParts = explode(" ", $fullname);   // ใช้ explode เพื่อแยกชื่อและนามสกุล
+                                $firstName = $nameParts[0];             // ตัวแปรแยกชื่อ
+                                $lastName = isset($nameParts[1]) ? $nameParts[1] : ''; // ตัวแปรแยกนามสกุล (หากมี)
                                 
                             ?>
                             <form class="user" action="registerSave.php?id=<?php echo $row["id"]; ?>" method="post" enctype="multipart/form-data">
