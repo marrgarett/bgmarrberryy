@@ -3,7 +3,6 @@ session_start();
 include_once('db_connect.php');
 
 $fullname = $_POST["fullname"];
-$lastname = $_POST["lastname"];
 $useremail = $_POST["useremail"];
 $password1 = $_POST["password1"];
 $password2 = $_POST["password2"];
@@ -23,8 +22,8 @@ if (isset($_POST['save'])) {
         echo '</script>';
     
     }else{
-        $sql = "INSERT INTO `tblclient` (`id`, `fullname`, `lastname`, `useremail`, `password`, `regdate`, `img`)
-            VALUES (NULL, '$fullname', '$lastname', '$useremail', '$password1', current_timestamp(), '');";
+        $sql = "INSERT INTO `tblclient` (`id`, `fullname`,  `useremail`, `pass_word`, `regdate`, `img`)
+            VALUES (NULL, '$fullname', '$useremail', '$password1', current_timestamp(), '');";
         mysqli_query($conn, $sql);
         echo '<script language="javascript">';
         echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
