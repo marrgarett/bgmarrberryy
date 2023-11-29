@@ -54,7 +54,7 @@
                                         <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">
                                     </div>
                                 </div>
-                                <input type="submit" name="save" value="สร้าง" class="btn btn-primary btn-block">
+                                <input type="submit" name="save" value="สร้าง" class="btn btn-primary btn-block" style="border-radius: 25px;">
 
 
                                 <hr>
