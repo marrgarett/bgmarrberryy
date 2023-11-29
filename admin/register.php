@@ -40,7 +40,7 @@
                                         <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
+                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล">
                                     </div>
                                 </div>
                                 <div class="form-group">
