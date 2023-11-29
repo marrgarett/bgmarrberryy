@@ -3,7 +3,7 @@
 
     if (isset($_POST['login'])) {
 
-        $sql = "SELECT * FROM `tbladmin` WHERE `username` = ? AND `password` = ?";
+        $sql = "SELECT * FROM `tbladmin` WHERE `username` = ? AND `pass_word` = ?";
         $uname = $_POST['username'];
         $password = md5($_POST['password']);
       

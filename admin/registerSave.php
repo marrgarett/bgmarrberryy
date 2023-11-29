@@ -24,8 +24,9 @@ if (isset($_POST['save'])) {
         echo '</script>';
     
     }else{
+        $password = md5($password1);
         $sql = "INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`)
-            VALUES (NULL, '$name', '$useremail', '$password1', current_timestamp());";
+            VALUES (NULL, '$name', '$useremail', '$password', current_timestamp());";
         mysqli_query($conn, $sql);
         echo '<script language="javascript">';
         echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
