@@ -20,7 +20,7 @@
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { swal.fire({
                   title: "สำเร็จ!",
-                  text: "เข้าสู่หน้าแก้ไขรหัสผ่าน",
+                  text: "เข้าสู่หน้าจัดการข้อมูล",
                   type: "success",
                   icon: "success"
               });';
@@ -99,11 +99,11 @@
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Email Address...">
+                                                placeholder="Email Address..." required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password">
+                                                id="exampleInputPassword" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
