@@ -277,7 +277,7 @@ include_once('db_connect.php');
                                         <th>ลำดับ</th>
                                         <th>ชื่อ-นามสกุล</th>
                                         <th>Username</th>
-                                        <th>Password</th>
+                                        <!-- <th>Password</th> -->
                                         <th>วันที่สมัคร</th>
                                         <!-- <th>รูปภาพ</th> -->
                                         <th>แก้ไข/ลบ</th>
@@ -294,7 +294,7 @@ include_once('db_connect.php');
                                                 <th scope><?php echo $i++ ?></th>
                                                 <td><?php echo $row["fullname"] ?></td>
                                                 <td><?php echo $row["useremail"] ?></td>
-                                                <td><?php echo $row["pass_word"] ?></td>
+                                                <!-- <td><?php echo $row["pass_word"] ?></td> -->
                                                 <td><?php echo $row["regdate"] ?></td>
                                                 <!-- <td><?php echo '<img src="uploaded_imgs\$row["img"]">' ?></td> -->
                                                 <td>
