@@ -66,8 +66,8 @@
                                     <input type="email" name="useremail" value="<?php echo $row["useremail"]; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" readonly>
                                 </div>
                                
-                                <input type="submit" name="update" value="อัเดตข้อมูล" class="btn btn-primary btn-block">
-
+                                <input type="submit" name="update" value="อัพเดตข้อมูล" class="btn btn-primary btn-block">
+                                <!-- test edit -->
 
                                 <hr>
                                 <a href="index.php" class="btn btn-google btn-user btn-block">

@@ -120,7 +120,7 @@
                         <div class="collapse-divider"></div>
                         <h6 class="collapse-header">Other Pages:</h6>
                         <a class="collapse-item" href="404.php">404 Page</a>
-                        <a class="collapse-item active" href="blank.php">จัดการข้อมูลไอดี</a>
+                        <a class="collapse-item active" href="products.php">จัดการข้อมูลไอดี</a>
                     </div>
                 </div>
             </li>
@@ -370,7 +370,7 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
+                                    <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
                                 </div>
                                 
                             </div>
@@ -379,23 +379,31 @@
                                 
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
-                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา" readonly>
+                                    <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
-                                    <select class="" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
-                                        <option hidden >
-                                        <!-- <?php echo $row['bgmarr_status']; ?> -->
-                                        <?php
-                                            if ($row["bgmarr_status"] == '1'){
-                                                echo "ว่าง";
-                                            } else {
-                                                echo "ไม่ว่าง";
+                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                            <?php
+                                            $sql = "SELECT * FROM `bgmarr_tbl`";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($optionData = $result->fetch_assoc()) {
+                                                    $option = $optionData["bgmarr_status"];
+                                            ?>
+                                                <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
+                                                    <?php
+                                                        if ($row["bgmarr_status"] == '1'){
+                                                            echo "ว่าง";
+                                                        } else {
+                                                            echo "ไม่ว่าง";
+                                                        }
+                                                    ?>
+                                                </option>
+                                            <?php
+                                                }
                                             }
-                                        ?>
-                                        </option>
-                                        <option value="1">ว่าง</option>
-                                        <option value="0">ไม่ว่าง</option>
+                                            ?>
                                     </select>
                                 </div>
                                 <!-- <img src="img/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"> -->

@@ -248,14 +248,14 @@
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
+                                    <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
                                 </div>
                             </div>
 
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
-                                    <input type="text" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
+                                    <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
                                 </div>
                                 <div class="form-group col-md-3">
                                     <label for="input">รูปภาพ</label>
@@ -264,7 +264,7 @@
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
                                     <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
-                                    <select class="" name="bgmarr_status" id="bgmarr_status">
+                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status">
                                         <option value="1">ว่าง</option>
                                         <option value="0">ไม่ว่าง</option>
                                     </select>
