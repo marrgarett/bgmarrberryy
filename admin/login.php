@@ -93,26 +93,25 @@
                             <div class="col-lg-6">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">ล็อกอินเข้าสู่ระบบ</h1>
                                     </div>
                                     <form class="user" name="myForm" method="post">
                                         <div class="form-group">
                                             <input type="text" name="username" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="Email Address...." required>
+                                                placeholder="อีเมล" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="Password" required>
+                                                id="exampleInputPassword" placeholder="รหัสผ่าน" required>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Remember
-                                                    Me</label>
+                                                <label class="custom-control-label" for="customCheck">จดจำฉันไว้</label>
                                             </div>
                                         </div>
-                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">Login</button>
+                                        <button type="submit" name="login" class="btn btn-primary btn-user btn-block">ล็อกอิน</button>
                                         <!--
                                         <hr>
                                         <a href="index.php" class="btn btn-google btn-user btn-block">
@@ -125,10 +124,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.php">ลืมรหัสผ่าน?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">Create an Account!</a>
+                                        <a class="small" href="register.php">สร้างบัญชี</a>
                                     </div>
                                 </div>
                             </div>
