@@ -20,7 +20,7 @@
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { swal.fire({
                   title: "สำเร็จ!",
-                  text: "เข้าสู่หน้าแก้ไขรหัสผ่าน",
+                  text: "เข้าสู่หน้าจัดการข้อมูล",
                   type: "success",
                   icon: "success"
               });';
