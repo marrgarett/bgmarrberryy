@@ -265,7 +265,7 @@ include_once('db_connect.php');
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลสมาชิก</h1>
 
                     <?php
-                    $sql = "SELECT * FROM `tblclient` ORDER BY `tblclient`.`id` DESC";
+                    $sql = "SELECT * FROM `tblclient` WHERE user_status = 'C' ORDER BY `tblclient`.`id` DESC ";
                     $result = mysqli_query($conn, $sql);
                     ?>
 
