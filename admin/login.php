@@ -3,33 +3,53 @@
 
     if (isset($_POST['login'])) {
 
-        $sql = "SELECT * FROM `tbladmin` WHERE `username` = ? AND `pass_word` = ?";
-        $uname = $_POST['username'];
+        $sql = "SELECT * FROM `tblclient` WHERE `useremail` = ? AND `pass_word` = ?";
+        $uemail = $_POST['useremail'];
         $password = md5($_POST['password']);
       
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $uname, $password);
+        $stmt->bind_param('ss', $uemail, $password);
         $stmt->execute();
         $result = $stmt->get_result();
         $row = $result->fetch_assoc();
         if ($row > 0) {
           $_SESSION['id'] = $row['id'];
           $_SESSION['fullname'] = $row['fullname'];
-          $_SESSION['username'] = $row['username'];
+          $_SESSION['useremail'] = $row['useremail'];
+          $_SESSION['user_status'] = $row['user_status'];
           session_write_close();
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { swal.fire({
+
+            if($_SESSION["user_status"] == "C"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+                echo '<script type="text/javascript">';
+                echo 'setTimeout(function () { swal.fire({
+                  title: "สำเร็จ!",
+                  text: "เข้าสู่หน้าหลัก",
+                  type: "success",
+                  icon: "success"
+                });';
+                echo '}, 500 );</script>';
+
+                echo '<script type="text/javascript">';
+                echo 'setTimeout(function () { 
+                      window.location.href = "../font-end_test/index.html";';
+                echo '}, 3000 );</script>';
+              
+            }else if ($_SESSION["user_status"] == "A"){  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+                echo '<script type="text/javascript">';
+                echo 'setTimeout(function () { swal.fire({
                   title: "สำเร็จ!",
                   text: "เข้าสู่หน้าจัดการข้อมูล",
                   type: "success",
                   icon: "success"
-              });';
-          echo '}, 500 );</script>';
-      
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { 
-                  window.location.href = "index.php";';
-          echo '}, 3000 );</script>';
+                });';
+                echo '}, 500 );</script>';
+
+                echo '<script type="text/javascript">';
+                echo 'setTimeout(function () { 
+                      window.location.href = "index.php";';
+                echo '}, 3000 );</script>';
+              }
+          
         } else {
           echo '<script type="text/javascript">';
           echo 'setTimeout(function () { swal.fire({
@@ -97,7 +117,7 @@
                                     </div>
                                     <form class="user" name="myForm" method="post">
                                         <div class="form-group">
-                                            <input type="text" name="username" class="form-control form-control-user"
+                                            <input type="email" name="useremail" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
                                                 placeholder="อีเมล" required>
                                         </div>
@@ -127,10 +147,15 @@
                                         <a class="small" href="forgot-password.php">ลืมรหัสผ่าน?</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">สร้างบัญชี</a>
+                                        <a class="small" href="register.php">ลงทะเบียน</a>
                                     </div>
+                                    
                                 </div>
+                                <!-- <div class="text-right" style="margin-right: 10px;">
+                                        <a class="small" href="register.php">เข้าสู่ระบบผู้ดูแล</a>
+                                </div> -->
                             </div>
+                            
                         </div>
                     </div>
                 </div>

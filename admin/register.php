@@ -32,7 +32,7 @@
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">สร้างบัญชี</h1>
+                                <h1 class="h4 text-gray-900 mb-4">ลงทะเบียนด้วยอีเมล</h1>
                             </div>
                             <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
@@ -40,7 +40,7 @@
                                         <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล">
+                                        <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="สกุล(ไม่บังคับ)">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -54,7 +54,7 @@
                                         <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">
                                     </div>
                                 </div>
-                                <input type="submit" name="save" value="สร้าง" class="btn btn-primary btn-block" style="border-radius: 25px;">
+                                <input type="submit" name="save" value="ลงทะเบียน" class="btn btn-primary btn-block" style="border-radius: 25px;">
 
 
                                 <hr>
