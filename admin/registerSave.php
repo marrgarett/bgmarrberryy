@@ -35,7 +35,7 @@ if (isset($_POST['save'])) {
     }
 } elseif (isset($_POST['update'])){
     $id = $_GET['id'];
-    $fullname = $_POST["fullname"];
+    $fullname = $_POST["fullname"]; 
     $lastname = $_POST["lastname"];
     $name = $fullname. ' ' . $lastname;
     $useremail = $_POST["useremail"];
