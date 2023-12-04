@@ -232,7 +232,7 @@ include_once('db_connect.php');
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
 
                     <?php
-                    $sql = "SELECT * FROM `history_tbl` ORDER BY `tblclient`.`id` DESC";
+                    $sql = "SELECT * FROM `history_tbl` ORDER BY `history_tbl`.`his_id` DESC";
                     $result = mysqli_query($conn, $sql);
                     ?>
 
@@ -245,7 +245,7 @@ include_once('db_connect.php');
                                         <th>ชื่อ-นามสกุลลูกค้า</th>
                                         <th>ไอดีที่เช่า</th>
                                         <th>จำนวนชั่วโมงที่เช่า</th>
-                                        <th>ราคาที่เช่า</th>
+                                        <th>ราคารวมชั่วโมงที่เช่า</th>
                                         <th>เวลาที่เริ่มต้น</th>
                                         <th>เวลาที่สิ้นสุด</th>
                                         <th>ใบสลิป</th>
@@ -262,18 +262,16 @@ include_once('db_connect.php');
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
-                                                <td><?php echo $row["his_id"] ?></td>
                                                 <td><?php echo $row["cli_id"] ?></td>
                                                 <td><?php echo $row["bgmarr_id"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
                                                 <td><?php echo $row["his_price"] ?></td>
-                                                <td><?php echo $row["his_start	"] ?></td>
+                                                <td><?php echo $row["his_start"] ?></td>
                                                 <td><?php echo $row["his_end"] ?></td>
-                                                <td><?php echo $row["his_payment"] ?></td>
-                                                <td><?php echo $row["his_statu"] ?></td>
+                                                <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
+                                                <td><?php echo $row["his_status"] ?></td>
                                                 <td>
-                                                    <!-- <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a> -->
-                                                    <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                    <a href="Javascript:if(confirm('ยืนยันการเปลี่ยนสถานะ')==true) {window.location='memberDel.php?id=<?php echo $row["his_id"]; ?>';}" class="btn btn-warning">เปลี่ยนสถานะ</a>
                                                 </td>
                                             </tr>
                                     <?php
