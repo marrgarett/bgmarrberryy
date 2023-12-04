@@ -272,7 +272,7 @@ include_once('db_connect.php');
                                                 <td><?php echo $row["his_payment"] ?></td>
                                                 <td><?php echo $row["his_statu"] ?></td>
                                                 <td>
-                                                    <!-- <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a> -->
+                                                    <!-- <a href="Javascript:if(confirm('ยืนยันการเปลี่ยนสถานะ')==true) {window.location='memberDel.php?id=<?php echo $row["his_id"]; ?>';}" class="btn btn-danger">เปลี่ยนสถานะ</a> -->
                                                     <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                 </td>
                                             </tr>
