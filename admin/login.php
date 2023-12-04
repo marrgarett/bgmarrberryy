@@ -144,7 +144,7 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">ลืมรหัสผ่าน?</a>
+                                        <a class="small" href="forgot-password.php">ลืมรหัสผ่าน? รีเซ็ตรหัสผ่าน!</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="register.php">ลงทะเบียน</a>
