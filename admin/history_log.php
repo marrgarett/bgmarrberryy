@@ -245,7 +245,7 @@ include_once('db_connect.php');
                                         <th>ชื่อ-นามสกุลลูกค้า</th>
                                         <th>ไอดีที่เช่า</th>
                                         <th>จำนวนชั่วโมงที่เช่า</th>
-                                        <th>ราคาที่เช่า</th>
+                                        <th>ราคารวมที่เช่า</th>
                                         <th>เวลาที่เริ่มต้น</th>
                                         <th>เวลาที่สิ้นสุด</th>
                                         <th>ใบสลิป</th>
@@ -268,7 +268,7 @@ include_once('db_connect.php');
                                                 <td><?php echo $row["his_price"] ?></td>
                                                 <td><?php echo $row["his_start"] ?></td>
                                                 <td><?php echo $row["his_end"] ?></td>
-                                                <td><img src="uploaded_imgs/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
+                                                <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
                                                 <td><?php echo $row["his_status"] ?></td>
                                                 <td>
                                                     <a href="Javascript:if(confirm('ยืนยันการเปลี่ยนสถานะ')==true) {window.location='memberDel.php?id=<?php echo $row["his_id"]; ?>';}" class="btn btn-warning">เปลี่ยนสถานะ</a>
