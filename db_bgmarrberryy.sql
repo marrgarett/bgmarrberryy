@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 27, 2023 at 04:58 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 04, 2023 at 06:47 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -36,14 +36,15 @@ CREATE TABLE `bgmarr_tbl` (
   `bgmarr_price` varchar(255) NOT NULL,
   `bgmarr_img` varchar(255) NOT NULL,
   `bgmarr_status` varchar(3) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bgmarr_tbl`
 --
 
 INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price`, `bgmarr_img`, `bgmarr_status`) VALUES
-(1, 'BGMARR001', 'ของแทร่ x2', 'u53rn4me', 'p@ssw0rd', '10', 'id1.png', '1');
+(1, 'BGMARR001', 'ของแทร่ x2', 'u53rn4me', 'p@ssw0rd', '10', 'id1.png', '0'),
+(62, 'bgmarr', 'desc', 'user', 'password', '10', '399424096_7550095971672379_4441974559947996304_n.jpg', '1');
 
 -- --------------------------------------------------------
 
@@ -53,15 +54,22 @@ INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_us`
 
 CREATE TABLE `history_tbl` (
   `his_id` int(10) NOT NULL,
-  `cli_id` int(3) NOT NULL,
-  `bgmarr_id` varchar(6) NOT NULL,
-  `his_hr` time NOT NULL,
+  `cli_id` int(11) NOT NULL,
+  `bgmarr_id` int(6) NOT NULL,
+  `his_hr` int(11) NOT NULL,
   `his_price` int(3) NOT NULL,
-  `his_start` datetime NOT NULL,
-  `his_end` datetime NOT NULL,
+  `his_start` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `his_end` time NOT NULL,
   `his_payment` text NOT NULL,
   `his_status` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `history_tbl`
+--
+
+INSERT INTO `history_tbl` (`his_id`, `cli_id`, `bgmarr_id`, `his_hr`, `his_price`, `his_start`, `his_end`, `his_payment`, `his_status`) VALUES
+(0, 2, 1, 2, 20, '2023-12-04 05:43:34', '14:42:34', 'slip.png', '0');
 
 -- --------------------------------------------------------
 
@@ -71,10 +79,10 @@ CREATE TABLE `history_tbl` (
 
 CREATE TABLE `tbladmin` (
   `id` int(11) NOT NULL,
-  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `useremail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pass_word` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `useremail` varchar(255) NOT NULL,
+  `pass_word` varchar(255) NOT NULL,
   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -93,21 +101,20 @@ INSERT INTO `tbladmin` (`id`, `fullname`, `username`, `useremail`, `pass_word`, 
 
 CREATE TABLE `tblclient` (
   `id` int(11) NOT NULL,
-  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `useremail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pass_word` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `img` varchar(255) COLLATE utf8_unicode_ci NOT NULL
+  `fullname` varchar(255) NOT NULL,
+  `useremail` varchar(255) NOT NULL,
+  `pass_word` varchar(255) NOT NULL,
+  `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `tblclient`
 --
 
-INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`, `img`) VALUES
-(2, 'client number0', 'clienttest@gmail.com', 'client', '2023-11-15 05:03:41', 'pic.jpeg'),
-(44, 'qwe', 'qq@gmail.com', '123', '2023-11-25 13:13:35', ''),
-(45, 'firstname lastname', 'testregister@gmail.com', 'test', '2023-11-27 14:09:09', '');
+INSERT INTO `tblclient` (`id`, `fullname`, `useremail`, `pass_word`, `regdate`) VALUES
+(2, 'client number0', 'clienttest@gmail.com', 'client', '2023-11-15 05:03:41'),
+(44, 'qwe', 'qq@gmail.com', '123', '2023-11-25 13:13:35'),
+(45, 'firstnameedit lastnameedit', 'testregister@gmail.com', 'test', '2023-11-28 03:05:10');
 
 --
 -- Indexes for dumped tables
@@ -123,7 +130,9 @@ ALTER TABLE `bgmarr_tbl`
 -- Indexes for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
-  ADD PRIMARY KEY (`his_id`);
+  ADD PRIMARY KEY (`his_id`),
+  ADD KEY `cli_id` (`cli_id`,`bgmarr_id`),
+  ADD KEY `bgmarr_id` (`bgmarr_id`);
 
 --
 -- Indexes for table `tbladmin`
@@ -145,7 +154,7 @@ ALTER TABLE `tblclient`
 -- AUTO_INCREMENT for table `bgmarr_tbl`
 --
 ALTER TABLE `bgmarr_tbl`
-  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=62;
+  MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `tbladmin`
@@ -157,7 +166,18 @@ ALTER TABLE `tbladmin`
 -- AUTO_INCREMENT for table `tblclient`
 --
 ALTER TABLE `tblclient`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `history_tbl`
+--
+ALTER TABLE `history_tbl`
+  ADD CONSTRAINT `history_tbl_ibfk_1` FOREIGN KEY (`cli_id`) REFERENCES `tblclient` (`id`),
+  ADD CONSTRAINT `history_tbl_ibfk_2` FOREIGN KEY (`bgmarr_id`) REFERENCES `bgmarr_tbl` (`bgmarr_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
