@@ -67,10 +67,10 @@
                             </form>
                             <hr>
                             <div class="text-center">
-                                <a class="small" href="forgot-password.php">Forgot Password?</a>
+                                <a class="small" href="forgot-password.php">ลืมรหัสผ่าน?</a>
                             </div>
                             <div class="text-center">
-                                <a class="small" href="login.php">Already have an account? Login!</a>
+                                <a class="small" href="login.php">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ!</a>
                             </div>
                         </div>
                     </div>
