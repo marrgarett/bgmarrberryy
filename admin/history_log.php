@@ -232,7 +232,19 @@ include_once('db_connect.php');
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
 
                     <?php
-                    $sql = "SELECT * FROM `history_tbl` ORDER BY `history_tbl`.`his_id` DESC";
+                    $sql = "SELECT history_tbl.cli_id, 
+                    tblclient.fullname, 
+                    history_tbl.bgmarr_id, 
+                    history_tbl.his_hr, 
+                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
+                    history_tbl.his_start,
+                    history_tbl.his_payment,
+                    history_tbl.his_status
+                    FROM history_tbl
+                    JOIN tblclient
+                    ON history_tbl.cli_id = tblclient.id
+                    JOIN bgmarr_tbl
+                    ON bgmarr_tbl.bgmarr_name = history_tbl.bgmarr_id;";
                     $result = mysqli_query($conn, $sql);
                     ?>
 
@@ -259,15 +271,23 @@ include_once('db_connect.php');
                                     if (mysqli_num_rows($result) > 0) {
                                         // output data of each row
                                         while ($row = mysqli_fetch_assoc($result)) {
+                                            $his_start = substr($row["his_start"], 11);
+                                            $his_hr = $row["his_hr"];
+
+                                            $a = substr($row["his_start"], 11);
+                                            $b = substr($a, 0, -6);
+                                            $c = $b + $his_hr;
+                                            $d = substr($row["his_start"], 13);
+                                            $e = ("$c"."$d");
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
                                                 <td><?php echo $row["cli_id"] ?></td>
                                                 <td><?php echo $row["bgmarr_id"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
-                                                <td><?php echo $row["his_price"] ?></td>
-                                                <td><?php echo $row["his_start"] ?></td>
-                                                <td><?php echo $row["his_end"] ?></td>
+                                                <td><?php echo $row["hour_sum"] ?></td>
+                                                <td><?php echo $his_start ?></td>
+                                                <td><?php echo $e; ?></td>
                                                 <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
                                                 <td><?php echo $row["his_status"] ?></td>
                                                 <td>
