@@ -8,11 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
     <title>BGMarrBerryy - Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
@@ -52,9 +53,10 @@
                                                 <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="รหัสผ่าน" required minlength="3" maxlength="20">
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">
+                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">                   
                                             </div>
                                         </div>
+                                        <!-- <p>* รหัสผ่านต้องมี 8-30 ตัว(ทั้งตัวเลขและตัวอักษร)</p> -->
                                         <input type="submit" name="save" value="ลงทะเบียน" class="btn btn-primary btn-block" style="border-radius: 25px;">
 
 

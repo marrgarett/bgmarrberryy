@@ -12,6 +12,7 @@
     <title>BGMarrBerryy - Forgot Password</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
@@ -51,13 +52,15 @@
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password1" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="password"
                                                 placeholder="รหัสผ่านใหม่" required>
+                                             
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password2" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
+                                                id="password2"
                                                 placeholder="ยืนยันรหัสผ่าน" required>
+                                                
                                         </div>
                                         <input type="submit" name="check" value="รีเซ็ตรหัสผ่าน" class="btn btn-primary btn-user btn-block">
                                     </form>
@@ -79,7 +82,7 @@
         </div>
 
     </div>
-
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

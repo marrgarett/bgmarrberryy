@@ -1841,6 +1841,7 @@ pre code {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+
 @media (prefers-reduced-motion: reduce) {
   .form-control {
     transition: none;
@@ -2274,8 +2275,9 @@ textarea.form-control {
   }
   .form-inline .form-control {
     display: inline-block;
-    width: auto;
+    width: 100%;
     vertical-align: middle;
+
   }
   .form-inline .form-control-plaintext {
     display: inline-block;
@@ -11278,4 +11280,10 @@ footer.sticky-footer .copyright {
 
 body.sidebar-toggled footer.sticky-footer {
   width: 100%;
+}
+
+/* showpassword */
+form i {
+  margin-left: -30px;
+  cursor: pointer;
 }

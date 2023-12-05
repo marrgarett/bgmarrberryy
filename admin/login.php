@@ -1,72 +1,70 @@
 <?php
-    include_once 'db_connect.php';
+include_once 'db_connect.php';
 
-    if (isset($_POST['login'])) {
+if (isset($_POST['login'])) {
 
-        $sql = "SELECT * FROM `tblclient` WHERE `useremail` = ? AND `pass_word` = ?";
-        $uemail = $_POST['useremail'];
-        $password = md5($_POST['password']);
-      
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param('ss', $uemail, $password);
-        $stmt->execute();
-        $result = $stmt->get_result();
-        $row = $result->fetch_assoc();
-        if ($row > 0) {
-          $_SESSION['id'] = $row['id'];
-          $_SESSION['fullname'] = $row['fullname'];
-          $_SESSION['useremail'] = $row['useremail'];
-          $_SESSION['user_status'] = $row['user_status'];
-          session_write_close();
+    $sql = "SELECT * FROM `tblclient` WHERE `useremail` = ? AND `pass_word` = ?";
+    $uemail = $_POST['useremail'];
+    $password = md5($_POST['password']);
 
-            if($_SESSION["user_status"] == "C"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
-                echo '<script type="text/javascript">';
-                echo 'setTimeout(function () { swal.fire({
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param('ss', $uemail, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    if ($row > 0) {
+        $_SESSION['id'] = $row['id'];
+        $_SESSION['fullname'] = $row['fullname'];
+        $_SESSION['useremail'] = $row['useremail'];
+        $_SESSION['user_status'] = $row['user_status'];
+        session_write_close();
+
+        if ($_SESSION["user_status"] == "C") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function () { swal.fire({
                   title: "สำเร็จ!",
                   text: "เข้าสู่หน้าหลัก",
                   type: "success",
                   icon: "success"
                 });';
-                echo '}, 500 );</script>';
+            echo '}, 500 );</script>';
 
-                echo '<script type="text/javascript">';
-                echo 'setTimeout(function () { 
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function () { 
                       window.location.href = "../font-end_test/index.html";';
-                echo '}, 3000 );</script>';
-              
-            }else if ($_SESSION["user_status"] == "A"){  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
-                echo '<script type="text/javascript">';
-                echo 'setTimeout(function () { swal.fire({
+            echo '}, 3000 );</script>';
+        } else if ($_SESSION["user_status"] == "A") {  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function () { swal.fire({
                   title: "สำเร็จ!",
                   text: "เข้าสู่หน้าจัดการข้อมูล",
                   type: "success",
                   icon: "success"
                 });';
-                echo '}, 500 );</script>';
+            echo '}, 500 );</script>';
 
-                echo '<script type="text/javascript">';
-                echo 'setTimeout(function () { 
+            echo '<script type="text/javascript">';
+            echo 'setTimeout(function () { 
                       window.location.href = "index.php";';
-                echo '}, 3000 );</script>';
-              }
-          
-        } else {
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { swal.fire({
+            echo '}, 3000 );</script>';
+        }
+    } else {
+        echo '<script type="text/javascript">';
+        echo 'setTimeout(function () { swal.fire({
                   title: "ผิดพลาด!",
                   text: "กรุณาลองใหม่!",
                   type: "warning",
                   icon: "error"
               });';
-          echo '}, 500);</script>';
-      
-          echo '<script type="text/javascript">';
-          echo 'setTimeout(function () { 
+        echo '}, 500);</script>';
+
+        echo '<script type="text/javascript">';
+        echo 'setTimeout(function () { 
               window.location.href = "login.php";';
-          echo '}, 3000 );</script>';
-        }
-      }
-      ?>
+        echo '}, 3000 );</script>';
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,22 +75,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    
     <title>BGMarrBerryy - Login</title>
 
     <!-- Custom fonts for this template-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
     <!-- sweetalert2 -->
-        <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
-        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
-        <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
+    <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="sweetalert2/dist/sweetalert2.min.css">
 
 </head>
 
@@ -103,13 +100,13 @@
         <!-- Outer Row -->
         <div class="row justify-content-center">
 
-            <div class="col-xl-6 col-lg-12 col-md-9">
+            <div class="col-xl-5 col-lg-12 col-md-9">
 
                 <div class="card o-hidden border-0 shadow-lg my-5">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
-                            
+
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
@@ -117,13 +114,11 @@
                                     </div>
                                     <form class="user" name="myForm" method="post">
                                         <div class="form-group">
-                                            <input type="email" name="useremail" class="form-control form-control-user"
-                                                id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="อีเมล" required>
+                                            <input type="email" name="useremail" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="อีเมล" required>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user"
-                                                id="exampleInputPassword" placeholder="รหัสผ่าน" required>
+                                        <div class="form-inline">
+                                            <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="รหัสผ่าน" required>
+                                            <i class="bi bi-eye-slash" id="togglePassword"></i>
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
@@ -149,13 +144,13 @@
                                     <div class="text-center">
                                         <a class="small" href="register.php">ลงทะเบียน</a>
                                     </div>
-                                    
+
                                 </div>
                                 <!-- <div class="text-right" style="margin-right: 10px;">
                                         <a class="small" href="register.php">เข้าสู่ระบบผู้ดูแล</a>
                                 </div> -->
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -165,7 +160,24 @@
         </div>
 
     </div>
+    <script>
+        const togglePassword = document.querySelector("#togglePassword");
+        const password = document.querySelector("#password");
 
+        togglePassword.addEventListener('click', function(e) {
+            // toggle the type attribute
+            const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+            password.setAttribute('type', type);
+            // toggle the eye / eye slash icon
+            this.classList.toggle('bi-eye');
+        });
+
+        // prevent form submit
+        const form = document.querySelector("form");
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+    </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -175,7 +187,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
+    
 </body>
 
 </html>
