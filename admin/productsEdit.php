@@ -384,7 +384,7 @@ $bgmarr_id = $_GET["bgmarr_id"];
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
-                                    <<select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
                                             <?php
                                             $sql = "SELECT * FROM `bgmarr_tbl`";
                                             $result = $conn->query($sql);
