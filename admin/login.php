@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'db_connect.php';
 
 if (isset($_POST['login'])) {
@@ -31,7 +32,7 @@ if (isset($_POST['login'])) {
 
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { 
-                      window.location.href = "../font-end_test/index.html";';
+                      window.location.href = "index.php";';
             echo '}, 3000 );</script>';
         } else if ($_SESSION["user_status"] == "A") {  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
             echo '<script type="text/javascript">';
@@ -171,12 +172,12 @@ if (isset($_POST['login'])) {
             // toggle the eye / eye slash icon
             this.classList.toggle('bi-eye');
         });
-
+ 
         // prevent form submit
-        const form = document.querySelector("form");
+        /*const form = document.querySelector("form");
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-        });
+        }); */
     </script>
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
