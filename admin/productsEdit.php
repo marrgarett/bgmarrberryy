@@ -1,8 +1,9 @@
-<?php 
-    session_start();
-    include_once('db_connect.php'); 
+<?php
+session_start();
+include_once('db_connect.php');
 
-    $bgmarr_id = $_GET["bgmarr_id"];
+$bgmarr_id = $_GET["bgmarr_id"];
+
 ?>
 
 <!DOCTYPE html>
@@ -349,16 +350,16 @@
                     <div>
                         <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
                         <?php
-                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
-                            $result = mysqli_query($conn, $sql);
+                        $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
+                        $result = mysqli_query($conn, $sql);
 
-                            $row = mysqli_fetch_assoc($result);
+                        $row = mysqli_fetch_assoc($result);
                         ?>
                         <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
                             <div class="form-row">
                                 <div class="form-group col-md-2">
                                     <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี"  readonly>
+                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี" readonly>
                                 </div>
                                 <div class="form-group col-md-4">
                                     <label for="inputAddress">คำอธิบาย</label>
@@ -372,18 +373,18 @@
                                     <label for="inputPassword4">รหัสผ่าน</label>
                                     <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
                                 </div>
-                                
+
                             </div>
 
                             <div class="form-row">
-                                
+
                                 <div class="form-group col-md-2">
                                     <label for="input">ราคา</label>
                                     <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา" readonly>
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
-                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                    <<select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
                                             <?php
                                             $sql = "SELECT * FROM `bgmarr_tbl`";
                                             $result = $conn->query($sql);
@@ -407,16 +408,16 @@
                                     </select>
                                 </div>
                                 <!-- <img src="img/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"> -->
-                                
+
                             </div>
 
                             <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
-                            
+
                         </form>
 
                         <!-- Page Heading -->
-                        
-                        
+
+
 
                     </div>
                     <!-- /.container-fluid -->
