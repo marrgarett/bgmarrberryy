@@ -62,6 +62,10 @@ if (isset($_POST['save'])) {
         }
         
         // insert the image data into the database
+    }else{
+        echo '<script language="javascript">';
+        echo 'alert("อัพโหลดผิดพลาด ลองใหม่!!");location.href="javascript:history.go(-1)"';
+        echo '</script>';
     }
     
     

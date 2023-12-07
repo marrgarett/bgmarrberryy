@@ -265,10 +265,9 @@
                                 </div>
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
-                                    <input type="text" name="bgmarr_status" class="form-control" id="bgmarr_status" value="1" placeholder="สถานะ" hidden>
                                     <select class="form-select" name="bgmarr_status" id="bgmarr_status">
-                                        <option value="1">ว่าง</option>
-                                        <option value="0">ไม่ว่าง</option>
+                                        <option value="ว่าง">ว่าง</option>
+                                        <option value="ไม่ว่าง">ไม่ว่าง</option>
                                     </select>
                                 </div>
                             </div>
@@ -315,15 +314,9 @@
                                             <td><?php echo $row["bgmarr_pw"] ?></td>
                                             <td><?php echo $row["bgmarr_price"] ?></td>
                                             <td><img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"></td>
-                                            <td>
-                                                <?php
-                                                    if ($row["bgmarr_status"] == '1'){
-                                                        echo "ว่าง";
-                                                    } else {
-                                                        echo "ไม่ว่าง";
-                                                    }
-                                                ?>
-                                            </td>
+                                            
+                                            <td><?php echo $row["bgmarr_status"] ?></td>
+                                            
                                             </td>
                                             <td>
                                                 <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
