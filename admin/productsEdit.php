@@ -285,9 +285,7 @@
                                                     $option = $optionData["status"];
                                             ?>
                                                 <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
-                                                    <?php
-                                                        echo $option;
-                                                    ?>
+                                                    <?php echo $option;?>
                                                 </option>
                                             <?php
                                                 }

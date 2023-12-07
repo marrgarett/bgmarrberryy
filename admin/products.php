@@ -1,7 +1,7 @@
 <?php
-    session_start();
-    include_once('db_connect.php'); 
-    $fullname = $_SESSION['fullname'];
+session_start();
+include_once('db_connect.php');
+$fullname = $_SESSION['fullname'];
 ?>
 
 <!DOCTYPE html>
@@ -231,111 +231,109 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
 
-                <div class="card">
-                    <div class="card-body">
-                        <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
-                        <form action="productsSave.php" method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
+                            <form action="productsSave.php" method="post" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="inputPassword4">ชื่อไอดี</label>
+                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputEmail4">ชื่อผู้ใช้</label>
+                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="inputPassword4">รหัสผ่าน</label>
+                                        <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputAddress">คำอธิบาย</label>
-                                    <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
-                                </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="input">ราคา</label>
-                                    <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
+                                <div class="form-row">
+                                    <div class="form-group col-md-2">
+                                        <label for="input">ราคา</label>
+                                        <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="input">รูปภาพ</label>
+                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="input">สถานะ</label><br>
+                                        <select class="form-select" name="bgmarr_status" id="bgmarr_status">
+                                            <option value="ว่าง">ว่าง</option>
+                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input">รูปภาพ</label>
-                                    <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="input">สถานะ</label><br>
-                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status">
-                                        <option value="ว่าง">ว่าง</option>
-                                        <option value="ไม่ว่าง">ไม่ว่าง</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
-                            
-                        </form>
+                                <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
 
-                        <!-- Page Heading -->
-                        <br>
-                        <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
-                        <div class="card">
-                            <div class="card-body">
-                                <table class="table table-borderless">
-                                    <thead>
-                                        <tr>
-                                            <th>ไอดี</th>
-                                            <th>ชื่อไอดี</th>
-                                            <th>คำอธิบาย</th>
-                                            <th>ชื่อผู้ใช้</th>
-                                            <th>รหัสผ่าน</th>
-                                            <th>ราคา/ชม.</th>
-                                            <th>รูปภาพ</th>
-                                            <th>สถานะ</th>
-                                            <th>แก้ไข/ลบ</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
+                            </form>
+
+                            <!-- Page Heading -->
+                            <br>
+                            <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
+                            <div class="card">
+                                <div class="card-body">
+                                    <table class="table table-borderless">
+                                        <thead>
+                                            <tr>
+                                                <th>ไอดี</th>
+                                                <th>ชื่อไอดี</th>
+                                                <th>คำอธิบาย</th>
+                                                <th>ชื่อผู้ใช้</th>
+                                                <th>รหัสผ่าน</th>
+                                                <th>ราคา/ชม.</th>
+                                                <th>รูปภาพ</th>
+                                                <th>สถานะ</th>
+                                                <th>แก้ไข/ลบ</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
                                             $i = 1;
                                             $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY `bgmarr_tbl`.`bgmarr_id`";
                                             $result = mysqli_query($conn, $sql);
 
                                             if (mysqli_num_rows($result) > 0) {
                                                 // output data of each row
-                                                while($row = mysqli_fetch_assoc($result)) {
-                                        ?>
-                                        
-                                        <tr>
-                                            <th><?php echo $i++ ?></th>
-                                            <td><?php echo $row["bgmarr_name"] ?></td>
-                                            <td><?php echo $row["bgmarr_desc"] ?></td>
-                                            <td><?php echo $row["bgmarr_us"] ?></td>
-                                            <td><?php echo $row["bgmarr_pw"] ?></td>
-                                            <td><?php echo $row["bgmarr_price"] ?></td>
-                                            <td><img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"></td>
-                                            
-                                            <td><?php echo $row["bgmarr_status"] ?></td>
-                                            
-                                            </td>
-                                            <td>
-                                                <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
+                                                while ($row = mysqli_fetch_assoc($result)) {
+                                            ?>
+
+                                                    <tr>
+                                                        <th><?php echo $i++ ?></th>
+                                                        <td><?php echo $row["bgmarr_name"] ?></td>
+                                                        <td><?php echo $row["bgmarr_desc"] ?></td>
+                                                        <td><?php echo $row["bgmarr_us"] ?></td>
+                                                        <td><?php echo $row["bgmarr_pw"] ?></td>
+                                                        <td><?php echo $row["bgmarr_price"] ?></td>
+                                                        <td><img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"></td>
+                                                        <td><?php echo $row["bgmarr_status"] ?></td>
+                                                        </td>
+                                                        <td>
+                                                            <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                            <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
                                                 {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
-                                            </td>
-                                        </tr>
-                                        <?php
+                                                        </td>
+                                                    </tr>
+                                            <?php
                                                 }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                    
-                <!-- /.container-fluid -->
+
+                    <!-- /.container-fluid -->
 
                 </div>
                 <!-- End of Main Content -->
