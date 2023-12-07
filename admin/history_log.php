@@ -236,9 +236,10 @@ $fullname = $_SESSION['fullname'];
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
 
                     <?php
-                    $sql = "SELECT history_tbl.cli_id, 
+                    $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
                     tblclient.fullname, 
                     history_tbl.bgmarr_id, 
+                    bgmarr_tbl.bgmarr_name,
                     history_tbl.his_hr, 
                     history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
                     history_tbl.his_start,
@@ -248,7 +249,7 @@ $fullname = $_SESSION['fullname'];
                     JOIN tblclient
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
-                    ON bgmarr_tbl.bgmarr_name = history_tbl.bgmarr_id;";
+                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id;";
                     $result = mysqli_query($conn, $sql);
                     ?>
 
@@ -286,8 +287,8 @@ $fullname = $_SESSION['fullname'];
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
-                                                <td><?php echo $row["cli_id"] ?></td>
-                                                <td><?php echo $row["bgmarr_id"] ?></td>
+                                                <td><?php echo $row["fullname"] ?></td>
+                                                <td><?php echo $row["bgmarr_name"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
                                                 <td><?php echo $row["hour_sum"] ?></td>
                                                 <td><?php echo $his_start ?></td>
@@ -295,7 +296,11 @@ $fullname = $_SESSION['fullname'];
                                                 <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
                                                 <td><?php echo $row["his_status"] ?></td>
                                                 <td>
-                                                    <a href="Javascript:if(confirm('ยืนยันการเปลี่ยนสถานะ')==true) {window.location='memberDel.php?id=<?php echo $row["his_id"]; ?>';}" class="btn btn-warning">เปลี่ยนสถานะ</a>
+                                                <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                    <!--
+                                                    <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                    <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
+                                                    -->
                                                 </td>
                                             </tr>
                                     <?php
