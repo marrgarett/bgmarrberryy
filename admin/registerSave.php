@@ -30,7 +30,7 @@ if (isset($_POST['save'])) {
             VALUES (NULL, '$name', '$useremail', '$password', current_timestamp() ,'$user_status');";
         mysqli_query($conn, $sql);
         echo '<script language="javascript">';
-        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="register.php"';
+        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="../client/index.php"';
         echo '</script>';
     }
 } elseif (isset($_POST['update'])){
