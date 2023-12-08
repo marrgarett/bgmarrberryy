@@ -61,7 +61,7 @@ if (isset($_POST['login'])) {
 
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { 
-              window.location.href = "login.php";';
+              window.location.href = "index.php";';
         echo '}, 3000 );</script>';
     }
 }
