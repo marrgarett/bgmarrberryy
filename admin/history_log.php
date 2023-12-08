@@ -234,7 +234,14 @@ $fullname = $_SESSION['fullname'];
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
+                    <?php
+                        date_default_timezone_set("Asia/Bangkok");
+                        echo "Today is " . date("Y-m-d");
+                        echo "<br>";
+                        echo "The time is " . date("H:i:s");
 
+                        
+                    ?>
                     <?php
                     $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
                     tblclient.fullname, 
@@ -263,8 +270,8 @@ $fullname = $_SESSION['fullname'];
                                         <th>ไอดีที่เช่า</th>
                                         <th>จำนวนชั่วโมงที่เช่า</th>
                                         <th>ราคารวมชั่วโมงที่เช่า</th>
-                                        <th>เวลาที่เริ่มต้น</th>
-                                        <th>เวลาที่สิ้นสุด</th>
+                                        <th>วัน/เวลา ที่เริ่มต้น</th>
+                                        <th>วัน/เวลา ที่สิ้นสุด</th>
                                         <th>ใบสลิป</th>
                                         <th>สถานะ</th>
                                         <th>แก้ไข</th>
@@ -278,12 +285,21 @@ $fullname = $_SESSION['fullname'];
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $his_start = substr($row["his_start"], 11);
                                             $his_hr = $row["his_hr"];
+                                            
+                                            $end_date_time = substr($row["his_start"], 0, -9);
 
                                             $a = substr($row["his_start"], 11);
                                             $b = substr($a, 0, -6);
                                             $c = $b + $his_hr;
                                             $d = substr($row["his_start"], 13);
                                             $e = ("$c"."$d");
+
+                                            $start_time = $row["his_start"];
+                                            $now_time = date("H:i:s");
+                                            $end_time = ("$c"."$d");
+
+                                            
+
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
@@ -291,12 +307,20 @@ $fullname = $_SESSION['fullname'];
                                                 <td><?php echo $row["bgmarr_name"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
                                                 <td><?php echo $row["hour_sum"] ?></td>
-                                                <td><?php echo $his_start ?></td>
-                                                <td><?php echo $e; ?></td>
+                                                <td><?php echo $row["his_start"] ?></td>
+                                                <td><?php echo $end_date_time.' '.$e; ?></td>
                                                 <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
-                                                <td><?php echo $row["his_status"] ?></td>
                                                 <td>
-                                                <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                <?php
+                                                    if ($now_time >= $end_time) {
+                                                    echo 'เสร็จสิ้น';
+                                                } else {
+                                                    echo 'กำลังดำเนินการ';
+                                                }
+                                                ?>
+                                                </td>
+                                                <td>
+                                                <a href="resetProductPwd.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Reset</a>
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
