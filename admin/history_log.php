@@ -266,10 +266,10 @@ $fullname = $_SESSION['fullname'];
                                 <thead>
                                     <tr>
                                         <th>ลำดับ</th>
-                                        <th>ชื่อ-นามสกุลลูกค้า</th>
+                                        <th>ชื่อลูกค้า</th>
                                         <th>ไอดีที่เช่า</th>
-                                        <th>จำนวนชั่วโมงที่เช่า</th>
-                                        <th>ราคารวมชั่วโมงที่เช่า</th>
+                                        <th>จำนวนชั่วโมง</th>
+                                        <th>ราคารวม</th>
                                         <th>วัน/เวลา ที่เริ่มต้น</th>
                                         <th>วัน/เวลา ที่สิ้นสุด</th>
                                         <th>ใบสลิป</th>
@@ -320,7 +320,7 @@ $fullname = $_SESSION['fullname'];
                                                 ?>
                                                 </td>
                                                 <td>
-                                                <a href="resetProductPwd.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Reset</a>
+                                                <a href="history_resetPass.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Reset</a>
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
