@@ -313,12 +313,19 @@ $fullname = $_SESSION['fullname'];
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
                                                         <td><?php echo $row["bgmarr_pw"] ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>
-                                                        <td><img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"></td>
+                                                        <td>
+                                                            <?php if($row["bgmarr_img"]== '') : ?>
+                                                            <p>...</p>
+                                                            <?php endif; ?>
+                                                            <?php if($row["bgmarr_img"]!= '') : ?>
+                                                            <img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px">
+                                                            <?php endif; ?>
+                                                        </td>
                                                         <td><?php echo $row["bgmarr_status"] ?></td>
                                                         </td>
                                                         <td>
                                                             <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                            <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) 
+                                                            <a href="Javascript:if(confirm('ต้องการลบข้อมูลนี้หรือไม่')==true) 
                                                 {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
                                                         </td>
                                                     </tr>

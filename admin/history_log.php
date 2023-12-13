@@ -235,12 +235,12 @@ $fullname = $_SESSION['fullname'];
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
                     <?php
-                        date_default_timezone_set("Asia/Bangkok");
-                        echo "Today is " . date("Y-m-d");
-                        echo "<br>";
-                        echo "The time is " . date("H:i:s");
+                    date_default_timezone_set("Asia/Bangkok");
+                    echo "Today is " . date("Y-m-d");
+                    echo "<br>";
+                    echo "The time is " . date("H:i:s");
 
-                        
+
                     ?>
                     <?php
                     $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
@@ -259,7 +259,20 @@ $fullname = $_SESSION['fullname'];
                     ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id;";
                     $result = mysqli_query($conn, $sql);
                     ?>
+                    <div>
+                        <?php
+                        
+                        $month = date('m');
+                        $day = date('d');
+                        $year = date('Y');
 
+                        $today = $year . '-' . $month . '-' . $day;
+                        ?>
+
+                        <label for="start">Start date:</label>
+
+                        <input type="date" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-borderless">
@@ -285,20 +298,20 @@ $fullname = $_SESSION['fullname'];
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $his_start = substr($row["his_start"], 11);
                                             $his_hr = $row["his_hr"];
-                                            
+
                                             $end_date_time = substr($row["his_start"], 0, -9);
 
                                             $a = substr($row["his_start"], 11);
                                             $b = substr($a, 0, -6);
                                             $c = $b + $his_hr;
                                             $d = substr($row["his_start"], 13);
-                                            $e = ("$c"."$d");
+                                            $e = ("$c" . "$d");
 
                                             $start_time = $row["his_start"];
                                             $now_time = date("H:i:s");
-                                            $end_time = ("$c"."$d");
+                                            $end_time = ("$c" . "$d");
 
-                                            
+
 
                                     ?>
                                             <tr>
@@ -308,19 +321,19 @@ $fullname = $_SESSION['fullname'];
                                                 <td><?php echo $row["his_hr"] ?></td>
                                                 <td><?php echo $row["hour_sum"] ?></td>
                                                 <td><?php echo $row["his_start"] ?></td>
-                                                <td><?php echo $end_date_time.' '.$e; ?></td>
+                                                <td><?php echo $end_date_time . ' ' . $e; ?></td>
                                                 <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
                                                 <td>
-                                                <?php
+                                                    <?php
                                                     if ($now_time >= $end_time) {
-                                                    echo 'เสร็จสิ้น';
-                                                } else {
-                                                    echo 'กำลังดำเนินการ';
-                                                }
-                                                ?>
+                                                        echo 'เสร็จสิ้น';
+                                                    } else {
+                                                        echo 'กำลังดำเนินการ';
+                                                    }
+                                                    ?>
                                                 </td>
                                                 <td>
-                                                <a href="history_resetPass.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Reset</a>
+                                                    <a href="history_resetPass.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Reset</a>
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>

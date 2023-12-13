@@ -1,9 +1,9 @@
 <?php
-    session_start();
-    $fullname = $_SESSION['fullname'];
+session_start();
+$fullname = $_SESSION['fullname'];
 
-    include_once('db_connect.php');
-    $bgmarr_id = $_GET["bgmarr_id"];
+include_once('db_connect.php');
+$bgmarr_id = $_GET["bgmarr_id"];
 
 ?>
 
@@ -262,11 +262,11 @@
                                 </div>
 
                             </div>
-                            <?php 
-                                $bgmarr_id = $_GET['bgmarr_id'];
-                                $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id'";
-                                $result = $conn->query($sql);
-                                $row = $result->fetch_assoc();
+                            <?php
+                            $bgmarr_id = $_GET['bgmarr_id'];
+                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id'";
+                            $result = $conn->query($sql);
+                            $row = $result->fetch_assoc();
                             ?>
                             <div class="form-row">
 
@@ -277,25 +277,31 @@
                                 <div class="form-group col-md-2">
                                     <label for="input">สถานะ</label><br>
                                     <select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
-                                            <?php
-                                            $sql = "SELECT * FROM `status`";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($optionData = $result->fetch_assoc()) {
-                                                    $option = $optionData["status"];
-                                            ?>
+                                        <?php
+                                        $sql = "SELECT * FROM `status`";
+                                        $result = $conn->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($optionData = $result->fetch_assoc()) {
+                                                $option = $optionData["status"];
+                                        ?>
                                                 <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
-                                                    <?php echo $option;?>
+                                                    <?php echo $option; ?>
                                                 </option>
-                                            <?php
-                                                }
+                                        <?php
                                             }
-                                            ?>
+                                        }
+                                        ?>
                                     </select>
                                 </div>
-                                <!-- <img src="img/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px"> -->
+                            </div><br>
+                            <div class="form-group col-md-3">
+                                <label for="input">รูปภาพ</label><br>
+                                <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="200px">
+                                <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
 
-                            </div>
+                            </div><br>
+
+
 
                             <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
 
