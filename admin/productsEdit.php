@@ -232,133 +232,134 @@ $bgmarr_id = $_GET["bgmarr_id"];
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
+
                 <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body">
+                            <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
+                            <?php
+                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
+                            $result = mysqli_query($conn, $sql);
 
-                    <div>
-                        <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
-                        <?php
-                        $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
-                        $result = mysqli_query($conn, $sql);
-
-                        $row = mysqli_fetch_assoc($result);
-                        ?>
-                        <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" readonly value="<?php echo $row['bgmarr_name'] ?>">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" readonly value="<?php echo $row['bgmarr_us'] ?>">
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw'] ?>">
-                                </div>
-                            </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-4">
-                                    <label for="input">ราคา</label>
-                                    <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price'] ?>">
+                            $row = mysqli_fetch_assoc($result);
+                            ?>
+                            <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">ชื่อสินค้า</label>
+                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" readonly value="<?php echo $row['bgmarr_name'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">ชื่อผู้ใช้</label>
+                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" readonly value="<?php echo $row['bgmarr_us'] ?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">รหัสผ่าน</label>
+                                        <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw'] ?>">
+                                    </div>
                                 </div>
 
-                                <div class="form-group col-md-2">
-                                    <label for="input">สถานะ</label><br>
-                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status">
-                                        <option value="ว่าง">ว่าง</option>
-                                        <option value="ไม่ว่าง">ไม่ว่าง</option>
-                                    </select>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="input">ราคา</label>
+                                        <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price'] ?>">
+                                    </div>
+
+                                    <div class="form-group col-md-6">
+                                        <label for="input">สถานะ</label><br>
+                                        <select class="form-control" name="bgmarr_status" id="bgmarr_status">
+                                            <option value="ว่าง">ว่าง</option>
+                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                                        </select>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputAddress">คำอธิบาย</label>
-                                    <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">ลิงก์โฟลเดอร์</label>
+                                        <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputAddress">ลิงก์โฟลเดอร์</label>
-                                    <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="input">รูปภาพ</label><br>
+                                        <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="400px">
+                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
+                                    </div>
+
+
                                 </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-3">
-                                    <label for="input">รูปภาพ</label><br>
-                                    <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="200px">
-                                    <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
-                                </div>
-                                
-
-                            </div>
-                            <br>
+                                <br>
 
 
 
-                            <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
+                                <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
 
-                        </form>
+                            </form>
 
-                        <!-- Page Heading -->
+                            <!-- Page Heading -->
 
 
+
+                        </div>
+                        <!-- /.container-fluid -->
 
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; BGMarrBerryy 2023</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
 
                 </div>
-                <!-- End of Main Content -->
+                <!-- End of Content Wrapper -->
 
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; BGMarrBerryy 2023</span>
+            </div>
+            <!-- End of Page Wrapper -->
+
+            <!-- Scroll to Top Button-->
+            <a class="scroll-to-top rounded" href="#page-top">
+                <i class="fas fa-angle-up"></i>
+            </a>
+
+            <!-- Logout Modal-->
+            <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                        <div class="modal-footer">
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                            <a class="btn btn-primary" href="login.php">Logout</a>
                         </div>
                     </div>
-                </footer>
-                <!-- End of Footer -->
-
-            </div>
-            <!-- End of Content Wrapper -->
-
-        </div>
-        <!-- End of Page Wrapper -->
-
-        <!-- Scroll to Top Button-->
-        <a class="scroll-to-top rounded" href="#page-top">
-            <i class="fas fa-angle-up"></i>
-        </a>
-
-        <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                    <div class="modal-footer">
-                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        <a class="btn btn-primary" href="login.php">Logout</a>
-                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Bootstrap core JavaScript-->
-        <script src="vendor/jquery/jquery.min.js"></script>
-        <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+            <!-- Bootstrap core JavaScript-->
+            <script src="vendor/jquery/jquery.min.js"></script>
+            <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-        <!-- Core plugin JavaScript-->
-        <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+            <!-- Core plugin JavaScript-->
+            <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-        <!-- Custom scripts for all pages-->
-        <script src="js/sb-admin-2.min.js"></script>
+            <!-- Custom scripts for all pages-->
+            <script src="js/sb-admin-2.min.js"></script>
 
 </body>
 
