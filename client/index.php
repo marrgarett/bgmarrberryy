@@ -158,9 +158,9 @@ include_once '../admin/db_connect.php';
                                         <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
                                         <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="details_id.html" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                             <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                            <a href="/client/details_id.html" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
                                 </div>
