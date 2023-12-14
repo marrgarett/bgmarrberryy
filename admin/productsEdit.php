@@ -258,7 +258,12 @@ $bgmarr_id = $_GET["bgmarr_id"];
                                         <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw'] ?>">
                                     </div>
                                 </div>
-
+                                <?php
+                                    $bgmarr_id = $_GET['bgmarr_id'];
+                                    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id'";
+                                    $result = $conn->query($sql);
+                                    $row = $result->fetch_assoc();
+                                ?>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="input">ราคา</label>
@@ -267,9 +272,21 @@ $bgmarr_id = $_GET["bgmarr_id"];
 
                                     <div class="form-group col-md-6">
                                         <label for="input">สถานะ</label><br>
-                                        <select class="form-control" name="bgmarr_status" id="bgmarr_status">
-                                            <option value="ว่าง">ว่าง</option>
-                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                                        <select class="form-control" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
+                                            <?php
+                                            $sql = "SELECT * FROM `status`";
+                                            $result = $conn->query($sql);
+                                            if ($result->num_rows > 0) {
+                                                while ($optionData = $result->fetch_assoc()) {
+                                                    $option = $optionData["status"];
+                                            ?>
+                                                    <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
+                                                        <?php echo $option; ?>
+                                                    </option>
+                                            <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>
                                     </div>
                                 </div>
