@@ -243,63 +243,50 @@ $bgmarr_id = $_GET["bgmarr_id"];
                         $row = mysqli_fetch_assoc($result);
                         ?>
                         <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-2">
-                                    <label for="inputPassword4">ชื่อไอดี</label>
-                                    <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" value="<?php echo $row['bgmarr_name']; ?>" placeholder="ชื่อไอดี" readonly>
-                                </div>
-                                <div class="form-group col-md-4">
-                                    <label for="inputAddress">คำอธิบาย</label>
-                                    <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" value="<?php echo $row['bgmarr_desc']; ?>" placeholder="คำอธิบาย">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" value="<?php echo $row['bgmarr_us']; ?>" placeholder="ชื่อผู้ใช้" readonly>
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']; ?>" placeholder="รหัสผ่าน">
+                        <div class="form-row">
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">ชื่อไอดี</label>
+                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" readonly value="<?php echo $row['bgmarr_name']?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputEmail4">ชื่อผู้ใช้</label>
+                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" readonly value="<?php echo $row['bgmarr_us']?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputPassword4">รหัสผ่าน</label>
+                                        <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw']?>">
+                                    </div>
                                 </div>
 
-                            </div>
-                            <?php
-                            $bgmarr_id = $_GET['bgmarr_id'];
-                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id'";
-                            $result = $conn->query($sql);
-                            $row = $result->fetch_assoc();
-                            ?>
-                            <div class="form-row">
-
-                                <div class="form-group col-md-2">
-                                    <label for="input">ราคา</label>
-                                    <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']; ?>" placeholder="ราคา" readonly>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="input">ราคา</label>
+                                        <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price']?>">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="input">รูปภาพ</label>
+                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" value="<?php echo $row['bgmarr_img']?>">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <!-- <label for="input">สถานะ</label><br> -->
+                                        <select class="form-select" name="bgmarr_status" id="bgmarr_status" hidden>
+                                            <option value="ว่าง">ว่าง</option>
+                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-2">
-                                    <label for="input">สถานะ</label><br>
-                                    <select class="form-select" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
-                                        <?php
-                                        $sql = "SELECT * FROM `status`";
-                                        $result = $conn->query($sql);
-                                        if ($result->num_rows > 0) {
-                                            while ($optionData = $result->fetch_assoc()) {
-                                                $option = $optionData["status"];
-                                        ?>
-                                                <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
-                                                    <?php echo $option; ?>
-                                                </option>
-                                        <?php
-                                            }
-                                        }
-                                        ?>
-                                    </select>
-                                </div>
-                            </div><br>
-                            <div class="form-group col-md-3">
-                                <label for="input">รูปภาพ</label><br>
-                                <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="200px">
-                                <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
 
-                            </div><br>
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputAddress">ลิงก์โฟลเดอร์</label>
+                                        <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
+                                    </div>
+                                </div><br>
+                            <br>
 
 
 
