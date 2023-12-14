@@ -264,8 +264,8 @@ $fullname = $_SESSION['fullname'];
                                         <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <label for="input">สถานะ</label><br>
-                                        <select class="form-select" name="bgmarr_status" id="bgmarr_status">
+                                        <!-- <label for="input">สถานะ</label><br> -->
+                                        <select class="form-select" name="bgmarr_status" id="bgmarr_status" hidden>
                                             <option value="ว่าง">ว่าง</option>
                                             <option value="ไม่ว่าง">ไม่ว่าง</option>
                                         </select>
@@ -309,7 +309,7 @@ $fullname = $_SESSION['fullname'];
                                                     <tr>
                                                         <th><?php echo $i++ ?></th>
                                                         <td><?php echo $row["bgmarr_name"] ?></td>
-                                                        <td><?php echo $row["bgmarr_desc"] ?></td>
+                                                        <td><?php echo iconv_substr($row["bgmarr_desc"],0,20,'UTF-8') ?>...</td>
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
                                                         <td><?php echo $row["bgmarr_pw"] ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>

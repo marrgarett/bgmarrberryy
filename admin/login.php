@@ -32,7 +32,7 @@ if (isset($_POST['login'])) {
 
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { 
-                      window.location.href = "dashboard.php";';
+                      window.location.href = "../client/index.php";';
             echo '}, 3000 );</script>';
         } else if ($_SESSION["user_status"] == "A") {  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
             echo '<script type="text/javascript">';
@@ -46,7 +46,7 @@ if (isset($_POST['login'])) {
 
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { 
-                      window.location.href = "index.php";';
+                      window.location.href = "dashboard.php";';
             echo '}, 3000 );</script>';
         }
     } else {

@@ -8,7 +8,7 @@ $bgmarr_desc = $_POST["bgmarr_desc"];
 $bgmarr_us = $_POST["bgmarr_us"];
 $bgmarr_pw = $_POST["bgmarr_pw"];
 $bgmarr_price = $_POST["bgmarr_price"];
-$bgmarr_status = $_POST["bgmarr_status"];
+$bgmarr_status = 'ว่าง';
 
 if (isset($_POST['save'])) {
 
