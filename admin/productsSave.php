@@ -67,7 +67,7 @@ if (isset($_POST['save'])) {
         // insert the image data into the database
     } elseif ($_FILES['bgmarr_img']['tmp_name'] == ''){
         $name = '';
-        $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
+        $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_url` , `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
             VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_url', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
             $stmt->bindParam(':img_name', $name);
             if ($stmt->execute()){
@@ -91,6 +91,7 @@ if (isset($_POST['save'])) {
     
     $bgmarr_id = $_GET['bgmarr_id'];
     $bgmarr_desc = $_POST['bgmarr_desc'];
+    $bgmarr_url = $_POST['bgmarr_url'];
     $bgmarr_pw = $_POST['bgmarr_pw'];
     $bgmarr_status = $_POST["bgmarr_status"];
 
@@ -109,7 +110,7 @@ if (isset($_POST['save'])) {
                     if ($size < 15000000) { // check file size 15MB
                         unlink($dir . $img);
                         move_uploaded_file($temp, 'uploaded_imgs/' . $image_file); // move upload file temperory directory to your upload folder
-                        $stmt = $db->prepare("UPDATE `bgmarr_tbl` SET  `bgmarr_desc` = '$bgmarr_desc', `bgmarr_pw` = '$bgmarr_pw', bgmarr_img = :img_name , `bgmarr_status` = '$bgmarr_status' 
+                        $stmt = $db->prepare("UPDATE `bgmarr_tbl` SET  `bgmarr_desc` = '$bgmarr_desc', `bgmarr_url` = '$bgmarr_url' , `bgmarr_pw` = '$bgmarr_pw', bgmarr_img = :img_name , `bgmarr_status` = '$bgmarr_status' 
                                                 WHERE `bgmarr_tbl`.`bgmarr_id` = '$bgmarr_id'");
                         $stmt->bindParam(':img_name', $name);
                         if ($stmt->execute()){

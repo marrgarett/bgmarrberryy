@@ -295,7 +295,7 @@ $fullname = $_SESSION['fullname'];
                                                 <th>ไอดี</th>
                                                 <th>ชื่อไอดี</th>
                                                 <th>คำอธิบาย</th>
-                                                <th>ลิงก์โฟลเดอร์</th>
+                                                <!-- <th>ลิงก์</th> -->
                                                 <th>ชื่อผู้ใช้</th>
                                                 <th>รหัสผ่าน</th>
                                                 <th>ราคา/ชม.</th>
@@ -319,7 +319,7 @@ $fullname = $_SESSION['fullname'];
                                                         <th><?php echo $i++ ?></th>
                                                         <td><?php echo $row["bgmarr_name"] ?></td>
                                                         <td><?php echo iconv_substr($row["bgmarr_desc"],0,20,'UTF-8') ?>...</td>
-                                                        <td><?php echo iconv_substr($row["bgmarr_url"],0,20,'UTF-8') ?>...</td>
+                                                        <!-- <td><?php echo iconv_substr($row["bgmarr_url"],0,20,'UTF-8') ?>...</td> -->
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
                                                         <td><?php echo $row["bgmarr_pw"] ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>
