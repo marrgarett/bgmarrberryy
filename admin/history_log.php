@@ -2,6 +2,16 @@
 session_start();
 include_once('db_connect.php');
 
+$sql = "SELECT * FROM `history_tbl`";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$date = $row['his_start'];
+
+
+if (!empty($_POST['his_start'])) {
+    $sql = "SELECT * FROM history_tbl WHERE his_start LIKE '$date%'";
+}
+
 $fullname = $_SESSION['fullname'];
 
 ?>
@@ -51,9 +61,9 @@ $fullname = $_SESSION['fullname'];
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form action="" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="his_start" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -258,6 +268,7 @@ $fullname = $_SESSION['fullname'];
                     JOIN bgmarr_tbl
                     ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id;";
                     $result = mysqli_query($conn, $sql);
+
                     ?>
                     <div>
                         <?php
@@ -271,7 +282,7 @@ $fullname = $_SESSION['fullname'];
 
                         <label for="start">Start date:</label>
 
-                        <input type="date" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
+                        <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
                     </div>
                     <div class="card">
                         <div class="card-body">

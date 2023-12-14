@@ -1,7 +1,19 @@
 <?php
 session_start();
 include_once('db_connect.php');
+
+$sql = "SELECT * FROM `history_tbl`";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
+$date = $row['his_start'];
+
+
+if (!empty($_POST['his_start'])) {
+    $sql = "SELECT * FROM history_tbl WHERE his_start LIKE '$date%'";
+}
+
 $fullname = $_SESSION['fullname'];
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +26,7 @@ $fullname = $_SESSION['fullname'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลสมาชิก</title>
+    <title>BGMarrBerryy - จัดการข้อมูลประวัติการเช่า</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -49,9 +61,9 @@ $fullname = $_SESSION['fullname'];
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form action="" method="post" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" name="his_start" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -229,60 +241,66 @@ $fullname = $_SESSION['fullname'];
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-                    <!--
-                    <div>
-                        <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลสมาชิก</h1>
-                        <form action="productsSave.php" method="post" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-2" hidden>
-                                    <label for="inputEmail4" hidden>รหัสไอดี</label>
-                                    <input type="text" name="id" class="form-control" id="id" placeholder="ไอดี" hidden>
-                                </div>
-                                <div class="form-group col-md-2">
-                                    <label for="inputPassword4">ชื่อสมาชิก</label>
-                                    <input type="text" name="fullname" class="form-control" id="fullname" placeholder="ชื่อสมาชิก">
-                                </div>
-                                
-                                <div class="form-group col-md-3">
-                                    <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                    <input type="text" name="useremail" class="form-control" id="useremail" placeholder="ชื่อผู้ใช้">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="inputPassword4">รหัสผ่าน</label>
-                                    <input type="text" name="pass_word" class="form-control" id="pass_word" placeholder="รหัสผ่าน">
-                                </div>
-                                <div class="form-group col-md-3">
-                                    <label for="input">รูปภาพ</label>
-                                    <input type="file" name="fileToUpload" class="form-control" id="img" placeholder="รูปภาพ">
-                                </div>
-                            </div>
-
-
-                            <input type="submit" name="save" value="Submit" class="btn btn-success float-left"><br><br>
-                            
-                        </form>
-                        -->
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">ข้อมูลสมาชิก</h1>
-
+                    <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
                     <?php
-                    $sql = "SELECT * FROM `tblclient` WHERE user_status = 'C' ORDER BY `tblclient`.`id` DESC ";
-                    $result = mysqli_query($conn, $sql);
-                    ?>
+                    date_default_timezone_set("Asia/Bangkok");
+                    echo "Today is " . date("Y-m-d");
+                    echo "<br>";
+                    echo "The time is " . date("H:i:s");
 
+
+                    ?>
+                    <?php
+                    $user_id = $_GET["id"];
+                    $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
+                    tblclient.fullname, 
+                    history_tbl.bgmarr_id, 
+                    bgmarr_tbl.bgmarr_name,
+                    history_tbl.his_hr, 
+                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
+                    history_tbl.his_start,
+                    history_tbl.his_payment,
+                    history_tbl.his_status
+                    FROM history_tbl
+                    JOIN tblclient
+                    ON history_tbl.cli_id = tblclient.id
+                    JOIN bgmarr_tbl
+                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    WHERE history_tbl.cli_id = '$user_id'";
+                    $result = mysqli_query($conn, $sql);
+
+                    ?>
+                    <div>
+                        <?php
+                        
+                        $month = date('m');
+                        $day = date('d');
+                        $year = date('Y');
+
+                        $today = $year . '-' . $month . '-' . $day;
+                        ?>
+
+                        <label for="start">Start date:</label>
+
+                        <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
+                    </div>
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
                                         <th>ลำดับ</th>
-                                        <th>ชื่อ-นามสกุล</th>
-                                        <th>Username</th>
-                                        <!-- <th>Password</th> -->
-                                        <th>วันที่สมัคร</th>
-                                        <!-- <th>รูปภาพ</th> -->
-                                        <th>แก้ไข</th>
+                                        <th>ชื่อลูกค้า</th>
+                                        <th>ไอดีที่เช่า</th>
+                                        <th>จำนวนชั่วโมง</th>
+                                        <th>ราคารวม</th>
+                                        <th>วัน/เวลา ที่เริ่มต้น</th>
+                                        <th>วัน/เวลา ที่สิ้นสุด</th>
+                                        <th>ใบสลิป</th>
+                                        
+                                        <!-- <th>แก้ไข</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -291,18 +309,40 @@ $fullname = $_SESSION['fullname'];
                                     if (mysqli_num_rows($result) > 0) {
                                         // output data of each row
                                         while ($row = mysqli_fetch_assoc($result)) {
+                                            $his_start = substr($row["his_start"], 11);
+                                            $his_hr = $row["his_hr"];
+
+                                            $end_date_time = substr($row["his_start"], 0, -9);
+
+                                            $a = substr($row["his_start"], 11);
+                                            $b = substr($a, 0, -6);
+                                            $c = $b + $his_hr;
+                                            $d = substr($row["his_start"], 13);
+                                            $e = ("$c" . "$d");
+
+                                            $start_time = $row["his_start"];
+                                            $now_time = date("H:i:s");
+                                            $end_time = ("$c" . "$d");
+
+
+
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
-                                                <td><a href="user_history_log.php?id=<?php echo $row["id"]; ?>"><?php echo $row["fullname"] ?></a></td>
-                                                <td><?php echo $row["useremail"] ?></td>
-                                                <!-- <td><?php echo $row["pass_word"] ?></td> -->
-                                                <td><?php echo $row["regdate"] ?></td>
-                                                <!-- <td><?php echo '<img src="uploaded_imgs\$row["img"]">' ?></td> -->
-                                                <td>
-                                                    <!-- <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a> -->
-                                                    <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                </td>
+                                                <td><?php echo $row["fullname"] ?></td>
+                                                <td><?php echo $row["bgmarr_name"] ?></td>
+                                                <td><?php echo $row["his_hr"] ?></td>
+                                                <td><?php echo $row["hour_sum"] ?></td>
+                                                <td><?php echo $row["his_start"] ?></td>
+                                                <td><?php echo $end_date_time . ' ' . $e; ?></td>
+                                                <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
+                                                
+                                                
+                                                    <!--
+                                                    <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                    <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
+                                                    -->
+                                                
                                             </tr>
                                     <?php
                                         }
