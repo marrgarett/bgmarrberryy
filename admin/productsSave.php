@@ -5,6 +5,7 @@ include_once('db_connect.php');
 
 $bgmarr_name = $_POST["bgmarr_name"];
 $bgmarr_desc = $_POST["bgmarr_desc"];
+$bgmarr_url = $_POST["bgmarr_url"];
 $bgmarr_us = $_POST["bgmarr_us"];
 $bgmarr_pw = $_POST["bgmarr_pw"];
 $bgmarr_price = $_POST["bgmarr_price"];
@@ -41,8 +42,8 @@ if (isset($_POST['save'])) {
             if (!file_exists($path)) { // check file not exist in your upload folder path
                 if ($size < 15000000) { // check file size 15MB
                     move_uploaded_file($temp, 'uploaded_imgs/' . $image_file); // move upload file temperory directory to your upload folder
-                    $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
-                        VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
+                    $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_url`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
+                        VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_url', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
                     $stmt->bindParam(':img_name', $name);
                     if ($stmt->execute()){
                         echo '<script language="javascript">';
@@ -67,7 +68,7 @@ if (isset($_POST['save'])) {
     } elseif ($_FILES['bgmarr_img']['tmp_name'] == ''){
         $name = '';
         $stmt = $db->prepare("INSERT INTO bgmarr_tbl (`bgmarr_name`, `bgmarr_desc`, `bgmarr_us`, `bgmarr_pw`, `bgmarr_price` , `bgmarr_img` , `bgmarr_status`) 
-            VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
+            VALUES ('$bgmarr_name', '$bgmarr_desc', '$bgmarr_url', '$bgmarr_us', '$bgmarr_pw' , '$bgmarr_price' , :img_name , '$bgmarr_status')");
             $stmt->bindParam(':img_name', $name);
             if ($stmt->execute()){
                 echo '<script language="javascript">';
@@ -133,7 +134,7 @@ if (isset($_POST['save'])) {
             // insert the image data into the database
         } elseif ($_FILES['bgmarr_img']['tmp_name'] == ''){
             
-            $stmt = $db->prepare("UPDATE `bgmarr_tbl` SET  `bgmarr_desc` = '$bgmarr_desc', `bgmarr_pw` = '$bgmarr_pw' , `bgmarr_status` = '$bgmarr_status' 
+            $stmt = $db->prepare("UPDATE `bgmarr_tbl` SET  `bgmarr_desc` = '$bgmarr_desc', `bgmarr_url` = '$bgmarr_url', `bgmarr_pw` = '$bgmarr_pw' , `bgmarr_status` = '$bgmarr_status' 
                                     WHERE `bgmarr_tbl`.`bgmarr_id` = '$bgmarr_id'");
                 
                 if ($stmt->execute()){

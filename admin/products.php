@@ -235,31 +235,28 @@ $fullname = $_SESSION['fullname'];
                         <div class="card-body">
                             <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
                             <form action="productsSave.php" method="post" enctype="multipart/form-data">
+
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-4">
                                         <label for="inputPassword4">ชื่อไอดี</label>
                                         <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputAddress">คำอธิบาย</label>
-                                        <input type="text" name="bgmarr_desc" class="form-control" id="bgmarr_desc" placeholder="คำอธิบาย">
-                                    </div>
-                                    <div class="form-group col-md-3">
                                         <label for="inputEmail4">ชื่อผู้ใช้</label>
                                         <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="inputPassword4">รหัสผ่าน</label>
                                         <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
-                                    <div class="form-group col-md-2">
+                                    <div class="form-group col-md-8">
                                         <label for="input">ราคา</label>
                                         <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
                                     </div>
-                                    <div class="form-group col-md-3">
+                                    <div class="form-group col-md-4">
                                         <label for="input">รูปภาพ</label>
                                         <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
                                     </div>
@@ -269,6 +266,17 @@ $fullname = $_SESSION['fullname'];
                                             <option value="ว่าง">ว่าง</option>
                                             <option value="ไม่ว่าง">ไม่ว่าง</option>
                                         </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group col-md-8">
+                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"></textarea>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <label for="inputAddress">ลิงก์โฟลเดอร์</label>
+                                        <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" placeholder="ลิงก์โฟลเดอร์">
                                     </div>
                                 </div>
 
@@ -287,6 +295,7 @@ $fullname = $_SESSION['fullname'];
                                                 <th>ไอดี</th>
                                                 <th>ชื่อไอดี</th>
                                                 <th>คำอธิบาย</th>
+                                                <th>ลิงก์โฟลเดอร์</th>
                                                 <th>ชื่อผู้ใช้</th>
                                                 <th>รหัสผ่าน</th>
                                                 <th>ราคา/ชม.</th>
@@ -310,6 +319,7 @@ $fullname = $_SESSION['fullname'];
                                                         <th><?php echo $i++ ?></th>
                                                         <td><?php echo $row["bgmarr_name"] ?></td>
                                                         <td><?php echo iconv_substr($row["bgmarr_desc"],0,20,'UTF-8') ?>...</td>
+                                                        <td><?php echo iconv_substr($row["bgmarr_url"],0,20,'UTF-8') ?>...</td>
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
                                                         <td><?php echo $row["bgmarr_pw"] ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>
