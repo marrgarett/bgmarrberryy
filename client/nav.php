@@ -30,7 +30,7 @@ include_once '../admin/db_connect.php';
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
                     <li><a href="how_to_order.php">How To Order</a></li>
-                    <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
+                    <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
             <div class="header-social-links">

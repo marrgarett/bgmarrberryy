@@ -13,6 +13,14 @@ $fullname = $_SESSION['fullname'];
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <?php
+    $bgmarr_name = $_GET['bgmarr_id'];
+
+    $sql = "SELECT * FROM `bgmarr_tbl`";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    ?>
+
   <title><?php echo $row['bgmarr_name'] ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
@@ -76,7 +84,7 @@ $fullname = $_SESSION['fullname'];
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
                     <li><a href="how_to_order.php">How To Order</a></li>
-                    <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
+                    <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
             <div class="header-social-links">
@@ -92,21 +100,14 @@ $fullname = $_SESSION['fullname'];
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
     <!-- ======= End Page Header ======= -->
-    <?php
-    $bgmarr_name = $_GET['id'];
-    $bgmarr_url = $_GET['bgmarr_url'];
-
-    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    ?>
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
+          <div class="col-lg-12 text-center">
             <h2>
               <?php echo $row['bgmarr_name'] ?>
             </h2>
+            <br>
             <a class="cta-btn" href="contact.php">Add To Cart</a>
           </div>
         </div>
@@ -131,16 +132,14 @@ $fullname = $_SESSION['fullname'];
 
               <div class="col-lg-12">
                 <div class="portfolio-description">
-                  <h2>รายละเอียด</h2>
-                  <p>
+                  <h1>รายละเอียด</h1>
+                  <h4>
                     <?php echo $row['bgmarr_desc'] ?>
-                  </p>
-
-
+                  </h4>
                   <div class="testimonial-item">
                     <p>
                       <!-- <i class="bi bi-quote quote-icon-left"></i> -->
-                      <a href="<?php echo $row['bgmarr_url'] ?>">Google Drive</a>
+                      <a href="<?php echo $row['bgmarr_url'] ?>">Details Image</a>
                       <!-- <i class="bi bi-quote quote-icon-right"></i> -->
 
                     </p><br>

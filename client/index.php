@@ -77,7 +77,7 @@ $fullname = $_SESSION['fullname'];
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
                     <li><a href="how_to_order.php">How To Order</a></li>
-                    <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
+                    <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
             <div class="header-social-links">
@@ -147,12 +147,8 @@ $fullname = $_SESSION['fullname'];
         <main id="main">
             <section>
                 <!-- ======= Gallery Section ======= -->
-                <br>
-                <br>
                 <h2 align="center">Recommended ID</h2>
                 </align>
-                <br>
-
                 <section id="gallery" class="gallery">
                     <div class="container-fluid">
                         <div class="row gy-4 justify-content-center">
@@ -162,20 +158,18 @@ $fullname = $_SESSION['fullname'];
                             while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
                                 <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid"
-                                            alt="">
-                                        <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>"
-                                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                                            <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>"
-                                                title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i
-                                                    class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
+                                  <div class="gallery-item h-100">
+                                      <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
+                                      <p></p>
+                                      <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
+                                      <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
+                                      <div class="gallery-links d-flex align-items-center justify-content-center">
+                                          <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                          <!-- ลิงก์ไปยังสินค้านั้นๆ -->
+                                          <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
                                 <?php
                             }
                             ?>
