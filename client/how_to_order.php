@@ -57,12 +57,12 @@ include_once '../admin/db_connect.php';
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li><a href="index.php" class="active">Home</a></li>
+          <li><a href="index.php">Home</a></li>
           <li><a href="all_id.php">All ID</a></li>
           <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
             <img src="img/BG_Logo1.png" alt="">
           </a>
-          <li><a href="how_to_order.php">How To Order</a></li>
+          <li><a href="how_to_order.php" class="active">How To Order</a></li>
           <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
         </ul>
       </nav><!-- .navbar -->
