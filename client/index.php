@@ -25,7 +25,9 @@ $fullname = $_SESSION['fullname'];
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -33,7 +35,7 @@ $fullname = $_SESSION['fullname'];
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-    
+
 
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -65,26 +67,24 @@ $fullname = $_SESSION['fullname'];
 
                     }
                     ?>
-                    
+
                 </ul>
             </nav>
             <nav id="navbar" class="navbar">
                 <ul>
 
                     <li><a href="index.php" class="active">Home</a></li>
-                    <li><a href="all_id.html">All ID</a></li>
-                    <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+                    <li><a href="all_id.php">All ID</a></li>
+                    <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
-                    <li><a href="how_to_order.html">How To Order</a></li>
-                    <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
+                    <li><a href="how_to_order.php">How To Order</a></li>
+                    <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
             <div class="header-social-links">
                 <input type="text" class="sidebar-search" placeholder="Search...">
                 <button class="bi bi-search"></button>
-
-                <!-- <button class="bi bi-cart"></button> -->
             </div>
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
@@ -99,65 +99,58 @@ $fullname = $_SESSION['fullname'];
         <div class="page-header d-flex align-items-center">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
+
+                    <!-- ======= Gallery Single Section ======= -->
+                    <section id="gallery-single" class="gallery-single">
+                        <div class="container">
+                            <div class="position-relative h-100">
+                                <div class="slides-1 portfolio-details-slider swiper">
+                                    <div class="swiper-wrapper align-items-center">
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00000.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00001.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00002.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00003.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00004.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00005.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00006.png" alt="">
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00007.png" alt="">
+                                        </div>
+
+                                    </div>
+                                    <!-- <div class="swiper-pagination"></div> -->
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-button-next"></div>
+
+                            </div>
+
+                        </div>
+                    </section><!-- End Gallery Single Section -->
+
                 </div>
             </div>
         </div><!-- End Page Header -->
 
-        <!-- ======= Gallery Single Section ======= -->
-        <section id="gallery-single" class="gallery-single">
-            <div class="container">
-
-                <div class="position-relative h-100">
-                    <div class="slides-1 portfolio-details-slider swiper">
-                        <div class="swiper-wrapper align-items-center">
-
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00000.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00001.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00002.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00003.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00004.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00005.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00006.png" alt="">
-                            </div>
-                            <div class="swiper-slide">
-                                <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00007.png" alt="">
-                            </div>
-
-                        </div>
-                        <!-- <div class="swiper-pagination"></div> -->
-                    </div>
-                    <div class="swiper-button-prev"></div>
-                    <div class="swiper-button-next"></div>
-
-                </div>
-
-            </div>
-        </section><!-- End Gallery Single Section -->
-
-
-
         <main id="main">
             <section>
                 <!-- ======= Gallery Section ======= -->
-                <br>
-                <br>
-                <h3 align="center">Recommended ID</h3>
+                <h2 align="center">Recommended ID</h2>
                 </align>
-                <br>
-
                 <section id="gallery" class="gallery">
                     <div class="container-fluid">
                         <div class="row gy-4 justify-content-center">
@@ -165,23 +158,24 @@ $fullname = $_SESSION['fullname'];
                             $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY RAND() LIMIT 4; ";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
-                            ?>
+                                ?>
                                 <div class="col-xl-3 col-lg-4 col-md-6">
-                                    <div class="gallery-item h-100">
-                                        <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
-                                        <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
-                                        <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                                            <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                            <?php
+                                  <div class="gallery-item h-100">
+                                      <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
+                                      <p></p>
+                                      <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
+                                      <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
+                                      <div class="gallery-links d-flex align-items-center justify-content-center">
+                                          <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                          <!-- ลิงก์ไปยังสินค้านั้นๆ -->
+                                          <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                                <?php
                             }
                             ?>
                         </div>
-
                     </div>
                 </section>
 
@@ -198,10 +192,31 @@ $fullname = $_SESSION['fullname'];
             </div>
         </footer><!-- End Footer -->
 
-        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i></a>
 
         <div id="preloader">
             <div class="line"></div>
+        </div>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.php">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Vendor JS Files -->

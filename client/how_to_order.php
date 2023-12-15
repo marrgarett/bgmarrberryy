@@ -5,7 +5,6 @@ include_once '../admin/db_connect.php';
 $fullname = $_SESSION['fullname'];
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,15 +12,7 @@ $fullname = $_SESSION['fullname'];
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <?php
-    $bgmarr_name = $_GET['bgmarr_id'];
-
-    $sql = "SELECT * FROM `bgmarr_tbl`";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-    ?>
-
-  <title><?php echo $row['bgmarr_name'] ?></title>
+  <title>How To Order</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -32,9 +23,7 @@ $fullname = $_SESSION['fullname'];
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -83,7 +72,7 @@ $fullname = $_SESSION['fullname'];
                     <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
-                    <li><a href="how_to_order.php">How To Order</a></li>
+                    <li><a href="how_to_order.php" class="active">How To Order</a></li>
                     <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
@@ -103,87 +92,27 @@ $fullname = $_SESSION['fullname'];
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
-          <div class="col-lg-12 text-center">
-            <h2>
-              <?php echo $row['bgmarr_name'] ?>
-            </h2>
-            <br>
-            <a class="cta-btn" href="contact.php">Add To Cart</a>
+          <div class="col-lg-6 text-center">
+            <h2>Coming Soon.</h2>
+
+            <a class="cta-btn" href="index.php">Back</a>
           </div>
         </div>
       </div>
     </div><!-- End Page Header -->
 
-    <!-- ======= Gallery Single Section ======= -->
-    <section id="gallery-single" class="gallery-single">
-      <div class="container">
-
-        <div class="position-relative h-100">
-          <div class="slides-1 portfolio-details-slider swiper">
-            <div class="swiper-wrapper align-items-center">
-
-              <div class="swiper-slide">
-                <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="">
-              </div>
-
-            </div>
-
-            <div class="row justify-content-between gy-4 mt-4">
-
-              <div class="col-lg-12">
-                <div class="portfolio-description">
-                  <h1>รายละเอียด</h1>
-                  <h4>
-                    <?php echo $row['bgmarr_desc'] ?>
-                  </h4>
-                  <div class="testimonial-item">
-                    <p>
-                      <!-- <i class="bi bi-quote quote-icon-left"></i> -->
-                      <a href="<?php echo $row['bgmarr_url'] ?>">Details Image</a>
-                      <!-- <i class="bi bi-quote quote-icon-right"></i> -->
-
-                    </p><br>
-                    <div>
-                      <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4> -->
-                    </div>
-                  </div>
-
-
-                </div>
-              </div>
-              <!--
-              <div class="col-lg-3">
-                <div class="portfolio-info">
-                  <h3>Project information</h3>
-                  <ul>
-                    <li><strong>Category</strong> <span>Nature Photography</span></li>
-                    <li><strong>Client</strong> <span>ASU Company</span></li>
-                    <li><strong>Project date</strong> <span>01 March, 2022</span></li>
-                    <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                    <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
-                  </ul>
-                </div>
-              </div>
-              -->
-            </div>
-          </div>
-    </section><!-- End Gallery Single Section -->
-
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>BGMarrBerryy</span></strong>.
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+            <div class="container">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>BGMarrBerryy</span></strong>.
+                </div>
+            </div>
+        </footer><!-- End Footer -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <div id="preloader">
     <div class="line"></div>

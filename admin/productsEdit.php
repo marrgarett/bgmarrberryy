@@ -269,48 +269,31 @@ $bgmarr_id = $_GET["bgmarr_id"];
                                         <label for="input">ราคา</label>
                                         <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price'] ?>">
                                     </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label for="input">สถานะ</label><br>
-                                        <select class="form-control" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
-                                            <?php
-                                            $sql = "SELECT * FROM `status`";
-                                            $result = $conn->query($sql);
-                                            if ($result->num_rows > 0) {
-                                                while ($optionData = $result->fetch_assoc()) {
-                                                    $option = $optionData["status"];
-                                            ?>
-                                                    <option value="<?php echo $option; ?>" <?php if ($option == $row["bgmarr_status"]) echo 'selected="selected"'; ?>>
-                                                        <?php echo $option; ?>
-                                                    </option>
-                                            <?php
-                                                }
-                                            }
-                                            ?>
-                                        </select>
+                                    <div class="form-group col-md-4">
+                                        <label for="input">รูปภาพ</label>
+                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" value="<?php echo $row['bgmarr_img']?>">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
                                         <label for="inputAddress">คำอธิบาย</label>
-                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
+                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="16" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
                                     </div>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-3">
                                         <label for="inputAddress">ลิงก์โฟลเดอร์</label>
                                         <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="input">รูปภาพ</label><br>
-                                        <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="400px">
-                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
+                                    
+                                    <div class="form-group col-md-1">
+                                    <label for="input">สถานะ</label><br>
+                                        <select class="form-select form-select" name="bgmarr_status" id="bgmarr_status">
+                                            <option value="ว่าง">ว่าง</option>
+                                            <option value="ไม่ว่าง">ไม่ว่าง</option>    
+                                        </select>
                                     </div>
-
-
                                 </div>
-                                <br>
+                            <br>
 
 
 
