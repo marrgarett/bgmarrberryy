@@ -1,7 +1,9 @@
 <?php
 session_start();
 include_once('db_connect.php');
+
 $fullname = $_SESSION['fullname'];
+
 ?>
 
 <!DOCTYPE html>

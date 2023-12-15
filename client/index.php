@@ -25,9 +25,7 @@ $fullname = $_SESSION['fullname'];
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -61,10 +59,10 @@ $fullname = $_SESSION['fullname'];
                         print '<a href="../admin/login.php">Login</a>';
                         print '<a>//</a>';
                         print '<a href="../admin/register.php">Register</a>';
-                    }else{
-                        print '<a href=""><img src="img/icon/user.png" alt="" width="25px" style="margin-right: 5px;">'.$fullname.'</a>';
-                        print '<a href="../admin/login.php">logout</a>';
-
+                    } else {
+                        print '<a href="logout.php" name="logout" value="Logout">logout</a>'; // ล็อคเอาท์ออกจากระบบ
+                        print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . $fullname . ' </a>'; // แก้ไขข้อมูลส่วนตัว
+                        
                     }
                     ?>
 
@@ -158,21 +156,21 @@ $fullname = $_SESSION['fullname'];
                             $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY RAND() LIMIT 4; ";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
-                                ?>
+                            ?>
                                 <div class="col-xl-3 col-lg-4 col-md-6">
-                                  <div class="gallery-item h-100">
-                                      <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
-                                      <p></p>
-                                      <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
-                                      <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
-                                      <div class="gallery-links d-flex align-items-center justify-content-center">
-                                          <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
-                                          <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                          <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                      </div>
-                                  </div>
-                              </div>
-                                <?php
+                                    <div class="gallery-item h-100">
+                                        <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
+                                        <p></p>
+                                        <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
+                                        <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
+                                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                                            <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <!-- ลิงก์ไปยังสินค้านั้นๆ -->
+                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php
                             }
                             ?>
                         </div>
@@ -192,16 +190,14 @@ $fullname = $_SESSION['fullname'];
             </div>
         </footer><!-- End Footer -->
 
-        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-        <div id="preloader">
+        <!-- <div id="preloader">   //โหลดหน้าจอตอน refresh
             <div class="line"></div>
-        </div>
+        </div> -->
 
         <!-- Logout Modal-->
-        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-            aria-hidden="true">
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
