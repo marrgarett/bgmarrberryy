@@ -59,8 +59,8 @@ $fullname = $_SESSION['fullname'];
                         print '<a>//</a>';
                         print '<a href="../admin/register.php">Register</a>';
                     }else{
-                        print '<a href=""><img src="img/icon/user.png" alt="" width="25px" style="margin-right: 5px;">'.$fullname.'</a>';
-                        print '<a href="../admin/login.php">logout</a>';
+                        print '<a href="details_acc.php"><i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i>Welcome // '.$fullname.'</a>'; // แก้ไขข้อมูลส่วนตัว
+                        print '<a href="../admin/login.php">logout</a>'; // ล็อคเอาท์ออกจากระบบ
                         
                     }
                     ?>
@@ -71,11 +71,11 @@ $fullname = $_SESSION['fullname'];
                 <ul>
 
                     <li><a href="index.php" class="active">Home</a></li>
-                    <li><a href="all_id.html">All ID</a></li>
-                    <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+                    <li><a href="all_id.php">All ID</a></li>
+                    <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
                         <img src="img/BG_Logo1.png" alt="">
                     </a>
-                    <li><a href="how_to_order.html">How To Order</a></li>
+                    <li><a href="how_to_order.php">How To Order</a></li>
                     <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
@@ -98,18 +98,13 @@ $fullname = $_SESSION['fullname'];
         <div class="page-header d-flex align-items-center">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
-                </div>
-            </div>
-        </div><!-- End Page Header -->
 
         <!-- ======= Gallery Single Section ======= -->
         <section id="gallery-single" class="gallery-single">
             <div class="container">
-
                 <div class="position-relative h-100">
                     <div class="slides-1 portfolio-details-slider swiper">
                         <div class="swiper-wrapper align-items-center">
-
                             <div class="swiper-slide">
                                 <img src="assets/img/imgcarousel/BGXMARRBERRYY_คูปอง_00000.png" alt="">
                             </div>
@@ -146,14 +141,16 @@ $fullname = $_SESSION['fullname'];
             </div>
         </section><!-- End Gallery Single Section -->
 
-
+        </div>
+            </div>
+        </div><!-- End Page Header -->
 
         <main id="main">
             <section>
                 <!-- ======= Gallery Section ======= -->
                 <br>
                 <br>
-                <h3 align="center">Recommended ID</h3>
+                <h2 align="center">Recommended ID</h2>
                 </align>
                 <br>
 
@@ -172,7 +169,7 @@ $fullname = $_SESSION['fullname'];
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
                                             <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                             <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="Gallery 1" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +177,6 @@ $fullname = $_SESSION['fullname'];
                             }
                             ?>
                         </div>
-
                     </div>
                 </section>
 
@@ -191,6 +187,7 @@ $fullname = $_SESSION['fullname'];
         <!-- ======= Footer ======= -->
         <footer id="footer" class="footer">
             <div class="container">
+                
                 <div class="copyright">
                     &copy; Copyright <strong><span>BGMarrBerryy</span></strong>.
                 </div>

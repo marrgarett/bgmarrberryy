@@ -48,7 +48,7 @@ include_once '../admin/db_connect.php';
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
+      <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/apple-touch-icon.png" alt=""> -->
         <!-- <i class="bi bi-camera"></i>
@@ -58,16 +58,16 @@ include_once '../admin/db_connect.php';
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="all_id.html">All ID</a></li>
+          <li><a href="index.php" class="active">Home</a></li>
+          <li><a href="all_id.php">All ID</a></li>
           <!-- <li class="dropdown"><a href="#"><span>All Ranks</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="gallery.html">Nature</a></li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
+              <li><a href="gallery.php">Nature</a></li>
+              <li><a href="gallery.php">People</a></li>
+              <li><a href="gallery.php">Architecture</a></li>
+              <li><a href="gallery.php">Animals</a></li>
+              <li><a href="gallery.php">Sports</a></li>
+              <li><a href="gallery.php">Travel</a></li>
               <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
                 <ul>
                   <li><a href="#">Sub Menu 1</a></li>
@@ -78,8 +78,8 @@ include_once '../admin/db_connect.php';
             </ul>
           </li>
           -->
-          <li><a href="how_to_order.html">How To Order</a></li>
-          <!-- <li><a href="how_to_order.html">รีวิว</a></li> -->
+          <li><a href="how_to_order.php">How To Order</a></li>
+          <!-- <li><a href="how_to_order.php">รีวิว</a></li> -->
           <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
         </ul>
       </nav><!-- .navbar -->
@@ -114,7 +114,7 @@ include_once '../admin/db_connect.php';
             <h2><?php echo $row['bgmarr_name'] ?></h2>
 
 
-            <a class="cta-btn" href="contact.html">Add To Cart</a>
+            <a class="cta-btn" href="contact.php">Add To Cart</a>
 
           </div>
         </div>
