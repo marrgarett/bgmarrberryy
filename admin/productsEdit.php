@@ -267,25 +267,26 @@ $bgmarr_id = $_GET["bgmarr_id"];
                                         <label for="input">รูปภาพ</label>
                                         <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" value="<?php echo $row['bgmarr_img']?>">
                                     </div>
-                                    <div class="form-group col-md-2">
-                                        <!-- <label for="input">สถานะ</label><br> -->
-                                        <select class="form-select" name="bgmarr_status" id="bgmarr_status" hidden>
-                                            <option value="ว่าง">ว่าง</option>
-                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
-                                        </select>
-                                    </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
                                         <label for="inputAddress">คำอธิบาย</label>
-                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
+                                        <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="16" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
                                     </div>
-                                    <div class="form-group col-md-4">
+                                    <div class="form-group col-md-3">
                                         <label for="inputAddress">ลิงก์โฟลเดอร์</label>
                                         <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
                                     </div>
-                                </div><br>
+                                    
+                                    <div class="form-group col-md-1">
+                                    <label for="input">สถานะ</label><br>
+                                        <select class="form-select form-select" name="bgmarr_status" id="bgmarr_status">
+                                            <option value="ว่าง">ว่าง</option>
+                                            <option value="ไม่ว่าง">ไม่ว่าง</option>    
+                                        </select>
+                                    </div>
+                                </div>
                             <br>
 
 
