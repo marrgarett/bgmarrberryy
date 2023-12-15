@@ -82,8 +82,6 @@ $fullname = $_SESSION['fullname'];
             <div class="header-social-links">
                 <input type="text" class="sidebar-search" placeholder="Search...">
                 <button class="bi bi-search"></button>
-
-                <!-- <button class="bi bi-cart"></button> -->
             </div>
             <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
             <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>

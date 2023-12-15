@@ -112,10 +112,7 @@ include_once '../admin/db_connect.php';
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
             <h2><?php echo $row['bgmarr_name'] ?></h2>
-
-
             <a class="cta-btn" href="contact.php">Add To Cart</a>
-
           </div>
         </div>
       </div>
