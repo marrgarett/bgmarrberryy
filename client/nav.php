@@ -1,3 +1,8 @@
+<?php
+session_start();
+include_once '../admin/db_connect.php';
+?>
+
 <!-- ======= Header ======= -->
 <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
