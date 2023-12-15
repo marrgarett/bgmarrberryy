@@ -60,8 +60,7 @@ $fullname = $_SESSION['fullname'];
                         print '<a href="../admin/register.php">Register</a>';
                     }else{
                         print '<a href="details_acc.php"><i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i>Welcome // '.$fullname.'</a>'; // แก้ไขข้อมูลส่วนตัว
-                        print '<a href="../admin/login.php">logout</a>'; // ล็อคเอาท์ออกจากระบบ
-                        
+                        print '<a href="logout.php" name="logout" value="Logout">logout</a>'; // ล็อคเอาท์ออกจากระบบ
                     }
                     ?>
                     
@@ -195,6 +194,26 @@ $fullname = $_SESSION['fullname'];
 
         <div id="preloader">
             <div class="line"></div>
+        </div>
+
+        <!-- Logout Modal-->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <a class="btn btn-primary" href="login.php">Logout</a>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Vendor JS Files -->
