@@ -1,6 +1,9 @@
 <?php
 session_start();
 include_once '../admin/db_connect.php';
+
+$fullname = $_SESSION['fullname'];
+
 ?>
 
 <!DOCTYPE html>
@@ -29,6 +32,7 @@ include_once '../admin/db_connect.php';
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    
 
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
@@ -49,15 +53,24 @@ include_once '../admin/db_connect.php';
         <div class="container-fluid d-flex align-items-center justify-content-between">
             <nav id="navbar" class="navbar">
                 <ul>
-                    <a href="../admin/login.php">Login</a>
-                    <a>//</a>
-                    <a href="register.php">Register</a>
+                    <?php
+                    if ($fullname == '') {
+                        print '<a href="../admin/login.php">Login</a>';
+                        print '<a>//</a>';
+                        print '<a href="../admin/register.php">Register</a>';
+                    }else{
+                        print '<a href=""><img src="img/icon/user.png" alt="" width="25px" style="margin-right: 5px;">'.$fullname.'</a>';
+                        print '<a href="../admin/login.php">logout</a>';
+                        
+                    }
+                    ?>
+                    
                 </ul>
             </nav>
             <nav id="navbar" class="navbar">
                 <ul>
 
-                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="index.php" class="active">Home</a></li>
                     <li><a href="all_id.html">All ID</a></li>
                     <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
                         <img src="img/BG_Logo1.png" alt="">
@@ -66,7 +79,6 @@ include_once '../admin/db_connect.php';
                     <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
                 </ul>
             </nav><!-- .navbar -->
-
             <div class="header-social-links">
                 <input type="text" class="sidebar-search" placeholder="Search...">
                 <button class="bi bi-search"></button>
