@@ -2,6 +2,7 @@
 session_start();
 include_once '../admin/db_connect.php';
 
+
 $fullname = $_SESSION['fullname'];
 
 ?>
@@ -61,7 +62,7 @@ $fullname = $_SESSION['fullname'];
                     }else{
                         print '<a href=""><img src="img/icon/user.png" alt="" width="25px" style="margin-right: 5px;">'.$fullname.'</a>';
                         print '<a href="../admin/login.php">logout</a>';
-                        
+
                     }
                     ?>
                     
