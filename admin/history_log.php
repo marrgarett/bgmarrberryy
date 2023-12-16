@@ -1,12 +1,12 @@
 <?php
 session_start();
 include_once('db_connect.php');
+require('order_number_generate\yearmonth6digitnumber.php');
 
 $sql = "SELECT * FROM `history_tbl`";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $date = $row['his_start'];
-
 
 if (!empty($_POST['his_start'])) {
     $sql = "SELECT * FROM history_tbl WHERE his_start LIKE '$date%'";
@@ -244,12 +244,12 @@ $fullname = $_SESSION['fullname'];
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
+                    <br>
                     <?php
                     date_default_timezone_set("Asia/Bangkok");
                     echo "Today is " . date("Y-m-d");
                     echo "<br>";
                     echo "The time is " . date("H:i:s");
-
 
                     ?>
                     <?php
@@ -283,6 +283,9 @@ $fullname = $_SESSION['fullname'];
                         <label for="start">Start date:</label>
 
                         <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
+                    </div>
+                    <div>
+                    <?php echo $generateorder." // เลข order สำหรับ generate"?>
                     </div>
                     <div class="card">
                         <div class="card-body">
