@@ -52,40 +52,10 @@ $fullname = $_SESSION['fullname'];
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <?php
-                    if ($fullname == '') {
-                        print '<a href="../admin/login.php">Login</a>';
-                        print '<a>//</a>';
-                        print '<a href="../admin/register.php">Register</a>';
-                    } else {
-                        print '<a href="logout.php" name="logout" value="Logout">logout</a>'; // ล็อคเอาท์ออกจากระบบ
-                        print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . $fullname . ' </a>'; // แก้ไขข้อมูลส่วนตัว
-                        
-                    }
-                    ?>
-
-                </ul>
-            </nav>
-            <nav id="navbar" class="navbar">
-                <ul>
-
-                    <li><a href="index.php" class="active">Home</a></li>
-                    <li><a href="all_id.php">All ID</a></li>
-                    <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
-                        <img src="img/BG_Logo1.png" alt="">
-                    </a>
-                    <li><a href="how_to_order.php">How To Order</a></li>
-                    <li><a href="https://www.facebook.com/bgmarrberryy" target="_blank">Contact Us</a></li>
-                </ul>
-            </nav><!-- .navbar -->
-            <div class="header-social-links">
-                <input type="text" class="sidebar-search" placeholder="Search...">
-                <button class="bi bi-search"></button>
-            </div>
-            <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-            <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+            
+            <!-- Start.navbar -->
+            <?php include_once 'sideMenu.php'; ?>
+            <!-- End.navbar -->
 
         </div>
     </header><!-- End Header -->
@@ -164,7 +134,7 @@ $fullname = $_SESSION['fullname'];
                                         <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
                                         <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                             <!-- ลิงก์ไปยังสินค้านั้นๆ -->
                                             <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
@@ -181,14 +151,10 @@ $fullname = $_SESSION['fullname'];
 
         </main><!-- End #main -->
         </section>
+        
         <!-- ======= Footer ======= -->
-        <footer id="footer" class="footer">
-            <div class="container">
-                <div class="copyright">
-                    &copy; Copyright <strong><span>BGMarrBerryy</span></strong>.
-                </div>
-            </div>
-        </footer><!-- End Footer -->
+            <?php include_once 'footer.php'; ?>
+        <!-- End Footer -->
 
         <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

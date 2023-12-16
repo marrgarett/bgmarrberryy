@@ -51,7 +51,9 @@ $fullname = $_SESSION['fullname'];
   <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             
+        <!-- Start.navbar -->
           <?php include_once 'sideMenu.php'; ?>
+        <!-- End.navbar -->
 
         </div>
     </header><!-- End Header -->
@@ -63,7 +65,7 @@ $fullname = $_SESSION['fullname'];
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
-            <h2>ALL ID</h2>
+            <h2>ALL RANKS</h2>
           </div>
         </div>
       </div>
@@ -99,10 +101,9 @@ $fullname = $_SESSION['fullname'];
               <!-- End About Section -->
   </main><!-- End #main -->
 
-  <!-- ======= Footer ======= -->
-  <?php include_once 'footer.php'; ?>
-  <!-- End Footer -->
-
+    <!-- ======= Footer ======= -->
+        <?php include_once 'footer.php'; ?>
+    <!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

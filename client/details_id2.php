@@ -1,6 +1,9 @@
 <?php
 session_start();
 include_once '../admin/db_connect.php';
+
+$fullname = $_SESSION['fullname'];
+
 ?>
 
 <!DOCTYPE html>
@@ -48,51 +51,10 @@ include_once '../admin/db_connect.php';
   <header id="header" class="header d-flex align-items-center fixed-top">
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center  me-auto me-lg-0">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/apple-touch-icon.png" alt=""> -->
-        <!-- <i class="bi bi-camera"></i>
-        <h1>PhotoFolio</h1> -->
-        <img src="img/BG_Logo1.png" alt="">
-      </a>
-
-      <nav id="navbar" class="navbar">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="all_id.html">All ID</a></li>
-          <!-- <li class="dropdown"><a href="#"><span>All Ranks</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-              <li><a href="gallery.html">Nature</a></li>
-              <li><a href="gallery.html">People</a></li>
-              <li><a href="gallery.html">Architecture</a></li>
-              <li><a href="gallery.html">Animals</a></li>
-              <li><a href="gallery.html">Sports</a></li>
-              <li><a href="gallery.html">Travel</a></li>
-              <li class="dropdown"><a href="#"><span>Sub Menu</span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
-                <ul>
-                  <li><a href="#">Sub Menu 1</a></li>
-                  <li><a href="#">Sub Menu 2</a></li>
-                  <li><a href="#">Sub Menu 3</a></li>
-                </ul>
-              </li>
-            </ul>
-          </li>
-          -->
-          <li><a href="how_to_order.html">How To Order</a></li>
-          <!-- <li><a href="how_to_order.html">รีวิว</a></li> -->
-          <li><a href="https://www.facebook.com/bgmarrberryy">Contact Us</a></li>
-        </ul>
-      </nav><!-- .navbar -->
-
-      <div class="header-social-links">
-        <input type="text" class="sidebar-search" placeholder="Search...">
-        <button class="bi bi-search"></button>
-        <!-- <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></i></a> -->
-      </div>
-      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
-      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
+      <!-- Start.navbar -->
+        <?php include_once 'sideMenu.php'; ?>
+      <!-- End.navbar -->
+      
 
     </div>
   </header><!-- End Header -->
@@ -101,12 +63,12 @@ include_once '../admin/db_connect.php';
 
     <!-- ======= End Page Header ======= -->
     <?php
-        $bgmarr_name = $_GET['id'];
-        
-        $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_assoc($result);
-        ?>
+    $bgmarr_name = $_GET['id'];
+
+    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    ?>
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
@@ -121,10 +83,12 @@ include_once '../admin/db_connect.php';
       </div>
     </div><!-- End Page Header -->
 
+    
+
     <!-- ======= Gallery Single Section ======= -->
     <section id="gallery-single" class="gallery-single">
       <div class="container">
-        
+
         <div class="position-relative h-100">
           <div class="slides-1 portfolio-details-slider swiper">
             <div class="swiper-wrapper align-items-center">
@@ -134,76 +98,63 @@ include_once '../admin/db_connect.php';
               </div>
 
             </div>
+            <div class="swiper-pagination"></div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
 
-            <div class="row justify-content-between gy-4 mt-4">
+        </div>
 
-              <div class="col-lg-8">
-                <div class="portfolio-description">
-                  <h2>รายละเอียด</h2>
-                  <p>
+        <div class="row justify-content-between gy-4 mt-4">
+
+          <div class="col-lg-12">
+            <div class="portfolio-description">
+              <h2>รายละเอียด</h2>
+              <p>
                     <?php echo $row['bgmarr_desc'] ?>
                   </p>
 
-
-                  <div class="testimonial-item">
+              <div class="testimonial-item">
                     <p>
-                      <i class="bi bi-quote quote-icon-left"></i>
-                          <a href="">https://www.google.com/</a>
+                      <i class="bi bi-quote quote-icon-left"></i>     
+                      รูปเพิ่มเติม >>> <a href=""><?php echo $row['bgmarr_url'] ?></a>
                       <i class="bi bi-quote quote-icon-right"></i>
-                      
-                    </p><br>
-                    <div>
-                      <!-- <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
-                  <h4>Designer</h4> -->
-                    </div>
-                  </div>
 
-
-                </div>
-              </div>
-
-              <div class="col-lg-3">
-                <div class="portfolio-info">
-                  <h3>Project information</h3>
-                  <ul>
-                    <li><strong>Category</strong> <span>Nature Photography</span></li>
-                    <li><strong>Client</strong> <span>ASU Company</span></li>
-                    <li><strong>Project date</strong> <span>01 March, 2022</span></li>
-                    <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
-                    <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
-                  </ul>
-                </div>
+                    </p>
               </div>
 
             </div>
-
           </div>
+
+          <!-- <div class="col-lg-3">
+            <div class="portfolio-info">
+              <h3>Project information</h3>
+              <ul>
+                <li><strong>Category</strong> <span>Nature Photography</span></li>
+                <li><strong>Client</strong> <span>ASU Company</span></li>
+                <li><strong>Project date</strong> <span>01 March, 2022</span></li>
+                <li><strong>Project URL</strong> <a href="#">www.example.com</a></li>
+                <li><a href="#" class="btn-visit align-self-start">Visit Website</a></li>
+              </ul>
+            </div>
+          </div> -->
+
+        </div>
+
+      </div>
     </section><!-- End Gallery Single Section -->
 
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer" class="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>PhotoFolio</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/photofolio-bootstrap-photography-website-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End Footer -->
+    <?php include_once 'footer.php'; ?>
+  <!-- End Footer -->
 
   <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-  <div id="preloader">
+  <!-- <div id="preloader">
     <div class="line"></div>
-  </div>
+  </div> -->
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
