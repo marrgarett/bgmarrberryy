@@ -117,7 +117,7 @@ $fullname = $_SESSION['fullname'];
               <div class="testimonial-item">
                     <p>
                       <i class="bi bi-quote quote-icon-left"></i>     
-                      รูปเพิ่มเติม >>> <a href=""><?php echo $row['bgmarr_url'] ?></a>
+                      รูปเพิ่มเติม >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank"><?php echo $row['bgmarr_url'] ?></a>
                       <i class="bi bi-quote quote-icon-right"></i>
 
                     </p>
