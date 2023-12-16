@@ -51,7 +51,9 @@ $fullname = $_SESSION['fullname'];
   <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid d-flex align-items-center justify-content-between">
             
-          <?php include_once 'sideMenu.php'; ?>
+          <!-- Start.navbar -->
+            <?php include_once 'sideMenu.php'; ?>
+          <!-- End.navbar -->
 
         </div>
     </header><!-- End Header -->
