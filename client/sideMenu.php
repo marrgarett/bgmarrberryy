@@ -16,9 +16,9 @@
 </nav>
 <nav id="navbar" class="navbar">
     <ul>
-        <li><a href="index.php" class="active">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="all_id.php">All ID</a></li>
-        <li><a href="all_ranks.php">All Ranks</a></li>
+        <!-- <li><a href="all_ranks.php">All Ranks</a></li> -->
         <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
             <img src="img/BG_Logo1.png" alt="">
         </a>
@@ -33,8 +33,9 @@
 <div class="header-social-links">
     <input type="text" class="sidebar-search" placeholder="search">
     <i class="bi bi-search"></i>
-    <i class="bi bi-cart"></i>
+    <a href="cart.php"><i class="bi bi-cart"></i></a>
     <div class="cartcount">
         5
     </div>
+
 </div>
