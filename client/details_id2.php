@@ -68,14 +68,16 @@ $fullname = $_SESSION['fullname'];
     $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
+
+    $sharp = "#";  
+    $bgm = "BGM";
     ?>
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
-            <h2><?php echo $row['bgmarr_name'] ?></h2>
-
-
+            <h3><?php echo $row['bgmarr_name']?> <?php echo $sharp ?><?php echo $row['bgmarr_price']?><?php echo $bgm?></h3>
+            
             <a class="cta-btn" href="contact.html">Add To Cart</a>
 
           </div>
