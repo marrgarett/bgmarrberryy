@@ -1,0 +1,42 @@
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "admin/404.html": true,
+        "admin/blank.html": true,
+        "admin/adlogin.html": true,
+        "admin/buttons.html": true,
+        "admin/cards.html": true,
+        "admin/charts.html": true,
+        "admin/forgot-password.html": true,
+        "admin/index.html": true,
+        "admin/login.html": true,
+        "admin/register.html": true,
+        "admin/tables.html": true,
+        "admin/utilities-animation.html": true,
+        "admin/utilities-border.html": true,
+        "admin/utilities-color.html": true,
+        "admin/utilities-other.html": true
+    },
+    "hide-files.files": [
+        "admin/404.html",
+        "admin/blank.html",
+        "admin/adlogin.html",
+        "admin/buttons.html",
+        "admin/cards.html",
+        "admin/charts.html",
+        "admin/forgot-password.html",
+        "admin/index.html",
+        "admin/login.html",
+        "admin/register.html",
+        "admin/tables.html",
+        "admin/utilities-animation.html",
+        "admin/utilities-border.html",
+        "admin/utilities-color.html",
+        "admin/utilities-other.html"
+    ]
+}
