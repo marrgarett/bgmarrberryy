@@ -15,7 +15,7 @@
 
 <nav id="navbar" class="navbar"> 
     <ul>
-        <li><a href="index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li><!-- class="active"hover ตัวหนังสือ -->
         <li><a href="all_id.php">All ID</a></li>
         <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
             <img src="img/BG_Logo1.png" alt="">
