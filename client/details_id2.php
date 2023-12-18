@@ -24,7 +24,9 @@ $fullname = $_SESSION['fullname'];
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -52,9 +54,9 @@ $fullname = $_SESSION['fullname'];
     <div class="container-fluid d-flex align-items-center justify-content-between">
 
       <!-- Start.navbar -->
-        <?php include_once 'sideMenu.php'; ?>
+      <?php include_once 'sideMenu.php'; ?>
       <!-- End.navbar -->
-      
+
 
     </div>
   </header><!-- End Header -->
@@ -69,23 +71,26 @@ $fullname = $_SESSION['fullname'];
     $result = mysqli_query($conn, $sql);
     $row = mysqli_fetch_assoc($result);
 
-    $sharp = "#";  
+    $sharp = "#";
     $bgm = "BGM";
     ?>
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
           <div class="col-lg-6 text-center">
-            <h3><?php echo $row['bgmarr_name']?> <?php echo $sharp ?><?php echo $row['bgmarr_price']?><?php echo $bgm?></h3>
-            
+            <h3>
+              <?php echo $row['bgmarr_name'] ?>
+              <?php echo $sharp ?>
+              <?php echo $row['bgmarr_price'] ?>
+              <?php echo $bgm ?>
+            </h3>
+
             <a class="cta-btn" href="contact.html">Add To Cart</a>
 
           </div>
         </div>
       </div>
     </div><!-- End Page Header -->
-
-    
 
     <!-- ======= Gallery Single Section ======= -->
     <section id="gallery-single" class="gallery-single">
@@ -113,16 +118,18 @@ $fullname = $_SESSION['fullname'];
             <div class="portfolio-description">
               <h2>รายละเอียด</h2>
               <p>
-                    <?php echo $row['bgmarr_desc'] ?>
-                  </p>
+                <?php echo $row['bgmarr_desc'] ?>
+              </p>
 
               <div class="testimonial-item">
-                    <p>
-                      <i class="bi bi-quote quote-icon-left"></i>     
-                      รูปเพิ่มเติม >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank"><?php echo $row['bgmarr_url'] ?></a>
-                      <i class="bi bi-quote quote-icon-right"></i>
+                <p>
+                  <i class="bi bi-quote quote-icon-left"></i>
+                  รูปเพิ่มเติม >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank">
+                    <?php echo $row['bgmarr_url'] ?>
+                  </a>
+                  <i class="bi bi-quote quote-icon-right"></i>
 
-                    </p>
+                </p>
               </div>
 
             </div>
@@ -149,10 +156,11 @@ $fullname = $_SESSION['fullname'];
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-    <?php include_once 'footer.php'; ?>
+  <?php include_once 'footer.php'; ?>
   <!-- End Footer -->
 
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+      class="bi bi-arrow-up-short"></i></a>
 
   <!-- <div id="preloader">
     <div class="line"></div>
