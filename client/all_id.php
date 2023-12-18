@@ -86,7 +86,7 @@ $fullname = $_SESSION['fullname'];
                                       <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
                                       <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
                                       <div class="gallery-links d-flex align-items-center justify-content-center">
-                                          <a href="details_id.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                          <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                           <!-- ลิงก์ไปยังสินค้านั้นๆ -->
                                           <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                       </div>
