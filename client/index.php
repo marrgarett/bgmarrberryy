@@ -52,7 +52,7 @@ $fullname = $_SESSION['fullname'];
     <!-- ======= Header ======= -->
     <header id="header" class="header d-flex align-items-center fixed-top">
         <div class="container-fluid d-flex align-items-center justify-content-between">
-            
+
             <!-- Start.navbar -->
             <?php include_once 'sideMenu.php'; ?>
             <!-- End.navbar -->
@@ -138,8 +138,10 @@ $fullname = $_SESSION['fullname'];
                                             <!-- ลิงก์ไปยังสินค้านั้นๆ -->
                                             <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
+
                                     </div>
                                 </div>
+                            
                             <?php
                             }
                             ?>
@@ -147,13 +149,14 @@ $fullname = $_SESSION['fullname'];
                     </div>
                 </section>
 
+
                 <!-- End Gallery Section -->
 
         </main><!-- End #main -->
         </section>
-        
+
         <!-- ======= Footer ======= -->
-            <?php include_once 'footer.php'; ?>
+        <?php include_once 'footer.php'; ?>
         <!-- End Footer -->
 
         <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
