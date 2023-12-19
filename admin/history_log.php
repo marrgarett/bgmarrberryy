@@ -247,7 +247,7 @@ $fullname = $_SESSION['fullname'];
                     <br>
                     <?php
                     date_default_timezone_set("Asia/Bangkok");
-                    echo "Today is " . date("Y-m-d");
+                    echo "Today is " . date("d-m-Y");
                     echo "<br>";
                     echo "The time is " . date("H:i:s");
 
