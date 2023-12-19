@@ -95,23 +95,10 @@ $bgm = "BGM";
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td style="padding-top: 15px;"><img
-                                                            src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>"
-                                                            alt="" width="240"></td>
-                                                    <td style="padding-top: 15px;">
-                                                        <h4>
-                                                            <?php echo $row['bgmarr_name'] ?>
-                                                            <?php echo $sharp ?>
-                                                            <?php echo $row['bgmarr_price'] ?>
-                                                            <?php echo $bgm ?>
-                                                        </h4>
-                                                    </td>
-
-                                                    <td class="table_cart">
-                                                        <h5>
-                                                            <?php echo $row['bgmarr_price'] ?>
-                                                        </h5>
-                                                    </td>
+                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
+                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></td>
+                                                    
+                                                    <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
                                                     <td>
                                                         <div class="counter">
                                                             <span class="down" onClick='decreaseCount(event, this)'><i
