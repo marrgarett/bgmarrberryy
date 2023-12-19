@@ -27,6 +27,7 @@
 </nav>
 
 <!-- End.navbar -->
+
 <div class="header-social-links">
     <input type="text" class="sidebar-search" placeholder="search">
     <i class="bi bi-search"></i>
