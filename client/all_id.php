@@ -4,6 +4,14 @@ include_once '../admin/db_connect.php';
 
 $fullname = $_SESSION['fullname'];
 
+$bgmarr_name = $_GET['id'];
+
+    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $sharp = "#";
+    $bgm = "BGM";
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +91,7 @@ $fullname = $_SESSION['fullname'];
                                   <div class="gallery-item h-100">
                                       <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
                                       <p></p>
-                                      <h5 class="text-center"><?php echo $row['bgmarr_name'] ?></h5>
+                                      <h5 class="text-center"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></h5>
                                       <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
                                       <div class="gallery-links d-flex align-items-center justify-content-center">
                                           <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
