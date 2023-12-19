@@ -29,7 +29,9 @@ $bgm = "BGM";
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -73,7 +75,7 @@ $bgm = "BGM";
                         <h2 class="text-center">Cart</h2>
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
-                        
+
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
@@ -93,30 +95,52 @@ $bgm = "BGM";
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="240"></td>
-                                                    <td style="padding-top: 15px;"><h4><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></h4></td>
-                                                    
-                                                    <td class="table_cart"><h5><?php echo $row['bgmarr_price']?></h5></td>
+                                                    <td style="padding-top: 15px;"><img
+                                                            src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>"
+                                                            alt="" width="240"></td>
+                                                    <td style="padding-top: 15px;">
+                                                        <h4>
+                                                            <?php echo $row['bgmarr_name'] ?>
+                                                            <?php echo $sharp ?>
+                                                            <?php echo $row['bgmarr_price'] ?>
+                                                            <?php echo $bgm ?>
+                                                        </h4>
+                                                    </td>
+
+                                                    <td class="table_cart">
+                                                        <h5>
+                                                            <?php echo $row['bgmarr_price'] ?>
+                                                        </h5>
+                                                    </td>
                                                     <td>
                                                         <div class="counter">
-                                                            <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
+                                                            <span class="down" onClick='decreaseCount(event, this)'><i
+                                                                    class="bi bi-dash-circle-fill"></i></span>
                                                             <input type="text" value="1">
-                                                            <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
+                                                            <span class="up" onClick='increaseCount(event, this)'><i
+                                                                    class="bi bi-plus-circle-fill"></i></span>
                                                         </div>
                                                     </td>
-                                                    <td class="table_cart"><h5><?php echo $row ['bgmarr_price'] ?></h5></td>
-                                                    <td class="table_cart">THB</td>
+                                                    <td class="table_cart">
+                                                        <h5>
+                                                            <?php echo $row['bgmarr_price'] ?>
+                                                        </h5>
+                                                    </td>
+                                                    <td class="table_cart">
+                                                        <h5>THB</h5>
+                                                    </td>
                                                 </tr>
                                             </tbody>
 
                                         </table>
                                         <hr>
                                         <a href="Javascript:if(confirm('ต้องการล้างข้อมูลทิ้งหรือไม่')==true) 
-                                                {window.location='cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">All Remove</a>
+                                                {window.location='cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}"
+                                            class="btn btn-danger">All Remove</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-4">
+                            <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>Total shopping cart</h3>
@@ -138,7 +162,8 @@ $bgm = "BGM";
     <?php include_once 'footer.php'; ?>
     <!-- End Footer -->
 
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
 
     <!-- <div id="preloader">
     <div class="line"></div>
