@@ -1,7 +1,7 @@
 <?php
 session_start();
 include_once('db_connect.php');
-require('order_number_generate\yearmonth6digitnumber.php');
+//require('order_number_generate\yearmonth6digitnumber.php');
 
 $sql = "SELECT * FROM `history_tbl`";
 $result = $conn->query($sql);
