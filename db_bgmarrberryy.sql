@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 17, 2023 at 03:53 PM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 8.1.6
+-- Generation Time: Dec 19, 2023 at 03:38 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,7 +37,7 @@ CREATE TABLE `bgmarr_tbl` (
   `bgmarr_price` varchar(255) NOT NULL,
   `bgmarr_img` varchar(255) NOT NULL,
   `bgmarr_status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `bgmarr_tbl`
@@ -69,9 +69,9 @@ INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_url
 (23, 'BGMARR029', 'Glitchpop 1 (Frenzy, Judge, Bulldog, Odin, Dagger), Chronovoid (Vandal), Elderflame (Operator, Melee), Luxe (Knife), Oni 1 (Shorty, Phantom), Prime 1 (Classic, Spectre, Vandal), Reaver 1 (Sheriff), Reaver 2 (Ghost), Sovereign (Guardian)', 'https://drive.google.com/drive/folders/1E2JjkDtzBRspRmgzP0YizCLrpId8QqEH', 'MikazzaJr', 'BGMARR042_120256', '20', 'BGMARR029_00000.jpg', 'ว่าง'),
 (24, 'BGMARR031', 'Champions 2022 (Phantom, Butterfly), BlastX (Phantom), Celestial (Fan), Elderflame (Frenzy, Vandal), Forsaken (Classic, Blade), Glitchpop 2 (Vandal, Operator), Neptune (Vandal), Oni 1 (Phantom), Origin (Blade), Prime 1 (Vandal), Protocol 781-A (Sheriff), Reaver 1 (Vandal), Reaver 2 (Phantom), RGX 11Z Pro 1 (Guardian, Vandal, Katana), RGX 11Z Pro 2 (Phantom, Operator), Ruination (Spectre, Phantom, Blade), Sentinels of light (Vandal), Sovereign (Marshal), Spectrum (Phantom)', 'https://drive.google.com/drive/folders/11HCGLPSbPKwnKPVUfkdho3ITW6W3jgck', 'Sixkyyz', 'BGMARR044_101311', '20', 'BGMARR031_00000.jpg', 'ว่าง'),
 (25, 'BGMARR034', 'Snowfall (Classic, Judge, Phantom, Ares, Wand), Elderflame (Dagger), Glitchpop 1 (Frenzy, Odin, Dagger), Magepunk 2 (Ares), Oni 1 (Bucky, Phantom), Origin (Operator), Prime 1 (Vandal), Prism II (Stinger), Reaver 1 (Vandal, Operator), Recon (Phantom), Ruination (Ghost, Guardian), Sensation (Stinger), Sentinels of light (Sheriff, Vandal), Singularity (Spectre, Phantom), Spectrum (Classic, Bulldog, Phantom), Tethered Realms (Prosperity), Valorant Go! Vol.2 (Melee)', 'https://drive.google.com/drive/folders/1jbUQ69cYvoyGtymyVd18BBPnGCAiREDR', 'musiobrfearth', 'BGMARR049_302117', '20', 'BGMARR034_00000.jpg', 'ว่าง'),
-(26, 'BGMARR038 #30BGM', 'Ruination (Ghost, Spectre, Guardian, Phantom, Blade), Sentinels of light  (Sheriff, Vandal, Operator, Ares, Relic), Spectrum  (Classic, Bulldog, Guardian, Phantom, Melee), BlastX (Frenzy), Forsaken (Operator), Glitchpop 2 (Vandal), G.U.N (Operator), Nunca Olvidados (Melee), Oni 1 (Phantom), Origin (Vandal), Prime 1 (Classic, Spectre), Prime 2 (Phantom), Reaver 1 (Vandal, Knife), Recon (Phantom), RGX 11Z Pro 1 (Blade), Sovereign (Ghost), Team Ace (Vandal), Valorant Go! Vol.1 (Knife), Valorant Go! Vol.2 (Melee)', 'https://drive.google.com/drive/folders/1XJMy2gRkYYAqd8t7ru0MKQqaaAU81tq0', 'AmaruTwists', 'BGMARR057_302121', '30', 'BGMARR038_00000.jpg', 'ว่าง'),
-(27, 'BGMARR039 #30BGM', 'Endeavour (Ghost, Bulldog, Vandal, Operator, Ares), Recon (Ghost, Spectre, Guardian, Phantom, Balisong), RGX 11Z Pro 2 (Classic, Spectre, Phantom, Operator, Firefly), Forsaken (Classic), Glitchpop 2 (Classic), Ion 1 (Bucky), Magepunk 2 (Guardian), Prime 1 (Classic, Vandal), Protocol 781-A (Spectre, Bulldog), Radiant crisis 001 (Phantom), RGX 11Z Pro 1 (Stinge, Vandal, Blade), Ruination (Guardian), Singularity (Sheriff), Spectrum Phantom), Valorant Go! Vol.1 (knife)', 'https://drive.google.com/drive/folders/1kbecUfali0iYjAeNLOBC2pSseKe16_eD', 'Insanesoapman', 'BGMARR060_061422', '30', 'BGMARR039_00000.jpg', 'ว่าง'),
-(28, 'BGMARR043 #70BGM', 'Champions 2021 (Vandal, Melee), Forsaken (Classic, Spectre, Vandal, Operator, Melee), Infantry (Ghost, Spectre, Guardian, Operator, Ares), Magepunk 2 (Sheriff, Guardian, Operator, Ares, Melee), Minima (Sheriff, Spectre, Phantom, Operator, Ares), Prime 2 (Frenzy, Bucky, Phantom, Odin, Melee), Protocol 781-A (Sheriff, Spectre, Bulldog, Phantom, Melee), Reaver 1 (Sheriff, Guardian, Vandal, Operator, Melee), RGX 11Z Pro 1 (Frenzy, Stinger, Guardian, Vandal, Melee), Spectrum (Classic, Bulldog, Guardian, Phantom, Melee), Arcane (Sheriff), BlastX (Phantom), Celestial (Melee), Elderflame (Operator), Glitchpop 2 (Vandal), G.U.N (Classic), Magepunk 1 (Spectre, Marshal), Ion 1 (Sheriff), Oni (Phantom), Origin (Vandal), Nunca Olvidados (Melee), Prime 1 (Vandal), Recon (Phantom, Melee), Ruination (Phantom), Sentinels of light (Sheriff, Vandal, Operator), Singularity (Spectre, Phantom), Snowfall (Phantom), Sovereign (Ghost, Stinger), Spline (Spectre), Tethered Realms (Melee)', 'https://drive.google.com/drive/folders/1LF9CPFifvMkjodG9ZH79iPmgdm2Es2hD', 'GGAUTO20', 'BGMARR065_252350', '70', 'BGMARR043_00000.jpg', 'ว่าง');
+(26, 'BGMARR038', 'Ruination (Ghost, Spectre, Guardian, Phantom, Blade), Sentinels of light  (Sheriff, Vandal, Operator, Ares, Relic), Spectrum  (Classic, Bulldog, Guardian, Phantom, Melee), BlastX (Frenzy), Forsaken (Operator), Glitchpop 2 (Vandal), G.U.N (Operator), Nunca Olvidados (Melee), Oni 1 (Phantom), Origin (Vandal), Prime 1 (Classic, Spectre), Prime 2 (Phantom), Reaver 1 (Vandal, Knife), Recon (Phantom), RGX 11Z Pro 1 (Blade), Sovereign (Ghost), Team Ace (Vandal), Valorant Go! Vol.1 (Knife), Valorant Go! Vol.2 (Melee)', 'https://drive.google.com/drive/folders/1XJMy2gRkYYAqd8t7ru0MKQqaaAU81tq0', 'AmaruTwists', 'BGMARR057_302121', '30', 'BGMARR038_00000.jpg', 'ว่าง'),
+(27, 'BGMARR039', 'Endeavour (Ghost, Bulldog, Vandal, Operator, Ares), Recon (Ghost, Spectre, Guardian, Phantom, Balisong), RGX 11Z Pro 2 (Classic, Spectre, Phantom, Operator, Firefly), Forsaken (Classic), Glitchpop 2 (Classic), Ion 1 (Bucky), Magepunk 2 (Guardian), Prime 1 (Classic, Vandal), Protocol 781-A (Spectre, Bulldog), Radiant crisis 001 (Phantom), RGX 11Z Pro 1 (Stinge, Vandal, Blade), Ruination (Guardian), Singularity (Sheriff), Spectrum Phantom), Valorant Go! Vol.1 (knife)', 'https://drive.google.com/drive/folders/1kbecUfali0iYjAeNLOBC2pSseKe16_eD', 'Insanesoapman', 'BGMARR060_061422', '30', 'BGMARR039_00000.jpg', 'ว่าง'),
+(28, 'BGMARR043', 'Champions 2021 (Vandal, Melee), Forsaken (Classic, Spectre, Vandal, Operator, Melee), Infantry (Ghost, Spectre, Guardian, Operator, Ares), Magepunk 2 (Sheriff, Guardian, Operator, Ares, Melee), Minima (Sheriff, Spectre, Phantom, Operator, Ares), Prime 2 (Frenzy, Bucky, Phantom, Odin, Melee), Protocol 781-A (Sheriff, Spectre, Bulldog, Phantom, Melee), Reaver 1 (Sheriff, Guardian, Vandal, Operator, Melee), RGX 11Z Pro 1 (Frenzy, Stinger, Guardian, Vandal, Melee), Spectrum (Classic, Bulldog, Guardian, Phantom, Melee), Arcane (Sheriff), BlastX (Phantom), Celestial (Melee), Elderflame (Operator), Glitchpop 2 (Vandal), G.U.N (Classic), Magepunk 1 (Spectre, Marshal), Ion 1 (Sheriff), Oni (Phantom), Origin (Vandal), Nunca Olvidados (Melee), Prime 1 (Vandal), Recon (Phantom, Melee), Ruination (Phantom), Sentinels of light (Sheriff, Vandal, Operator), Singularity (Spectre, Phantom), Snowfall (Phantom), Sovereign (Ghost, Stinger), Spline (Spectre), Tethered Realms (Melee)', 'https://drive.google.com/drive/folders/1LF9CPFifvMkjodG9ZH79iPmgdm2Es2hD', 'GGAUTO20', 'BGMARR065_252350', '70', 'BGMARR043_00000.jpg', 'ว่าง');
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE `history_tbl` (
   `his_end` time NOT NULL,
   `his_payment` text NOT NULL,
   `his_status` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 -- --------------------------------------------------------
 
@@ -99,8 +99,8 @@ CREATE TABLE `history_tbl` (
 
 CREATE TABLE `his_status` (
   `id` int(11) NOT NULL,
-  `status` varchar(50) CHARACTER SET utf8mb4 NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `status` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
 -- Dumping data for table `his_status`
@@ -119,7 +119,7 @@ INSERT INTO `his_status` (`id`, `status`) VALUES
 CREATE TABLE `status` (
   `id` int(11) NOT NULL,
   `status` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `status`
@@ -137,11 +137,11 @@ INSERT INTO `status` (`id`, `status`) VALUES
 
 CREATE TABLE `tblclient` (
   `id` int(11) NOT NULL,
-  `fullname` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `useremail` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
-  `pass_word` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `fullname` varchar(255) NOT NULL,
+  `useremail` varchar(255) NOT NULL,
+  `pass_word` varchar(255) NOT NULL,
   `regdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `user_status` char(1) COLLATE utf8_unicode_ci NOT NULL
+  `user_status` char(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --

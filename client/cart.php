@@ -3,6 +3,12 @@ session_start();
 include_once '../admin/db_connect.php';
 
 $fullname = $_SESSION['fullname'];
+$bgmarr_name = $_GET['id'];
+$sql = "SELECT * FROM `bgmarr_tbl`";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$sharp = "#";
+$bgm = "BGM";
 
 ?>
 <!DOCTYPE html>
@@ -12,7 +18,7 @@ $fullname = $_SESSION['fullname'];
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>How To Order</title>
+    <title>Cart</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -88,26 +94,27 @@ $fullname = $_SESSION['fullname'];
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <td style="padding-top: 15px;"><img src="assets/img/product/test.png" alt="" width="120"></td>
-                                                    <td style="padding-top: 15px;">Lorem ipsum dolor sit amet consectetur adipisicing elit.</td>
+                                                    <!-- <td style="padding-top: 15px;"><img src="assets/img/product/test.png" alt="" width="120"></td> -->
+                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" width="25%"</td>
+                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></td>
                                                     
-                                                    <td class="table_cart">2</td>
+                                                    <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
                                                     <td>
                                                         <div class="counter">
-                                                            <span class="down" onClick='decreaseCount(event, this)'>-</span>
+                                                            <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
                                                             <input type="text" value="1">
-                                                            <span class="up" onClick='increaseCount(event, this)'>+</span>
+                                                            <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
                                                         </div>
                                                     </td>
-                                                    <td class="table_cart">4</td>
-                                                    <td class="table_cart">re</td>
+                                                    <td class="table_cart"><?php echo $row ['bgmarr_price'] ?></td>
+                                                    <td class="table_cart">THB</td>
                                                 </tr>
                                             </tbody>
 
                                         </table>
                                         <hr>
-                                        <a href="Javascript:if(confirm('ต้องการลบข้อมูลนี้หรือไม่')==true) 
-                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">All Remove</a>
+                                        <a href="Javascript:if(confirm('ต้องการล้างข้อมูลทิ้งหรือไม่')==true) 
+                                                {window.location='cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">All Remove</a>
                                     </div>
                                 </div>
                             </div>
@@ -122,13 +129,10 @@ $fullname = $_SESSION['fullname'];
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div><!-- End Page Header -->
-
-
 
     </main><!-- End #main -->
 

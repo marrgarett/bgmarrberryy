@@ -77,13 +77,10 @@ $fullname = $_SESSION['fullname'];
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
-          <div class="col-lg-6 text-center">
-            <h3>
-              <?php echo $row['bgmarr_name'] ?>
-              <?php echo $sharp ?>
-              <?php echo $row['bgmarr_price'] ?>
-              <?php echo $bgm ?>
-            </h3>
+          <div class="col-lg-12 text-center">
+            <h2>
+              <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
+            </h2>
 
             <a class="cta-btn" href="contact.html">Add To Cart</a>
 
