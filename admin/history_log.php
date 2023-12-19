@@ -1,7 +1,6 @@
 <?php
 session_start();
 include_once('db_connect.php');
-//require('order_number_generate\yearmonth6digitnumber.php');
 
 $sql = "SELECT * FROM `history_tbl`";
 $result = $conn->query($sql);
@@ -278,6 +277,8 @@ $fullname = $_SESSION['fullname'];
                         $year = date('Y');
 
                         $today = $year . '-' . $month . '-' . $day;
+
+                        
                         ?>
 
                         <label for="start">Start date:</label>
@@ -285,7 +286,7 @@ $fullname = $_SESSION['fullname'];
                         <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
                     </div>
                     <div>
-                    <?php echo $generateorder." // เลข order สำหรับ generate"?>
+                    <?php include_once('order_number_generate\yearmonth6digitnumber.php');?>
                     </div>
                     <div class="card">
                         <div class="card-body">
