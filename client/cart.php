@@ -75,7 +75,7 @@ $bgm = "BGM";
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         
                         <div class="form-row">
-                            <div class="form-group col-md-10">
+                            <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>Your Cart</h3>
@@ -84,21 +84,19 @@ $bgm = "BGM";
                                             <thead>
                                                 <tr>
                                                     <th>Product</th>
-                                                    <th></th>
-                                                    <th style="text-align: center;">Price</th>    
-                                                    <th style="text-align: center;">Quantity</th>
-                                                    <th style="text-align: center;">Total</th>
+                                                    <th style="text-align: left;">Product Name</th>
+                                                    <th style="text-align: left;">Price</th>
+                                                    <th style="text-align: left;">Quantity</th>
+                                                    <th style="text-align: left;">Total</th>
                                                     <th></th>
                                                 </tr>
-
                                             </thead>
                                             <tbody>
                                                 <tr>
-                                                    <!-- <td style="padding-top: 15px;"><img src="assets/img/product/test.png" alt="" width="120"></td> -->
-                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" width="25%"</td>
-                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></td>
+                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="240"></td>
+                                                    <td style="padding-top: 15px;"><h4><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></h4></td>
                                                     
-                                                    <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
+                                                    <td class="table_cart"><h5><?php echo $row['bgmarr_price']?></h5></td>
                                                     <td>
                                                         <div class="counter">
                                                             <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
@@ -106,7 +104,7 @@ $bgm = "BGM";
                                                             <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
                                                         </div>
                                                     </td>
-                                                    <td class="table_cart"><?php echo $row ['bgmarr_price'] ?></td>
+                                                    <td class="table_cart"><h5><?php echo $row ['bgmarr_price'] ?></h5></td>
                                                     <td class="table_cart">THB</td>
                                                 </tr>
                                             </tbody>

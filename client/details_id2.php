@@ -3,7 +3,14 @@ session_start();
 include_once '../admin/db_connect.php';
 
 $fullname = $_SESSION['fullname'];
+$bgmarr_name = $_GET['id'];
 
+    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+
+    $sharp = "#";
+    $bgm = "BGM";
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +20,7 @@ $fullname = $_SESSION['fullname'];
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>ชื่อไอดีสินค้านั้นๆ</title>
+  <title><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -64,16 +71,6 @@ $fullname = $_SESSION['fullname'];
   <main id="main" data-aos="fade" data-aos-delay="1500">
 
     <!-- ======= End Page Header ======= -->
-    <?php
-    $bgmarr_name = $_GET['id'];
-
-    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_assoc($result);
-
-    $sharp = "#";
-    $bgm = "BGM";
-    ?>
     <div class="page-header d-flex align-items-center">
       <div class="container position-relative">
         <div class="row d-flex justify-content-center">
