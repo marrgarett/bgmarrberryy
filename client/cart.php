@@ -95,7 +95,7 @@ $bgm = "BGM";
                                             <tbody>
                                                 <tr>
                                                     <!-- <td style="padding-top: 15px;"><img src="assets/img/product/test.png" alt="" width="120"></td> -->
-                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" width="25%"</td>
+                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" width="25%"></td>
                                                     <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></td>
                                                     
                                                     <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
