@@ -14,7 +14,7 @@ if (isset($_POST['login'])) {
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
     if ($row > 0) {
-        $_SESSION['id'] = $row['id'];
+        $_SESSION['user_id'] = $row['id'];
         $_SESSION['fullname'] = $row['fullname'];
         $_SESSION['useremail'] = $row['useremail'];
         $_SESSION['user_status'] = $row['user_status'];

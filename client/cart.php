@@ -2,14 +2,21 @@
 session_start();
 include_once '../admin/db_connect.php';
 
+$user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
-$bgmarr_name = $_GET['id'];
-$sql = "SELECT * FROM `bgmarr_tbl`";
+
+$bgmarr_id = $_GET['bgmarr_id'];
+$sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id  = '$bgmarr_id'";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$sharp = "#";
-$bgm = "BGM";
+$bgmarr_id = $row['bgmarr_id'];
+$bgmarr_name = $row['bgmarr_name'];
+$bgmarr_price = $row['bgmarr_price'];
+$total = $bgmarr_price*1;
 
+$sql = "INSERT INTO `id_order` (`id`, `id_order`, `user_id`,  `id_bgmarr_name`, `price`, `quantity_hr`, `total`, `date_order`) 
+VALUES (NULL, '2312000001', '$user_id', '$bgmarr_name', '$bgmarr_price', '1', '$total', current_timestamp());";
+mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -80,7 +87,7 @@ $bgm = "BGM";
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3>Your Cart</h3>
+                                        <h3>Your Cart : <?php echo "2312000001"; ?></h3>
                                         <hr>
                                         <table class="table table-borderless">
                                             <thead>
@@ -96,7 +103,8 @@ $bgm = "BGM";
                                             <tbody>
                                                 <tr>
                                                     <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?></td>
+                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'];
+ ?></td>
                                                     
                                                     <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
                                                     <td>
