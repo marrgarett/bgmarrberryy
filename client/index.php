@@ -149,7 +149,7 @@ $bgm = "BGM";
                                                     class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
-                                        <a class="cta-btn" href="cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>">Add To Cart</a>
+                                        <a class="cta-btn" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
                                     </div>
                                 <?php
                             }
