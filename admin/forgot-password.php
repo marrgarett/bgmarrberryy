@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - Forgot Password</title>
+    <title>Forgot Password // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
@@ -40,7 +40,7 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-2">ลืมรหัสผ่านหรือไม่?</h1>
+                                        <h1 class="h4 text-gray-900 mb-2">Forgot Password ?</h1>
                                         <!-- <p class="mb-4">We get it, stuff happens. Just enter your email address below
                                             and we'll send you a link to reset your password!</p> -->
                                     </div><br>
@@ -48,28 +48,28 @@
                                         <div class="form-group">
                                             <input type="email" name="useremail" class="form-control form-control-user"
                                                 id="exampleInputEmail" aria-describedby="emailHelp"
-                                                placeholder="อีเมล" required>
+                                                placeholder="Email" required>
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password1" class="form-control form-control-user"
                                                 id="password"
-                                                placeholder="รหัสผ่านใหม่" required>
+                                                placeholder="New Password" required>
                                              
                                         </div>
                                         <div class="form-group">
                                             <input type="password" name="password2" class="form-control form-control-user"
                                                 id="password2"
-                                                placeholder="ยืนยันรหัสผ่าน" required>
+                                                placeholder="Confirm New Password" required>
                                                 
                                         </div>
-                                        <input type="submit" name="check" value="รีเซ็ตรหัสผ่าน" class="btn btn-primary btn-user btn-block">
+                                        <input type="submit" name="check" value="Reset Password" class="btn btn-primary btn-user btn-block">
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="register.php">ลงทะเบียน!</a>
+                                        <a class="small" href="register.php">Sign Up!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.php">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ!</a>
+                                        <a class="small" href="login.php">Already have an account? Sign In!</a>
                                     </div>
                                 </div>
                             </div>
