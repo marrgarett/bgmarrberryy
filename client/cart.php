@@ -86,10 +86,10 @@ $bgm = "BGM";
                                             <thead>
                                                 <tr>
                                                     <th>Product</th>
-                                                    <th style="text-align: left;">Product Name</th>
-                                                    <th style="text-align: left;">Price</th>
-                                                    <th style="text-align: left;">Quantity</th>
-                                                    <th style="text-align: left;">Total</th>
+                                                    <th>Product Name</th>
+                                                    <th style="text-align: center;">Price</th>
+                                                    <th style="text-align: center;">Quantity</th>
+                                                    <th style="text-align: center;">Total</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
