@@ -129,7 +129,6 @@ $bgm = "BGM";
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
