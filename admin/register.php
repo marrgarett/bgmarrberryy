@@ -34,30 +34,30 @@
                             <div class="col-lg-12">
                                 <div class="p-5">
                                     <div class="text-center">
-                                        <h1 class="h4 text-gray-900 mb-4">ลงทะเบียนด้วยอีเมล</h1>
+                                        <h1 class="h4 text-gray-900 mb-4">Register With Email</h1>
                                     </div>
                                     <form class="user" action="registerSave.php" method="post" enctype="multipart/form-data">
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
+                                                <input type="text" name="fullname" class="form-control form-control-user" id="exampleFirstName" placeholder="FristName" required>
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="สกุล(ไม่บังคับ)">
+                                                <input type="text" name="lastname" class="form-control form-control-user" id="exampleLastName" placeholder="Lastname (Optional)">
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="email" name="useremail" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" required>
+                                            <input type="email" name="useremail" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email" required>
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="รหัสผ่าน" required minlength="3" maxlength="20">
+                                                <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required minlength="3" maxlength="20">
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="ยืนยันรหัสผ่าน" required minlength="3" maxlength="20">                   
+                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirm Password" required minlength="3" maxlength="20">                   
                                             </div>
                                         </div>
                                         <!-- <p>* รหัสผ่านต้องมี 8-30 ตัว(ทั้งตัวเลขและตัวอักษร)</p> -->
-                                        <input type="submit" name="save" value="ลงทะเบียน" class="btn btn-primary btn-block" style="border-radius: 25px;">
+                                        <input type="submit" name="save" value="Sign Up" class="btn btn-primary btn-block" style="border-radius: 25px;">
 
 
                                         <hr>
@@ -70,10 +70,10 @@
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="forgot-password.php">ลืมรหัสผ่าน? รีเซ็ตรหัสผ่าน!</a>
+                                        <a class="small" href="forgot-password.php">Forgot Password? Reset Password!</a>
                                     </div>
                                     <div class="text-center">
-                                        <a class="small" href="login.php">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ!</a>
+                                        <a class="small" href="login.php">Already have an account? Sign In!</a>
                                     </div>
                                 </div>
                             </div>
