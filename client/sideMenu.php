@@ -6,7 +6,7 @@
             print '<a>//</a>';
             print '<a href="../admin/register.php">Register</a>';
         } else {
-            print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . $fullname . ' </a>'; // แก้ไขข้อมูลส่วนตัว
+            print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . $user_id . ' </a>'; // แก้ไขข้อมูลส่วนตัว
             print '<a href="logout.php" name="logout" value="Logout">logout</a>'; // ล็อคเอาท์ออกจากระบบ
         }
         ?>
