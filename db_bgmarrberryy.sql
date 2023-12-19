@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 19, 2023 at 05:40 AM
+-- Generation Time: Dec 19, 2023 at 05:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -76,6 +76,32 @@ INSERT INTO `bgmarr_tbl` (`bgmarr_id`, `bgmarr_name`, `bgmarr_desc`, `bgmarr_url
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `coupon_discount`
+--
+
+CREATE TABLE `coupon_discount` (
+  `coupon_id` int(11) NOT NULL,
+  `coupon_name` varchar(10) NOT NULL,
+  `coupon_discount` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `coupon_discount`
+--
+
+INSERT INTO `coupon_discount` (`coupon_id`, `coupon_name`, `coupon_discount`) VALUES
+(1, '24HR10', '180'),
+(2, '24HR15', '280'),
+(3, '24HR20', '390'),
+(4, '24HR30', '620'),
+(5, '24HR40', '810'),
+(6, '24HR50', '1000'),
+(7, '24HR70', '1410'),
+(8, '24HR80', '1620');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `history_tbl`
 --
 
@@ -138,7 +164,9 @@ INSERT INTO `id_order` (`id`, `id_order`, `user_id`, `id_bgmarr_name`, `price`, 
 (4, '2312000001', '2', 'BGMARR038', '30', '1', '30', '2023-12-19 04:31:17'),
 (5, '2312000001', '2', 'BGMARR038', '30', '1', '30', '2023-12-19 04:33:35'),
 (6, '2312000001', '2', 'BGMARR038', '30', '1', '30', '2023-12-19 04:33:57'),
-(7, '2312000001', '2', 'BGMARR008', '10', '1', '10', '2023-12-19 04:34:57');
+(7, '2312000001', '2', 'BGMARR008', '10', '1', '10', '2023-12-19 04:34:57'),
+(8, '2312000001', '', 'BGMARR015', '10', '1', '10', '2023-12-19 04:49:34'),
+(9, '2312000001', '', 'BGMARR015', '10', '1', '10', '2023-12-19 04:51:12');
 
 -- --------------------------------------------------------
 
@@ -193,6 +221,12 @@ ALTER TABLE `bgmarr_tbl`
   ADD PRIMARY KEY (`bgmarr_id`);
 
 --
+-- Indexes for table `coupon_discount`
+--
+ALTER TABLE `coupon_discount`
+  ADD PRIMARY KEY (`coupon_id`);
+
+--
 -- Indexes for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
@@ -235,6 +269,12 @@ ALTER TABLE `bgmarr_tbl`
   MODIFY `bgmarr_id` int(6) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
+-- AUTO_INCREMENT for table `coupon_discount`
+--
+ALTER TABLE `coupon_discount`
+  MODIFY `coupon_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
 -- AUTO_INCREMENT for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
@@ -250,7 +290,7 @@ ALTER TABLE `his_status`
 -- AUTO_INCREMENT for table `id_order`
 --
 ALTER TABLE `id_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `status`
