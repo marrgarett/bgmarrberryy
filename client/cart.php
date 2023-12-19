@@ -96,6 +96,7 @@ mysqli_query($conn, $sql);
                                                     <th>Product Name</th>
                                                     <th style="text-align: center;">Price</th>
                                                     <th style="text-align: center;">Quantity</th>
+                                                    <th style="text-align: center;">Code</th>
                                                     <th style="text-align: center;">Total</th>
                                                     <th></th>
                                                 </tr>
@@ -115,6 +116,9 @@ mysqli_query($conn, $sql);
                                                             <span class="up" onClick='increaseCount(event, this)'><i
                                                                     class="bi bi-plus-circle-fill"></i></span>
                                                         </div>
+                                                    </td>
+                                                    <td class="table_cart">
+                                                        <input type="text"></input>
                                                     </td>
                                                     <td class="table_cart">
                                                         <h5>
