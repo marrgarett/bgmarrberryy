@@ -149,10 +149,9 @@ $bgm = "BGM";
                                                 title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i
                                                     class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
-
                                     </div>
-                                </div>
-
+                                        <a class="cta-btn" href="cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>">Add To Cart</a>
+                                    </div>
                                 <?php
                             }
                             ?>

@@ -18,7 +18,7 @@ $bgmarr_id = $_GET["bgmarr_id"];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลไอดี</title>
+    <title>EditID // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -236,7 +236,7 @@ $bgmarr_id = $_GET["bgmarr_id"];
                 <div class="container-fluid">
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h3 mb-4 text-gray-800">แก้ไขข้อมูลไอดี</h1>
+                            <h1 class="h3 mb-4 text-gray-800">Edit ID</h1>
                             <?php
                             $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '$bgmarr_id';";
                             $result = mysqli_query($conn, $sql);
@@ -246,15 +246,15 @@ $bgmarr_id = $_GET["bgmarr_id"];
                             <form action="productsSave.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4">ชื่อสินค้า</label>
+                                        <label for="inputPassword4">IDName</label>
                                         <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" readonly value="<?php echo $row['bgmarr_name'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputEmail4">ชื่อผู้ใช้</label>
+                                        <label for="inputEmail4">Username</label>
                                         <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" readonly value="<?php echo $row['bgmarr_us'] ?>">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4">รหัสผ่าน</label>
+                                        <label for="inputPassword4">Password</label>
                                         <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" value="<?php echo $row['bgmarr_pw'] ?>">
                                     </div>
                                 </div>
@@ -266,12 +266,12 @@ $bgmarr_id = $_GET["bgmarr_id"];
                                 ?>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="input">ราคา</label>
+                                        <label for="input">Price</label>
                                         <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" value="<?php echo $row['bgmarr_price'] ?>">
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="input">สถานะ</label><br>
+                                        <label for="input">Status</label><br>
                                         <select class="form-control" name="bgmarr_status" id="bgmarr_status" value="<?php echo $row['bgmarr_status']; ?>">
                                             <?php
                                             $sql = "SELECT * FROM `status`";
@@ -293,17 +293,17 @@ $bgmarr_id = $_GET["bgmarr_id"];
 
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <label for="inputAddress">Description</label>
                                         <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"><?php echo $row['bgmarr_desc'] ?></textarea>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="inputAddress">ลิงก์โฟลเดอร์</label>
+                                        <label for="inputAddress">Folder URL</label>
                                         <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" value="<?php echo $row['bgmarr_url'] ?>">
                                     </div>
                                 </div>
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="input">รูปภาพ</label><br>
+                                        <label for="input">Picture</label><br>
                                         <img src="uploaded_imgs/<?php echo $row['bgmarr_img']; ?>" alt="" width="400px">
                                         <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" style="margin-top: 20px;">
                                     </div>
@@ -314,7 +314,7 @@ $bgmarr_id = $_GET["bgmarr_id"];
 
 
 
-                                <input type="submit" name="update" value="Submit" class="btn btn-success float-left"><br><br>
+                                <input type="submit" name="update" value="Update" class="btn btn-success float-left"><br><br>
 
                             </form>
 

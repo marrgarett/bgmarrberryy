@@ -17,7 +17,7 @@ $fullname = $_SESSION['fullname'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลไอดี</title>
+    <title>ManageID // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -235,50 +235,50 @@ $fullname = $_SESSION['fullname'];
 
                     <div class="card">
                         <div class="card-body">
-                            <h1 class="h3 mb-4 text-gray-800">เพิ่มข้อมูลไอดี</h1>
+                            <h1 class="h3 mb-4 text-gray-800">Add ID</h1>
                             <form action="productsSave.php" method="post" enctype="multipart/form-data">
 
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4">ชื่อไอดี</label>
-                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="ชื่อไอดี" required>
+                                        <label for="inputPassword4">IDName</label>
+                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="IDName" required>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputEmail4">ชื่อผู้ใช้</label>
-                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="ชื่อผู้ใช้">
+                                        <label for="inputEmail4">Username</label>
+                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="Username">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputPassword4">รหัสผ่าน</label>
-                                        <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="รหัสผ่าน">
+                                        <label for="inputPassword4">Password</label>
+                                        <input type="password" name="bgmarr_pw" class="form-control" id="bgmarr_pw" placeholder="Password">
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
-                                        <label for="input">ราคา</label>
-                                        <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="ราคา">
+                                        <label for="input">Price</label>
+                                        <input type="number" name="bgmarr_price" class="form-control" id="bgmarr_price" placeholder="Example : 10, 15, 20, 30, 40, 50, 70 ,80">
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="input">รูปภาพ</label>
-                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="รูปภาพ">
+                                        <label for="input">Picture</label>
+                                        <input type="file" name="bgmarr_img" class="form-control" id="bgmarr_img" placeholder="Add Some Picture">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <!-- <label for="input">สถานะ</label><br> -->
                                         <select class="form-select" name="bgmarr_status" id="bgmarr_status" hidden>
-                                            <option value="ว่าง">ว่าง</option>
-                                            <option value="ไม่ว่าง">ไม่ว่าง</option>
+                                            <option value="ว่าง">Available</option>
+                                            <option value="ไม่ว่าง">Unavailable</option>
                                         </select>
                                     </div>
                                 </div>
 
                                 <div class="form-row">
                                     <div class="form-group col-md-8">
-                                        <label for="inputAddress">คำอธิบาย</label>
+                                        <label for="inputAddress">Description</label>
                                         <textarea id="bgmarr_desc" style="width: 100%" name="bgmarr_desc" rows="4" cols="120"></textarea>
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="inputAddress">ลิงก์โฟลเดอร์</label>
-                                        <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" placeholder="ลิงก์โฟลเดอร์">
+                                        <label for="inputAddress">Folder URL</label>
+                                        <input type="text" name="bgmarr_url" class="form-control" id="bgmarr_url" placeholder="Folder URL">
                                     </div>
                                 </div>
 
@@ -288,22 +288,22 @@ $fullname = $_SESSION['fullname'];
 
                             <!-- Page Heading -->
                             <br>
-                            <h1 class="h3 mb-4 text-gray-800">จัดการข้อมูลไอดี</h1>
+                            <h1 class="h3 mb-4 text-gray-800">Manage ID</h1>
                             <div class="card">
                                 <div class="card-body">
                                     <table class="table table-borderless">
                                         <thead>
                                             <tr>
-                                                <th>ไอดี</th>
-                                                <th>ชื่อไอดี</th>
-                                                <th>คำอธิบาย</th>
-                                                <th>ลิงก์</th>
-                                                <th>ชื่อผู้ใช้</th>
-                                                <th>รหัสผ่าน</th>
-                                                <th>ราคา/ชม.</th>
-                                                <th>รูปภาพ</th>
-                                                <th>สถานะ</th>
-                                                <th>แก้ไข/ลบ</th>
+                                                <th>No.</th>
+                                                <th>IDName</th>
+                                                <th>Description</th>
+                                                <th>Folder URL</th>
+                                                <th>Username</th>
+                                                <th>Password</th>
+                                                <th>Price/Hour</th>
+                                                <th>Picture</th>
+                                                <th>Status</th>
+                                                <th>Edit/Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -336,9 +336,9 @@ $fullname = $_SESSION['fullname'];
                                                         <td><?php echo $row["bgmarr_status"] ?></td>
                                                         </td>
                                                         <td>
-                                                            <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                            <a href="Javascript:if(confirm('ต้องการลบข้อมูลนี้หรือไม่')==true) 
-                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">ลบ</a>
+                                                            <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Edit</a>
+                                                            <a href="Javascript:if(confirm('Confirm data deletion ?')==true) 
+                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">Delete</a>
                                                         </td>
                                                     </tr>
                                             <?php

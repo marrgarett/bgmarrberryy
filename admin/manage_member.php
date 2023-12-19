@@ -13,7 +13,7 @@ $fullname = $_SESSION['fullname'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลสมาชิก</title>
+    <title>ManageMember // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -263,7 +263,7 @@ $fullname = $_SESSION['fullname'];
                         -->
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">ข้อมูลสมาชิก</h1>
+                    <h1 class="h3 mb-4 text-gray-800">ManageMember</h1>
 
                     <?php
                     $sql = "SELECT * FROM `tblclient` WHERE user_status = 'C' ORDER BY `tblclient`.`id` DESC ";
@@ -275,13 +275,13 @@ $fullname = $_SESSION['fullname'];
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ลำดับ</th>
-                                        <th>ชื่อ-นามสกุล</th>
+                                        <th>No.</th>
+                                        <th>FirstName - LastName</th>
                                         <th>Username</th>
                                         <!-- <th>Password</th> -->
-                                        <th>วันที่สมัคร</th>
+                                        <th>Register Date</th>
                                         <!-- <th>รูปภาพ</th> -->
-                                        <th>แก้ไข</th>
+                                        <th>Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -299,8 +299,8 @@ $fullname = $_SESSION['fullname'];
                                                 <td><?php echo $row["regdate"] ?></td>
                                                 <!-- <td><?php echo '<img src="uploaded_imgs\$row["img"]">' ?></td> -->
                                                 <td>
-                                                    <!-- <a href="Javascript:if(confirm('ยืนยันการลบข้อมูล')==true) {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a> -->
-                                                    <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">แก้ไข</a>
+                                                    <!-- <a href="Javascript:if(confirm('Confirm data deletion ?')==true) {window.location='memberDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger">ลบ</a> -->
+                                                    <a href="registerEdit.php?id=<?php echo $row["id"]; ?>" class="btn btn-warning">Edit</a>
                                                 </td>
                                             </tr>
                                     <?php
