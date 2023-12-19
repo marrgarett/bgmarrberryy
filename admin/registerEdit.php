@@ -17,7 +17,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - Register</title>
+    <title>Register // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -40,7 +40,7 @@
                     <div class="col-lg-12">
                         <div class="p-5">
                             <div class="text-center">
-                                <h1 class="h4 text-gray-900 mb-4">แก้ไขข้อมูลสมาชิก</h1>
+                                <h1 class="h4 text-gray-900 mb-4">Edit member information</h1>
                             </div>
                             <?php 
                                 $sql = "SELECT * FROM `tblclient` WHERE id = '$id';";
@@ -56,17 +56,17 @@
                             <form class="user" action="registerSave.php?id=<?php echo $row["id"]; ?>" method="post" enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
-                                        <input type="text" name="fullname" value="<?php echo $firstName ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="ขื่อ" required>
+                                        <input type="text" name="fullname" value="<?php echo $firstName ?>" class="form-control form-control-user" id="exampleFirstName" placeholder="FirstName" required>
                                     </div>
                                     <div class="col-sm-6">
-                                        <input type="text" name="lastname" value="<?php echo $lastName ?>" class="form-control form-control-user" id="exampleLastName" placeholder="นามสกุล" required>
+                                        <input type="text" name="lastname" value="<?php echo $lastName ?>" class="form-control form-control-user" id="exampleLastName" placeholder="Lastname" required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" name="useremail" value="<?php echo $row["useremail"]; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="อีเมล" readonly>
+                                    <input type="email" name="useremail" value="<?php echo $row["useremail"]; ?>" class="form-control form-control-user" id="exampleInputEmail" placeholder="Email" readonly>
                                 </div>
                                
-                                <input type="submit" name="update" value="อัพเดตข้อมูล" class="btn btn-primary btn-block">
+                                <input type="submit" name="update" value="Update" class="btn btn-primary btn-block">
                                 <!-- test edit -->
                                 
                                 <hr>

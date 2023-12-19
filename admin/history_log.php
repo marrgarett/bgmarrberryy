@@ -26,7 +26,7 @@ $fullname = $_SESSION['fullname'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BGMarrBerryy - จัดการข้อมูลประวัติการเช่า</title>
+    <title>ManageHistory // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -243,7 +243,7 @@ $fullname = $_SESSION['fullname'];
                 <div class="container-fluid">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
+                    <h1 class="h3 mb-4 text-gray-800">ManageHistory</h1>
                     <br>
                     <?php
                     date_default_timezone_set("Asia/Bangkok");
@@ -292,16 +292,16 @@ $fullname = $_SESSION['fullname'];
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>ลำดับ</th>
-                                        <th>ชื่อลูกค้า</th>
-                                        <th>ไอดีที่เช่า</th>
-                                        <th>จำนวนชั่วโมง</th>
-                                        <th>ราคารวม</th>
-                                        <th>วัน/เวลา ที่เริ่มต้น</th>
-                                        <th>วัน/เวลา ที่สิ้นสุด</th>
-                                        <th>ใบสลิป</th>
-                                        <th>สถานะ</th>
-                                        <th>แก้ไข</th>
+                                        <th>No.</th>
+                                        <th>Client Name</th>
+                                        <th>IDName</th>
+                                        <th>Hour</th>
+                                        <th>Summary</th>
+                                        <th>Day/Time Start</th>
+                                        <th>Day/Time End</th>
+                                        <th>Slip</th>
+                                        <th>Status</th>
+                                        <th>Edit</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -340,9 +340,9 @@ $fullname = $_SESSION['fullname'];
                                                 <td>
                                                     <?php
                                                     if ($now_time >= $end_time) {
-                                                        echo 'เสร็จสิ้น';
+                                                        echo 'Finished';
                                                     } else {
-                                                        echo 'กำลังดำเนินการ';
+                                                        echo 'In progress';
                                                     }
                                                     ?>
                                                 </td>

@@ -33,14 +33,14 @@
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>จัดการข้อมูลต่างๆ</span>
+                    <span>Manage</span>
                 </a>
                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">จัดการข้อมูลต่างๆ:</h6>
-                        <a class="collapse-item" href="manage_member.php">จัดการข้อมูลสมาชิก</a>
-                        <a class="collapse-item" href="products.php">จัดการข้อมูลไอดี</a>
-                        <a class="collapse-item" href="history_log.php">จัดการข้อมูลการเช่า</a>
+                        <h6 class="collapse-header">Manage:</h6>
+                        <a class="collapse-item" href="manage_member.php">ManageMember</a>
+                        <a class="collapse-item" href="products.php">ManageID</a>
+                        <a class="collapse-item" href="history_log.php">ManageHistory</a>
                     </div>
                 </div>
             </li>
@@ -65,7 +65,7 @@
                 </div>
             </li>
             -->
-
+            
             <!-- Divider -->
             <hr class="sidebar-divider">
 
