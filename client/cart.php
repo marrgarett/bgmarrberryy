@@ -110,11 +110,11 @@ $bgm = "BGM";
                                                     </td>
                                                     <td class="table_cart">
                                                         <h5>
-                                                            <?php echo $row['bgmarr_price'] ?>
+                                                            <?php echo $row['bgmarr_price'] ?> THB
                                                         </h5>
                                                     </td>
                                                     <td class="table_cart">
-                                                        <h5>THB</h5>
+                                                        remove
                                                     </td>
                                                 </tr>
                                             </tbody>
