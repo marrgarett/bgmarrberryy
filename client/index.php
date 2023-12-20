@@ -127,7 +127,7 @@ $bgm = "BGM";
                     <div class="container-fluid">
                         <div class="row gy-4 justify-content-center">
                             <?php
-                            $sql = "SELECT * FROM `bgmarr_tbl` ORDER BY RAND() LIMIT 4; ";
+                            $sql = "SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_tbl`.`bgmarr_status` = 'Available' ORDER BY RAND() LIMIT 4; ";
                             $result = mysqli_query($conn, $sql);
                             while ($row = mysqli_fetch_assoc($result)) {
                                 ?>

@@ -136,7 +136,7 @@ $fullname = $_SESSION['fullname'];
                                                             </td>
                                                             <td class="table_cart">
                                                                 <a href="Javascript:if(confirm('Want to delete it?')==true) 
-                                                {window.location='cartDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                {window.location='cartDel.php?id_bgmarr_name=<?php echo $row["id_bgmarr_name"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
                                                 <?php

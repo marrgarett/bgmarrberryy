@@ -67,8 +67,8 @@ $bgm = "BGM";
 
     </div>
   </header><!-- End Header -->
-
-  <main id="main" data-aos="fade" data-aos-delay="1500">
+  
+  <main id="main" data-aos="fade">  <!-- กำหนดเวลาแสดงผล data-aos-delay="1500" -->
 
     <!-- ======= End Page Header ======= -->
     <div class="page-header d-flex align-items-center">
@@ -86,7 +86,7 @@ $bgm = "BGM";
       <div class="container-fluid">
         <div class="row gy-4 justify-content-center">
           <?php
-          $sql = "SELECT * FROM `bgmarr_tbl`";
+          $sql = "SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_tbl`.`bgmarr_status` = 'Available'";
           $result = mysqli_query($conn, $sql);
           while ($row = mysqli_fetch_assoc($result)) {
             ?>
