@@ -23,8 +23,8 @@ if (isset($_POST['login'])) {
         if ($_SESSION["user_status"] == "C") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { swal.fire({
-                  title: "สำเร็จ!",
-                  text: "เข้าสู่หน้าหลัก",
+                  title: "Success!",
+                  text: "Go To MainPage",
                   type: "success",
                   icon: "success"
                 });';
@@ -37,8 +37,8 @@ if (isset($_POST['login'])) {
         } else if ($_SESSION["user_status"] == "A") {  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { swal.fire({
-                  title: "สำเร็จ!",
-                  text: "เข้าสู่หน้าจัดการข้อมูล",
+                  title: "Success!",
+                  text: "Go To DashBoard",
                   type: "success",
                   icon: "success"
                 });';
@@ -52,8 +52,8 @@ if (isset($_POST['login'])) {
     } else {
         echo '<script type="text/javascript">';
         echo 'setTimeout(function () { swal.fire({
-                  title: "ผิดพลาด!",
-                  text: "กรุณาลองใหม่!",
+                  title: "Error!",
+                  text: "Please Try Again!",
                   type: "warning",
                   icon: "error"
               });';
@@ -77,7 +77,7 @@ if (isset($_POST['login'])) {
     <meta name="description" content="">
     <meta name="author" content="">
     
-    <title>BGMarrBerryy - Login</title>
+    <title>Login // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
