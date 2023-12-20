@@ -278,7 +278,6 @@ $fullname = $_SESSION['fullname'];
 
                         $today = $year . '-' . $month . '-' . $day;
 
-                        
                         ?>
 
                         <label for="start">Start date:</label>
