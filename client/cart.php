@@ -5,18 +5,6 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
-$bgmarr_id = $_GET['bgmarr_id'];
-$sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id  = '$bgmarr_id'";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
-$bgmarr_id = $row['bgmarr_id'];
-$bgmarr_name = $row['bgmarr_name'];
-$bgmarr_price = $row['bgmarr_price'];
-$total = $bgmarr_price*1;
-
-$sql = "INSERT INTO `id_order` (`id`, `id_order`, `user_id`,  `id_bgmarr_name`, `price`, `quantity_hr`, `total`, `date_order`) 
-VALUES (NULL, '2312000001', '$user_id', '$bgmarr_name', '$bgmarr_price', '1', '$total', current_timestamp());";
-mysqli_query($conn, $sql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -36,9 +24,7 @@ mysqli_query($conn, $sql);
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -82,7 +68,25 @@ mysqli_query($conn, $sql);
                         <h2 class="text-center">Cart</h2>
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
+                        <?php
+                        $sql = "SELECT id_order.id,
+                                    id_order.id_order,
+                                    id_order.user_id,
+                                    bgmarr_tbl.bgmarr_img,
+                                    id_order.id_bgmarr_name,
+                                    id_order.price,
+                                    id_order.quantity_hr,
+                                    id_order.price * id_order.quantity_hr AS total_sum,
+                                    id_order.total
+                                    FROM id_order 
+                                    JOIN tblclient 
+                                    ON id_order.user_id = tblclient.id 
+                                    JOIN bgmarr_tbl 
+                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+                                    WHERE id_order.user_id = '$user_id'  ORDER BY `id_order`.`id` ASC; ";
+                        $result = mysqli_query($conn, $sql);
 
+                        ?>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
@@ -102,40 +106,50 @@ mysqli_query($conn, $sql);
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                    <td style="padding-top: 15px;"><?php echo $row['bgmarr_name'];
- ?></td>
-                                                    
-                                                    <td class="table_cart"><?php echo $row['bgmarr_price']?></td>
-                                                    <td>
-                                                        <div class="counter">
-                                                            <span class="down" onClick='decreaseCount(event, this)'><i
-                                                                    class="bi bi-dash-circle-fill"></i></span>
-                                                            <input type="text" value="1">
-                                                            <span class="up" onClick='increaseCount(event, this)'><i
-                                                                    class="bi bi-plus-circle-fill"></i></span>
-                                                        </div>
-                                                    </td>
-                                                    <td class="table_cart">
-                                                        <input type="text"></input>
-                                                    </td>
-                                                    <td class="table_cart">
-                                                        <h5>
-                                                            <?php echo $row['bgmarr_price'] ?> THB
-                                                        </h5>
-                                                    </td>
-                                                    <td class="table_cart">
-                                                        remove
-                                                    </td>
-                                                </tr>
+                                                <?php
+                                                $i = 1;
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+
+                                                ?>
+                                                        <tr>
+                                                            <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
+                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name'];
+                                                                                            ?></td>
+
+                                                            <td class="table_cart"><?php echo $row['price'] ?></td>
+                                                            <td>
+                                                                <div class="counter">
+                                                                    <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
+                                                                    <input type="text" value="<?php echo $row['quantity_hr'] ?>">
+                                                                    <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
+                                                                </div>
+                                                            </td>
+                                                            <td class="table_cart">
+                                                                <input type="text"></input>
+                                                            </td>
+                                                            <td class="table_cart">
+                                                                <h5>
+                                                                    <?php echo $row['total_sum']; ?> THB
+                                                                </h5>
+                                                            </td>
+                                                            <td class="table_cart">
+                                                                <a href="Javascript:if(confirm('Want to delete it?')==true) 
+                                                {window.location='cartDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                            </td>
+                                                        </tr>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
                                             </tbody>
 
                                         </table>
                                         <hr>
-                                        <a href="Javascript:if(confirm('ต้องการล้างข้อมูลทิ้งหรือไม่')==true) 
-                                                {window.location='cart.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}"
-                                            class="btn btn-danger">All Remove</a>
+                                        <a href="Javascript:if(confirm('Want to delete them all?')==true) 
+                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a>
+
                                     </div>
                                 </div>
                             </div>
@@ -161,8 +175,7 @@ mysqli_query($conn, $sql);
     <?php include_once 'footer.php'; ?>
     <!-- End Footer -->
 
-    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- <div id="preloader">
     <div class="line"></div>
