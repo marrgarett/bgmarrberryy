@@ -69,7 +69,7 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
-                        $sql = "SELECT DISTINCT id_order.id,
+                        $sql = "SELECT id_order.id,
                                     id_order.id_order,
                                     id_order.user_id,
                                     bgmarr_tbl.bgmarr_img,
@@ -87,7 +87,7 @@ $fullname = $_SESSION['fullname'];
                         $result = mysqli_query($conn, $sql);
 
                         ?>
-                        <form action="cartSave.php" method="post">
+
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
@@ -121,11 +121,13 @@ $fullname = $_SESSION['fullname'];
 
                                                             <td class="table_cart"><?php echo $row['price'] ?></td>
                                                             <td>
-                                                                <div class="counter">
-                                                                    <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
-                                                                    <input type="text" value="<?php echo $row['quantity_hr'] ?>">
-                                                                    <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
-                                                                </div>
+                                                                <form action="cartSave.php?id=<?php echo $row['id'] ?>" method="post">
+                                                                    <div class="counter">
+                                                                        <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
+                                                                        <input type="text" name="quantity_hr" value="<?php echo $row['quantity_hr'] ?>">
+                                                                        <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
+                                                                    </div>
+                                                                </form>
                                                             </td>
                                                             <td class="table_cart">
                                                                 <input type="text"></input>
@@ -150,6 +152,7 @@ $fullname = $_SESSION['fullname'];
                                         <hr>
                                         <a href="Javascript:if(confirm('Want to delete them all?')==true) 
                                                 {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a>
+                                        <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-success" style="float: right;">Continue</a>
 
                                     </div>
                                 </div>
@@ -165,7 +168,7 @@ $fullname = $_SESSION['fullname'];
                                 </div>
                             </div>
                         </div>
-                        </form>
+
                     </div>
                 </div>
             </div>
