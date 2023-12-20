@@ -133,24 +133,24 @@ $bgm = "BGM";
                                 ?>
                                 <div class="col-xl-3 col-lg-4 col-md-6">
                                     <div class="gallery-item h-100">
-                                        <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid"
-                                            alt="">
+                                        <img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" class="img-fluid" alt="">
                                         <p></p>
                                         <h5 class="text-center">
-                                            <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
+                                            Riot Tag : <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
+                                            <br>
+                                            Price : <?php echo $row['bgmarr_price']?> THB // Status : <?php echo $row['bgmarr_status']?>
                                         </h5>
-                                        <!-- ดึงรูปสินค้านั้นๆจาก database มาแสดง -->
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
-                                            <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>"
-                                                class="details-link"><i class="bi bi-link-45deg"></i></a>
-                                            <!-- ลิงก์ไปยังสินค้านั้นๆ -->
-                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>"
-                                                title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i
-                                                    class="bi bi-arrows-angle-expand"></i></a>
+                                            <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                                            <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
-                                        <a class="cta-btn" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
+                                    <div class="row justify-content-center">
+                                        <div class="col-lg-6 text-center">
+                                            <a class="cta-btn" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
+                                        </div>
                                     </div>
+                                </div>
                                 <?php
                             }
                             ?>
