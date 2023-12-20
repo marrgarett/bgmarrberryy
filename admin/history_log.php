@@ -7,6 +7,8 @@ $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 $date = $row['his_start'];
 
+//require('order_number_generate\yearmonth6digitnumber.php');
+
 if (!empty($_POST['his_start'])) {
     $sql = "SELECT * FROM history_tbl WHERE his_start LIKE '$date%'";
 }

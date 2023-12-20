@@ -69,7 +69,7 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
-                        $sql = "SELECT id_order.id,
+                        $sql = "SELECT DISTINCT id_order.id,
                                     id_order.id_order,
                                     id_order.user_id,
                                     bgmarr_tbl.bgmarr_img,
@@ -87,6 +87,7 @@ $fullname = $_SESSION['fullname'];
                         $result = mysqli_query($conn, $sql);
 
                         ?>
+                        <form action="cartSave.php" method="post">
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
@@ -164,6 +165,7 @@ $fullname = $_SESSION['fullname'];
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
