@@ -5,6 +5,7 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,9 +110,12 @@ $fullname = $_SESSION['fullname'];
                                             <tbody>
                                                 <?php
                                                 $i = 1;
+                                                $sum = 0;
                                                 if (mysqli_num_rows($result) > 0) {
                                                     // output data of each row
                                                     while ($row = mysqli_fetch_assoc($result)) {
+                                                        $total = $row['total_sum'];
+                                                        $sum = $sum+$total;
 
                                                 ?>
                                                         <tr>
@@ -147,17 +151,35 @@ $fullname = $_SESSION['fullname'];
                                                 }
                                                 ?>
                                             </tbody>
-
+                                            <tbody>                  
+                                                        <tr>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td></td>
+                                                            <td class="table_cart">
+                                                                <h5>Sum</h5>
+                                                            </td>
+                                                            <td class="table_cart">
+                                                                <h5>
+                                                                    <?php echo $sum; ?> THB
+                                                                </h5>
+                                                            </td>
+                                                            <td></td>
+                                                        </tr>
+                                            </tbody>
                                         </table>
-                                        <hr>
-                                        <a href="Javascript:if(confirm('Want to delete them all?')==true) 
-                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a>
-                                        <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-success" style="float: right;">Continue</a>
+                                        
+                                        <!-- <a href="Javascript:if(confirm('Want to delete them all?')==true) 
+                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a> -->
+
+
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>Total shopping cart</h3>
@@ -166,7 +188,7 @@ $fullname = $_SESSION['fullname'];
                                         <p>All product prices</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
