@@ -13,7 +13,7 @@
     </ul>
 </nav>
 
-<nav id="navbar" class="navbar"> 
+<nav id="navbar" class="navbar">
     <ul>
         <li><a href="index.php">Home</a></li><!-- class="active"hover ตัวหนังสือ -->
         <li><a href="all_id.php">All ID</a></li>
