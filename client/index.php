@@ -136,17 +136,15 @@ $bgm = "BGM";
                                         <h5 class="text-center">
                                             Riot Tag : <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
                                             <br>
-                                            Price : <?php echo $row['bgmarr_price']?> THB // Status : <?php echo $row['bgmarr_status'] ?>
+                                            Price : <?php echo $row['bgmarr_price'] ?> THB // Status : <?php echo $row['bgmarr_status'] ?>
                                         </h5>
                                         <div class="gallery-links d-flex align-items-center justify-content-center">
                                             <a href="details_id2.php?id=<?php echo $row['bgmarr_name'] ?>" class="details-link"><i class="bi bi-link-45deg"></i></a>
                                             <a href="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" title="<?php echo $row['bgmarr_name'] ?>" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
                                         </div>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-lg-6 text-center">
-                                            <a class="cta-btn" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
-                                        </div>
+                                    <div class="text-center">
+                                        <a class="btn btn-success" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
                                     </div>
                                 </div>
                             <?php
