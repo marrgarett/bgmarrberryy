@@ -20,8 +20,14 @@ $fullname = $_SESSION['fullname'];
     <title>ManageID // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -320,17 +326,17 @@ $fullname = $_SESSION['fullname'];
                                                     <tr>
                                                         <th><?php echo $i++ ?></th>
                                                         <td><?php echo $row["bgmarr_name"] ?></td>
-                                                        <td><?php echo iconv_substr($row["bgmarr_desc"],0,12,'UTF-8') ?>...</td>
-                                                        <td><?php echo iconv_substr($row["bgmarr_url"],0,13,'UTF-8') ?>...</td>
+                                                        <td><?php echo iconv_substr($row["bgmarr_desc"], 0, 12, 'UTF-8') ?>...</td>
+                                                        <td><?php echo iconv_substr($row["bgmarr_url"], 0, 13, 'UTF-8') ?>...</td>
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
-                                                        <td><?php echo iconv_substr($row["bgmarr_pw"],0,20,'UTF-8') ?></td>
+                                                        <td><?php echo iconv_substr($row["bgmarr_pw"], 0, 20, 'UTF-8') ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>
                                                         <td>
-                                                            <?php if($row["bgmarr_img"]== '') : ?>
-                                                            <p>...</p>
+                                                            <?php if ($row["bgmarr_img"] == '') : ?>
+                                                                <p>...</p>
                                                             <?php endif; ?>
-                                                            <?php if($row["bgmarr_img"]!= '') : ?>
-                                                            <img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px">
+                                                            <?php if ($row["bgmarr_img"] != '') : ?>
+                                                                <img src="uploaded_imgs/<?php echo $row["bgmarr_img"] ?>" width="50px" height="50px">
                                                             <?php endif; ?>
                                                         </td>
                                                         <td><?php echo $row["bgmarr_status"] ?></td>
@@ -338,7 +344,7 @@ $fullname = $_SESSION['fullname'];
                                                         <td>
                                                             <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Edit</a>
                                                             <a href="Javascript:if(confirm('Confirm data deletion ?')==true) 
-                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger">Delete</a>
+                                                {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
                                                         </td>
                                                     </tr>
                                             <?php
@@ -406,6 +412,13 @@ $fullname = $_SESSION['fullname'];
 
         <!-- Custom scripts for all pages-->
         <script src="js/sb-admin-2.min.js"></script>
+
+        <!-- Vendor JS Files -->
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/aos/aos.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
 
 </body>
 
