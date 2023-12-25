@@ -110,7 +110,7 @@ $bgmarr_name = $_GET['id'];
 
           <div class="col-lg-12">
             <div class="portfolio-description">
-              <h2>รายละเอียด</h2>
+              <h2>Details</h2>
               <p>
                 <?php echo $row['bgmarr_desc'] ?>
               </p>
@@ -118,7 +118,7 @@ $bgmarr_name = $_GET['id'];
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  รูปเพิ่มเติม >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank">
+                    Additional images >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank">
                     <?php echo $row['bgmarr_url'] ?>
                   </a>
                   <i class="bi bi-quote quote-icon-right"></i>
