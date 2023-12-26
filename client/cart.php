@@ -5,6 +5,8 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+$sharp = "#";
+$bgm = "BGM";
 
 ?>
 <!DOCTYPE html>
@@ -121,8 +123,7 @@ $fullname = $_SESSION['fullname'];
                                                 ?>
                                                         <tr>
                                                             <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name'];
-                                                                                            ?></td>
+                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
 
                                                             <td class="table_cart"><?php echo $row['price'] ?></td>
                                                             <td>
@@ -160,7 +161,7 @@ $fullname = $_SESSION['fullname'];
                                                     <td></td>
                                                     <td></td>
                                                     <td class="table_cart">
-                                                        <h5>Sum</h5>
+                                                        <h5>Summary</h5>
                                                     </td>
                                                     <td class="table_cart">
                                                         <h5>
