@@ -247,11 +247,11 @@ $fullname = $_SESSION['fullname'];
                                 <div class="form-row">
                                     <div class="form-group col-md-4">
                                         <label for="inputPassword4">IDName</label>
-                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="IDName" required>
+                                        <input type="text" name="bgmarr_name" class="form-control" id="bgmarr_name" placeholder="IDName (Example : BGMARR000 #00BGM)" required>
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputEmail4">Username</label>
-                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="Username">
+                                        <input type="text" name="bgmarr_us" class="form-control" id="bgmarr_us" placeholder="Username (Example : NameGravityRN)">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="inputPassword4">Password</label>
@@ -327,7 +327,8 @@ $fullname = $_SESSION['fullname'];
                                                         <th><?php echo $i++ ?></th>
                                                         <td><?php echo $row["bgmarr_name"] ?></td>
                                                         <td><?php echo iconv_substr($row["bgmarr_desc"], 0, 12, 'UTF-8') ?>...</td>
-                                                        <td><?php echo iconv_substr($row["bgmarr_url"], 0, 13, 'UTF-8') ?>...</td>
+                                                        <td><a href="<?php echo $row["bgmarr_url"] ?>" target="_blank"><?php echo iconv_substr($row["bgmarr_url"], 0, 24, 'UTF-8') ?></a></td>
+                                                        <!-- <td><?php echo iconv_substr($row["bgmarr_url"], 0, 13, 'UTF-8') ?>...</td> -->
                                                         <td><?php echo $row["bgmarr_us"] ?></td>
                                                         <td><?php echo iconv_substr($row["bgmarr_pw"], 0, 20, 'UTF-8') ?></td>
                                                         <td><?php echo $row["bgmarr_price"] ?></td>
