@@ -5,6 +5,7 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -54,7 +55,7 @@ $fullname = $_SESSION['fullname'];
             <!-- Start.navbar -->
             <?php include_once 'sideMenu.php'; ?>
             <!-- End.navbar -->
-
+          
         </div>
     </header><!-- End Header -->
 
@@ -83,10 +84,11 @@ $fullname = $_SESSION['fullname'];
                                     ON id_order.user_id = tblclient.id 
                                     JOIN bgmarr_tbl 
                                     ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id'  ORDER BY `id_order`.`id` ASC; ";
+                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
                         $result = mysqli_query($conn, $sql);
 
                         ?>
+
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
@@ -107,11 +109,15 @@ $fullname = $_SESSION['fullname'];
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $i = 1;
+                                                $i = 0;
+                                                $sum = 0;
                                                 if (mysqli_num_rows($result) > 0) {
+
                                                     // output data of each row
                                                     while ($row = mysqli_fetch_assoc($result)) {
-
+                                                        $total = $row['total_sum'];
+                                                        $sum = $sum + $total;
+                                                        $i++;
                                                 ?>
                                                         <tr>
                                                             <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
@@ -120,11 +126,13 @@ $fullname = $_SESSION['fullname'];
 
                                                             <td class="table_cart"><?php echo $row['price'] ?></td>
                                                             <td>
-                                                                <div class="counter">
-                                                                    <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
-                                                                    <input type="text" value="<?php echo $row['quantity_hr'] ?>">
-                                                                    <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
-                                                                </div>
+                                                                <form action="cartSave.php?id=<?php echo $row['id'] ?>" method="post">
+                                                                    <div class="counter">
+                                                                        <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
+                                                                        <input type="text" name="quantity_hr" value="<?php echo $row['quantity_hr'] ?>">
+                                                                        <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
+                                                                    </div>
+                                                                </form>
                                                             </td>
                                                             <td class="table_cart">
                                                                 <input type="text"></input>
@@ -136,24 +144,44 @@ $fullname = $_SESSION['fullname'];
                                                             </td>
                                                             <td class="table_cart">
                                                                 <a href="Javascript:if(confirm('Want to delete it?')==true) 
-                                                {window.location='cartDel.php?id=<?php echo $row["id"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
+                                                {window.location='cartDel.php?id_bgmarr_name=<?php echo $row["id_bgmarr_name"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                             </td>
                                                         </tr>
-                                                <?php
-                                                    }
-                                                }
-                                                ?>
+                                                <?php  
+                                                    }                                               
+                                                }                            
+                                                // $_SESSION['i'] = $i;
+                                                ?>                                                
                                             </tbody>
-
+                                            <tbody>
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td class="table_cart">
+                                                        <h5>Sum</h5>
+                                                    </td>
+                                                    <td class="table_cart">
+                                                        <h5>
+                                                            <?php echo $sum; ?> THB
+                                                        </h5>
+                                                    </td>
+                                                    <td></td>
+                                                </tr>
+                                            </tbody>
                                         </table>
-                                        <hr>
-                                        <a href="Javascript:if(confirm('Want to delete them all?')==true) 
-                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a>
+
+                                        <!-- <a href="Javascript:if(confirm('Want to delete them all?')==true) 
+                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a> -->
+
+
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group col-md-12">
+                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>Total shopping cart</h3>
@@ -162,8 +190,9 @@ $fullname = $_SESSION['fullname'];
                                         <p>All product prices</p>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
+
                     </div>
                 </div>
             </div>

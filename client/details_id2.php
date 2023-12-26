@@ -67,8 +67,8 @@ $bgmarr_name = $_GET['id'];
 
     </div>
   </header><!-- End Header -->
-
-  <main id="main" data-aos="fade" data-aos-delay="1500">
+  
+  <main id="main" data-aos="fade" > <!--ตั้งดีเลย์ 1.5 วิ data-aos-delay="1500" -->
 
     <!-- ======= End Page Header ======= -->
     <div class="page-header d-flex align-items-center">
@@ -110,7 +110,7 @@ $bgmarr_name = $_GET['id'];
 
           <div class="col-lg-12">
             <div class="portfolio-description">
-              <h2>รายละเอียด</h2>
+              <h2>Details</h2>
               <p>
                 <?php echo $row['bgmarr_desc'] ?>
               </p>
@@ -118,7 +118,7 @@ $bgmarr_name = $_GET['id'];
               <div class="testimonial-item">
                 <p>
                   <i class="bi bi-quote quote-icon-left"></i>
-                  รูปเพิ่มเติม >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank">
+                    Additional images >>> <a href="<?php echo $row['bgmarr_url'] ?>" target="_blank">
                     <?php echo $row['bgmarr_url'] ?>
                   </a>
                   <i class="bi bi-quote quote-icon-right"></i>

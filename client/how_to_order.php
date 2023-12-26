@@ -57,7 +57,7 @@ $fullname = $_SESSION['fullname'];
         </div>
     </header><!-- End Header -->
 
-  <main id="main" data-aos="fade" data-aos-delay="1500">
+  <main id="main" data-aos="fade">  <!--ตั้งดีเลย์ 1.5 วิ data-aos-delay="1500" -->
 
     <!-- ======= End Page Header ======= -->
     <div class="page-header d-flex align-items-center">
