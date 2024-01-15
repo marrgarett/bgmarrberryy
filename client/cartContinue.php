@@ -57,7 +57,7 @@ $bgm = "BGM";
             <!-- Start.navbar -->
             <?php include_once 'sideMenu.php'; ?>
             <!-- End.navbar -->
-          
+
         </div>
     </header><!-- End Header -->
 
@@ -68,7 +68,7 @@ $bgm = "BGM";
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="text-center">Cart</h2>
+                        <h2 class="text-center">Proceed to Payment</h2>
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
@@ -95,23 +95,21 @@ $bgm = "BGM";
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3>Your Cart : <?php echo "2312000001"; ?></h3>
-                                        <hr>
-                                        <table class="table table-borderless">
+                                        <!-- <h3>Your Cart : <?php echo "2312000001"; ?></h3>
+                                        <hr> -->
+                                        <h3>Bank transfer</h3>
+                                        <p>ท่านจำเป็นต้องทำการโอนเงินผ่านแอพพลิเคชั่น Mobile Banking ของธนาคาร ที่มี QR Code ในสลิปโอนเงิน มิเช่นนั้นระบบจะไม่สามารถตรวจสอบการโอนเงินของท่านได้</p>
+                                        <td style="padding-top: 15px;"><img src="img/qrpayment.jpg" alt="" width="220" height="300"></td>
+                                        <table class="table">
                                             <thead>
                                                 <tr>
-                                                    <th>Product</th>
-                                                    <th>Product Name</th>
-                                                    <th style="text-align: center;">Price</th>
-                                                    <th style="text-align: center;">hours</th>
-                                                    <th style="text-align: center;">Code</th>
-                                                    <th style="text-align: center;">Total</th>
+                                                    <th>ธนาคาร...</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $i = 0;
+
                                                 $sum = 0;
                                                 if (mysqli_num_rows($result) > 0) {
 
@@ -119,69 +117,39 @@ $bgm = "BGM";
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                         $total = $row['total_sum'];
                                                         $sum = $sum + $total;
-                                                        $i++;
-                                                ?>
-                                                        <tr>
-                                                            <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
 
-                                                            <td class="table_cart"><?php echo $row['price'] ?></td>
-                                                            <td>
-                                                                <form action="cartSave.php?id=<?php echo $row['id'] ?>" method="post">
-                                                                    <div class="counter">
-                                                                        <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
-                                                                        <input type="text" name="quantity_hr" value="<?php echo $row['quantity_hr'] ?>">
-                                                                        <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
-                                                                    </div>
-                                                                </form>
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <input type="text"></input>
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <h5>
-                                                                    <?php echo $row['total_sum']; ?> THB
-                                                                </h5>
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <a href="Javascript:if(confirm('Want to delete it?')==true) 
-                                                {window.location='cartDel.php?id_bgmarr_name=<?php echo $row["id_bgmarr_name"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                                                            </td>
-                                                        </tr>
-                                                <?php  
-                                                    }                                               
-                                                }                            
+                                                ?>
+
+                                                <?php
+                                                    }
+                                                }
                                                 // $_SESSION['i'] = $i;
-                                                ?>                                                
-                                            </tbody>
-                                            <tbody>
+                                                ?>
                                                 <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="table_cart">
-                                                        <h5>Summary</h5>
-                                                    </td>
-                                                    <td class="table_cart">
-                                                        <h5>
-                                                            <?php echo $sum; ?> THB
-                                                        </h5>
-                                                    </td>
-                                                    <td></td>
+                                                    <th>ชื่อบัญชี</th>
+                                                    <td>yuuuu uiui</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>เลขที่บัญชี</th>
+                                                    <td>1234567890</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>จำนวนเงิน</th>
+                                                    <td><?php echo $sum; ?> THB</td>
                                                 </tr>
                                             </tbody>
                                         </table>
-
-                                        <!-- <a href="Javascript:if(confirm('Want to delete them all?')==true) 
-                                                {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a> -->
-
-
-
+                                            <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
+                                            <input type="file" name="" id="">
+                                            <br><br>
+                                            <p>อีเมลที่ใช้รับสินค้า</p>
+                                            <input type="email" name="" id="" placeholder="Email">
+                                            <br>
+                                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3">Confirm payment</a>
                                     </div>
                                 </div>
                             </div>
-                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            
                             <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
