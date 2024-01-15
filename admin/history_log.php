@@ -299,8 +299,8 @@ $fullname = $_SESSION['fullname'];
                                         <th>IDName</th>
                                         <th>Hour</th>
                                         <th>Summary</th>
-                                        <th>Day/Time Start</th>
-                                        <th>Day/Time End</th>
+                                        <th>Date/Time Start</th>
+                                        <th>Date/Time End</th>
                                         <th>Slip</th>
                                         <th>Status</th>
                                         <th>Edit</th>
