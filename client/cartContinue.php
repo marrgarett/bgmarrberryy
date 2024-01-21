@@ -80,7 +80,7 @@ $bgm = "BGM";
                                     id_order.price,
                                     id_order.quantity_hr,
                                     id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.total
+                                    id_order.discount
                                     FROM id_order 
                                     JOIN tblclient 
                                     ON id_order.user_id = tblclient.id 
@@ -88,15 +88,55 @@ $bgm = "BGM";
                                     ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
                                     WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
                         $result = mysqli_query($conn, $sql);
-
                         ?>
 
-                        <div class="form-row">
-                            <div class="form-group col-md-12">
+                        <div class="row">
+                            <div class="form-group col-md-8">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <!-- <h3>Your Cart : <?php echo "2312000001"; ?></h3>
-                                        <hr> -->
+                                        <h3>
+                                            Product list
+                                        </h3>
+                                        <table class="table table-borderless">
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Product Name</th>
+                                                    <th style="text-align: center;">Price</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $i = 0;
+                                                $sum = 0;
+                                                $sum2 = 0;
+                                                $discount = 0;
+                                                if (mysqli_num_rows($result) > 0) {
+
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $total = $row['total_sum'];
+                                                        $dis = $row['discount'];
+                                                        $discount += $dis;
+                                                        $sum += $total;
+                                                        $i++;
+                                                ?>
+                                                        <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
+                                                            <tr>
+                                                                <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
+                                                                <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
+                                                                <td class="table_cart"><?php echo $row['price'] ?></td>
+                                                            </tr>
+                                                        </form>
+                                                <?php
+                                                    }
+                                                }
+                                                $sum2 = $sum - $discount;
+                                                // $_SESSION['i'] = $i;
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                        <hr>
                                         <h3>Bank transfer</h3>
                                         <p>ท่านจำเป็นต้องทำการโอนเงินผ่านแอพพลิเคชั่น Mobile Banking ของธนาคาร ที่มี QR Code ในสลิปโอนเงิน มิเช่นนั้นระบบจะไม่สามารถตรวจสอบการโอนเงินของท่านได้</p>
                                         <td style="padding-top: 15px;"><img src="img/qrpayment.jpg" alt="" width="220" height="300"></td>
@@ -108,23 +148,6 @@ $bgm = "BGM";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-
-                                                $sum = 0;
-                                                if (mysqli_num_rows($result) > 0) {
-
-                                                    // output data of each row
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        $total = $row['total_sum'];
-                                                        $sum = $sum + $total;
-
-                                                ?>
-
-                                                <?php
-                                                    }
-                                                }
-                                                // $_SESSION['i'] = $i;
-                                                ?>
                                                 <tr>
                                                     <th>ชื่อบัญชี</th>
                                                     <td>yuuuu uiui</td>
@@ -133,33 +156,37 @@ $bgm = "BGM";
                                                     <th>เลขที่บัญชี</th>
                                                     <td>1234567890</td>
                                                 </tr>
-                                                <tr>
+                                                <!-- <tr>
                                                     <th>จำนวนเงิน</th>
-                                                    <td><?php echo $sum; ?> THB</td>
-                                                </tr>
+                                                    <td>100 THB</td>
+                                                </tr> -->
                                             </tbody>
                                         </table>
-                                            <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
-                                            <input type="file" name="" id="">
-                                            <br><br>
-                                            <p>อีเมลที่ใช้รับสินค้า</p>
-                                            <input type="email" name="" id="" placeholder="Email">
-                                            <br>
-                                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3">Confirm payment</a>
+                                        <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
+                                        <input type="file" name="" id="">
+                                        <br><br>
+                                        <!-- <p>อีเมลที่ใช้รับสินค้า</p>
+                                        <input type="email" name="" id="" placeholder="Email"> -->
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- <div class="form-group col-md-12">
+
+                            <div class="form-group col-md-4">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>Total shopping cart</h3>
                                         <hr>
-                                        <p>Total Product()</p>
-                                        <p>All product prices</p>
+                                        <p>อีเมลที่ใช้รับสินค้า : test@gmail.com</p>
+                                        <hr>
+                                        <h6>Total Product (<?php echo $i ?>) </h6>
+                                        <h6>All product prices <?php echo $sum ?></h6>
+                                        <h6>discount <?php echo $discount ?></h6>
+                                        <hr>
+                                        <h5>Summary <?php echo $sum2 ?> THB</h5>
                                     </div>
                                 </div>
-                            </div> -->
+                                <a href="cartContinue.php?continue=<?php echo $user_id; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Confirm payment</a>
+                            </div>
                         </div>
 
                     </div>

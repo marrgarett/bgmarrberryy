@@ -57,7 +57,7 @@ $bgm = "BGM";
             <!-- Start.navbar -->
             <?php include_once 'sideMenu.php'; ?>
             <!-- End.navbar -->
-          
+
         </div>
     </header><!-- End Header -->
 
@@ -106,7 +106,7 @@ $bgm = "BGM";
                                                     <th style="text-align: center;">hours</th>
                                                     <th style="text-align: center;">Code</th>
                                                     <th style="text-align: center;"></th>
-                                                    
+
                                                     <th style="text-align: center;">Total</th>
                                                     <th></th>
                                                 </tr>
@@ -122,49 +122,48 @@ $bgm = "BGM";
                                                     // output data of each row
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                         $total = $row['total_sum'];
-                                                        $dis= $row['discount'];
+                                                        $dis = $row['discount'];
                                                         $discount += $dis;
                                                         $sum += $total;
                                                         $i++;
                                                 ?>
                                                         <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
-                                                        <tr>
-                                                            <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
+                                                            <tr>
+                                                                <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
+                                                                <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
 
-                                                            <td class="table_cart"><?php echo $row['price'] ?></td>
-                                                            <input type="hidden" name="price" value="<?php echo $row['price'] ?>">
-                                                            <td>
+                                                                <td class="table_cart"><?php echo $row['price'] ?></td>
+                                                                <input type="hidden" name="price" value="<?php echo $row['price'] ?>">
+                                                                <td>
                                                                     <div class="counter">
                                                                         <span class="down" onClick='decreaseCount(event, this)'><i class="bi bi-dash-circle-fill"></i></span>
                                                                         <input type="text" name="quantity_hr" value="<?php echo $row['quantity_hr'] ?>">
                                                                         <span class="up" onClick='increaseCount(event, this)'><i class="bi bi-plus-circle-fill"></i></span>
                                                                     </div>
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <input type="text" name="coupon">
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <input type="submit" class="btn btn-success" value="update">
-                                                                <a href="Javascript:if(confirm('Want to delete it?')==true) 
+                                                                </td>
+                                                                <td class="table_cart">
+                                                                    <input type="text" name="coupon">
+                                                                </td>
+                                                                <td class="table_cart">
+                                                                    <input type="submit" class="btn btn-success" value="update">
+                                                                    <a href="Javascript:if(confirm('Want to delete it?')==true) 
                                                 {window.location='cartDel.php?id_bgmarr_name=<?php echo $row["id_bgmarr_name"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
-                                                            </td>
-                                                            <td class="table_cart">
-                                                                <h5>
-                                                                    <?php echo $row['total_sum']; ?> THB
-                                                                </h5>
-                                                            </td>
-                                                            
-                                                        </tr>
-                                            </form>                                  
+                                                                </td>
+                                                                <td class="table_cart">
+                                                                    <h5>
+                                                                        <?php echo $row['total_sum']; ?> THB
+                                                                    </h5>
+                                                                </td>
 
-                                                <?php  
+                                                            </tr>
+                                                        </form>
+
+                                                <?php
                                                     }
-                                                                                             
-                                                }              
-                                                $sum2 = $sum - $discount;               
+                                                }
+                                                $sum2 = $sum - $discount;
                                                 // $_SESSION['i'] = $i;
-                                                ?>              
+                                                ?>
                                             </tbody>
                                             <tbody>
                                                 <tr>
@@ -174,10 +173,14 @@ $bgm = "BGM";
                                                     <td></td>
                                                     <td></td>
                                                     <td class="table_cart">
+                                                        <h5>All Product Price</h5>
                                                         <h5>discount</h5>
                                                         <h5>Summary</h5>
                                                     </td>
                                                     <td class="table_cart">
+                                                        <h5>
+                                                            <?php echo $sum; ?> THB
+                                                        </h5>
                                                         <h5>
                                                             <?php echo $discount; ?> THB
                                                         </h5>
@@ -188,10 +191,10 @@ $bgm = "BGM";
                                                     <td></td>
                                                 </tr>
                                             </tbody>
-                                            
+
                                         </table>
-                                        
-                                        
+
+
 
                                         <!-- <a href="Javascript:if(confirm('Want to delete them all?')==true) 
                                                 {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a> -->
@@ -201,7 +204,7 @@ $bgm = "BGM";
                                     </div>
                                 </div>
                             </div>
-                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>';}" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
                             <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
