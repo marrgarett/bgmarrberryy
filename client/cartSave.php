@@ -26,12 +26,11 @@ if (isset($_GET["bgmarr_name"])) {
         echo 'location.href="cart.php"';
         echo '</script>';
     }
-} elseif (isset($_GET["id"])) {
-    $id = $_GET['id'];
-    $quantity_hr = $_POST['quantity_hr'];
-    $sql = "UPDATE `id_order` SET `quantity_hr` = '$quantity_hr' WHERE `id_order`.`id` = $id; ";
-    $result = mysqli_query($conn, $sql);
-    echo '<script language="javascript">';
-    echo 'location.href="cart.php"';
-    echo '</script>';
+}elseif(isset($_GET["id_order"])){
+    echo 'hello';
+    $id_order = $_GET['id_order'];
+    $price = $_POST['price'];
+    echo $id_order;
+    echo $price;
+    
 }

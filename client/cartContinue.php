@@ -5,6 +5,8 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+$id_order = $_GET['id_order'];
+
 $sharp = "#";
 $bgm = "BGM";
 
@@ -90,12 +92,13 @@ $bgm = "BGM";
                         $result = mysqli_query($conn, $sql);
                         ?>
 
+
                         <div class="row">
                             <div class="form-group col-md-8">
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>
-                                            Product list
+                                            Product list || Order ID: <?php echo $id_order ?>
                                         </h3>
                                         <table class="table table-borderless">
                                             <thead>
@@ -103,6 +106,8 @@ $bgm = "BGM";
                                                     <th>Product</th>
                                                     <th>Product Name</th>
                                                     <th style="text-align: center;">Price</th>
+                                                    <th style="text-align: center;">hours</th>
+                                                    <th style="text-align: center;">total</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -117,17 +122,20 @@ $bgm = "BGM";
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                         $total = $row['total_sum'];
                                                         $dis = $row['discount'];
+                                                        $id_order = $row['id_order'];
                                                         $discount += $dis;
                                                         $sum += $total;
                                                         $i++;
                                                 ?>
-                                                        <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
-                                                            <tr>
-                                                                <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
-                                                                <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
-                                                                <td class="table_cart"><?php echo $row['price'] ?></td>
-                                                            </tr>
-                                                        </form>
+
+                                                        <tr>
+                                                            <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
+                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
+                                                            <td class="table_cart"><?php echo $row['price'] ?></td>
+                                                            <td class="table_cart"><?php echo $row['quantity_hr'] ?></td>
+                                                            <td class="table_cart"><?php echo $total ?></td>
+                                                        </tr>
+
                                                 <?php
                                                     }
                                                 }
@@ -162,9 +170,12 @@ $bgm = "BGM";
                                                 </tr> -->
                                             </tbody>
                                         </table>
-                                        <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
-                                        <input type="file" name="" id="">
-                                        <br><br>
+                                        <form action="cartWait_product.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" method="post">
+                                            <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
+                                            <input type="file" name="" id="">
+                                            <br>
+                                            <input type="submit" class="btn btn-primary mt-3" value="Confirm payment" style="float:right; width:100%"></input>
+                                        </form>
                                         <!-- <p>อีเมลที่ใช้รับสินค้า</p>
                                         <input type="email" name="" id="" placeholder="Email"> -->
                                     </div>
@@ -185,9 +196,10 @@ $bgm = "BGM";
                                         <h5>Summary <?php echo $sum2 ?> THB</h5>
                                     </div>
                                 </div>
-                                <a href="cartContinue.php?continue=<?php echo $user_id; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Confirm payment</a>
                             </div>
+
                         </div>
+
 
                     </div>
                 </div>

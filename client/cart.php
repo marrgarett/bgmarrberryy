@@ -123,6 +123,7 @@ $bgm = "BGM";
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                         $total = $row['total_sum'];
                                                         $dis = $row['discount'];
+                                                        $id_order = $row['id_order'];
                                                         $discount += $dis;
                                                         $sum += $total;
                                                         $i++;
@@ -204,7 +205,7 @@ $bgm = "BGM";
                                     </div>
                                 </div>
                             </div>
-                            <a href="cartContinue.php?continue=<?php echo $user_id; ?>" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            <a href="cartContinue.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
                             <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
