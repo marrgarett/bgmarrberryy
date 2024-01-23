@@ -397,6 +397,7 @@ $fullname = $_SESSION['fullname'];
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>History ID</th>
                                             <th>Client Name</th>
                                             <th>IDName</th>
                                             <th>Quantity Hour</th>
@@ -430,6 +431,7 @@ $fullname = $_SESSION['fullname'];
                                         ?>
                                                 <tr>
                                                     <th scope><?php echo $i++ ?></th>
+                                                    <td><?php echo $row["his_id"] ?></td>
                                                     <td><?php echo $row["fullname"] ?></td>
                                                     <td><?php echo $row["bgmarr_name"] ?></td>
                                                     <td><?php echo $row["his_hr"] ?></td>
@@ -456,7 +458,7 @@ $fullname = $_SESSION['fullname'];
                                                         <div><?php echo $row["his_status"] ?></div>
                                                     </td>
                                                     <td>
-                                                    <a href="ChkStatusID.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" target="_blank" class="btn btn-success">Accept</a>
+                                                    <a href="ChkStatusID.php?his_id=<?php echo $row["his_id"]; ?>" target="_blank" class="btn btn-success">Accept</a>
                                                     </td>
                                                 </tr>
                                         <?php
