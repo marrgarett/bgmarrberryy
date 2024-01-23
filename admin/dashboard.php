@@ -370,19 +370,41 @@ $fullname = $_SESSION['fullname'];
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary">History Check</h6>
                         </div>
+
+                        <?php
+                    $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
+                    tblclient.fullname, 
+                    history_tbl.bgmarr_id, 
+                    bgmarr_tbl.bgmarr_name,
+                    history_tbl.his_hr, 
+                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
+                    history_tbl.his_start,
+                    history_tbl.his_payment,
+                    history_tbl.his_status
+                    FROM history_tbl
+                    JOIN tblclient
+                    ON history_tbl.cli_id = tblclient.id
+                    JOIN bgmarr_tbl
+                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    WHERE history_tbl.his_status = 'Pending'";
+                    $result = mysqli_query($conn, $sql);
+
+                    ?>
+
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No.</th>
+                                            <th>History ID</th>
                                             <th>Client Name</th>
                                             <th>IDName</th>
                                             <th>Quantity Hour</th>
                                             <th>Price Summary</th>
                                             <th>Slip</th>
                                             <th>Status</th>
-                                            <th>Accept & Decline</th>
+                                            <th>Accept</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -409,19 +431,35 @@ $fullname = $_SESSION['fullname'];
                                         ?>
                                                 <tr>
                                                     <th scope><?php echo $i++ ?></th>
+                                                    <td><?php echo $row["his_id"] ?></td>
                                                     <td><?php echo $row["fullname"] ?></td>
                                                     <td><?php echo $row["bgmarr_name"] ?></td>
+                                                    <td><?php echo $row["his_hr"] ?></td>
                                                     <td><?php echo $row["hour_sum"] ?></td>
-                                                    <td><?php echo $row["price_sum"] ?></td>
-                                                    <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
                                                     <td>
-                                                        <div>Pending</div>
+                                                        <?php
+                                                        if ($row['his_payment']!= '') {
+                                                        ?>
+                                                            <a class="btn btn-success btn-circle btn-sm">
+                                                                <i class="fas fa-check"></i>
+                                                            </a>
+                                                        <?php
+                                                        } else {
+                                                        ?>
+                                                            <a class="btn btn-danger btn-circle btn-sm">
+                                                                <i class="fas fa-exclamation-triangle"></i>
+                                                            </a>
+                                                        <?php
+                                                        }
+                                                        ?>
+                                                        
                                                     </td>
                                                     <td>
-                                                                <a href="productsEdit.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" class="btn btn-warning">Edit</a>
-                                                                <a href="Javascript:if(confirm('Confirm data deletion ?')==true) 
-                                                    {window.location='productsDel.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i>Delete</a>
-                                                            </td>
+                                                        <div><?php echo $row["his_status"] ?></div>
+                                                    </td>
+                                                    <td>
+                                                    <a href="ChkStatusID.php?his_id=<?php echo $row["his_id"]; ?>" target="_blank" class="btn btn-success">Accept</a>
+                                                    </td>
                                                 </tr>
                                         <?php
                                             }
