@@ -267,7 +267,8 @@ $fullname = $_SESSION['fullname'];
                     JOIN tblclient
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id;";
+                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    WHERE history_tbl.his_status != 'Pending'";
                     $result = mysqli_query($conn, $sql);
 
                     ?>
