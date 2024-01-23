@@ -286,9 +286,7 @@ $fullname = $_SESSION['fullname'];
 
                         <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
                     </div>
-                    <div>
-                    <?php include_once('order_number_generate\yearmonth6digitnumber.php');?>
-                    </div>
+                  
                     <div class="card">
                         <div class="card-body">
                             <table class="table table-borderless">
