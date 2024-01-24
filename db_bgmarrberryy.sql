@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 05:53 AM
+-- Generation Time: Jan 24, 2024 at 06:55 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -104,8 +104,9 @@ INSERT INTO `coupon_discount` (`coupon_id`, `coupon_name`, `coupon_discount`) VA
 
 CREATE TABLE `history_tbl` (
   `his_id` int(10) NOT NULL,
+  `order_id` varchar(10) NOT NULL,
   `cli_id` int(11) NOT NULL,
-  `bgmarr_id` int(6) NOT NULL,
+  `bgmarr_name` varchar(10) NOT NULL,
   `his_hr` int(11) NOT NULL,
   `his_price` int(3) NOT NULL,
   `his_start` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -113,6 +114,13 @@ CREATE TABLE `history_tbl` (
   `his_payment` text NOT NULL,
   `his_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+
+--
+-- Dumping data for table `history_tbl`
+--
+
+INSERT INTO `history_tbl` (`his_id`, `order_id`, `cli_id`, `bgmarr_name`, `his_hr`, `his_price`, `his_start`, `his_end`, `his_payment`, `his_status`) VALUES
+(6, '2401000007', 3, 'BGMARR020', 1, 15, '2024-01-24 07:56:00', '00:00:00', '', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -149,6 +157,18 @@ CREATE TABLE `id_order` (
   `discount` int(11) NOT NULL,
   `date_order` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `status` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `session_tbl`
+--
+
+CREATE TABLE `session_tbl` (
+  `ID` int(11) NOT NULL,
+  `user_ID` int(11) NOT NULL,
+  `session_user_ID` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -215,9 +235,7 @@ ALTER TABLE `coupon_discount`
 -- Indexes for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
-  ADD PRIMARY KEY (`his_id`),
-  ADD KEY `cli_id` (`cli_id`,`bgmarr_id`),
-  ADD KEY `bgmarr_id` (`bgmarr_id`);
+  ADD PRIMARY KEY (`his_id`);
 
 --
 -- Indexes for table `his_status`
@@ -230,6 +248,12 @@ ALTER TABLE `his_status`
 --
 ALTER TABLE `id_order`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `session_tbl`
+--
+ALTER TABLE `session_tbl`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `status`
@@ -263,7 +287,7 @@ ALTER TABLE `coupon_discount`
 -- AUTO_INCREMENT for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
-  MODIFY `his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `his_status`
@@ -275,7 +299,13 @@ ALTER TABLE `his_status`
 -- AUTO_INCREMENT for table `id_order`
 --
 ALTER TABLE `id_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+
+--
+-- AUTO_INCREMENT for table `session_tbl`
+--
+ALTER TABLE `session_tbl`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `status`
