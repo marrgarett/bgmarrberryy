@@ -254,7 +254,7 @@ $fullname = $_SESSION['fullname'];
 
                     ?>
                     <?php
-                    $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
+                    $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
                     tblclient.fullname, 
                     history_tbl.bgmarr_id, 
                     bgmarr_tbl.bgmarr_name,
@@ -293,7 +293,8 @@ $fullname = $_SESSION['fullname'];
                             <table class="table table-borderless">
                                 <thead>
                                     <tr>
-                                        <th>No.</th>
+                                        <th>His No.</th>
+                                        <th>Order ID</th>
                                         <th>Client Name</th>
                                         <th>IDName</th>
                                         <th>Hour</th>
@@ -331,6 +332,7 @@ $fullname = $_SESSION['fullname'];
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
+                                                <td><?php echo $row["order_id"]?></td>
                                                 <td><?php echo $row["fullname"] ?></td>
                                                 <td><?php echo $row["bgmarr_name"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
