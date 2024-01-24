@@ -5,10 +5,10 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
-$id_order = $_GET['id_order'];
-
 $sharp = "#";
 $bgm = "BGM";
+
+
 
 ?>
 <!DOCTYPE html>
@@ -65,16 +65,9 @@ $bgm = "BGM";
 
     <main id="main" data-aos="fade"> <!-- data-aos-delay="1500" -->
 
-        <!-- ======= End Page Header ======= -->
-        <div class="page-header d-flex align-items-center">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-12">
-                        <h2 class="text-center">สรุปการสั่งซื้อ</h2>
 
-                        <!-- <a class="cta-btn" href="index.php">Back</a> -->
-                        <?php
-                        $sql = "SELECT id_order.id,
+        <?php
+        $sql = "SELECT id_order.id,
                                     id_order.id_order,
                                     id_order.user_id,
                                     bgmarr_tbl.bgmarr_img,
@@ -89,62 +82,41 @@ $bgm = "BGM";
                                     JOIN bgmarr_tbl 
                                     ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
                                     WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
-                        $result = mysqli_query($conn, $sql);
-                        ?>
+        $result = mysqli_query($conn, $sql);
+        ?>
 
-
+        <!-- ======= End Page Header ======= -->
+        <div class="page-header d-flex align-items-center">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-12">
+                        <h2 class="text-center">เลือกวิธีชำระเงิน</h2>
                         <div class="row">
-                            <div class="form-group col-md-8">
+                            <div class="form-group col-md-8" style="margin: auto;">
                                 <div class="card cart_product">
-                                    <div class="card-body">
-                                        <h3>
-                                            Product list : <?php echo $id_order ?>
-                                        </h3>
-                                        <hr>
-                                        <table class="table table-borderless">
-                                            <thead>
-                                                <tr>
-                                                    
-                                                    <th>Product Name</th>
-                                                    <th style="text-align: center;">Price</th>
-                                                    <th style="text-align: center;">hours</th>
-                                                    <th style="text-align: center;">total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $i = 0;
-                                                $sum = 0;
-                                                $sum2 = 0;
-                                                $discount = 0;
-                                                if (mysqli_num_rows($result) > 0) {
+                                    <div class="card-body text-center">
+                                        <?php
+                                        $i = 0;
+                                        $sum = 0;
+                                        $sum2 = 0;
+                                        $discount = 0;
+                                        if (mysqli_num_rows($result) > 0) {
 
-                                                    // output data of each row
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        $total = $row['total_sum'];
-                                                        $dis = $row['discount'];
-                                                        $id_order = $row['id_order'];
-                                                        $discount += $dis;
-                                                        $sum += $total;
-                                                        $i++;
-                                                ?>
-
-                                                        <tr>
-                                                            
-                                                            <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
-                                                            <td class="table_cart"><?php echo $row['price'] ?></td>
-                                                            <td class="table_cart"><?php echo $row['quantity_hr'] ?></td>
-                                                            <td class="table_cart"><?php echo $total ?></td>
-                                                        </tr>
-
-                                                <?php
-                                                    }
-                                                }
-                                                $sum2 = $sum - $discount;
-                                                // $_SESSION['i'] = $i;
-                                                ?>
-                                            </tbody>
-                                        </table>
+                                            // output data of each row
+                                            while ($row = mysqli_fetch_assoc($result)) {
+                                                $total = $row['total_sum'];
+                                                $dis = $row['discount'];
+                                                $id_order = $row['id_order'];
+                                                $discount += $dis;
+                                                $sum += $total;
+                                                $i++;
+                                        ?>
+                                        <?php
+                                            }
+                                        }
+                                        $sum2 = $sum - $discount;
+                                        // $_SESSION['i'] = $i;
+                                        ?>
                                         <hr>
                                         <h5>Shipping Address</h5>
                                         <br>
@@ -175,42 +147,13 @@ $bgm = "BGM";
                                         </div>
                                         <hr>
                                         <br>
+                                        <a href="cartPayment_bank.php" class="btn btn-primary mt-3">Complete Order <i class="bi bi-arrow-right"></i></a>
+                                        <!-- <p>อีเมลที่ใช้รับสินค้า</p>
+                                        <input type="email" name="" id="" placeholder="Email"> -->
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="form-group col-md-4">
-                                <div class="card cart_product">
-                                    <div class="card-body">
-                                        <h3 class="text-center">สรุปการสั่งซื้อ</h3>
-                                        <hr>
-                                        <div class="total1">
-                                            <h6>รวมยอด</h6>
-                                            <h6><?php echo $sum ?>.00 บาท</h6>
-                                        </div>
-                                        <!-- <p>อีเมลที่ใช้รับสินค้า : test@gmail.com</p> -->
-                                        <hr>
-                                        <!-- <h6>Total Product (<?php echo $i ?>) </h6> -->
-                                        <div class="total2">
-                                            <h6>ส่วนลด</h6>
-                                            <h6><?php echo $discount ?>.00 บาท</h6>
-                                        </div>
-                                        <hr>
-                                        <div class="total3">
-                                            <h6>totals</h6>
-                                            <h6><?php echo $sum2 ?>.00 บาท</h6>
-                                        </div>
-                                        <br>
-                                        <h3 style="font-size: 35px; float:right"><?php echo $sum2 ?>.00 บาท</h3>
-                                    </div>
-                                </div>
-                                <a href="cartPayment_bank.php" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
-                                <!-- <input type="submit" class="btn btn-primary mt-3" value="Confirm payment" style="float:right; width:100%"></input> -->
-                            </div>
-                            
                         </div>
-
-
                     </div>
                 </div>
             </div>

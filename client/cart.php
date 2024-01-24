@@ -92,10 +92,26 @@ $bgm = "BGM";
                         ?>
 
                         <div class="form-row">
+                            <?php
+                                $i = 0;
+                                $sum = 0;
+                                $sum2 = 0;
+                                $discount = 0;
+                                if (mysqli_num_rows($result) > 0) {
+
+                                // output data of each row
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    $total = $row['total_sum'];
+                                    $dis = $row['discount'];
+                                    $id_order = $row['id_order'];
+                                    $discount += $dis;
+                                    $sum += $total;
+                                    $i++;
+                                ?>
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3>Your Cart : <?php echo "2312000001"; ?></h3>
+                                        <h3>Your Cart : <?php echo $id_order; ?></h3>
                                         <hr>
                                         <table class="table table-borderless">
                                             <thead>
@@ -112,22 +128,7 @@ $bgm = "BGM";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php
-                                                $i = 0;
-                                                $sum = 0;
-                                                $sum2 = 0;
-                                                $discount = 0;
-                                                if (mysqli_num_rows($result) > 0) {
-
-                                                    // output data of each row
-                                                    while ($row = mysqli_fetch_assoc($result)) {
-                                                        $total = $row['total_sum'];
-                                                        $dis = $row['discount'];
-                                                        $id_order = $row['id_order'];
-                                                        $discount += $dis;
-                                                        $sum += $total;
-                                                        $i++;
-                                                ?>
+                                                
                                                         <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
                                                             <tr>
                                                                 <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
@@ -174,9 +175,9 @@ $bgm = "BGM";
                                                     <td></td>
                                                     <td></td>
                                                     <td class="table_cart">
-                                                        <h5>All Product Price</h5>
-                                                        <h5>discount</h5>
-                                                        <h5>Summary</h5>
+                                                        <h5>รวมยอด</h5>
+                                                        <h5>ส่วนลด</h5>
+                                                        <h5>totals</h5>
                                                     </td>
                                                     <td class="table_cart">
                                                         <h5>

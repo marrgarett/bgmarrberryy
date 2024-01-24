@@ -75,7 +75,7 @@ $bgm = "BGM";
                             <div class="form-group col-md-8" style="margin: auto;">
                                 <div class="card cart_product">
                                     <div class="card-body text-center">                                   
-                                        <h1>Waiting to receive the product</h1>                                                                              
+                                        <h1>Waiting to receive the goods via email.</h1>                                                                              
                                         <br>
                                         <a href="index.php" class="btn btn-success mt-3">Home</a>
                                         <!-- <p>อีเมลที่ใช้รับสินค้า</p>
