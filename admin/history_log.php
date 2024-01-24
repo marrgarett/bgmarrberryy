@@ -350,7 +350,7 @@ $fullname = $_SESSION['fullname'];
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <a href="history_resetPass.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" target="_blank" class="btn btn-warning">Reset</a>
+                                                    <a href="history_resetPass.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>" target="_blank" class="btn btn-warning">Reset</a>
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
