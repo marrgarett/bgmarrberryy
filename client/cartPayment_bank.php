@@ -5,8 +5,35 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+$id_order = $_GET['id_order'];
+
+
 $sharp = "#";
 $bgm = "BGM";
+
+$sql = "SELECT id_order, user_id, id_bgmarr_name, quantity_hr, price FROM 
+`id_order` WHERE id_order = '$id_order'";
+echo $sql;
+
+$result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+// output data of each row
+while($row = mysqli_fetch_assoc($result)) {
+    $id_order = $row['id_order'];
+    $user_id = $row['user_id'];
+    $id_bgmarr_name = $row['id_bgmarr_name'];
+    $quantity_hr = $row['quantity_hr'];
+    $price = $row['price'];
+    $his_status = "Pending";
+    $sql = "INSERT INTO `history_tbl` (`order_id`, `cli_id`, `bgmarr_name`, `his_hr`, 
+    `his_price`, `his_status`) VALUES 
+    ('$id_order', '$user_id', '$id_bgmarr_name', '$quantity_hr', '$price', '$his_status');";
+mysqli_query($conn, $sql);
+}
+} else {
+echo "0 results";
+}
 
 
 
@@ -66,31 +93,14 @@ $bgm = "BGM";
     <main id="main" data-aos="fade"> <!-- data-aos-delay="1500" -->
 
 
-        <?php
-        $sql = "SELECT id_order.id,
-                                    id_order.id_order,
-                                    id_order.user_id,
-                                    bgmarr_tbl.bgmarr_img,
-                                    id_order.id_bgmarr_name,
-                                    id_order.price,
-                                    id_order.quantity_hr,
-                                    id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.discount
-                                    FROM id_order 
-                                    JOIN tblclient 
-                                    ON id_order.user_id = tblclient.id 
-                                    JOIN bgmarr_tbl 
-                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
-        $result = mysqli_query($conn, $sql);
-        ?>
+        
 
         <!-- ======= End Page Header ======= -->
         <div class="page-header d-flex align-items-center">
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="text-center">Make Payment</h2>
+                        <h2 class="text-center">Make Payment <?php echo "$id_order"; ?></h2>
                         <div class="row">
                             <div class="form-group col-md-8" style="margin: auto;">
                                 <div class="card cart_product">
@@ -118,6 +128,7 @@ $bgm = "BGM";
                                         // $_SESSION['i'] = $i;
                                         ?>
                                         <h3>Bank transfer</h3>
+                                        
                                         <p>ท่านจำเป็นต้องทำการโอนเงินผ่านแอพพลิเคชั่น Mobile Banking ของธนาคาร ที่มี QR Code ในสลิปโอนเงิน มิเช่นนั้นระบบจะไม่สามารถตรวจสอบการโอนเงินของท่านได้</p>
                                         <td style="padding-top: 15px;"><img src="img/qrpayment.jpg" alt="" width="220" height="300"></td>
                                         <table class="table">

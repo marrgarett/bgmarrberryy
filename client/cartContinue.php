@@ -204,7 +204,7 @@ $bgm = "BGM";
                                         <h3 style="font-size: 35px; float:right"><?php echo $sum2 ?>.00 บาท</h3>
                                     </div>
                                 </div>
-                                <a href="cartPayment_bank.php" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
+                                <a href="cartPayment_bank.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
                                 <!-- <input type="submit" class="btn btn-primary mt-3" value="Confirm payment" style="float:right; width:100%"></input> -->
                             </div>
                             

@@ -17,7 +17,7 @@ if (isset($_GET["bgmarr_name"])) {
     $bgmarr_id = $row['bgmarr_id'];
     $bgmarr_name = $row['bgmarr_name'];
     $bgmarr_price = $row['bgmarr_price'];
-    $status_order = 'ucomplete';
+    $status_order = 'Uncomplete';
 
     $sql = "INSERT INTO `id_order` (`id`, `id_order`, `user_id`,  `id_bgmarr_name`, `price`, `quantity_hr`, `date_order`, `status`) 
     VALUES (NULL, '$id_order', '$user_id', '$bgmarr_name', '$bgmarr_price', '1', current_timestamp(), '$status_order');";
@@ -29,11 +29,4 @@ if (isset($_GET["bgmarr_name"])) {
         echo 'location.href="cart.php"';
         echo '</script>';
     }
-}elseif(isset($_GET["id_order"])){
-    echo 'hello';
-    $id_order = $_GET['id_order'];
-    $price = $_POST['price'];
-    echo $id_order;
-    echo $price;
-    
 }
