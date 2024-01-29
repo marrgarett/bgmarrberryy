@@ -6,7 +6,6 @@ $fullname = $_SESSION['fullname'];
 
 $sharp = "#";
 $bgm = "BGM";
-
 ?>
 
 <!DOCTYPE html>

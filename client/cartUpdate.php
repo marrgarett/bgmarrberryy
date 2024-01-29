@@ -15,7 +15,7 @@ if ($coupon == '') {
     echo '<script language="javascript">';
     echo 'location.href="cart.php"';
     echo '</script>';
-} elseif ($coupon == $codeCoupon[0] || $codeCoupon[1]) {
+} elseif ($coupon == $codeCoupon[0] || $coupon == $codeCoupon[1]) {
     if ($hours == 24) {
         $sql = "UPDATE `id_order` SET `quantity_hr` = $hours, `discount` = $discount1 WHERE `id_order`.`id` = $order_id; ";
         $result = mysqli_query($conn, $sql);

@@ -11,32 +11,6 @@ $id_order = $_GET['id_order'];
 $sharp = "#";
 $bgm = "BGM";
 
-$sql = "SELECT id_order, user_id, id_bgmarr_name, quantity_hr, price FROM 
-`id_order` WHERE id_order = '$id_order'";
-echo $sql;
-
-$result = mysqli_query($conn, $sql);
-
-if (mysqli_num_rows($result) > 0) {
-// output data of each row
-while($row = mysqli_fetch_assoc($result)) {
-    $id_order = $row['id_order'];
-    $user_id = $row['user_id'];
-    $id_bgmarr_name = $row['id_bgmarr_name'];
-    $quantity_hr = $row['quantity_hr'];
-    $price = $row['price'];
-    $his_status = "Pending";
-    $sql = "INSERT INTO `history_tbl` (`order_id`, `cli_id`, `bgmarr_name`, `his_hr`, 
-    `his_price`, `his_status`) VALUES 
-    ('$id_order', '$user_id', '$id_bgmarr_name', '$quantity_hr', '$price', '$his_status');";
-mysqli_query($conn, $sql);
-}
-} else {
-echo "0 results";
-}
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -93,8 +67,25 @@ echo "0 results";
     <main id="main" data-aos="fade"> <!-- data-aos-delay="1500" -->
 
 
-        
 
+        <?php
+        $sql = "SELECT id_order.id,
+                                    id_order.id_order,
+                                    id_order.user_id,
+                                    bgmarr_tbl.bgmarr_img,
+                                    id_order.id_bgmarr_name,
+                                    id_order.price,
+                                    id_order.quantity_hr,
+                                    id_order.price * id_order.quantity_hr AS total_sum,
+                                    id_order.discount
+                                    FROM id_order 
+                                    JOIN tblclient 
+                                    ON id_order.user_id = tblclient.id 
+                                    JOIN bgmarr_tbl 
+                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
+        $result = mysqli_query($conn, $sql);
+        ?>
         <!-- ======= End Page Header ======= -->
         <div class="page-header d-flex align-items-center">
             <div class="container position-relative">
@@ -128,39 +119,36 @@ echo "0 results";
                                         // $_SESSION['i'] = $i;
                                         ?>
                                         <h3>Bank transfer</h3>
-                                        
+
                                         <p>ท่านจำเป็นต้องทำการโอนเงินผ่านแอพพลิเคชั่น Mobile Banking ของธนาคาร ที่มี QR Code ในสลิปโอนเงิน มิเช่นนั้นระบบจะไม่สามารถตรวจสอบการโอนเงินของท่านได้</p>
                                         <td style="padding-top: 15px;"><img src="img/qrpayment.jpg" alt="" width="220" height="300"></td>
+                                        <br><br>
+                                        <h5><img src="img/scb-logo.png" alt="" width="30" height="30" style="margin-right: 5px;">ธนาคารไทยพาณิชย์</h5>
                                         <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th>ธนาคาร</th>
-                                                    <td>----</td>
-                                                </tr>
-                                            </thead>
                                             <tbody>
                                                 <tr>
                                                     <th>ชื่อบัญชี</th>
-                                                    <td>yuuuu uiui</td>
+                                                    <td>xxxx xxxx</td>
                                                 </tr>
                                                 <tr>
                                                     <th>เลขที่บัญชี</th>
                                                     <td>1234567890</td>
                                                 </tr>
-                                                <!-- <tr>
+                                                <tr>
                                                     <th>จำนวนเงิน</th>
-                                                    <td>100 THB</td>
-                                                </tr> -->
+                                                    <td><?php echo $sum2 ?> THB</td>
+                                                </tr>
                                             </tbody>
                                         </table>
-                                        <form action="cartWait_product.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" method="post">
+                                        <form action="cartSave.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" method="post" enctype="multipart/form-data">
                                             <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
-                                            <input type="file" name="" id="">
+                                            <input type="file" name="his_payment" id="his_payment" />
                                             <br>
-                                            
+
+
+                                            <br>
+                                            <input type="submit" class="btn btn-success mt-3" name="confirm" value="Confirm payment"></input>
                                         </form>
-                                        <br>
-                                        <a href="cartWait_product.php" class="btn btn-success mt-3">Confirm payment</a>
                                         <!-- <p>อีเมลที่ใช้รับสินค้า</p>
                                         <input type="email" name="" id="" placeholder="Email"> -->
                                     </div>

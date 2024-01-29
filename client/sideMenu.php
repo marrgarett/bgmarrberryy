@@ -33,6 +33,6 @@
     <i class="bi bi-search"></i>
     <a href="cart.php"><i class="bi bi-cart"></i></a>
     <div class="cartcount">
-        1
+        1<!-- <?php echo $_SESSION['cart']; ?> -->
     </div>
 </div>

@@ -4,6 +4,7 @@ include_once '../admin/db_connect.php';
 
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
+$session_id = session_id();
 
 $sharp = "#";
 $bgm = "BGM";
@@ -73,20 +74,21 @@ $bgm = "BGM";
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
                         $sql = "SELECT id_order.id,
-                                    id_order.id_order,
-                                    id_order.user_id,
-                                    bgmarr_tbl.bgmarr_img,
-                                    id_order.id_bgmarr_name,
-                                    id_order.price,
-                                    id_order.quantity_hr,
-                                    id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.discount
-                                    FROM id_order 
-                                    JOIN tblclient 
-                                    ON id_order.user_id = tblclient.id 
-                                    JOIN bgmarr_tbl 
-                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
+                        id_order.id_order,
+                        id_order.user_id,
+                        bgmarr_tbl.bgmarr_img,
+                        id_order.id_bgmarr_name,
+                        id_order.price,
+                        id_order.quantity_hr,
+                        id_order.price * id_order.quantity_hr AS total_sum,
+                        id_order.discount,
+                        id_order.status
+                        FROM id_order 
+                        JOIN tblclient 
+                        ON id_order.user_id = tblclient.id
+                        JOIN bgmarr_tbl
+                        ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+                        WHERE id_order.user_id = '$user_id' AND id_order.status = 'Uncomplete' ORDER BY `id_order`.`id` ASC;";
                         $result = mysqli_query($conn, $sql);
                         //$row = mysqli_fetch_assoc($result);
                         ?>
@@ -163,7 +165,7 @@ $bgm = "BGM";
                                                     }
                                                 }
                                                 $sum2 = $sum - $discount;
-                                                // $_SESSION['i'] = $i;
+                                                $_SESSION['cart'] = $i;
                                                 ?>
                                             </tbody>
                                             <tbody>
