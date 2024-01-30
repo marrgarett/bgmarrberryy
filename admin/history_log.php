@@ -256,7 +256,7 @@ $fullname = $_SESSION['fullname'];
                     <?php
                     $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
                     tblclient.fullname, 
-                    history_tbl.bgmarr_id, 
+                    history_tbl.bgmarr_name, 
                     bgmarr_tbl.bgmarr_name,
                     history_tbl.his_hr, 
                     history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
@@ -267,7 +267,7 @@ $fullname = $_SESSION['fullname'];
                     JOIN tblclient
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
                     WHERE history_tbl.his_status != 'Pending'";
                     $result = mysqli_query($conn, $sql);
 
@@ -350,7 +350,7 @@ $fullname = $_SESSION['fullname'];
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <a href="history_resetPass.php?bgmarr_id=<?php echo $row["bgmarr_id"]; ?>" target="_blank" class="btn btn-warning">Reset</a>
+                                                    <a href="history_resetPass.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>" target="_blank" class="btn btn-warning">Reset</a>
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>

@@ -4,6 +4,7 @@ include_once '../admin/db_connect.php';
 
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
+$session_id = session_id();
 
 $sharp = "#";
 $bgm = "BGM";
@@ -73,45 +74,30 @@ $bgm = "BGM";
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
                         $sql = "SELECT id_order.id,
-                                    id_order.id_order,
-                                    id_order.user_id,
-                                    bgmarr_tbl.bgmarr_img,
-                                    id_order.id_bgmarr_name,
-                                    id_order.price,
-                                    id_order.quantity_hr,
-                                    id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.discount
-                                    FROM id_order 
-                                    JOIN tblclient 
-                                    ON id_order.user_id = tblclient.id 
-                                    JOIN bgmarr_tbl 
-                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
+                        id_order.id_order,
+                        id_order.user_id,
+                        bgmarr_tbl.bgmarr_img,
+                        id_order.id_bgmarr_name,
+                        id_order.price,
+                        id_order.quantity_hr,
+                        id_order.price * id_order.quantity_hr AS total_sum,
+                        id_order.discount,
+                        id_order.status
+                        FROM id_order 
+                        JOIN tblclient 
+                        ON id_order.user_id = tblclient.id
+                        JOIN bgmarr_tbl
+                        ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+                        WHERE id_order.user_id = '$user_id' AND id_order.status = 'Uncomplete' ORDER BY `id_order`.`id` ASC;";
                         $result = mysqli_query($conn, $sql);
-
+                        //$row = mysqli_fetch_assoc($result);
                         ?>
 
                         <div class="form-row">
-                            <?php
-                                $i = 0;
-                                $sum = 0;
-                                $sum2 = 0;
-                                $discount = 0;
-                                if (mysqli_num_rows($result) > 0) {
-
-                                // output data of each row
-                                while ($row = mysqli_fetch_assoc($result)) {
-                                    $total = $row['total_sum'];
-                                    $dis = $row['discount'];
-                                    $id_order = $row['id_order'];
-                                    $discount += $dis;
-                                    $sum += $total;
-                                    $i++;
-                                ?>
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3>Your Cart : <?php echo $id_order; ?></h3>
+                                        <h3>Your Cart : xx</h3>
                                         <hr>
                                         <table class="table table-borderless">
                                             <thead>
@@ -128,7 +114,22 @@ $bgm = "BGM";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                
+                                                    <?php
+                                                    $i = 0;
+                                                    $sum = 0;
+                                                    $sum2 = 0;
+                                                    $discount = 0;
+                                                    if (mysqli_num_rows($result) > 0) {
+
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $total = $row['total_sum'];
+                                                        $dis = $row['discount'];
+                                                        $id_order = $row['id_order'];
+                                                        $discount += $dis;
+                                                        $sum += $total;
+                                                        $i++;
+                                                    ?>
                                                         <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
                                                             <tr>
                                                                 <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
@@ -164,7 +165,7 @@ $bgm = "BGM";
                                                     }
                                                 }
                                                 $sum2 = $sum - $discount;
-                                                // $_SESSION['i'] = $i;
+                                                $_SESSION['cart'] = $i;
                                                 ?>
                                             </tbody>
                                             <tbody>

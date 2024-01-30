@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $fullname = $_SESSION['fullname'];
 include_once('db_connect.php');
@@ -33,9 +33,7 @@ $fullname = $_SESSION['fullname'];
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -66,11 +64,9 @@ $fullname = $_SESSION['fullname'];
                     </button>
 
                     <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
                                 <button class="btn btn-primary" type="button">
                                     <i class="fas fa-search fa-sm"></i>
@@ -84,18 +80,14 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
-                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-search fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
-                                aria-labelledby="searchDropdown">
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                                 <form class="form-inline mr-auto w-100 navbar-search">
                                     <div class="input-group">
-                                        <input type="text" class="form-control bg-light border-0 small"
-                                            placeholder="Search for..." aria-label="Search"
-                                            aria-describedby="basic-addon2">
+                                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
@@ -108,15 +100,13 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-bell fa-fw"></i>
                                 <!-- Counter - Alerts -->
                                 <span class="badge badge-danger badge-counter">3+</span>
                             </a>
                             <!-- Dropdown - Alerts -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="alertsDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
                                     Alerts Center
                                 </h6>
@@ -159,22 +149,19 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- Nav Item - Messages -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
                                 <!-- Counter - Messages -->
                                 <span class="badge badge-danger badge-counter">7</span>
                             </a>
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="messagesDropdown">
+                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_1.svg" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div class="font-weight-bold">
@@ -185,8 +172,7 @@ $fullname = $_SESSION['fullname'];
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_2.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_2.svg" alt="...">
                                         <div class="status-indicator"></div>
                                     </div>
                                     <div>
@@ -197,8 +183,7 @@ $fullname = $_SESSION['fullname'];
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="img/undraw_profile_3.svg"
-                                            alt="...">
+                                        <img class="rounded-circle" src="img/undraw_profile_3.svg" alt="...">
                                         <div class="status-indicator bg-warning"></div>
                                     </div>
                                     <div>
@@ -209,8 +194,7 @@ $fullname = $_SESSION['fullname'];
                                 </a>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
                                     <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60"
-                                            alt="...">
+                                        <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
                                         <div class="status-indicator bg-success"></div>
                                     </div>
                                     <div>
@@ -227,15 +211,12 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $fullname; ?></span>
-                                <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                <img class="img-profile rounded-circle" src="img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
@@ -325,9 +306,7 @@ $fullname = $_SESSION['fullname'];
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
-                                                        <div class="progress-bar bg-info" role="progressbar"
-                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                            aria-valuemax="100"></div>
+                                                        <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -366,15 +345,15 @@ $fullname = $_SESSION['fullname'];
                         <!-- Area Chart -->
                         <div class="col-xl-12 col-lg-7">
                             <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">History Check</h6>
-                        </div>
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">History Check</h6>
+                                </div>
 
-                        <?php
-                    $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
+                                <?php
+                                $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
                     tblclient.fullname, 
-                    history_tbl.bgmarr_id, 
+                    history_tbl.bgmarr_name, 
                     bgmarr_tbl.bgmarr_name,
                     history_tbl.his_hr, 
                     history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
@@ -385,97 +364,97 @@ $fullname = $_SESSION['fullname'];
                     JOIN tblclient
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
                     WHERE history_tbl.his_status = 'Pending'";
-                    $result = mysqli_query($conn, $sql);
+                                $result = mysqli_query($conn, $sql);
 
-                    ?>
+                                ?>
 
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>His No.</th>
-                                            <th>Order ID</th>
-                                            <th>Client Name</th>
-                                            <th>IDName</th>
-                                            <th>Quantity Hour</th>
-                                            <th>Price Summary</th>
-                                            <th>Slip</th>
-                                            <th>Date/Time Requested</th>
-                                            <th>Status</th>
-                                            <th>Accept</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 1;
-                                        if (mysqli_num_rows($result) > 0) {
-                                            // output data of each row
-                                            while ($row = mysqli_fetch_assoc($result)) {
-                                                $his_start = substr($row["his_start"], 11);
-                                                $his_hr = $row["his_hr"];
-
-                                                $end_date_time = substr($row["his_start"], 0, -9);
-
-                                                $a = substr($row["his_start"], 11);
-                                                $b = substr($a, 0, -6);
-                                                $c = $b + $his_hr;
-                                                $d = substr($row["his_start"], 13);
-                                                $e = ("$c" . "$d");
-
-                                                $start_time = $row["his_start"];
-                                                $now_time = date("H:i:s");
-                                                $end_time = ("$c" . "$d");
-
-                                        ?>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
                                                 <tr>
-                                                    <th scope><?php echo $i++ ?></th>
-                                                    <td><?php echo $row["order_id"] ?></td>
-                                                    <td><?php echo $row["fullname"] ?></td>
-                                                    <td><?php echo $row["bgmarr_name"] ?></td>
-                                                    <td><?php echo $row["his_hr"] ?></td>
-                                                    <td><?php echo $row["hour_sum"] ?></td>
-                                                    <td>
-                                                        <?php
-                                                        if ($row['his_payment']!= '') {
-                                                        ?>
-                                                            <a class="btn btn-success btn-circle btn-sm">
-                                                                <i class="fas fa-check"></i>
-                                                            </a>
-                                                        <?php
-                                                        } else {
-                                                        ?>
-                                                            <a class="btn btn-danger btn-circle btn-sm">
-                                                                <i class="fas fa-exclamation-triangle"></i>
-                                                            </a>
-                                                        <?php
-                                                        }
-                                                        ?>
-                                                        
-                                                    </td>
-                                                    <td><?php echo $row["his_start"] ?></td>
-                                                    <td>
-                                                        <div><?php echo $row["his_status"] ?></div>
-                                                    </td>
-                                                    <td>
-                                                    <a href="ChkStatusID.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
-                                                    </td>
+                                                    <th>His No.</th>
+                                                    <th>Order ID</th>
+                                                    <th>Client Name</th>
+                                                    <th>IDName</th>
+                                                    <th>Quantity Hour</th>
+                                                    <th>Price Summary</th>
+                                                    <th>Slip</th>
+                                                    <th>Date/Time Requested</th>
+                                                    <th>Status</th>
+                                                    <th>Accept</th>
                                                 </tr>
-                                        <?php
-                                            }
-                                        }
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $i = 1;
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    // output data of each row
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $his_start = substr($row["his_start"], 11);
+                                                        $his_hr = $row["his_hr"];
+
+                                                        $end_date_time = substr($row["his_start"], 0, -9);
+
+                                                        $a = substr($row["his_start"], 11);
+                                                        $b = substr($a, 0, -6);
+                                                        $c = $b + $his_hr;
+                                                        $d = substr($row["his_start"], 13);
+                                                        $e = ("$c" . "$d");
+
+                                                        $start_time = $row["his_start"];
+                                                        $now_time = date("H:i:s");
+                                                        $end_time = ("$c" . "$d");
+
+                                                ?>
+                                                        <tr>
+                                                            <th scope><?php echo $i++ ?></th>
+                                                            <td><?php echo $row["order_id"] ?></td>
+                                                            <td><?php echo $row["fullname"] ?></td>
+                                                            <td><?php echo $row["bgmarr_name"] ?></td>
+                                                            <td><?php echo $row["his_hr"] ?></td>
+                                                            <td><?php echo $row["hour_sum"] ?></td>
+                                                            <td>
+                                                                <?php
+                                                                if ($row['his_payment'] != '') {
+                                                                ?>
+                                                                    <a class="btn btn-success btn-circle btn-sm">
+                                                                        <i class="fas fa-check"></i>
+                                                                    </a>
+                                                                <?php
+                                                                } else {
+                                                                ?>
+                                                                    <a class="btn btn-danger btn-circle btn-sm">
+                                                                        <i class="fas fa-exclamation-triangle"></i>
+                                                                    </a>
+                                                                <?php
+                                                                }
+                                                                ?>
+
+                                                            </td>
+                                                            <td><?php echo $row["his_start"] ?></td>
+                                                            <td>
+                                                                <div><?php echo $row["his_status"] ?></div>
+                                                            </td>
+                                                            <td>
+                                                                <a href="ChkStatusID.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
+                                                            </td>
+                                                        </tr>
+                                                <?php
+                                                    }
+                                                }
+                                                ?>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                        </div>
-                    </div>
                     <!-- Content Row -->
-                    <div class="row"> 
+                    <div class="row">
                     </div>
                 </div>
                 <!-- /.container-fluid -->
@@ -505,8 +484,7 @@ $fullname = $_SESSION['fullname'];
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">

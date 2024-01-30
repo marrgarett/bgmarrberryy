@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 24, 2024 at 06:55 PM
+-- Generation Time: Jan 29, 2024 at 07:15 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -115,13 +115,6 @@ CREATE TABLE `history_tbl` (
   `his_status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
---
--- Dumping data for table `history_tbl`
---
-
-INSERT INTO `history_tbl` (`his_id`, `order_id`, `cli_id`, `bgmarr_name`, `his_hr`, `his_price`, `his_start`, `his_end`, `his_payment`, `his_status`) VALUES
-(6, '2401000007', 3, 'BGMARR020', 1, 15, '2024-01-24 07:56:00', '00:00:00', '', 'Pending');
-
 -- --------------------------------------------------------
 
 --
@@ -150,6 +143,7 @@ INSERT INTO `his_status` (`id`, `status`) VALUES
 CREATE TABLE `id_order` (
   `id` int(11) NOT NULL,
   `id_order` varchar(10) NOT NULL,
+  `session_user_id` varchar(255) NOT NULL,
   `user_id` varchar(10) NOT NULL,
   `id_bgmarr_name` varchar(255) NOT NULL,
   `price` varchar(255) NOT NULL,
@@ -287,7 +281,7 @@ ALTER TABLE `coupon_discount`
 -- AUTO_INCREMENT for table `history_tbl`
 --
 ALTER TABLE `history_tbl`
-  MODIFY `his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `his_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `his_status`
@@ -299,7 +293,7 @@ ALTER TABLE `his_status`
 -- AUTO_INCREMENT for table `id_order`
 --
 ALTER TABLE `id_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 
 --
 -- AUTO_INCREMENT for table `session_tbl`

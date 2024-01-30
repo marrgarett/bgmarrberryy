@@ -161,7 +161,7 @@ $bgm = "BGM";
                                             โอนเงินผ่านธนาคาร
                                             </label>
                                         </div>
-                                        <div class="form-check form-check-inline">
+                                        <!-- <div class="form-check form-check-inline">
                                             <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                                             <label for="flexRadioDefault1">
                                             qrPayment
@@ -172,7 +172,7 @@ $bgm = "BGM";
                                             <label  for="flexRadioDefault2">
                                             TrueWallet
                                             </label>
-                                        </div>
+                                        </div> -->
                                         <hr>
                                         <br>
                                     </div>
@@ -204,7 +204,7 @@ $bgm = "BGM";
                                         <h3 style="font-size: 35px; float:right"><?php echo $sum2 ?>.00 บาท</h3>
                                     </div>
                                 </div>
-                                <a href="cartPayment_bank.php" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
+                                <a href="cartSave.php?user_id=<?php echo $user_id; ?>&continue=<?php echo $id_order; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
                                 <!-- <input type="submit" class="btn btn-primary mt-3" value="Confirm payment" style="float:right; width:100%"></input> -->
                             </div>
                             
