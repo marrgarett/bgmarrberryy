@@ -351,21 +351,22 @@ $fullname = $_SESSION['fullname'];
                                 </div>
 
                                 <?php
-                                $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
-                    tblclient.fullname, 
-                    history_tbl.bgmarr_name, 
-                    bgmarr_tbl.bgmarr_name,
-                    history_tbl.his_hr, 
-                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
-                    history_tbl.his_start,
-                    history_tbl.his_payment,
-                    history_tbl.his_status
-                    FROM history_tbl
-                    JOIN tblclient
-                    ON history_tbl.cli_id = tblclient.id
-                    JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
-                    WHERE history_tbl.his_status = 'Pending'";
+                                $sql = "SELECT history_tbl.his_id, 
+                                history_tbl.order_id, history_tbl.cli_id, 
+                                tblclient.fullname, 
+                                history_tbl.bgmarr_name, 
+                                bgmarr_tbl.bgmarr_name, 
+                                history_tbl.his_hr, 
+                                history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum, 
+                                history_tbl.his_start, 
+                                history_tbl.his_payment, 
+                                history_tbl.his_status 
+                                FROM history_tbl 
+                                JOIN tblclient 
+                                ON history_tbl.cli_id = tblclient.id 
+                                JOIN bgmarr_tbl 
+                                ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name 
+                                WHERE history_tbl.his_status = 'Pending' ORDER BY `history_tbl`.`order_id` ASC ";
                                 $result = mysqli_query($conn, $sql);
 
                                 ?>

@@ -119,7 +119,7 @@ $bgm = "BGM";
                                     <div class="card-body">
 
 
-                                        <h3>Your Cart : xx</h3>
+                                        <h3>Your Item</h3>
                                         <hr>
                                         <table class="table table-borderless">
                                             <thead>
@@ -141,6 +141,7 @@ $bgm = "BGM";
                                                 $sum = 0;
                                                 $sum2 = 0;
                                                 $discount = 0;
+                                                
                                                 if (mysqli_num_rows($result) > 0) {
 
                                                     // output data of each row

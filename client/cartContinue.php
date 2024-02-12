@@ -99,7 +99,7 @@ $bgm = "BGM";
                                 <div class="card cart_product">
                                     <div class="card-body">
                                         <h3>
-                                            Product list : <?php echo $id_order ?>
+                                            Your Item
                                         </h3>
                                         <hr>
                                         <table class="table table-borderless">

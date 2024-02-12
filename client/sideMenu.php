@@ -32,7 +32,10 @@
     <input type="text" class="sidebar-search" placeholder="search">
     <i class="bi bi-search"></i>
     <a href="cart.php"><i class="bi bi-cart"></i></a>
+    <!-- <a class="nav-link" href="cart.php"><i class="bi bi-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a> -->
+    
+    
     <div class="cartcount">
-        1<!-- <?php echo $_SESSION['cart']; ?> -->
+        1
     </div>
 </div>

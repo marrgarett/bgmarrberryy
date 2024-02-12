@@ -5,17 +5,16 @@ include_once('db_connect.php');
 
 
 
-if (isset($_GET['bgmarr_id'])) {
-$bgmarr_id = $_GET['bgmarr_id'];
-    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_id = '1'";
+if (isset($_GET['bgmarr_name'])) {
+    $bgmarr_name = $_GET['bgmarr_name'];
+    $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
     $bgmarr_us = $row["bgmarr_us"];
     $bgmarr_pw = $row["bgmarr_pw"];
 
-    
         $new_pass = "1111";
-        $sql = "UPDATE `bgmarr_tbl` SET `bgmarr_pw` = '$new_pass' WHERE `bgmarr_tbl`.`bgmarr_id` = '$bgmarr_id' ";
+        $sql = "UPDATE `bgmarr_tbl` SET `bgmarr_pw` = '$new_pass' WHERE `bgmarr_tbl`.`bgmarr_name` = '$bgmarr_name' ";
         $result = mysqli_query($conn, $sql);
         
         echo '<script language="javascript">';
