@@ -146,7 +146,7 @@ $bgm = "BGM";
                                     Price : <?php echo $row['bgmarr_price'] ?> THB // <?php echo $row['bgmarr_status'] ?>
                                 </h5>
                                 <div class="text-center">
-                                    <a class="btn btn-success" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
+                                    <a class="btn btn-success" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>&id=<?php echo $row["bgmarr_id"]; ?>">Add To Cart</a>
                                 </div>
                             </div>
                         <?php

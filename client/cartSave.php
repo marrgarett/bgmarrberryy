@@ -4,6 +4,9 @@ include_once '../admin/db_connect.php';
 include_once '../admin/order_number_generate/yearmonth6digitnumber.php';
 
 $user_id = $_SESSION['user_id'];
+$fullname = $_SESSION['fullname'];
+$useremail = $_SESSION['useremail'];
+$Link = "http://localhost/bgmarrberryy/admin/dashboard.php";
 
 $status = 'Pending';
 
@@ -81,38 +84,78 @@ if (isset($_GET["bgmarr_name"])) {
 
         if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
             if (!file_exists($path)) { // check file not exist in your upload folder path
-            if ($size < 15000000) { // check file size 15MB
-                move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
-                $stmt = $db->prepare("UPDATE `history_tbl` SET  his_payment = :img_name, `his_status` = '$his_status'
+                if ($size < 15000000) { // check file size 15MB
+                    move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                    $stmt = $db->prepare("UPDATE `history_tbl` SET  his_payment = :img_name, `his_status` = '$his_status'
                     WHERE `history_tbl`.`cli_id` = '$user_id' AND `history_tbl`.`his_status` = 'Wait'");
-                $stmt->bindParam(':img_name', $name);
-                if ($stmt->execute()) {
-                    $sql = "UPDATE `id_order` SET `order_status` = 'Complete'
+                    $stmt->bindParam(':img_name', $name);
+                    if ($stmt->execute()) {
+                        $sql = "UPDATE `id_order` SET `order_status` = 'Complete'
                         WHERE `id_order`.`user_id` = '$user_id' ";
-                    $result = mysqli_query($conn, $sql);
+                        $result = mysqli_query($conn, $sql);
+
+                        //Lzdk3JIcfv51A58swKzcwEbZVXJ6fM3fpWTDedkYjH3
+                        $sToken = [
+                            "Lzdk3JIcfv51A58swKzcwEbZVXJ6fM3fpWTDedkYjH"
+                        ];
+
+                        $sMessage = "แจ้งเตือนการเช่าไอดี!\r\n";
+                        $sMessage .= $fullname . " ได้ทำการเช่าไอดี!\r\n";
+                        $sMessage .= "FullName: " . $fullname . " \r\n";
+                        $sMessage .= "Email: " . $useremail . " \r\n";
+                        $sMessage .= "Link: " . $Link . " \r\n";
+
+                        function notify_message($sMessage, $Token)
+                        {
+                            $chOne = curl_init();
+                            curl_setopt($chOne, CURLOPT_URL, "https://notify-api.line.me/api/notify");
+                            curl_setopt($chOne, CURLOPT_SSL_VERIFYHOST, 0);
+                            curl_setopt($chOne, CURLOPT_SSL_VERIFYPEER, 0);
+                            curl_setopt($chOne, CURLOPT_POST, 1);
+                            curl_setopt($chOne, CURLOPT_POSTFIELDS, "message=" . $sMessage);
+                            $headers = array('Content-type: application/x-www-form-urlencoded', 'Authorization: Bearer ' . $Token . '',);
+                            curl_setopt($chOne, CURLOPT_HTTPHEADER, $headers);
+                            curl_setopt($chOne, CURLOPT_RETURNTRANSFER, 1);
+                            $result = curl_exec($chOne);
+
+                            //Result error 
+                            if (curl_error($chOne)) {
+                                echo 'error:' . curl_error($chOne);
+                            } else {
+                                $result_ = json_decode($result, true);
+                                echo "status : " . $result_['status'];
+                                echo "message : " . $result_['message'];
+                            }
+                            curl_close($chOne);
+                        }
+
+                        foreach ($sToken as $Token) {
+                            notify_message($sMessage, $Token);
+                        }
+
+                        echo '<script language="javascript">';
+                        echo 'location.href="cartWait_product.php"';
+                        echo '</script>';
+                    }
+                } else {
                     echo '<script language="javascript">';
-                    echo 'location.href="cartWait_product.php"';
+                    echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB");';
                     echo '</script>';
+                    // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB"; // error message file size larger than 15MB
                 }
             } else {
                 echo '<script language="javascript">';
-                echo 'alert("ขนาดไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB");';
+                echo 'alert("มีไฟล์อยู่แล้ว... ตรวจสอบการอัปโหลด");location.href="javascript:history.go(-1)"';
                 echo '</script>';
-                // $errorMsg = "ไฟล์ของคุณใหญ่เกินไป โปรดอัปโหลดขนาด 15MB"; // error message file size larger than 15MB
+
+                // $errorMsg = "มีไฟล์อยู่แล้ว... ตรวจสอบตัวกรองการอัปโหลด"; // error message file not exists your upload folder path
             }
-             } else {
-                 echo '<script language="javascript">';
-                 echo 'alert("มีไฟล์อยู่แล้ว... ตรวจสอบการอัปโหลด");location.href="javascript:history.go(-1)"';
-                 echo '</script>';
-
-            // $errorMsg = "มีไฟล์อยู่แล้ว... ตรวจสอบตัวกรองการอัปโหลด"; // error message file not exists your upload folder path
         }
-    }
 
-    // insert the image data into the database
-} else {
-    echo '<script language="javascript">';
-    echo 'alert("กรุณาอัพโหลดสลิปก่อนยืนยัน");location.href="javascript:history.go(-1)"';
-    echo '</script>';
+        // insert the image data into the database
+    } else {
+        echo '<script language="javascript">';
+        echo 'alert("กรุณาอัพโหลดสลิปก่อนยืนยัน");location.href="javascript:history.go(-1)"';
+        echo '</script>';
     }
 }

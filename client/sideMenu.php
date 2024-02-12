@@ -6,7 +6,7 @@
             print '<a>//</a>';
             print '<a href="../admin/register.php">Register</a>';
         } else {
-            print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . $fullname . ' </a>'; // แก้ไขข้อมูลส่วนตัว
+            print '<a href="details_acc.php">Welcome // <i class="bi bi-person-circle" width="25px" style="margin-right: 5px;"></i> ' . iconv_substr($fullname, 0, 15, 'UTF-8') . ' </a>'; // แก้ไขข้อมูลส่วนตัว
             print '<a href="logout.php" name="logout" value="Logout">logout</a>'; // ล็อคเอาท์ออกจากระบบ
         }
         ?>
@@ -33,8 +33,6 @@
     <i class="bi bi-search"></i>
     <a href="cart.php"><i class="bi bi-cart"></i></a>
     <!-- <a class="nav-link" href="cart.php"><i class="bi bi-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a> -->
-    
-    
     <div class="cartcount">
         1
     </div>
