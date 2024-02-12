@@ -2,6 +2,8 @@
 session_start();
 include_once 'db_connect.php';
 
+$session_id = session_id();
+
 if (isset($_POST['login'])) {
 
     $sql = "SELECT * FROM `tblclient` WHERE `useremail` = ? AND `pass_word` = ?";
@@ -20,7 +22,20 @@ if (isset($_POST['login'])) {
         $_SESSION['user_status'] = $row['user_status'];
         session_write_close();
 
-        if ($_SESSION["user_status"] == "C") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
+        if ($_SESSION["user_status"] == "C") { //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+            $sql = "SELECT * FROM `id_order` WHERE `session_user_id` = ?";
+            $user_id = $_SESSION['user_id'];
+
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param('s', $session_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+
+            $sql = "UPDATE `id_order` SET `user_id` = '$user_id'
+                    WHERE `id_order`.`session_user_id` = '$session_id'";
+            $result = mysqli_query($conn, $sql);
+
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { swal.fire({
                   title: "Success!",
@@ -34,7 +49,7 @@ if (isset($_POST['login'])) {
             echo 'setTimeout(function () { 
                       window.location.href = "../client/index.php";';
             echo '}, 3000 );</script>';
-        } else if ($_SESSION["user_status"] == "A") {  //ถ้าเป็น member ให้กระโดดไปหน้า user_page.php
+        } else if ($_SESSION["user_status"] == "A") { //ถ้าเป็น admin ให้กระโดดไปหน้า admin_page.php
             echo '<script type="text/javascript">';
             echo 'setTimeout(function () { swal.fire({
                   title: "Success!",
@@ -76,7 +91,7 @@ if (isset($_POST['login'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    
+
     <title>Login // BGMarrBerryy</title>
 
     <!-- Custom fonts for this template-->
@@ -172,7 +187,7 @@ if (isset($_POST['login'])) {
             // toggle the eye / eye slash icon
             this.classList.toggle('bi-eye');
         });
- 
+
         // prevent form submit
         /*const form = document.querySelector("form");
         form.addEventListener('submit', function(e) {
@@ -188,7 +203,7 @@ if (isset($_POST['login'])) {
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-    
+
 </body>
 
 </html>

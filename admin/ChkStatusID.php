@@ -7,9 +7,11 @@ if (isset($_POST['save'])) {
     
 } elseif (isset($_GET['his_id'])){
     $his_id = $_GET['his_id'];
-    $sql = "UPDATE `history_tbl` SET `his_status` = '0' WHERE `history_tbl`.`his_id` = $his_id;";
+    $sql = "UPDATE `history_tbl` SET `his_status` = 'InProgress' WHERE `history_tbl`.`his_id` = $his_id;";
     $result = mysqli_query($conn, $sql);
-        echo '<script language="javascript">';
-        echo 'alert("บันทึกข้อมูลเสร็จสิ้น"); location.href="history_log.php"';
-        echo '</script>';
+    
+    echo '<script language="javascript">';
+    echo 'alert("success"); location.href="dashboard.php"';
+    echo '</script>';
+        
 }
