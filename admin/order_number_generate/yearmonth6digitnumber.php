@@ -1,6 +1,6 @@
 <?php
     date_default_timezone_set("Asia/Bangkok");
-    echo date("ym");
+    // echo date("ym");
 
     // File to store the last sequence number
     $filename = '6digitgenerate.txt';
@@ -17,7 +17,7 @@
     // Format the sequence number to 6 digits
     $sequenceNumberPadded = str_pad($sequenceNumber, 6, '0', STR_PAD_LEFT);
 
-    echo $sequenceNumberPadded;
+    // echo $sequenceNumberPadded;
 
     $generateorder = date("ym").$sequenceNumberPadded;
 ?>

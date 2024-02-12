@@ -2,9 +2,6 @@
 session_start();
 include_once '../admin/db_connect.php';
 
-$user_id = $_SESSION['user_id'];
-$fullname = $_SESSION['fullname'];
-
 $status = "Available";
 
 if (isset($_GET["id_bgmarr_name"])) {

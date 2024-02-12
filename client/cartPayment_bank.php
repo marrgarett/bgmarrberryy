@@ -70,20 +70,21 @@ $bgm = "BGM";
 
         <?php
         $sql = "SELECT id_order.id,
-                                    id_order.id_order,
-                                    id_order.user_id,
-                                    bgmarr_tbl.bgmarr_img,
-                                    id_order.id_bgmarr_name,
-                                    id_order.price,
-                                    id_order.quantity_hr,
-                                    id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.discount
-                                    FROM id_order 
-                                    JOIN tblclient 
-                                    ON id_order.user_id = tblclient.id 
-                                    JOIN bgmarr_tbl 
-                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
+        id_order.id_order,
+        id_order.user_id,
+        bgmarr_tbl.bgmarr_img,
+        id_order.id_bgmarr_name,
+        id_order.price,
+        id_order.quantity_hr,
+        id_order.price * id_order.quantity_hr AS total_sum,
+        id_order.discount,
+        id_order.order_status
+        FROM id_order 
+        JOIN tblclient 
+        ON id_order.user_id = tblclient.id
+        JOIN bgmarr_tbl
+        ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+        WHERE id_order.user_id = '$user_id' AND id_order.order_status = 'Uncomplete' ORDER BY `id_order`.`id` ASC;";
         $result = mysqli_query($conn, $sql);
         ?>
         <!-- ======= End Page Header ======= -->
@@ -91,7 +92,7 @@ $bgm = "BGM";
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="text-center">Make Payment <?php echo "$id_order"; ?></h2>
+                        <!-- <h2 class="text-center">Make Payment</h2> -->
                         <div class="row">
                             <div class="form-group col-md-8" style="margin: auto;">
                                 <div class="card cart_product">
@@ -147,7 +148,7 @@ $bgm = "BGM";
 
 
                                             <br>
-                                            <input type="submit" class="btn btn-success mt-3" name="confirm" value="Confirm payment"></input>
+                                            <input type="submit" class="btn btn-primary mt-3" name="confirm" value="Confirm payment"></input>
                                         </form>
                                         <!-- <p>อีเมลที่ใช้รับสินค้า</p>
                                         <input type="email" name="" id="" placeholder="Email"> -->

@@ -69,11 +69,28 @@ $bgm = "BGM";
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="text-center">Cart</h2>
 
-                        <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
-                        $sql = "SELECT id_order.id,
+                        if ($user_id == '') {
+                            $sql = "SELECT id_order.id,
+                            id_order.id_order,
+                            id_order.session_user_id,
+                            id_order.user_id,
+                            bgmarr_tbl.bgmarr_img,
+                            id_order.id_bgmarr_name,
+                            id_order.price,
+                            id_order.quantity_hr,
+                            id_order.price * id_order.quantity_hr AS total_sum,
+                            id_order.discount,
+                            id_order.order_status
+                            FROM id_order
+                            JOIN bgmarr_tbl
+                            ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name
+                            WHERE id_order.session_user_id = '$session_id' AND id_order.order_status = 'Uncomplete' ORDER BY `id_order`.`id` ASC; ";
+                            $result = mysqli_query($conn, $sql);
+                        
+                        } else {
+                            $sql = "SELECT id_order.id,
                         id_order.id_order,
                         id_order.user_id,
                         bgmarr_tbl.bgmarr_img,
@@ -82,21 +99,26 @@ $bgm = "BGM";
                         id_order.quantity_hr,
                         id_order.price * id_order.quantity_hr AS total_sum,
                         id_order.discount,
-                        id_order.status
+                        id_order.order_status
                         FROM id_order 
                         JOIN tblclient 
                         ON id_order.user_id = tblclient.id
                         JOIN bgmarr_tbl
                         ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                        WHERE id_order.user_id = '$user_id' AND id_order.status = 'UnComplete' ORDER BY `id_order`.`id` ASC;";
-                        $result = mysqli_query($conn, $sql);
+                        WHERE id_order.user_id = '$user_id' AND id_order.order_status = 'UnComplete' ORDER BY `id_order`.`id` ASC;";
+                            $result = mysqli_query($conn, $sql);
+                        }
+
                         //$row = mysqli_fetch_assoc($result);
                         ?>
 
+                        <h2 class="text-center">Cart</h2>
                         <div class="form-row">
                             <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">
+
+
                                         <h3>Your Cart : xx</h3>
                                         <hr>
                                         <table class="table table-borderless">
@@ -114,12 +136,12 @@ $bgm = "BGM";
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                    <?php
-                                                    $i = 0;
-                                                    $sum = 0;
-                                                    $sum2 = 0;
-                                                    $discount = 0;
-                                                    if (mysqli_num_rows($result) > 0) {
+                                                <?php
+                                                $i = 0;
+                                                $sum = 0;
+                                                $sum2 = 0;
+                                                $discount = 0;
+                                                if (mysqli_num_rows($result) > 0) {
 
                                                     // output data of each row
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -129,7 +151,7 @@ $bgm = "BGM";
                                                         $discount += $dis;
                                                         $sum += $total;
                                                         $i++;
-                                                    ?>
+                                                ?>
                                                         <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
                                                             <tr>
                                                                 <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
@@ -207,7 +229,19 @@ $bgm = "BGM";
                                     </div>
                                 </div>
                             </div>
-                            <a href="cartContinue.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>
+                            <?php
+                                if(mysqli_num_rows($result) > 0){
+                                    if($user_id == ''){
+                                        echo '<a href="../admin/login.php" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
+                                    }else{
+                                        echo'<a href="cartContinue.php?user_id='.$user_id.'&id_order='.$id_order.'" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
+                                    }
+                                    
+                                }else{
+                                    echo'';
+                                }
+                            ?>
+                            
                             <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">

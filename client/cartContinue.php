@@ -75,20 +75,21 @@ $bgm = "BGM";
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
                         $sql = "SELECT id_order.id,
-                                    id_order.id_order,
-                                    id_order.user_id,
-                                    bgmarr_tbl.bgmarr_img,
-                                    id_order.id_bgmarr_name,
-                                    id_order.price,
-                                    id_order.quantity_hr,
-                                    id_order.price * id_order.quantity_hr AS total_sum,
-                                    id_order.discount
-                                    FROM id_order 
-                                    JOIN tblclient 
-                                    ON id_order.user_id = tblclient.id 
-                                    JOIN bgmarr_tbl 
-                                    ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                    WHERE id_order.user_id = '$user_id' ORDER BY `id_order`.`id` ASC; ";
+                        id_order.id_order,
+                        id_order.user_id,
+                        bgmarr_tbl.bgmarr_img,
+                        id_order.id_bgmarr_name,
+                        id_order.price,
+                        id_order.quantity_hr,
+                        id_order.price * id_order.quantity_hr AS total_sum,
+                        id_order.discount,
+                        id_order.order_status
+                        FROM id_order 
+                        JOIN tblclient 
+                        ON id_order.user_id = tblclient.id
+                        JOIN bgmarr_tbl
+                        ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
+                        WHERE id_order.user_id = '$user_id' AND id_order.order_status = 'Uncomplete' ORDER BY `id_order`.`id` ASC;";
                         $result = mysqli_query($conn, $sql);
                         ?>
 
@@ -104,7 +105,7 @@ $bgm = "BGM";
                                         <table class="table table-borderless">
                                             <thead>
                                                 <tr>
-                                                    
+
                                                     <th>Product Name</th>
                                                     <th style="text-align: center;">Price</th>
                                                     <th style="text-align: center;">hours</th>
@@ -130,7 +131,7 @@ $bgm = "BGM";
                                                 ?>
 
                                                         <tr>
-                                                            
+
                                                             <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
                                                             <td class="table_cart"><?php echo $row['price'] ?></td>
                                                             <td class="table_cart"><?php echo $row['quantity_hr'] ?></td>
@@ -146,20 +147,21 @@ $bgm = "BGM";
                                             </tbody>
                                         </table>
                                         <hr>
-                                        <h5>Shipping Address</h5>
-                                        <br>
-                                        <p style="color:brown;">อีเมลที่ใช้รับสินค้า : test@gmail.com</p>
-                                        <hr>
-                                        <h5>Payment Details</h5>
-                                        <br>
-                                        <h6>ราคารวม : <?php echo $sum2 ?>.00 บาท</h6>
-                                        <br>
-                                        <p>please choose your preferred method of payment.</p>
-                                        <div class="form-check form-check-inline">
-                                            <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-                                            <label for="flexRadioDefault1">
-                                            โอนเงินผ่านธนาคาร
-                                            </label>
+                                        <div class="text-center">
+                                            <h5>Shipping Address</h5>
+                                            <br>
+                                            <p style="color:brown;">อีเมลที่ใช้รับสินค้า : test@gmail.com</p>
+                                            <hr>
+                                            <h5>Payment Details</h5>
+                                            <!-- <h6>ราคารวม : <?php echo $sum2 ?>.00 บาท</h6> -->
+                                            <br>
+                                            <p>please choose your preferred method of payment.</p>
+                                            <div class="form-check form-check-inline">
+                                                <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
+                                                <label for="flexRadioDefault1">
+                                                    โอนเงินผ่านธนาคาร
+                                                </label>
+                                            </div>
                                         </div>
                                         <!-- <div class="form-check form-check-inline">
                                             <input type="radio" name="flexRadioDefault" id="flexRadioDefault1">
@@ -173,8 +175,8 @@ $bgm = "BGM";
                                             TrueWallet
                                             </label>
                                         </div> -->
-                                        <hr>
-                                        <br>
+
+
                                     </div>
                                 </div>
                             </div>
@@ -204,10 +206,10 @@ $bgm = "BGM";
                                         <h3 style="font-size: 35px; float:right"><?php echo $sum2 ?>.00 บาท</h3>
                                     </div>
                                 </div>
-                                <a href="cartSave.php?user_id=<?php echo $user_id; ?>&continue=<?php echo $id_order; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
+                                <a href="cartSave.php?continue=<?php echo $user_id; ?>&order_id=<?php echo $id_order; ?>" class="btn btn-primary mt-3" style="float:right; width:100%">Continue <i class="bi bi-arrow-right"></i></a>
                                 <!-- <input type="submit" class="btn btn-primary mt-3" value="Confirm payment" style="float:right; width:100%"></input> -->
                             </div>
-                            
+
                         </div>
 
 
