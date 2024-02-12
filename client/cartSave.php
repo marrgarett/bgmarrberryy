@@ -20,7 +20,7 @@ if (isset($_GET["bgmarr_name"])) {
     $bgmarr_id = $row['bgmarr_id'];
     $bgmarr_name = $row['bgmarr_name'];
     $bgmarr_price = $row['bgmarr_price'];
-    $status_order = 'Uncomplete';
+    $status_order = 'UnComplete';
 
     $sql = "INSERT INTO `id_order` (`id`, `id_order`, `session_user_id`, `user_id`,  `id_bgmarr_name`, `price`, `quantity_hr`, `date_order`, `status`) 
     VALUES (NULL, '$id_order', '$session_id', '$user_id', '$bgmarr_name', '$bgmarr_price', '1', current_timestamp(), '$status_order');";

@@ -88,7 +88,7 @@ $bgm = "BGM";
                         ON id_order.user_id = tblclient.id
                         JOIN bgmarr_tbl
                         ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name 
-                        WHERE id_order.user_id = '$user_id' AND id_order.status = 'Uncomplete' ORDER BY `id_order`.`id` ASC;";
+                        WHERE id_order.user_id = '$user_id' AND id_order.status = 'UnComplete' ORDER BY `id_order`.`id` ASC;";
                         $result = mysqli_query($conn, $sql);
                         //$row = mysqli_fetch_assoc($result);
                         ?>
