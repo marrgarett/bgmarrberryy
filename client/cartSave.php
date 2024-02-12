@@ -20,7 +20,7 @@ if (isset($_GET["bgmarr_name"])) {
     $bgmarr_id = $row['bgmarr_id'];
     $bgmarr_name = $row['bgmarr_name'];
     $bgmarr_price = $row['bgmarr_price'];
-    $status_order = 'Uncomplete';
+    $status_order = 'UnComplete';
 
     $sql = "INSERT INTO `id_order` (`id`, `id_order`, `session_user_id`, `user_id`,  `id_bgmarr_name`, `price`, `quantity_hr`, `date_order`, `order_status`) 
     VALUES (NULL, '$id_order', '$session_id', '$user_id', '$bgmarr_name', '$bgmarr_price', '1', current_timestamp(), '$status_order');";
@@ -37,7 +37,7 @@ if (isset($_GET["bgmarr_name"])) {
     $user_id = $_GET['continue'];
 
     $sql = "SELECT id_order, user_id, id_bgmarr_name, quantity_hr, price FROM 
-    `id_order` WHERE user_id = '$user_id' AND order_status = 'Uncomplete'";
+    `id_order` WHERE user_id = '$user_id' AND order_status = 'UnComplete'";
     $delete_order = "DELETE FROM history_tbl WHERE `history_tbl`.`cli_id` = $user_id AND `history_tbl`.`his_status` = 'Wait'";
     $result = mysqli_query($conn, $sql);
     $del = mysqli_query($conn, $delete_order);
