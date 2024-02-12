@@ -20,7 +20,9 @@
         "admin/utilities-animation.html": true,
         "admin/utilities-border.html": true,
         "admin/utilities-color.html": true,
-        "admin/utilities-other.html": true
+        "admin/utilities-other.html": true,
+        "db_bgmarrberryy(new).sql": true,
+        "db_bgmarrberryy.sql": true
     },
     "hide-files.files": [
         "admin/404.html",
@@ -37,6 +39,8 @@
         "admin/utilities-animation.html",
         "admin/utilities-border.html",
         "admin/utilities-color.html",
-        "admin/utilities-other.html"
+        "admin/utilities-other.html",
+        "db_bgmarrberryy(new).sql",
+        "db_bgmarrberryy.sql"
     ]
 }
