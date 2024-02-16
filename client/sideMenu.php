@@ -16,7 +16,12 @@
 <nav id="navbar" class="navbar">
     <ul>
         <li><a href="index.php">Home</a></li><!-- class="active"hover ตัวหนังสือ -->
-        <li><a href="all_id.php">All ID</a></li>
+        <li class="dropdown"><a  href="all_id.php" class="active">All ID<i class="bi bi-chevron-down dropdown-indicator"></i></a>
+            <ul>
+                <li><a href="gallery.html">Nature</a></li>
+                <li><a href="gallery.html">People</a></li>
+            </ul>
+        </li>
         <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
             <img src="img/BG_Logo1.png" alt="">
         </a>

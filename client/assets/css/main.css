@@ -331,7 +331,7 @@ h6 {
   align-items: center;
   position: fixed;
   top: 45px;
-  right: 93px;
+  right: 85px;
  
   
   background: transparent;
@@ -379,9 +379,10 @@ h6 {
 }
 
 .header .header-social-links .sidebar-search {
-  position: relative;
+  position: fixed;
   right: 80px;
-  color: #FFF;
+  top: 41px;
+  color: #fff;
   font-family: var(--font-primary);
   text-transform: uppercase;
   font-size: 13px;

@@ -440,7 +440,7 @@ $fullname = $_SESSION['fullname'];
                                                                 <div><?php echo $row["his_status"] ?></div>
                                                             </td>
                                                             <td>
-                                                                <a href="ChkStatusID.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
+                                                                <a href="page_sendEmail.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
                                                             </td>
                                                         </tr>
                                                 <?php

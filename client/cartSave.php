@@ -80,12 +80,12 @@ if (isset($_GET["bgmarr_name"])) {
         $size = $_FILES['his_payment']['size'];
         $temp = $_FILES['his_payment']['tmp_name'];
 
-        $path = 'img/' . $image_file; // set upload folder path
+        $path = '../admin/slip_images/' . $image_file; // set upload folder path
 
         if ($type == "image/jpg" || $type == 'image/jpeg' || $type == "image/png" || $type == "image/gif") {
             if (!file_exists($path)) { // check file not exist in your upload folder path
                 if ($size < 15000000) { // check file size 15MB
-                    move_uploaded_file($temp, 'img/' . $image_file); // move upload file temperory directory to your upload folder
+                    move_uploaded_file($temp, '../admin/slip_images/' . $image_file); // move upload file temperory directory to your upload folder
                     $stmt = $db->prepare("UPDATE `history_tbl` SET  his_payment = :img_name, `his_status` = '$his_status'
                     WHERE `history_tbl`.`cli_id` = '$user_id' AND `history_tbl`.`his_status` = 'Wait'");
                     $stmt->bindParam(':img_name', $name);

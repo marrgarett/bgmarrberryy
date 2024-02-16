@@ -244,19 +244,12 @@ $fullname = $_SESSION['fullname'];
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
-                    <?php
-                    date_default_timezone_set("Asia/Bangkok");
-                    echo "Today is " . date("Y-m-d");
-                    echo "<br>";
-                    echo "The time is " . date("H:i:s");
-
-
-                    ?>
+                    
                     <?php
                     $user_id = $_GET["id"];
-                    $sql = "SELECT history_tbl.his_id, history_tbl.cli_id, 
+                    $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
                     tblclient.fullname, 
-                    history_tbl.bgmarr_id, 
+                    history_tbl.bgmarr_name, 
                     bgmarr_tbl.bgmarr_name,
                     history_tbl.his_hr, 
                     history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
@@ -267,7 +260,7 @@ $fullname = $_SESSION['fullname'];
                     JOIN tblclient
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_id = bgmarr_tbl.bgmarr_id
+                    ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
                     WHERE history_tbl.cli_id = '$user_id'";
                     $result = mysqli_query($conn, $sql);
 
@@ -281,10 +274,6 @@ $fullname = $_SESSION['fullname'];
 
                         $today = $year . '-' . $month . '-' . $day;
                         ?>
-
-                        <label for="start">Start date:</label>
-
-                        <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
                     </div>
                     <div class="card">
                         <div class="card-body">
@@ -292,13 +281,13 @@ $fullname = $_SESSION['fullname'];
                                 <thead>
                                     <tr>
                                         <th>ลำดับ</th>
-                                        <th>ชื่อลูกค้า</th>
+                                        <th>ชื่อ</th>
                                         <th>ไอดีที่เช่า</th>
                                         <th>จำนวนชั่วโมง</th>
                                         <th>ราคารวม</th>
                                         <th>วัน/เวลา ที่เริ่มต้น</th>
-                                        <th>วัน/เวลา ที่สิ้นสุด</th>
                                         <th>ใบสลิป</th>
+                                        <th>สถานะ</th>
                                         
                                         <!-- <th>แก้ไข</th> -->
                                     </tr>
@@ -334,8 +323,9 @@ $fullname = $_SESSION['fullname'];
                                                 <td><?php echo $row["his_hr"] ?></td>
                                                 <td><?php echo $row["hour_sum"] ?></td>
                                                 <td><?php echo $row["his_start"] ?></td>
-                                                <td><?php echo $end_date_time . ' ' . $e; ?></td>
+                                                <!-- <td><?php echo $end_date_time . ' ' . $e; ?></td> -->
                                                 <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
+                                                <td><?php echo $row["his_status"] ?></td>
                                                 
                                                 
                                                     <!--
