@@ -40,6 +40,8 @@ $bgm = "BGM";
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+
     <!-- =======================================================
   * Template Name: PhotoFolio
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -88,7 +90,6 @@ $bgm = "BGM";
                             ON id_order.id_bgmarr_name = bgmarr_tbl.bgmarr_name
                             WHERE id_order.session_user_id = '$session_id' AND id_order.order_status = 'Uncomplete' ORDER BY `id_order`.`id` ASC; ";
                             $result = mysqli_query($conn, $sql);
-                        
                         } else {
                             $sql = "SELECT id_order.id,
                         id_order.id_order,
@@ -128,10 +129,9 @@ $bgm = "BGM";
                                                     <th>Product Name</th>
                                                     <th style="text-align: center;">Price</th>
                                                     <th style="text-align: center;">hours</th>
-                                                    <th style="text-align: center;">Code</th>
-                                                    <th style="text-align: center;"></th>
-
                                                     <th style="text-align: center;">Total</th>
+                                                    <th style="text-align: center;">discount</th>
+                                                    <th style="text-align: center;"></th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
@@ -141,7 +141,7 @@ $bgm = "BGM";
                                                 $sum = 0;
                                                 $sum2 = 0;
                                                 $discount = 0;
-                                                
+
                                                 if (mysqli_num_rows($result) > 0) {
 
                                                     // output data of each row
@@ -151,9 +151,8 @@ $bgm = "BGM";
                                                         $id_order = $row['id_order'];
                                                         $discount += $dis;
                                                         $sum += $total;
-                                                        $i++;
                                                 ?>
-                                                        <form action="cartUpdate.php?id=<?php echo $row['id']; ?>" method="post">
+                                                        <form action="cartUpdate.php?id=<?php echo $row['id']; ?>&sum=<?php echo $sum ?>" method="post">
                                                             <tr>
                                                                 <td style="padding-top: 15px;"><img src="../admin/uploaded_imgs/<?php echo $row['bgmarr_img'] ?>" alt="" width="120"></td>
                                                                 <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
@@ -168,19 +167,24 @@ $bgm = "BGM";
                                                                     </div>
                                                                 </td>
                                                                 <td class="table_cart">
-                                                                    <input type="text" name="coupon">
+                                                                    ฿<?php echo $row['total_sum']; ?>.00
                                                                 </td>
-                                                                <td class="table_cart">
+                                                                <?php
+                                                                if ($row['discount'] == 0) {
+                                                                    echo '<td style="padding-top: 14px;text-align: center;">0.00</td>';
+                                                                } else {
+                                                                    echo '<td style="padding-top: 14px;text-align: center;">-฿' . $row['discount'] . '.00</td>';
+                                                                }
+                                                                ?>
+
+                                                                <!-- <td class="table_cart">
+                                                                    <input type="text" name="coupon">
+                                                                </td> -->
+                                                                <td class="text-center">
                                                                     <input type="submit" class="btn btn-success" value="update">
                                                                     <a href="Javascript:if(confirm('Want to delete it?')==true) 
                                                 {window.location='cartDel.php?id_bgmarr_name=<?php echo $row["id_bgmarr_name"]; ?>';}" class="btn btn-danger"><i class="bi bi-trash"></i></a>
                                                                 </td>
-                                                                <td class="table_cart">
-                                                                    <h5>
-                                                                        <?php echo $row['total_sum']; ?> THB
-                                                                    </h5>
-                                                                </td>
-
                                                             </tr>
                                                         </form>
 
@@ -188,61 +192,64 @@ $bgm = "BGM";
                                                     }
                                                 }
                                                 $sum2 = $sum - $discount;
-                                                $_SESSION['cart'] = $i;
                                                 ?>
                                             </tbody>
                                             <tbody>
-                                                <tr>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td></td>
-                                                    <td class="table_cart">
-                                                        <h5>รวมยอด</h5>
-                                                        <h5>ส่วนลด</h5>
-                                                        <h5>totals</h5>
-                                                    </td>
-                                                    <td class="table_cart">
-                                                        <h5>
-                                                            <?php echo $sum; ?> THB
-                                                        </h5>
-                                                        <h5>
-                                                            <?php echo $discount; ?> THB
-                                                        </h5>
-                                                        <h5>
-                                                            <?php echo $sum2; ?> THB
-                                                        </h5>
-                                                    </td>
-                                                    <td></td>
-                                                </tr>
+                                                <?php
+                                                if ($sum != 0) {
+                                                    echo '<tr>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td style="float: right;">
+                                                            <h5>Sum</h5>
+                                                            <h5>Total discount</h5>
+                                                            <h5>Totals</h5>
+                                                        </td>
+                                                        <td style="text-align:right">
+                                                            <h5>
+                                                                ฿' . $sum . '.00
+                                                            </h5>';
+                                                            if($discount != 0){
+                                                                echo '<h5>
+                                                                        -฿' . $discount . '.00
+                                                                        </h5>';
+                                                            }else{
+                                                                echo '<h5>
+                                                                    ฿' . $discount . '.00
+                                                                    </h5>';
+                                                            }
+                                                            
+                                                            echo '<h5 style="color:red;">
+                                                                ฿' . $sum2 . '.00
+                                                            </h5>
+                                                        </td>
+                                                        <td></td>
+                                                    </tr>';
+                                                }
+                                                ?>
+
                                             </tbody>
-
                                         </table>
-
-
-
                                         <!-- <a href="Javascript:if(confirm('Want to delete them all?')==true) 
                                                 {window.location='cartDel.php?deleteAll=<?php echo $user_id; ?>';}" class="btn btn-danger">All Remove</a> -->
-
-
-
                                     </div>
                                 </div>
                             </div>
                             <?php
-                                if(mysqli_num_rows($result) > 0){
-                                    if($user_id == ''){
-                                        echo '<a href="../admin/login.php" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
-                                    }else{
-                                        echo'<a href="cartContinue.php?user_id='.$user_id.'&id_order='.$id_order.'" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
-                                    }
-                                    
-                                }else{
-                                    echo'';
+                            if (mysqli_num_rows($result) > 0) {
+                                if ($user_id == '') {
+                                    echo '<a href="../admin/login.php" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
+                                } else {
+                                    echo '<a href="cartContinue.php?user_id=' . $user_id . '&id_order=' . $id_order . '" class="btn btn-primary mt-3" style="float: right;">Proceed to payment</a>';
                                 }
+                            } else {
+                                echo '';
+                            }
                             ?>
-                            
+
                             <!-- <div class="form-group col-md-12">
                                 <div class="card cart_product">
                                     <div class="card-body">

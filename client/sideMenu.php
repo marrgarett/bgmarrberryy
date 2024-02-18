@@ -16,12 +16,8 @@
 <nav id="navbar" class="navbar">
     <ul>
         <li><a href="index.php">Home</a></li><!-- class="active"hover ตัวหนังสือ -->
-        <li class="dropdown"><a  href="all_id.php" class="active">All ID<i class="bi bi-chevron-down dropdown-indicator"></i></a>
-            <ul>
-                <li><a href="gallery.html">Nature</a></li>
-                <li><a href="gallery.html">People</a></li>
-            </ul>
-        </li>
+        <li><a href="all_id.php">All ID</i></a></li>
+        <li><a href="order_history.php">Order History</i></a></li>
         <a href="index.php" class="logo d-flex align-items-center  me-auto me-lg-0">
             <img src="img/BG_Logo1.png" alt="">
         </a>
@@ -34,18 +30,18 @@
 <!-- End.navbar -->
 
 <div class="header-social-links">
-    <input type="text" class="sidebar-search" placeholder="search">
-    <i class="bi bi-search"></i>
-    <a href="cart.php"><i class="bi bi-cart"></i></a>
+    <!-- <input type="text" class="sidebar-search" placeholder="search">
+    <i class="bi bi-search"></i> -->
+    <a href="cart.php"><i class="fas fa-shopping-cart"></i></a>
     <!-- <a class="nav-link" href="cart.php"><i class="bi bi-cart"></i> <span id="cart-item" class="badge badge-danger"></span></a> -->
-    <div class="cartcount">
-        <?php 
-        $sql = "SELECT * FROM `id_order` WHERE user_id = '$user_id' AND  order_status= 'Uncomplete'";
-        if($result = mysqli_query($conn, $sql)) {
-          $rowcount = mysqli_num_rows($result);
-          printf($rowcount);
-          mysqli_free_result($result);
-        }
-        ?>
-    </div>
+    <?php
+    $sql = "SELECT * FROM `id_order` WHERE user_id = '$user_id' AND  order_status= 'Uncomplete'";
+    if ($result = mysqli_query($conn, $sql)) {
+        $rowcount = mysqli_num_rows($result);
+        mysqli_free_result($result);
+    }
+    if($rowcount != 0){
+        echo '<div class="cartcount">'.$rowcount.'</div>';
+    }
+    ?>
 </div>

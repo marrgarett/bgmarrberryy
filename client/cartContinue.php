@@ -41,6 +41,8 @@ $bgm = "BGM";
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+
     <!-- =======================================================
   * Template Name: PhotoFolio
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -110,6 +112,8 @@ $bgm = "BGM";
                                                     <th style="text-align: center;">Price</th>
                                                     <th style="text-align: center;">hours</th>
                                                     <th style="text-align: center;">total</th>
+                                                    <th style="text-align: center;">discount</th>
+                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -135,7 +139,15 @@ $bgm = "BGM";
                                                             <td style="padding-top: 15px;"><?php echo $row['id_bgmarr_name']; ?> <?php echo $sharp ?><?php echo $row['price'] ?><?php echo $bgm ?></td>
                                                             <td class="table_cart"><?php echo $row['price'] ?></td>
                                                             <td class="table_cart"><?php echo $row['quantity_hr'] ?></td>
-                                                            <td class="table_cart"><?php echo $total ?></td>
+                                                            <td class="table_cart">฿<?php echo $total ?></td>
+                                                            <?php
+                                                                    if($row['discount'] == 0){
+                                                                        echo '<td style="padding-top: 14px;text-align: center;">0.00</td>';
+                                                                    }else{
+                                                                        echo '<td style="padding-top: 14px;text-align: center;">-฿'.$row['discount'].'.00</td>';
+                                                                    }
+                                                                ?>
+                                                            
                                                         </tr>
 
                                                 <?php

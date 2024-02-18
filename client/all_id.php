@@ -2,13 +2,14 @@
 session_start();
 include_once '../admin/db_connect.php';
 
+$user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
-$bgmarr_name = $_GET['id'];
+// $bgmarr_name = $_GET['id'];
 
-$sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
-$result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result);
+// $sql = "SELECT * FROM `bgmarr_tbl` WHERE bgmarr_name = '$bgmarr_name'; ";
+// $result = mysqli_query($conn, $sql);
+// $row = mysqli_fetch_assoc($result);
 
 $sharp = "#";
 $bgm = "BGM";
@@ -43,6 +44,8 @@ $bgm = "BGM";
 
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
 
   <!-- =======================================================
   * Template Name: PhotoFolio
@@ -84,9 +87,11 @@ $bgm = "BGM";
       <div class="container-fluid">
         <div class="row gy-4 justify-content-center">
           <?php
-          $sql = "SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_tbl`.`bgmarr_status` = 'Available'";
+          $sql = "SELECT * FROM `bgmarr_tbl` WHERE `bgmarr_tbl`.`bgmarr_status` = 'Available' OR bgmarr_status = 'UnAvailable'";
+          
           $result = mysqli_query($conn, $sql);
           while ($row = mysqli_fetch_assoc($result)) {
+            $bgmarr_status = $row['bgmarr_status'];
           ?>
             <div class="col-xl-3 col-lg-4 col-md-6">
               <div class="gallery-item">
@@ -102,11 +107,17 @@ $bgm = "BGM";
               <h5 class="text-center">
                 Riot Tag : <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
                 <br>
-                Price : <?php echo $row['bgmarr_price'] ?> THB // <?php echo $row['bgmarr_status'] ?>
-              </h5>
-              <div class="text-center">
-                <a class="btn btn-success" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>">Add To Cart</a>
-              </div>
+              <?php 
+                if($bgmarr_status == 'Available'){
+                  echo 'Price: '.$row['bgmarr_price'].' THB //'.$row['bgmarr_status'].'
+                  </h5>
+                  <div class="text-center">
+                    <a class="btn btn-success" href="cartSave.php?bgmarr_name='.$row["bgmarr_name"].'">Add To Cart</a>
+                  </div>';
+                }elseif($bgmarr_status == 'UnAvailable'){
+                  echo 'Price: '.$row['bgmarr_price'].' THB // <label style="color: red;">'.$row['bgmarr_status'].'</label>';
+                }
+              ?>
             </div>
           <?php
           }

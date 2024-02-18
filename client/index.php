@@ -5,6 +5,11 @@ include_once '../admin/db_connect.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
+date_default_timezone_set('asia/bangkok');
+$nowDateTime = date("Y-m-d H:i:s");
+
+$outTime = date('Y-m-d H:i:s', strtotime('+15 minutes', strtotime($nowDateTime))); //บวกเวลา ไปอีก 90 นาที
+
 $sharp = "#";
 $bgm = "BGM";
 ?>

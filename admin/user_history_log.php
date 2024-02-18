@@ -32,8 +32,13 @@ $fullname = $_SESSION['fullname'];
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -244,15 +249,16 @@ $fullname = $_SESSION['fullname'];
                     <br>
                     <!-- Page Heading -->
                     <h1 class="h3 mb-4 text-gray-800">ข้อมูลประวัติการเช่า</h1>
-                    
+
                     <?php
                     $user_id = $_GET["id"];
                     $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
                     tblclient.fullname, 
+                    id_order.discount,
                     history_tbl.bgmarr_name, 
                     bgmarr_tbl.bgmarr_name,
                     history_tbl.his_hr, 
-                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
+                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price-id_order.discount AS total_sum,
                     history_tbl.his_start,
                     history_tbl.his_payment,
                     history_tbl.his_status
@@ -261,13 +267,15 @@ $fullname = $_SESSION['fullname'];
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
                     ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
-                    WHERE history_tbl.cli_id = '$user_id'";
+                    JOIN id_order 
+                    ON history_tbl.order_id = id_order.id_order
+                    WHERE history_tbl.cli_id = '$user_id' AND history_tbl.his_status = 'Complete'";
                     $result = mysqli_query($conn, $sql);
 
                     ?>
                     <div>
                         <?php
-                        
+
                         $month = date('m');
                         $day = date('d');
                         $year = date('Y');
@@ -277,19 +285,17 @@ $fullname = $_SESSION['fullname'];
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-borderless">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>ลำดับ</th>
-                                        <th>ชื่อ</th>
-                                        <th>ไอดีที่เช่า</th>
-                                        <th>จำนวนชั่วโมง</th>
-                                        <th>ราคารวม</th>
-                                        <th>วัน/เวลา ที่เริ่มต้น</th>
-                                        <th>ใบสลิป</th>
-                                        <th>สถานะ</th>
-                                        
-                                        <!-- <th>แก้ไข</th> -->
+                                        <th>No.</th>
+                                        <th>Order ID</th>
+                                        <th>Client Name</th>
+                                        <th>IDName</th>
+                                        <th>Hour</th>
+                                        <th>Summary</th>
+                                        <th>Date/Time Start</th>
+                                        <th class="text-center">Slip</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -318,21 +324,25 @@ $fullname = $_SESSION['fullname'];
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
+                                                <td><?php echo $row["order_id"] ?></td>
                                                 <td><?php echo $row["fullname"] ?></td>
                                                 <td><?php echo $row["bgmarr_name"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
-                                                <td><?php echo $row["hour_sum"] ?></td>
+                                                <td><?php echo $row["total_sum"] ?></td>
                                                 <td><?php echo $row["his_start"] ?></td>
-                                                <!-- <td><?php echo $end_date_time . ' ' . $e; ?></td> -->
-                                                <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
-                                                <td><?php echo $row["his_status"] ?></td>
-                                                
-                                                
-                                                    <!--
-                                                    <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
-                                                    <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>
-                                                    -->
-                                                
+                                                <td>
+                                                    <section id="gallery" class="gallery text-center">
+                                                        <!-- ======= Gallery Section ======= -->
+                                                        <div class="gallery-item">
+                                                            <img src="../admin/slip_images/<?php echo $row["his_payment"] ?>" class="img-fluid" alt="" width="30px">
+
+                                                            <div class="gallery-links d-flex align-items-center justify-content-center">
+                                                                <a href="../admin/slip_images/<?php echo $row["his_payment"] ?>" title="" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                                            </div>
+                                                        </div>
+                                                    </section>
+                                                </td>
+                                                <!-- <td><?php echo $row["his_status"] ?></td> -->
                                             </tr>
                                     <?php
                                         }
@@ -398,6 +408,15 @@ $fullname = $_SESSION['fullname'];
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+
+    <!-- gallery img -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 

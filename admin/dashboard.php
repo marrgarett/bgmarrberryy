@@ -35,8 +35,15 @@ $fullname = $_SESSION['fullname'];
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+
+    <!-- <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="css/sb-admin-2.css" rel="stylesheet">
 
 </head>
 
@@ -68,7 +75,7 @@ $fullname = $_SESSION['fullname'];
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
+                                <button class="btn btn-primary" style="width: 39px;" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -354,10 +361,11 @@ $fullname = $_SESSION['fullname'];
                                 $sql = "SELECT history_tbl.his_id, 
                                 history_tbl.order_id, history_tbl.cli_id, 
                                 tblclient.fullname, 
+                                id_order.discount,
                                 history_tbl.bgmarr_name, 
                                 bgmarr_tbl.bgmarr_name, 
                                 history_tbl.his_hr, 
-                                history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum, 
+                                history_tbl.his_hr*bgmarr_tbl.bgmarr_price-id_order.discount AS total_sum,
                                 history_tbl.his_start, 
                                 history_tbl.his_payment, 
                                 history_tbl.his_status 
@@ -366,7 +374,9 @@ $fullname = $_SESSION['fullname'];
                                 ON history_tbl.cli_id = tblclient.id 
                                 JOIN bgmarr_tbl 
                                 ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name 
-                                WHERE history_tbl.his_status = 'Pending' ORDER BY `history_tbl`.`order_id` ASC ";
+                                JOIN id_order 
+                                ON history_tbl.order_id = id_order.id_order
+                                WHERE history_tbl.his_status = 'Pending' ORDER BY `history_tbl`.`order_id` DESC ";
                                 $result = mysqli_query($conn, $sql);
 
                                 ?>
@@ -416,23 +426,34 @@ $fullname = $_SESSION['fullname'];
                                                             <td><?php echo $row["fullname"] ?></td>
                                                             <td><?php echo $row["bgmarr_name"] ?></td>
                                                             <td><?php echo $row["his_hr"] ?></td>
-                                                            <td><?php echo $row["hour_sum"] ?></td>
+                                                            <td><?php echo $row["total_sum"] ?></td>
                                                             <td>
-                                                                <?php
-                                                                if ($row['his_payment'] != '') {
-                                                                ?>
-                                                                    <a class="btn btn-success btn-circle btn-sm">
+                                                                <section id="gallery" class="gallery">
+                                                                    <!-- ======= Gallery Section ======= -->
+                                                                    <div class="gallery-item">
+                                                                        <img src="../admin/slip_images/<?php echo $row["his_payment"] ?>" class="img-fluid" alt="" width="50px">
+
+                                                                        <div class="gallery-links d-flex align-items-center justify-content-center">
+                                                                            <a href="../admin/slip_images/<?php echo $row["his_payment"] ?>" title="" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
+                                                                        </div>
+                                                                    </div>
+                                                                </section>
+
+                                                                <!-- <?php
+                                                                        if ($row['his_payment'] != '') {
+                                                                        ?>
+                                                                    <a class="btn btn-success btn-circle btn-sm" href="">
                                                                         <i class="fas fa-check"></i>
                                                                     </a>
                                                                 <?php
-                                                                } else {
+                                                                        } else {
                                                                 ?>
                                                                     <a class="btn btn-danger btn-circle btn-sm">
                                                                         <i class="fas fa-exclamation-triangle"></i>
                                                                     </a>
                                                                 <?php
-                                                                }
-                                                                ?>
+                                                                        }
+                                                                ?> -->
 
                                                             </td>
                                                             <td><?php echo $row["his_start"] ?></td>
@@ -449,6 +470,7 @@ $fullname = $_SESSION['fullname'];
                                                 ?>
                                             </tbody>
                                         </table>
+
                                     </div>
                                 </div>
                             </div>
@@ -519,6 +541,15 @@ $fullname = $_SESSION['fullname'];
     <!-- Page level custom scripts -->
     <script src="js/demo/chart-area-demo.js"></script>
     <script src="js/demo/chart-pie-demo.js"></script>
+
+    <!-- gallery img -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
 
 </body>
 

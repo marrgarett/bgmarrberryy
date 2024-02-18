@@ -261,6 +261,7 @@ $fullname = $_SESSION['fullname'];
                     history_tbl.his_hr, 
                     history_tbl.his_hr*bgmarr_tbl.bgmarr_price AS hour_sum,
                     history_tbl.his_start,
+                    history_tbl.his_end,
                     history_tbl.his_payment,
                     history_tbl.his_status
                     FROM history_tbl
@@ -268,7 +269,7 @@ $fullname = $_SESSION['fullname'];
                     ON history_tbl.cli_id = tblclient.id
                     JOIN bgmarr_tbl
                     ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
-                    WHERE history_tbl.his_status = 'InProgress'";
+                    WHERE history_tbl.his_status = 'InProgress' ORDER BY `history_tbl`.`his_id` DESC";
                     $result = mysqli_query($conn, $sql);
 
                     ?>
@@ -279,29 +280,26 @@ $fullname = $_SESSION['fullname'];
                         $day = date('d');
                         $year = date('Y');
 
-                        $today = $year . '-' . $month . '-' . $day;
-
+                        // $today = $year . '-' . $month . '-' . $day;
                         ?>
 
-                        <label for="start">Start date:</label>
-
-                        <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/>
+                        <!-- <label for="start">Start date:</label>
+                        <input type="date" name ="history_start" id="start" name="trip-start" value="<?php echo $today; ?>" min="2011-01-01"/> -->
                     </div>
                   
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-borderless">
+                            <table class="table table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>His No.</th>
+                                        <th>No.</th>
                                         <th>Order ID</th>
                                         <th>Client Name</th>
                                         <th>IDName</th>
                                         <th>Hour</th>
-                                        <th>Summary</th>
                                         <th>Date/Time Start</th>
                                         <th>Date/Time End</th>
-                                        <th>Slip</th>
+                                        <!-- <th>Slip</th> -->
                                         <th>Status</th>
                                         <th>Edit</th>
                                     </tr>
@@ -314,6 +312,7 @@ $fullname = $_SESSION['fullname'];
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $his_start = substr($row["his_start"], 11);
                                             $his_hr = $row["his_hr"];
+                                            $his_end = $row["his_end"];
 
                                             $end_date_time = substr($row["his_start"], 0, -9);
 
@@ -324,11 +323,8 @@ $fullname = $_SESSION['fullname'];
                                             $e = ("$c" . "$d");
 
                                             $start_time = $row["his_start"];
-                                            $now_time = date("H:i:s");
+                                            $now_dateTime = date('Y-m-d H:i:s');
                                             $end_time = ("$c" . "$d");
-
-
-
                                     ?>
                                             <tr>
                                                 <th scope><?php echo $i++ ?></th>
@@ -336,13 +332,12 @@ $fullname = $_SESSION['fullname'];
                                                 <td><?php echo $row["fullname"] ?></td>
                                                 <td><?php echo $row["bgmarr_name"] ?></td>
                                                 <td><?php echo $row["his_hr"] ?></td>
-                                                <td><?php echo $row["hour_sum"] ?></td>
                                                 <td><?php echo $row["his_start"] ?></td>
-                                                <td><?php echo $end_date_time . ' ' . $e; ?></td>
-                                                <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td>
+                                                <td><?php echo $row['his_end'] ?></td>
+                                                <!-- <td><img src="slip_images/<?php echo $row["his_payment"] ?>" width="50px" height="50px"></td> -->
                                                 <td>
                                                     <?php
-                                                    if ($now_time >= $end_time) {
+                                                    if ($now_dateTime >= $his_end) {
                                                         echo 'Finished';
                                                     } else {
                                                         echo 'In progress';
@@ -350,7 +345,14 @@ $fullname = $_SESSION['fullname'];
                                                     ?>
                                                 </td>
                                                 <td>
-                                                    <a href="history_resetPass.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>" target="_blank" class="btn btn-warning">Reset</a>
+                                                <?php
+                                                    if ($now_dateTime >= $his_end) {
+                                                        echo '<a href="history_resetPass.php?bgmarr_name='.$row["bgmarr_name"].'" target="_blank" class="btn btn-warning">Reset</a>';
+                                                    } else {
+                                                        echo '';
+                                                    }
+                                                    ?>
+                                                    
                                                     <!--
                                                     <a href="history_chk.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-warning">แก้ไข</a>
                                                     <a href="" class="btn btn-warning">เปลี่ยนสถานะ</a>

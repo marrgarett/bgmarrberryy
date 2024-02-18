@@ -12,10 +12,19 @@ if (isset($_GET['bgmarr_name'])) {
     $row = $result->fetch_assoc();
     $bgmarr_us = $row["bgmarr_us"];
     $bgmarr_pw = $row["bgmarr_pw"];
+    $bgmarr_status = $row['bgmarr_status'];
 
-        $new_pass = "1111";
-        $sql = "UPDATE `bgmarr_tbl` SET `bgmarr_pw` = '$new_pass' WHERE `bgmarr_tbl`.`bgmarr_name` = '$bgmarr_name' ";
-        $result = mysqli_query($conn, $sql);
+        date_default_timezone_set('asia/bangkok');
+        $newTime = date("His");
+        $new_bgmarr_pw = substr($bgmarr_pw, 0, 10);
+        $new_pass = "$new_bgmarr_pw$newTime";
+        $status = "Available";
+        $sql = "UPDATE `bgmarr_tbl` SET `bgmarr_pw` = '$new_pass', `bgmarr_status` = '$status' WHERE `bgmarr_tbl`.`bgmarr_name` = '$bgmarr_name' ";
+        if($result = mysqli_query($conn, $sql)){
+            $his_status = 'Complete';
+            $sql_his = "UPDATE `history_tbl` SET `his_status` = '$his_status' WHERE `history_tbl`.`bgmarr_name` = '$bgmarr_name' ";
+            $result = mysqli_query($conn, $sql_his);
+        }
         
         echo '<script language="javascript">';
         echo 'alert("เปลี่ยนรหัสผ่านไอดีเสร็จสิ้น"); location.href="https://authenticate.riotgames.com/?client_id='.$bgmarr_us.'&platform='.$bgmarr_pw.'"';

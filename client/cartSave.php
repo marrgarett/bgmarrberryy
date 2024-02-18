@@ -96,11 +96,12 @@ if (isset($_GET["bgmarr_name"])) {
 
                         //Lzdk3JIcfv51A58swKzcwEbZVXJ6fM3fpWTDedkYjH3
                         $sToken = [
-                            "Lzdk3JIcfv51A58swKzcwEbZVXJ6fM3fpWTDedkYjH"
+                            "Lzdk3JIcfv51A58swKzcwEbZVXJ6fM3fpWTDedkYjH3"
                         ];
 
                         $sMessage = "แจ้งเตือนการเช่าไอดี!\r\n";
                         $sMessage .= $fullname . " ได้ทำการเช่าไอดี!\r\n";
+                        $sMessage .= "Order ID: #" . $id_order . " \r\n";
                         $sMessage .= "FullName: " . $fullname . " \r\n";
                         $sMessage .= "Email: " . $useremail . " \r\n";
                         $sMessage .= "Link: " . $Link . " \r\n";

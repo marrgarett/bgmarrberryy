@@ -53,6 +53,9 @@ $his_id = $_GET["his_id"];
 
         <h2>Contact us</h2>
             <input type="text" id="his_id" class="txt" placeholder="insert name" value="<?php echo $his_id ?>" readonly hidden/>
+            <input type="text" id="his_start" class="txt" placeholder="insert name" value="<?php echo $row['his_start'] ?>" readonly hidden/>
+            <input type="text" id="his_hr" class="txt" placeholder="insert name" value="<?php echo $row['his_hr'] ?>" readonly hidden/>
+            <input type="text" id="bgmarr_name" class="txt" placeholder="insert name" value="<?php echo $row['bgmarr_name'] ?>" readonly hidden/>
         <div class="form-control">
             <p>Name</p>
             <input type="text" id="name" class="txt" placeholder="insert name" value="BGMarrBerryy" readonly />
@@ -89,6 +92,9 @@ https://www.facebook.com/bgmarrberryy<br/><br/>
     <script type="text/javascript">
         function sendEmail() {
             var his_id = $("#his_id");
+            var his_start = $("#his_start");
+            var his_hr = $("#his_hr");
+            var bgmarr_name = $("#bgmarr_name");
             var name = $("#name");
             var email = $("#email");
             var header = $("#header");
@@ -101,6 +107,9 @@ https://www.facebook.com/bgmarrberryy<br/><br/>
                     dataType: 'json',
                     data: {
                         his_id: his_id.val(),
+                        his_start: his_start.val(),
+                        his_hr: his_hr.val(),
+                        bgmarr_name: bgmarr_name.val(),
                         name: name.val(),
                         email: email.val(),
                         header: header.val(),

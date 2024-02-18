@@ -7,7 +7,7 @@
 date_default_timezone_set('Asia/Bangkok');
 require 'PHPMailer/PHPMailerAutoload.php';
 //Create a new PHPMailer instance
-$mail = new PHPMailer;
+// $mail = new PHPMailer;
 //Tell PHPMailer to use SMTP
 $mail->isSMTP();
 //Enable SMTP debugging

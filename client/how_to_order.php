@@ -2,6 +2,7 @@
 session_start();
 include_once '../admin/db_connect.php';
 
+$user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 
 ?>
@@ -35,6 +36,7 @@ $fullname = $_SESSION['fullname'];
   <!-- Template Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
 
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
   <!-- =======================================================
   * Template Name: PhotoFolio
   * Updated: Sep 18 2023 with Bootstrap v5.3.2

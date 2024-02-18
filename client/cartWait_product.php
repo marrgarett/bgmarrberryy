@@ -41,6 +41,8 @@ $bgm = "BGM";
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+
     <!-- =======================================================
   * Template Name: PhotoFolio
   * Updated: Sep 18 2023 with Bootstrap v5.3.2

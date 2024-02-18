@@ -42,6 +42,8 @@ $bgm = "BGM";
     <!-- Template Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
 
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css' />
+
     <!-- =======================================================
   * Template Name: PhotoFolio
   * Updated: Sep 18 2023 with Bootstrap v5.3.2
@@ -145,8 +147,6 @@ $bgm = "BGM";
                                             <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
                                             <input type="file" name="his_payment" id="his_payment" />
                                             <br>
-
-
                                             <br>
                                             <input type="submit" class="btn btn-primary mt-3" name="confirm" value="Confirm payment"></input>
                                         </form>
