@@ -72,7 +72,7 @@ $bgm = "BGM";
             <div class="container position-relative">
                 <div class="row d-flex justify-content-center">
                     <div class="col-lg-12">
-                        <h2 class="text-center">สรุปการสั่งซื้อ</h2>
+                        <h2 class="text-center">Order summary</h2>
 
                         <!-- <a class="cta-btn" href="index.php">Back</a> -->
                         <?php
@@ -162,7 +162,7 @@ $bgm = "BGM";
                                         <div class="text-center">
                                             <h5>Shipping Address</h5>
                                             <br>
-                                            <p style="color:brown;">อีเมลที่ใช้รับสินค้า : test@gmail.com</p>
+                                            Email used to receive the product: <label style="color:brown;"> test@gmail.com</label>
                                             <hr>
                                             <h5>Payment Details</h5>
                                             <!-- <h6>ราคารวม : <?php echo $sum2 ?>.00 บาท</h6> -->
@@ -171,7 +171,7 @@ $bgm = "BGM";
                                             <div class="form-check form-check-inline">
                                                 <input type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                                                 <label for="flexRadioDefault1">
-                                                    โอนเงินผ่านธนาคาร
+                                                    Pay via bank
                                                 </label>
                                             </div>
                                         </div>
@@ -196,17 +196,17 @@ $bgm = "BGM";
                             <div class="form-group col-md-4">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3 class="text-center">สรุปการสั่งซื้อ</h3>
+                                        <h3 class="text-center">Order summary</h3>
                                         <hr>
                                         <div class="total1">
-                                            <h6>รวมยอด</h6>
+                                            <h6>total</h6>
                                             <h6><?php echo $sum ?>.00 บาท</h6>
                                         </div>
                                         <!-- <p>อีเมลที่ใช้รับสินค้า : test@gmail.com</p> -->
                                         <hr>
                                         <!-- <h6>Total Product (<?php echo $i ?>) </h6> -->
                                         <div class="total2">
-                                            <h6>ส่วนลด</h6>
+                                            <h6>discount</h6>
                                             <h6><?php echo $discount ?>.00 บาท</h6>
                                         </div>
                                         <hr>

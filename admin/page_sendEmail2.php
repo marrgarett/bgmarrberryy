@@ -1,21 +1,12 @@
 <?php
 session_start();
-include_once('db_connect.php');
-
-$sql = "SELECT * FROM `history_tbl`";
-$result = $conn->query($sql);
-$row = $result->fetch_assoc();
-$date = $row['his_start'];
-
-//require('order_number_generate\yearmonth6digitnumber.php');
-
-if (!empty($_POST['his_start'])) {
-    $sql = "SELECT * FROM history_tbl WHERE his_start LIKE '$date%'";
-}
-
 $fullname = $_SESSION['fullname'];
 
+include_once('db_connect.php');
+$his_id = $_GET["his_id"];
+
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,13 +24,8 @@ $fullname = $_SESSION['fullname'];
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin-2.css" rel="stylesheet">
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 
@@ -100,7 +86,7 @@ $fullname = $_SESSION['fullname'];
                                 </form>
                             </div>
                         </li>
-                        
+
                         <div class="topbar-divider d-none d-sm-block"></div>
 
                         <!-- Nav Item - User Information -->
@@ -140,7 +126,7 @@ $fullname = $_SESSION['fullname'];
                 <div class="container-fluid">
                     <br>
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">History</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Send Email</h1>
                     <?php
                     date_default_timezone_set("Asia/Bangkok");
                     // echo "Today is " . date("d-m-Y");
@@ -149,26 +135,30 @@ $fullname = $_SESSION['fullname'];
 
                     ?>
                     <?php
-                    $sql = "SELECT history_tbl.his_id, history_tbl.order_id, history_tbl.cli_id, 
-                    tblclient.fullname, 
-                    id_order.discount,
-                    history_tbl.bgmarr_name, 
-                    bgmarr_tbl.bgmarr_name,
-                    history_tbl.his_hr, 
-                    history_tbl.his_hr*bgmarr_tbl.bgmarr_price-id_order.discount AS total_sum,
-                    history_tbl.his_start,
-                    history_tbl.his_end,
-                    history_tbl.his_payment,
-                    history_tbl.his_status
-                    FROM history_tbl
-                    JOIN tblclient
-                    ON history_tbl.cli_id = tblclient.id
-                    JOIN bgmarr_tbl
-                    ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name
-                    JOIN id_order 
-                    ON history_tbl.order_id = id_order.id_order
-                    WHERE history_tbl.his_status = 'Complete' ORDER BY `history_tbl`.`his_id` DESC";
+                    $sql = "SELECT history_tbl.his_id, 
+                                history_tbl.order_id, history_tbl.cli_id, 
+                                tblclient.fullname, 
+                                tblclient.useremail, 
+                                id_order.discount, 
+                                history_tbl.bgmarr_name, 
+                                bgmarr_tbl.bgmarr_name, 
+                                bgmarr_tbl.bgmarr_us, 
+                                bgmarr_tbl.bgmarr_pw, 
+                                history_tbl.his_hr, 
+                                history_tbl.his_hr*bgmarr_tbl.bgmarr_price-id_order.discount AS total_sum, 
+                                history_tbl.his_start, 
+                                history_tbl.his_payment, 
+                                history_tbl.his_status 
+                                FROM history_tbl 
+                                JOIN tblclient 
+                                ON history_tbl.cli_id = tblclient.id 
+                                JOIN bgmarr_tbl 
+                                ON history_tbl.bgmarr_name = bgmarr_tbl.bgmarr_name 
+                                JOIN id_order 
+                                ON history_tbl.order_id = id_order.id_order
+                                WHERE history_tbl.his_id = '$his_id' AND history_tbl.his_status = 'Pending' ORDER BY `history_tbl`.`order_id` ASC ";
                     $result = mysqli_query($conn, $sql);
+                    $row = mysqli_fetch_assoc($result);
 
                     ?>
                     <div>
@@ -187,73 +177,94 @@ $fullname = $_SESSION['fullname'];
 
                     <div class="card">
                         <div class="card-body">
-                            <table class="table table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Order ID</th>
-                                        <th>Client Name</th>
-                                        <th>IDName</th>
-                                        <th>Hour</th>
-                                        <th>Summary</th>
-                                        <th>Date/Time Start</th>
-                                        <th>Date/Time End</th>
-                                        <!-- <th>Slip</th> -->
-                                        <th>Slip</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    $i = 1;
-                                    if (mysqli_num_rows($result) > 0) {
-                                        // output data of each row
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $his_start = substr($row["his_start"], 11);
-                                            $his_hr = $row["his_hr"];
-                                            $his_end = $row["his_end"];
+                        <form id="myForm">
+                                <div class="msg"></div>
+                                <div class="form-row">    
+                                    <input type="text" id="his_id" class="form-control" value="<?php echo $his_id ?>" readonly hidden>
+                                    <input type="text" id="his_start" class="form-control" value="<?php echo $row['his_start'] ?>" readonly hidden>
+                                    <input type="text" id="his_hr" class="form-control" value="<?php echo $row['his_hr'] ?>" readonly hidden>
+                                    <input type="text" id="bgmarr_name" class="form-control" value="<?php echo $row['bgmarr_name'] ?>" readonly hidden>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">Name</label>
+                                        <input type="text" id="name" class="form-control"  placeholder="insert name" readonly value="BGMarrBerryy">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">Email</label>
+                                        <input type="text" id="email" class="form-control"  placeholder="insert email" value="<?php echo $row['useremail'] ?>" readonly>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                    <label for="inputPassword4">Header</label>
+                                    <input type="text" id="header" class="form-control"  value="Order #<?php echo $row['order_id'] ?> has been shipped." readonly>
+                                    </div>    
+                                </div>
 
-                                            $end_date_time = substr($row["his_start"], 0, -9);
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputAddress">Description</label>
+                                        <textarea id="detail" style="width: 100%" name="bgmarr_desc" rows="4" cols="120" placeholder="insert detail" readonly>
+<b>ข้อมูลสินค้าที่ทำการเช่า</b><br/>
+<b>Username: </b><?php echo $row['bgmarr_us'] ?><br/>
+<b>Password: </b><?php echo $row['bgmarr_pw'] ?><br/><br/>
+<b>คำแนะนำในการใช้งานสินค้า</b><br/>
+สอบถามหรือแจ้งปัญหา :<br/>
+https://www.facebook.com/bgmarrberryy<br/><br/>
+<b>จำนวนเงิน: </b><?php echo $row['total_sum'] ?> บาท<br/>
+<b>ช่องทางการชำระเงิน: </b>ธนาคาร
+                                        </textarea>
+                                    </div>
+                                   
+                                </div>
+                                <br>
+                                <button type="button" onclick="sendEmail()" value="Send an email" class="btn btn-primary">Send</button><br><br>
 
-                                            $a = substr($row["his_start"], 11);
-                                            $b = substr($a, 0, -6);
-                                            $c = $b + $his_hr;
-                                            $d = substr($row["his_start"], 13);
-                                            $e = ("$c" . "$d");
+                            </form>
 
-                                            $start_time = $row["his_start"];
-                                            $now_dateTime = date('Y-m-d H:i:s');
-                                            $end_time = ("$c" . "$d");
-                                    ?>
-                                            <tr>
-                                                <th scope><?php echo $i++ ?></th>
-                                                <td><?php echo $row["order_id"] ?></td>
-                                                <td><?php echo $row["fullname"] ?></td>
-                                                <td><?php echo $row["bgmarr_name"] ?></td>
-                                                <td><?php echo $row["his_hr"] ?></td>
-                                                <td><?php echo $row["total_sum"] ?></td>
-                                                <td><?php echo $row["his_start"] ?></td>
-                                                <td><?php echo $row['his_end'] ?></td>
-                                                <td>
-                                                    <section id="gallery" class="gallery">
-                                                        <!-- ======= Gallery Section ======= -->
-                                                        <div class="gallery-item">
-                                                            <img src="../admin/slip_images/<?php echo $row["his_payment"] ?>" class="img-fluid" alt="" width="40px">
 
-                                                            <div class="gallery-links d-flex align-items-center justify-content-center">
-                                                                <a href="../admin/slip_images/<?php echo $row["his_payment"] ?>" title="" class="glightbox preview-link"><i class="bi bi-arrows-angle-expand"></i></a>
-                                                            </div>
-                                                        </div>
-                                                    </section>
-                                                </td>
-                                                <td><?php echo $row['his_status'] ?></td>
-                                            </tr>
-                                    <?php
-                                        }
+                            <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+                            <script type="text/javascript">
+                                function sendEmail() {
+                                    var his_id = $("#his_id");
+                                    var his_start = $("#his_start");
+                                    var his_hr = $("#his_hr");
+                                    var bgmarr_name = $("#bgmarr_name");
+                                    var name = $("#name");
+                                    var email = $("#email");
+                                    var header = $("#header");
+                                    var detail = $("#detail");
+
+                                    if (isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(header) && isNotEmpty(detail)) {
+                                        $.ajax({
+                                            url: 'sendEmail.php',
+                                            method: 'POST',
+                                            dataType: 'json',
+                                            data: {
+                                                his_id: his_id.val(),
+                                                his_start: his_start.val(),
+                                                his_hr: his_hr.val(),
+                                                bgmarr_name: bgmarr_name.val(),
+                                                name: name.val(),
+                                                email: email.val(),
+                                                header: header.val(),
+                                                detail: detail.val()
+                                            },
+                                            success: function(response) {
+                                                $('#myForm')[0].reset();
+                                                $('.msg').text("Message send successfully");
+                                                location.href = 'dashboard.php';
+                                            }
+                                        });
                                     }
-                                    ?>
-                                </tbody>
-                            </table>
+                                }
+
+                                function isNotEmpty(caller) {
+                                    if (caller.val() == "") {
+                                        caller.css('border', '1px solid red');
+                                        return false;
+                                    } else caller.css('border', '');
+
+                                    return true;
+                                }
+                            </script>
                         </div>
                     </div>
 
@@ -312,15 +323,6 @@ $fullname = $_SESSION['fullname'];
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
-
-    <!-- gallery img -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/aos/aos.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
 
 </body>
 

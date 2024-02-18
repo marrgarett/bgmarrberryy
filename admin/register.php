@@ -21,7 +21,7 @@
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #000;">
 
     <div class="container">
         <div class="row justify-content-center">
@@ -59,14 +59,14 @@
                                         <!-- <p>* รหัสผ่านต้องมี 8-30 ตัว(ทั้งตัวเลขและตัวอักษร)</p> -->
                                         <input type="submit" name="save" value="Sign Up" class="btn btn-primary btn-block" style="border-radius: 25px;">
 
-
-                                        <hr>
+                                        
+                                        <!-- <hr>
                                         <a href="index.php" class="btn btn-google btn-user btn-block">
                                             <i class="fab fa-google fa-fw"></i> Register with Google
                                         </a>
                                         <a href="index.php" class="btn btn-facebook btn-user btn-block">
                                             <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
-                                        </a>
+                                        </a> -->
                                     </form>
                                     <hr>
                                     <div class="text-center">

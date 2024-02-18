@@ -51,7 +51,7 @@ $his_id = $_GET["his_id"];
     <form id="myForm" class="card">
         <div class="msg"></div>
 
-        <h2>Contact us</h2>
+        <h2>Send Email</h2>
             <input type="text" id="his_id" class="txt" placeholder="insert name" value="<?php echo $his_id ?>" readonly hidden/>
             <input type="text" id="his_start" class="txt" placeholder="insert name" value="<?php echo $row['his_start'] ?>" readonly hidden/>
             <input type="text" id="his_hr" class="txt" placeholder="insert name" value="<?php echo $row['his_hr'] ?>" readonly hidden/>

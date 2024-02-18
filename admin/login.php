@@ -109,7 +109,7 @@ if (isset($_POST['login'])) {
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="background-color: #000;">
 
     <div class="container">
 
@@ -135,13 +135,13 @@ if (isset($_POST['login'])) {
                                         <div class="form-inline">
                                             <input type="password" name="password" class="form-control form-control-user" id="password" placeholder="Password" required>
                                             <i class="bi bi-eye-slash" id="togglePassword"></i>
-                                        </div>
-                                        <div class="form-group">
+                                        </div><br>
+                                        <!-- <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <button type="submit" name="login" class="btn btn-primary btn-user btn-block">Login</button>
                                         <!--
                                         <hr>

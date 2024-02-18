@@ -86,12 +86,12 @@ $bgm = "BGM";
                             <div class="form-group col-md-6">
                                 <div class="card cart_product">
                                     <div class="card-body">
-                                        <h3 class="text-center"><i class="fas fa-user" style="padding:10px"></i>ข้อมูลผู้ใช้</h3>
+                                        <h3 class="text-center"><i class="fas fa-user" style="padding:10px"></i>User information</h3>
                                         <hr>
-                                        <label for="">>Username (ชื่อผู้ใช้)</label><br>
+                                        <label for="">>Username</label><br>
                                         <input type="text" class="user_detail" value="<?php echo $row['fullname'] ?>" readonly>
                                         <br><br>
-                                        <label for="">>Email (อีเมล)</label><br>
+                                        <label for="">>Email</label><br>
                                         <input type="email" class="user_detail" value="<?php echo $row['useremail'] ?>" readonly>
                                         <br><br>
                                     </div>

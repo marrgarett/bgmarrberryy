@@ -3,10 +3,20 @@ session_start();
 $fullname = $_SESSION['fullname'];
 include_once('db_connect.php');
 
-$sql = "SELECT * FROM `history_tbl`";
+$sql = "SELECT * FROM `history_tbl` WHERE `history_tbl`.`his_status` = 'Pending'";
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
-$date = $row['his_start'];
+
+$i = 0;
+$totals = 0;
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+    while ($row = mysqli_fetch_assoc($result)) {  
+        $i++;
+    }
+    $i++;
+    
+}
 
 //require('order_number_generate\yearmonth6digitnumber.php');
 
@@ -71,7 +81,7 @@ $fullname = $_SESSION['fullname'];
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <!-- <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
                             <div class="input-group-append">
@@ -80,7 +90,7 @@ $fullname = $_SESSION['fullname'];
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> -->
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
@@ -107,11 +117,11 @@ $fullname = $_SESSION['fullname'];
 
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-bell fa-fw"></i>
+                            <!-- <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> -->
+                                <!-- <i class="fas fa-bell fa-fw"></i> -->
                                 <!-- Counter - Alerts -->
-                                <span class="badge badge-danger badge-counter">3+</span>
-                            </a>
+                                <!-- <span class="badge badge-danger badge-counter">3+</span> -->
+                            <!-- </a> -->
                             <!-- Dropdown - Alerts -->
                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                                 <h6 class="dropdown-header">
@@ -155,14 +165,14 @@ $fullname = $_SESSION['fullname'];
                         </li>
 
                         <!-- Nav Item - Messages -->
-                        <li class="nav-item dropdown no-arrow mx-1">
+                        <!-- <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-envelope fa-fw"></i>
+                                <i class="fas fa-envelope fa-fw"></i> -->
                                 <!-- Counter - Messages -->
-                                <span class="badge badge-danger badge-counter">7</span>
-                            </a>
+                                <!-- <span class="badge badge-danger badge-counter">7</span> -->
+                            <!-- </a> -->
                             <!-- Dropdown - Messages -->
-                            <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                            <!-- <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                                 <h6 class="dropdown-header">
                                     Message Center
                                 </h6>
@@ -212,7 +222,7 @@ $fullname = $_SESSION['fullname'];
                                 </a>
                                 <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                             </div>
-                        </li>
+                        </li> -->
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -264,14 +274,14 @@ $fullname = $_SESSION['fullname'];
                     <div class="row">
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-primary shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Earnings (All)</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">400</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-calendar fa-2x text-gray-300"></i>
@@ -279,10 +289,10 @@ $fullname = $_SESSION['fullname'];
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-success shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -297,10 +307,10 @@ $fullname = $_SESSION['fullname'];
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
+                        <!-- <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
@@ -324,7 +334,7 @@ $fullname = $_SESSION['fullname'];
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
 
                         <!-- Pending Requests Card Example -->
                         <div class="col-xl-3 col-md-6 mb-4">
@@ -334,7 +344,7 @@ $fullname = $_SESSION['fullname'];
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                                 Pending Requests</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $i; ?></div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -400,7 +410,8 @@ $fullname = $_SESSION['fullname'];
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $i = 1;
+                                                $x = 1;
+                                                
                                                 if (mysqli_num_rows($result) > 0) {
                                                     // output data of each row
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -421,7 +432,7 @@ $fullname = $_SESSION['fullname'];
 
                                                 ?>
                                                         <tr>
-                                                            <th scope><?php echo $i++ ?></th>
+                                                            <th scope><?php echo $x++ ?></th>
                                                             <td><?php echo $row["order_id"] ?></td>
                                                             <td><?php echo $row["fullname"] ?></td>
                                                             <td><?php echo $row["bgmarr_name"] ?></td>
@@ -461,7 +472,7 @@ $fullname = $_SESSION['fullname'];
                                                                 <div><?php echo $row["his_status"] ?></div>
                                                             </td>
                                                             <td>
-                                                                <a href="page_sendEmail.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
+                                                                <a href="page_sendEmail2.php?his_id=<?php echo $row["his_id"]; ?>" class="btn btn-success">Accept</a>
                                                             </td>
                                                         </tr>
                                                 <?php

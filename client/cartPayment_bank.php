@@ -123,28 +123,28 @@ $bgm = "BGM";
                                         ?>
                                         <h3>Bank transfer</h3>
 
-                                        <p>ท่านจำเป็นต้องทำการโอนเงินผ่านแอพพลิเคชั่น Mobile Banking ของธนาคาร ที่มี QR Code ในสลิปโอนเงิน มิเช่นนั้นระบบจะไม่สามารถตรวจสอบการโอนเงินของท่านได้</p>
+                                        <p>You are required to transfer money through the Mobile Banking application of the bank using the QR code provided in the money transfer slip. Otherwise, the system will not be able to verify your money transfer.</p>
                                         <td style="padding-top: 15px;"><img src="img/qrpayment.jpg" alt="" width="220" height="300"></td>
                                         <br><br>
-                                        <h5><img src="img/scb-logo.png" alt="" width="30" height="30" style="margin-right: 5px;">ธนาคารไทยพาณิชย์</h5>
+                                        <h5><img src="img/scb-logo.png" alt="" width="30" height="30" style="margin-right: 5px;">Siam Commercial Bank</h5>
                                         <table class="table">
                                             <tbody>
                                                 <tr>
-                                                    <th>ชื่อบัญชี</th>
-                                                    <td>xxxx xxxx</td>
+                                                    <th>Account name</th>
+                                                    <td>Ponlawat Kunna</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>เลขที่บัญชี</th>
-                                                    <td>1234567890</td>
+                                                    <th>Account number</th>
+                                                    <td>177-8-87827-1</td>
                                                 </tr>
                                                 <tr>
-                                                    <th>จำนวนเงิน</th>
+                                                    <th>Totals</th>
                                                     <td><?php echo $sum2 ?> THB</td>
                                                 </tr>
                                             </tbody>
                                         </table>
                                         <form action="cartSave.php?user_id=<?php echo $user_id; ?>&id_order=<?php echo $id_order ?>" method="post" enctype="multipart/form-data">
-                                            <p>เมื่อดำเนินการเสร็จเรียบร้อยแล้ว กรุณาอัพโหลดไฟล์สลิปโอนเงิน และกรอกอีเมลที่จะใช้รับสินค้า หลังจากนั้นกด "ยืนยันการชำระเงิน"</p>
+                                            <p>After completing the transaction, please upload the money transfer slip file and provide the email address for receiving the goods. Then, press 'Confirm Payment.'</p>
                                             <input type="file" name="his_payment" id="his_payment" />
                                             <br>
                                             <br>

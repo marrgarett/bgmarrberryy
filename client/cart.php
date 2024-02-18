@@ -204,7 +204,7 @@ $bgm = "BGM";
                                                         <td></td>
                                                         <td></td>
                                                         <td style="float: right;">
-                                                            <h5>Sum</h5>
+                                                            <h5>Total</h5>
                                                             <h5>Total discount</h5>
                                                             <h5>Totals</h5>
                                                         </td>
