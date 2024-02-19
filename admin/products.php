@@ -326,7 +326,7 @@ $fullname = $_SESSION['fullname'];
 
                                                     <tr>
                                                         <th><?php echo $i++ ?></th>
-                                                        <td><?php echo $row["bgmarr_name"] ?></td>
+                                                        <td><a href="order_history_log.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>"><?php echo $row["bgmarr_name"] ?></a></td>
                                                         <td><?php echo iconv_substr($row["bgmarr_desc"], 0, 12, 'UTF-8') ?>...</td>
                                                         <td><a href="<?php echo $row["bgmarr_url"] ?>" target="_blank"><?php echo iconv_substr($row["bgmarr_url"], 0, 24, 'UTF-8') ?></a></td>
                                                         <!-- <td><?php echo iconv_substr($row["bgmarr_url"], 0, 13, 'UTF-8') ?>...</td> -->
