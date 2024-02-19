@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(0);
 session_start();
 include_once '../admin/db_connect.php';
 $order_id = $_GET['id'];

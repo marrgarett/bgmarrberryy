@@ -1,4 +1,6 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(0);
 session_start();
 include_once '../admin/db_connect.php';
 
@@ -82,7 +84,7 @@ $bgmarr_name = $_GET['id'];
               <?php echo $row['bgmarr_name'] ?> <?php echo $sharp ?><?php echo $row['bgmarr_price'] ?><?php echo $bgm ?>
             </h2>
 
-            <a class="cta-btn" href="contact.html">Add To Cart</a>
+            <a class="cta-btn" href="cartSave.php?bgmarr_name=<?php echo $row["bgmarr_name"]; ?>&id=<?php echo $row["bgmarr_id"]; ?>"">Add To Cart</a>
 
           </div>
         </div>
