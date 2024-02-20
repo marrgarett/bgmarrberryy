@@ -50,10 +50,10 @@
                                         </div>
                                         <div class="form-group row">
                                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                                <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required minlength="3" maxlength="20">
+                                                <input type="password" name="password1" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password" required minlength="8" maxlength="20">
                                             </div>
                                             <div class="col-sm-6">
-                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirm Password" required minlength="3" maxlength="20">                   
+                                                <input type="password" name="password2" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Confirm Password" required minlength="8" maxlength="20">                   
                                             </div>
                                         </div>
                                         <!-- <p>* รหัสผ่านต้องมี 8-30 ตัว(ทั้งตัวเลขและตัวอักษร)</p> -->

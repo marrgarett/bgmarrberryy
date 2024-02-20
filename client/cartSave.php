@@ -8,7 +8,7 @@ include_once '../admin/order_number_generate/yearmonth6digitnumber.php';
 $user_id = $_SESSION['user_id'];
 $fullname = $_SESSION['fullname'];
 $useremail = $_SESSION['useremail'];
-$Link = "http://localhost/bgmarrberryy/admin/dashboard.php";
+$Link = "http://localhost/bgmarrberryy/admin/login.php";
 
 $status = 'Pending';
 
@@ -106,7 +106,7 @@ if (isset($_GET["bgmarr_name"])) {
                         $sMessage .= "Order ID: #" . $id_order . " \r\n";
                         $sMessage .= "FullName: " . $fullname . " \r\n";
                         $sMessage .= "Email: " . $useremail . " \r\n";
-                        $sMessage .= "Link: " . $Link . " \r\n";
+                        //$sMessage .= "Link: " . $Link . " \r\n";
 
                         function notify_message($sMessage, $Token)
                         {

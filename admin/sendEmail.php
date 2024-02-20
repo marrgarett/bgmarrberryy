@@ -14,7 +14,6 @@ $today = date('Y-m-d H:i:s');
         $header = $_POST['header'];
         $detail = $_POST['detail'];
         $his_id = $_POST['his_id'];
-        $his_start = $_POST['his_start'];
         $his_hr = $_POST['his_hr'];
         $bgmarr_name = $_POST['bgmarr_name'];
 
@@ -28,8 +27,8 @@ $today = date('Y-m-d H:i:s');
         $mail->isSMTP();
         $mail->Host = "smtp.gmail.com";
         $mail->SMTPAuth = true;
-        $mail->Username = "test1@gmail.com"; // enter your email address
-        $mail->Password = "test1"; // enter your password
+        $mail->Username = "sb6560259102@lru.ac.th"; // enter your email address
+        $mail->Password = "test@test"; // enter your password
         $mail->Port = 465;
         $mail->SMTPSecure = "ssl";
 

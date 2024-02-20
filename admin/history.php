@@ -195,7 +195,7 @@ $fullname = $_SESSION['fullname'];
                                         <th>Client Name</th>
                                         <th>IDName</th>
                                         <th>Hour</th>
-                                        <th>Summary</th>
+                                        <th>Summary(THB)</th>
                                         <th>Date/Time Start</th>
                                         <th>Date/Time End</th>
                                         <!-- <th>Slip</th> -->

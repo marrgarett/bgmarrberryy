@@ -190,7 +190,7 @@ $his_id = $_GET["his_id"];
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Email</label>
-                                        <input type="text" id="email" class="form-control"  placeholder="insert email" value="<?php echo $row['useremail'] ?>" readonly>
+                                        <input type="text" id="email" class="form-control"  placeholder="insert email" value="<?php echo $row['useremail'] ?>">
                                     </div>
                                     <div class="form-group col-md-12">
                                     <label for="inputPassword4">Header</label>
